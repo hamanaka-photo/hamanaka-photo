@@ -6,7 +6,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2022年7月8日　13時47分 ",
     camera: "FUJIFILM X-T3 ",
-    lens: "レンズ名を入力",
     settings: "16mm / 1/320秒 / F11 / ISO1000",
     author: "大坪　俊裕",
     comment: "灯台に向かって右側 なだらかな斜面が優しい表情を見せる岬同じ岬とは思えないぐらい左右で印象が違う"
@@ -18,7 +17,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2026年6月11日　12時51分",
     camera: "FUJIFILM X-T5",
-    lens: "レンズ名を入力",
     settings: "37.6mm / 1/500秒 / F11 / ISO500",
     author: "大坪　俊裕",
     comment: "灯台に向かって左側 切り立った断崖が続き嶮しい表情を見せる岬よく見るとラッコが浮いていて和む"
@@ -30,7 +28,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2024年6月3日　12時22分",
     camera: "Nikon D850",
-    lens: "レンズ名を入力",
     settings: "420mm / 1/320秒 / F22 / ISO3200",
     author: "森山　雅友",
     comment: "空を見つめてのんびりと泳ぐラッコの親子。その穏やかな時間を見守る花たちが、優しい彩りを添えていました。"
@@ -42,7 +39,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2026年5月5日 13時18分",
     camera: "Canon EOS R6",
-    lens: "レンズ名を入力",
     settings: "500mm / 1/1000秒 / F10 / ISO500",
     author: "曽根原　麻由",
     comment: "波にゆられるラッコの親子。付かずとも離れず、ふたりで海の上に漂っていました。"
@@ -54,7 +50,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2025年6月5日　12時04分",
     camera: "Canon EOS R6",
-    lens: "レンズ名を入力",
     settings: " 800mm / 1/250秒 / F10 / ISO250 ",
     author: "曽根原　麻由",
     comment: "目をつぶってのんびりと波に揺られるラッコ。日を浴びて気持ちよさそうにしていました。"
@@ -66,7 +61,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2025年5月16日　13時00分",
     camera: "Nikon D850",
-    lens: "レンズ名を入力",
     settings: "500mm / 1/800秒 / F8 / ISO1600",
     author: "森山　雅友",
     comment: "波の揺りかごに身を委ね、海の布団に寝転がるラッコたち。お互いの今日のできごとを語り合うようにぷかぷかと浮かぶ彼らは、どんなお話をしているのでしょう。"
@@ -78,7 +72,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2025年6月28日　8時45分",
     camera: "Nikon COOLPIX P1100",
-    lens: "レンズ名を入力",
     settings: "600mm / 1/500秒 / F5.6 / ISO360",
     author: "浜中　太郎",
     comment: "ラッコにとってのお気に入りの場所は、私にとってもお気に入りの場所。ラッコに会えるこの場所は、私にとって癒される至福のひとときの場所となっています。"
@@ -90,7 +83,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2019年2月3日　9時54分",
     camera: "Nikon D7500",
-    lens: "レンズ名を入力",
     settings: "500mm / 1/800秒 / F10 / ISO4000",
     author: "片岡　義廣",
     comment: "ここに作品コメントを入力します。"
@@ -102,7 +94,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "2022年3月17日　10時30分",
     camera: "SONY α7Ⅲ",
-    lens: "レンズ名を入力",
     settings: "1200mm / 1/500秒 / F13 / ISO640",
     author: "らっこばやし",
     comment: "2022年3月、浜中町に流氷が接岸した日に。凍えてしまうのではと心配になる氷の海でもかわいい顔で浮かんでいました。ラッコのたくましさはいつも想像以上です。"
@@ -114,7 +105,6 @@ window.HAMANAKA_GALLERY = [
     location: "浜中町",
     season: "撮影時期を入力",
     camera: "SONY α7Ⅲ",
-    lens: "レンズ名を入力",
     settings: "1152mm / 1/500秒 / F14 / ISO2500",
     author: "らっこばやし",
     comment: "ラッコたちの多彩な表情や仕草が大好きです。ぷかぷかとお昼寝していたのに、いきなり乗りかかられた瞬間のこの顔。最高ですよね。何度見ても笑顔をもらえます。"
