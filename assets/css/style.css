@@ -410,16 +410,16 @@ button { cursor: pointer; }
 }
 .modal.open { display: flex; }
 .modal-dialog {
-  width: min(1120px, 100%);
-  max-height: 92vh;
+  width: min(1600px, 97vw);
+  max-height: 96vh;
   overflow: auto;
   border-radius: 18px;
   background: #fff;
   box-shadow: 0 30px 80px rgba(0,0,0,.35);
 }
-.modal-grid { display: grid; grid-template-columns: 1.3fr .7fr; }
-.modal-image-wrap { background: #09131c; display: grid; place-items: center; min-height: 480px; }
-.modal-image { width: 100%; max-height: 78vh; object-fit: contain; }
+.modal-grid { display: grid; grid-template-columns: 3fr 1fr; }
+.modal-image-wrap { background: #09131c; display: grid; place-items: center; min-height: 650px; }
+.modal-image { width: 100%; max-height: 90vh; object-fit: contain; }
 .modal-copy { padding: 34px; }
 .modal-copy h2 { margin: 8px 0 10px; font-size: 30px; }
 .modal-copy dl { margin: 20px 0; }
