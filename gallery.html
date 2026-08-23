@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="東京カメラ部2026写真展で展示する浜中町の写真10作品と作者紹介。">
+  <meta name="theme-color" content="#153a5b">
+  <title>東京カメラ部2026写真展｜HAMANAKA PHOTO</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<a class="skip-link" href="#main">本文へ移動</a>
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">HAMANAKA PHOTO<small>写真で出会う、浜中町。</small></a>
+    <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">MENU</button>
+    <nav class="site-nav" id="site-nav" aria-label="メインナビゲーション">
+      <a href="index.html">HOME</a><a href="gallery.html" aria-current="page">写真を見る</a><a href="guide.html">撮りに行く</a><a href="project.html">写真活動</a><a href="about.html">このサイトについて</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">PHOTO GALLERY</p>
+      <h1>東京カメラ部<br>2026写真展</h1>
+      <p>写真展で展示する10作品をデジタルアーカイブ。写真を選ぶと、撮影地・撮影機材・作者コメントを表示します。</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="section-head">
+        <div><h2 class="section-title"><small>10 PHOTOGRAPHS</small>展示作品</h2><p class="section-lead">画像と作品情報は `assets/js/gallery-data.js` と `assets/images/photo-01.webp` ～ `photo-10.webp` を差し替えるだけで更新できます。</p></div>
+      </div>
+      <div class="gallery-grid" data-gallery-grid></div>
+    </div>
+  </section>
+
+  <section class="section section-soft" id="author">
+    <div class="container">
+      <div class="section-head"><div><h2 class="section-title"><small>PHOTOGRAPHER</small>作者紹介</h2><p class="section-lead">作者が複数の場合は、このカードを人数分複製してください。</p></div></div>
+      <article class="author-card">
+        <img class="author-photo" src="assets/images/author.webp" alt="作者プロフィール写真のプレースホルダー">
+        <div>
+          <p class="eyebrow">PHOTOGRAPHER</p>
+          <h2>撮影者名を入力</h2>
+          <p>ここに作者プロフィールを入力します。浜中町との関わり、写真を始めたきっかけ、今回の10作品で伝えたいことなど、100～200字程度にまとめると読みやすくなります。</p>
+        </div>
+      </article>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">HAMANAKA PHOTO<br><small>写真で出会う、浜中町。</small></div>
+    <div class="footer-col"><h2>写真を見る</h2><a href="gallery.html">東京カメラ部2026写真展</a><a href="#author">作者紹介</a></div>
+    <div class="footer-col"><h2>撮りに行く</h2><a href="guide.html">フォトガイド</a><a href="guide.html#map">フォトマップ</a></div>
+    <div class="footer-col"><h2>写真活動</h2><a href="project.html">PROJECT</a><a href="project.html#contest">フォトコンテスト</a></div>
+    <div class="footer-col"><h2>ABOUT</h2><a href="about.html">このサイトについて</a><a href="https://www.townhamanaka.jp/" target="_blank" rel="noopener">浜中町公式サイト ↗</a></div>
+  </div>
+  <div class="container copyright">© <span data-year></span> Hamanaka Town. All rights reserved.</div>
+</footer>
+
+<div class="modal" data-modal aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-dialog"><div class="modal-grid">
+    <div class="modal-image-wrap"><img class="modal-image" data-modal-image src="" alt=""></div>
+    <div class="modal-copy">
+      <button class="modal-close" type="button" data-modal-close aria-label="閉じる">×</button>
+      <p class="eyebrow">TOKYO CAMERA CLUB 2026</p><h2 id="modal-title" data-modal-title></h2>
+      <dl><dt>撮影地</dt><dd data-modal-location></dd><dt>撮影時期</dt><dd data-modal-season></dd><dt>カメラ</dt><dd data-modal-camera></dd><dt>レンズ</dt><dd data-modal-lens></dd><dt>撮影設定</dt><dd data-modal-settings></dd><dt>撮影者</dt><dd data-modal-author></dd></dl>
+      <p data-modal-comment></p>
+      <div class="modal-nav"><button class="btn btn-outline" type="button" data-modal-prev>← 前の作品</button><button class="btn btn-blue" type="button" data-modal-next>次の作品 →</button></div>
+    </div>
+  </div></div>
+</div>
+
+<script src="assets/js/main.js"></script><script src="assets/js/gallery-data.js"></script><script src="assets/js/gallery.js"></script><script src="assets/js/year.js"></script>
+</body>
+</html>

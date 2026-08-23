@@ -1,0 +1,122 @@
+window.HAMANAKA_GALLERY = [
+  {
+    id: 1,
+    title: "展示作品 01",
+    image: "assets/images/photo-01.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "焦点距離 / SS / F値 / ISO を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。写真を撮影したときの状況や、浜中町で感じた魅力を紹介できます。"
+  },
+  {
+    id: 2,
+    title: "展示作品 02",
+    image: "assets/images/photo-02.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 3,
+    title: "展示作品 03",
+    image: "assets/images/photo-03.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 4,
+    title: "展示作品 04",
+    image: "assets/images/photo-04.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 5,
+    title: "展示作品 05",
+    image: "assets/images/photo-05.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 6,
+    title: "展示作品 06",
+    image: "assets/images/photo-06.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 7,
+    title: "展示作品 07",
+    image: "assets/images/photo-07.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 8,
+    title: "展示作品 08",
+    image: "assets/images/photo-08.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 9,
+    title: "展示作品 09",
+    image: "assets/images/photo-09.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  },
+  {
+    id: 10,
+    title: "展示作品 10",
+    image: "assets/images/photo-10.webp",
+    location: "浜中町",
+    season: "撮影時期を入力",
+    camera: "カメラ名を入力",
+    lens: "レンズ名を入力",
+    settings: "撮影設定を入力",
+    author: "撮影者名",
+    comment: "ここに作品コメントを入力します。"
+  }
+];
