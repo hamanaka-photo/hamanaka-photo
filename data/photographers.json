@@ -28,17 +28,17 @@
     "profile": "ここにプロフィールを入力します。"
   },
   {
-    "name": "森山 雅友",
-    "nameEn": "Masatomo Moriyama",
-    "photo": "assets/images/author-05.webp",
-    "works": "③,⑥",
-    "profile": "ここにプロフィールを入力します。"
-  },
-  {
     "name": "らっこばやし",
     "nameEn": "Raccobayashi",
     "photo": "assets/images/author-06.webp",
     "works": "⑨,⑩",
+    "profile": "ここにプロフィールを入力します。"
+  },
+  {
+    "name": "森山 雅友",
+    "nameEn": "Masatomo Moriyama",
+    "photo": "assets/images/author-05.webp",
+    "works": "③,⑥",
     "profile": "ここにプロフィールを入力します。"
   }
 ]
