@@ -591,23 +591,31 @@ button { cursor: pointer; }
 }
 
 .modal-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  min-height: 0;
+
   padding: 34px;
+
   overflow-y: auto;
 }
-.modal-copy h2 { margin: 8px 0 10px; font-size: 30px; }
-.modal-copy dl { margin: 20px 0; }
-.modal-copy dt { color: var(--muted); font-size: 11px; }
-.modal-copy dd { margin: 0 0 10px; }
-.modal-close {
-  float: right;
-  border: 0;
-  border-radius: 999px;
-  background: #edf1f3;
-  width: 40px;
-  height: 40px;
-}
-.modal-nav { display: flex; gap: 10px; margin-top: 24px; }
 
+.modal-nav {
+  position: sticky;
+  bottom: 0;
+
+  display: flex;
+  gap: 10px;
+
+  margin-top: auto;
+  padding-top: 18px;
+
+  background: #fff;
+  border-top: 1px solid var(--line);
+}
 .site-footer { padding: 54px 0 28px; background: #eaf1f6; color: #496174; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 34px; }
 .footer-brand { font-weight: 800; letter-spacing: .1em; color: var(--navy); }
