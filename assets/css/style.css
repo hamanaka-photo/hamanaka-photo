@@ -221,7 +221,7 @@ button { cursor: pointer; }
 .feature-banner {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: 1.15fr .85fr;
+  grid-template-columns: .8fr 1.2fr;
   min-height: 310px;
   overflow: hidden;
   border-radius: var(--radius);
@@ -229,11 +229,17 @@ button { cursor: pointer; }
   background: var(--navy);
   box-shadow: var(--shadow);
 }
-.feature-banner .copy { padding: 46px; }
+.feature-banner .copy { padding: 40px 34px; }
 .feature-banner h2 { margin: 8px 0 12px; font-size: clamp(26px, 3vw, 40px); line-height: 1.4; }
 .feature-banner p { max-width: 600px; margin: 0 0 24px; opacity: .86; }
-.feature-banner .image { background: url("../images/feature.webp") center / cover no-repeat; }
-
+.feature-banner .image {
+  background-image: url("../images/feature.webp");
+  background-position: center;
+  background-repeat: no-repeat;
+  /* キービジュアル全体を切らずに表示 */
+  background-size: contain;
+  background-color: #ffffff;
+}
 .section { padding: 86px 0; }
 .section-soft { background: var(--bg); }
 .section-head {
