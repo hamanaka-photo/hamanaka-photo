@@ -616,6 +616,7 @@ button { cursor: pointer; }
   background: #fff;
   border-top: 1px solid var(--line);
 }
+.modal-nav .btn { flex: 1; }
 .site-footer { padding: 54px 0 28px; background: #eaf1f6; color: #496174; }
 .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(4, 1fr); gap: 34px; }
 .footer-brand { font-weight: 800; letter-spacing: .1em; color: var(--navy); }
