@@ -623,3 +623,91 @@ button { cursor: pointer; }
   }
 
 }
+
+/* =========================
+   PHOTOGRAPHER PROFILE
+========================= */
+
+.author-grid{
+  align-items:start;
+}
+
+.author-card{
+  align-self:start;
+}
+
+.author-details{
+  margin-top:16px;
+  border-top:1px solid #e3e8ee;
+}
+
+.author-details summary{
+  position:relative;
+  list-style:none;
+  cursor:pointer;
+
+  padding:14px 32px 6px 0;
+
+  color:#55799e;
+  font-size:12px;
+  font-weight:500;
+  letter-spacing:.05em;
+
+  transition:color .2s ease;
+}
+
+/* Chrome / Safari の標準三角を消す */
+.author-details summary::-webkit-details-marker{
+  display:none;
+}
+
+/* ＋マーク */
+.author-details summary::after{
+  content:"+";
+
+  position:absolute;
+  right:4px;
+  top:10px;
+
+  font-size:22px;
+  font-weight:300;
+  line-height:1;
+  color:#6682a0;
+
+  transition:transform .25s ease;
+}
+
+/* 開いたとき */
+.author-details[open] summary::after{
+  content:"−";
+}
+
+.author-details summary:hover{
+  color:#274f78;
+}
+
+.author-profile{
+  padding:10px 0 4px;
+
+  animation:profileOpen .25s ease;
+}
+
+.author-profile p{
+  margin:0;
+
+  color:#667386;
+  font-size:13px;
+  line-height:1.9;
+}
+
+@keyframes profileOpen{
+  from{
+    opacity:0;
+    transform:translateY(-5px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
