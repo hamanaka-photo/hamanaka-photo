@@ -315,18 +315,164 @@ button { cursor: pointer; }
 }
 .page-hero p { max-width: 720px; margin: 0; color: var(--muted); }
 
-.author-card {
+
+/* =========================================
+   PHOTOGRAPHERS
+   顔写真・氏名・担当作品は固定表示
+   プロフィール本文のみ details で開閉
+========================================= */
+
+.author-grid {
   display: grid;
-  grid-template-columns: 180px 1fr;
-  gap: 26px;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #fff;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  align-items: start;
 }
-.author-photo { width: 180px; aspect-ratio: 1; object-fit: cover; border-radius: 50%; background: #edf2f5; }
-.author-card h2 { margin: 0 0 8px; }
-.author-card p { margin: 0; color: var(--muted); }
+
+.author-card {
+  display: block;
+  align-self: start;
+  min-width: 0;
+  margin: 0;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 5px 20px rgba(35, 55, 80, .06);
+}
+
+.author-fixed {
+  display: grid;
+  grid-template-columns: 120px minmax(0, 1fr);
+  gap: 22px;
+  align-items: start;
+  min-height: 120px;
+}
+
+.author-photo {
+  display: block;
+  width: 120px;
+  height: 120px;
+  margin: 0;
+  object-fit: cover;
+  border-radius: 50%;
+  background: #edf2f5;
+  align-self: start;
+}
+
+.author-info {
+  min-width: 0;
+  padding-top: 3px;
+}
+
+.author-info .eyebrow {
+  margin: 0 0 6px;
+  color: #6482a0;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .14em;
+}
+
+.author-info h2,
+.author-info h3 {
+  margin: 0 0 12px;
+  color: #26384b;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.author-en {
+  display: block;
+  margin-top: 2px;
+  color: #758291;
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.took-photos {
+  margin: 0;
+  color: #667789;
+  font-size: 12px;
+  line-height: 1.7;
+  letter-spacing: .03em;
+}
+
+/* プロフィール開閉 */
+.author-details {
+  margin-top: 20px;
+  border-top: 1px solid #e2e8ee;
+}
+
+.author-details summary {
+  position: relative;
+  min-height: 44px;
+  padding: 14px 40px 8px 0;
+  list-style: none;
+  cursor: pointer;
+  color: #55799d;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .05em;
+  user-select: none;
+  transition: color .2s ease;
+}
+
+.author-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.author-details summary::marker {
+  content: "";
+}
+
+.author-details summary::after {
+  content: "+";
+  position: absolute;
+  top: 8px;
+  right: 3px;
+  color: #65819c;
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1;
+}
+
+.author-details[open] summary::after {
+  content: "−";
+}
+
+.author-details summary:hover {
+  color: #274f78;
+}
+
+.author-details summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+.author-profile {
+  padding: 12px 0 4px;
+  animation: authorProfileOpen .22s ease;
+}
+
+.author-profile p {
+  margin: 0;
+  color: #637285;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+@keyframes authorProfileOpen {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 .guide-index {
   display: grid;
@@ -470,6 +616,19 @@ button { cursor: pointer; }
 .copyright { margin-top: 34px; padding-top: 20px; border-top: 1px solid #d3e0e9; font-size: 10px; color: #728593; }
 
 @media (max-width: 900px) {
+  .author-fixed {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 18px;
+    min-height: 100px;
+  }
+  .author-photo {
+    width: 100px;
+    height: 100px;
+  }
+  .author-info h2,
+  .author-info h3 {
+    font-size: 18px;
+  }
   .container { width: min(var(--max), calc(100% - 34px)); }
   .menu-button { display: inline-flex; }
   .site-nav {
@@ -498,6 +657,29 @@ button { cursor: pointer; }
 }
 
 @media (max-width: 620px) {
+  .author-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .author-card {
+    padding: 18px;
+  }
+  .author-fixed {
+    grid-template-columns: 85px minmax(0, 1fr);
+    gap: 15px;
+    min-height: 85px;
+  }
+  .author-photo {
+    width: 85px;
+    height: 85px;
+  }
+  .author-info h2,
+  .author-info h3 {
+    font-size: 16px;
+  }
+  .author-en {
+    font-size: 11px;
+  }
   .container { width: min(var(--max), calc(100% - 26px)); }
   .header-inner { min-height: 64px; }
   .site-nav { top: 64px; }
@@ -516,8 +698,6 @@ button { cursor: pointer; }
   .section-head { align-items: flex-start; flex-direction: column; }
   .news-row { grid-template-columns: 92px 82px; gap: 10px; }
   .news-row a { grid-column: 1 / -1; }
-  .author-card { grid-template-columns: 1fr; text-align: center; }
-  .author-photo { margin-inline: auto; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
   .footer-brand { grid-column: 1 / -1; }
   .modal { padding: 12px; }
@@ -525,189 +705,7 @@ button { cursor: pointer; }
   .modal-image-wrap { min-height: 240px; }
 }
 
-/* =========================
-   PHOTOGRAPHERS
-========================= */
-
-.author-grid{
-  display:grid;
-  grid-template-columns:repeat(2, minmax(0, 1fr));
-  gap:24px;
-}
-
-.author-card{
-  display:grid;
-  grid-template-columns:140px 1fr;
-  gap:24px;
-  align-items:center;
-
-  padding:24px;
-  background:#ffffff;
-  border-radius:14px;
-
-  box-shadow:
-    0 5px 20px rgba(35, 55, 80, .06);
-
-  margin:0;
-}
-
-.author-photo{
-  width:140px;
-  height:140px;
-
-  object-fit:cover;
-
-  border-radius:50%;
-}
-
-.author-info h3{
-  margin:4px 0 12px;
-  font-size:20px;
-  font-weight:500;
-}
-
-.author-info p{
-  margin:0;
-  font-size:13px;
-  line-height:1.9;
-  color:#667386;
-}
-
-.author-info .eyebrow{
-  margin-bottom:4px;
-  font-size:10px;
-  letter-spacing:.14em;
-  color:#6081a8;
-}
-
-
-/* タブレット */
-
-@media(max-width:900px){
-
-  .author-card{
-    grid-template-columns:110px 1fr;
-    gap:18px;
-  }
-
-  .author-photo{
-    width:110px;
-    height:110px;
-  }
-
-}
-
-
-/* スマートフォン */
-
-@media(max-width:650px){
-
-  .author-grid{
-    grid-template-columns:1fr;
-    gap:16px;
-  }
-
-  .author-card{
-    grid-template-columns:90px 1fr;
-    padding:18px;
-    gap:16px;
-  }
-
-  .author-photo{
-    width:90px;
-    height:90px;
-  }
-
-  .author-info h3{
-    font-size:17px;
-  }
-
-}
-
-/* =========================
-   PHOTOGRAPHER PROFILE
-========================= */
-
-.author-grid{
-  align-items:start;
-}
-
-.author-card{
-  align-self:start;
-}
-
-.author-details{
-  margin-top:16px;
-  border-top:1px solid #e3e8ee;
-}
-
-.author-details summary{
-  position:relative;
-  list-style:none;
-  cursor:pointer;
-
-  padding:14px 32px 6px 0;
-
-  color:#55799e;
-  font-size:12px;
-  font-weight:500;
-  letter-spacing:.05em;
-
-  transition:color .2s ease;
-}
-
-/* Chrome / Safari の標準三角を消す */
-.author-details summary::-webkit-details-marker{
-  display:none;
-}
-
-/* ＋マーク */
-.author-details summary::after{
-  content:"+";
-
-  position:absolute;
-  right:4px;
-  top:10px;
-
-  font-size:22px;
-  font-weight:300;
-  line-height:1;
-  color:#6682a0;
-
-  transition:transform .25s ease;
-}
-
-/* 開いたとき */
-.author-details[open] summary::after{
-  content:"−";
-}
-
-.author-details summary:hover{
-  color:#274f78;
-}
-
-.author-profile{
-  padding:10px 0 4px;
-
-  animation:profileOpen .25s ease;
-}
-
-.author-profile p{
-  margin:0;
-
-  color:#667386;
-  font-size:13px;
-  line-height:1.9;
-}
-
-@keyframes profileOpen{
-  from{
-    opacity:0;
-    transform:translateY(-5px);
-  }
-
-  to{
-    opacity:1;
-    transform:translateY(0);
-  }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .author-profile { animation: none; }
 }
