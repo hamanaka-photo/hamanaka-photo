@@ -27,7 +27,7 @@
     modal.querySelector('[data-modal-location]').textContent = item.location;
     modal.querySelector('[data-modal-season]').textContent = item.season;
     modal.querySelector('[data-modal-camera]').textContent = item.camera;
-    modal.querySelector('[data-modal-lens]').textContent = item.lens;
+    //modal.querySelector('[data-modal-lens]').textContent = item.lens;
     modal.querySelector('[data-modal-settings]').textContent = item.settings;
     modal.querySelector('[data-modal-author]').textContent = item.author;
     modal.querySelector('[data-modal-comment]').textContent = item.comment;
