@@ -1,1 +1,44 @@
-[]
+[
+  {
+    "name": "大坪 俊裕",
+    "nameEn": "Ohstubo Toshihiro",
+    "photo": "assets/images/author-01.webp",
+    "works": "①,②",
+    "profile": "1970年 兵庫県生まれ\n高校写真部で写真を始める\n学生の頃より撮影旅で何度も北海道を訪れる\n1996年 初の写真展を京都・名古屋で開催\n1998年 北海道浜中町に移住\n以降 霧多布の自然を中心に撮影活動を続け\n              写真展やポストカードで作品を発表"
+  },
+  {
+    "name": "曽根原 麻由",
+    "nameEn": "Mayu Sonehara",
+    "photo": "assets/images/author-02.webp",
+    "works": "④,⑤",
+    "profile": "ここにプロフィールを入力します。"
+  },
+  {
+    "name": "浜中 太郎",
+    "nameEn": "Taro Hamanaka",
+    "photo": "assets/images/author-03.webp",
+    "works": "⑦",
+    "profile": "ここにプロフィールを入力します。"
+  },
+  {
+    "name": "片岡 義廣",
+    "nameEn": "Yoshihiro Kataoka",
+    "photo": "assets/images/author-04.webp",
+    "works": "⑧",
+    "profile": "ここにプロフィールを入力します。"
+  },
+  {
+    "name": "森山 雅友",
+    "nameEn": "Masatomo Moriyama",
+    "photo": "assets/images/author-05.webp",
+    "works": "③,⑥",
+    "profile": "ここにプロフィールを入力します。"
+  },
+  {
+    "name": "らっこばやし",
+    "nameEn": "Raccobayashi",
+    "photo": "assets/images/author-06.webp",
+    "works": "⑨,⑩",
+    "profile": "ここにプロフィールを入力します。"
+  }
+]
