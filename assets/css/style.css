@@ -221,7 +221,7 @@ button { cursor: pointer; }
 .feature-banner {
   margin-top: 28px;
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: 1.1fr 0.9fr;
   min-height: 310px;
   overflow: hidden;
   border-radius: var(--radius);
