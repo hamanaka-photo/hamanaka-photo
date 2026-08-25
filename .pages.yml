@@ -7,27 +7,56 @@ media:
     rename: false
 
 content:
-  - name: gallery
-    label: 展示作品
+
+  - name: selections
+    label: フォトセレクション
     type: file
-    path: data/gallery.json
+    path: data/selections.json
     format: json
     list: true
     operations:
       delete: false
-    fields:
-      - name: id
-        label: 作品番号
-        type: number
-        required: true
 
-      - name: title
-        label: 作品タイトル
+    fields:
+
+      - name: id
+        label: セレクションID
+        type: string
+        required: true
+        description: 半角英数字とハイフンで入力します。例 tokyo-camera-club-2026
+
+      - name: status
+        label: 公開状態
+        type: select
+        required: true
+        options:
+          values:
+            - name: current
+              label: CURRENT 現在のセレクション
+            - name: past
+              label: PAST 過去のセレクション
+
+      - name: year
+        label: 年
         type: string
         required: true
 
-      - name: image
-        label: 作品画像
+      - name: title
+        label: セレクションタイトル
+        type: string
+        required: true
+
+      - name: shortTitle
+        label: HOME表示用タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: 紹介文
+        type: text
+
+      - name: cover
+        label: カバー画像
         type: image
         required: true
         options:
@@ -35,33 +64,62 @@ content:
           extensions: [jpg, jpeg, png, webp]
           rename: false
 
-      - name: location
-        label: 撮影地
-        type: string
+      - name: works
+        label: 掲載作品
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
 
-      - name: season
-        label: 撮影時期
-        type: string
+          - name: id
+            label: 作品番号
+            type: number
+            required: true
 
-      - name: camera
-        label: カメラ
-        type: string
+          - name: title
+            label: 作品タイトル
+            type: string
+            required: true
 
-      - name: lens
-        label: レンズ
-        type: string
+          - name: image
+            label: 作品画像
+            type: image
+            required: true
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
 
-      - name: settings
-        label: 撮影設定
-        type: string
+          - name: location
+            label: 撮影地
+            type: string
 
-      - name: author
-        label: 撮影者
-        type: string
+          - name: season
+            label: 撮影時期
+            type: string
 
-      - name: comment
-        label: 作品コメント
-        type: text
+          - name: camera
+            label: カメラ
+            type: string
+
+          - name: lens
+            label: レンズ
+            type: string
+
+          - name: settings
+            label: 撮影設定
+            type: string
+
+          - name: author
+            label: 撮影者
+            type: string
+
+          - name: comment
+            label: 作品コメント
+            type: text
+
 
   - name: photographers
     label: 撮影者
@@ -71,7 +129,9 @@ content:
     list: true
     operations:
       delete: false
+
     fields:
+
       - name: name
         label: 氏名
         type: string
@@ -97,6 +157,7 @@ content:
         label: プロフィール
         type: text
 
+
   - name: news
     label: お知らせ
     type: file
@@ -105,7 +166,9 @@ content:
     list: true
     operations:
       delete: false
+
     fields:
+
       - name: date
         label: 日付
         type: date
@@ -130,6 +193,7 @@ content:
       - name: url
         label: リンク先
         type: string
+
 
 settings:
   commit:
