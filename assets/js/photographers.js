@@ -1,21 +1,39 @@
 (() => {
-  const grid = document.querySelector('[data-photographers-grid]');
+
+  const grid =
+    document.querySelector(
+      '[data-photographers-grid]'
+    );
 
   if (!grid) return;
 
+
+  let photographers = [];
+
+
   const escapeHtml = (value = '') =>
-    String(value).replace(/[&<>"']/g, char => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;'
-    }[char]));
+    String(value).replace(
+      /[&<>"']/g,
+      char => ({
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#039;'
+      }[char])
+    );
+
 
   const profileHtml = (value = '') =>
-    escapeHtml(value).replace(/\r?\n/g, '<br>');
+    escapeHtml(value)
+      .replace(
+        /\r?\n/g,
+        '<br>'
+      );
 
-  const card = (item) => `
+
+  const card = item => `
+
     <article class="author-card">
 
       <div class="author-fixed">
@@ -33,17 +51,24 @@
           </p>
 
           <h3>
+
             ${escapeHtml(item.name)}
 
             ${
               item.nameEn
-                ? `<span class="author-en">（${escapeHtml(item.nameEn)}）</span>`
+                ? `
+                  <span class="author-en">
+                    （${escapeHtml(item.nameEn)}）
+                  </span>
+                `
                 : ''
             }
+
           </h3>
 
           <p class="took-photos">
-            Took photos : ${escapeHtml(item.works)}
+            Took photos :
+            ${escapeHtml(item.works)}
           </p>
 
         </div>
@@ -71,16 +96,75 @@
   `;
 
 
+  function normalizeName(value = '') {
+
+    return String(value)
+      .replace(/\s+/g, '')
+      .trim();
+
+  }
+
+
+  function render(selection) {
+
+    if (!selection) return;
+
+
+    const authors =
+      new Set(
+        (selection.works || [])
+          .map(
+            work =>
+              normalizeName(
+                work.author
+              )
+          )
+      );
+
+
+    const visible =
+      photographers.filter(
+        person =>
+          authors.has(
+            normalizeName(
+              person.name
+            )
+          )
+      );
+
+
+    if (!visible.length) {
+
+      grid.innerHTML = `
+        <p class="section-lead">
+          撮影者情報はありません。
+        </p>
+      `;
+
+      return;
+
+    }
+
+
+    grid.innerHTML =
+      visible
+        .map(card)
+        .join('');
+
+  }
+
+
   async function loadPhotographers() {
 
     try {
 
-      const response = await fetch(
-        'data/photographers.json',
-        {
-          cache: 'no-store'
-        }
-      );
+      const response =
+        await fetch(
+          'data/photographers.json',
+          {
+            cache: 'no-store'
+          }
+        );
 
 
       if (!response.ok) {
@@ -92,10 +176,11 @@
       }
 
 
-      const data = await response.json();
+      const json =
+        await response.json();
 
 
-      if (!Array.isArray(data)) {
+      if (!Array.isArray(json)) {
 
         throw new Error(
           'photographers.json の形式が正しくありません。'
@@ -104,10 +189,18 @@
       }
 
 
-      grid.innerHTML =
-        data
-          .map(card)
-          .join('');
+      photographers = json;
+
+
+      if (
+        window.HAMANAKA_ACTIVE_SELECTION
+      ) {
+
+        render(
+          window.HAMANAKA_ACTIVE_SELECTION
+        );
+
+      }
 
 
     } catch (error) {
@@ -115,15 +208,33 @@
       console.error(error);
 
 
-      grid.innerHTML =
-        '<p class="section-lead">' +
-        '撮影者情報を読み込めませんでした。' +
-        'しばらくしてから再度お試しください。' +
-        '</p>';
+      grid.innerHTML = `
+        <p class="section-lead">
+          撮影者情報を読み込めませんでした。
+        </p>
+      `;
 
     }
 
   }
+
+
+  document.addEventListener(
+    'hamanaka:selection-loaded',
+    event => {
+
+      if (
+        photographers.length
+      ) {
+
+        render(
+          event.detail
+        );
+
+      }
+
+    }
+  );
 
 
   loadPhotographers();
