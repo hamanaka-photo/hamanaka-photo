@@ -724,3 +724,135 @@ button { cursor: pointer; }
   html { scroll-behavior: auto; }
   .author-profile { animation: none; }
 }
+
+/* =========================================
+   PHOTO SELECTION ARCHIVE
+========================================= */
+
+.past-selection-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 22px;
+}
+
+
+.selection-card {
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+  border-radius: 16px;
+
+  background: #fff;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.selection-card:hover {
+  transform: translateY(-4px);
+
+  box-shadow: var(--shadow);
+}
+
+
+.selection-card a {
+  display: block;
+  height: 100%;
+}
+
+
+.selection-card-image {
+  overflow: hidden;
+
+  aspect-ratio: 16 / 10;
+
+  background: #edf2f5;
+}
+
+
+.selection-card-image img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition:
+    transform .35s ease;
+}
+
+
+.selection-card:hover
+.selection-card-image img {
+
+  transform: scale(1.03);
+
+}
+
+
+.selection-card-copy {
+  padding: 22px;
+}
+
+
+.selection-year {
+  margin: 0 0 6px;
+
+  color: var(--blue);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .12em;
+}
+
+
+.selection-card-copy h3 {
+  margin: 0 0 10px;
+
+  font-size: 19px;
+  line-height: 1.5;
+}
+
+
+.selection-card-copy p {
+  margin: 0;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+
+.selection-link {
+  display: inline-block;
+
+  margin-top: 18px;
+
+  color: var(--blue);
+
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+@media (max-width: 900px) {
+
+  .past-selection-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+  }
+
+}
+
+
+@media (max-width: 620px) {
+
+  .past-selection-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
