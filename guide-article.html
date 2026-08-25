@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="浜中町での撮影旅行に役立つフォトマップ、旅行準備、カメラ・レンズ、撮影テクニック、撮影マナー、フォトガイドブックをご案内します。">
+  <meta name="description" content="HAMANAKA PHOTO GUIDEの記事ページです。">
   <meta name="theme-color" content="#153a5b">
-  <title>HAMANAKA PHOTO GUIDE｜HAMANAKA PHOTO</title>
+  <title>PHOTO GUIDE｜HAMANAKA PHOTO</title>
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/guide-cms.css">
 </head>
@@ -27,28 +27,47 @@
 </header>
 
 <main id="main">
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">PHOTO GUIDE</p>
-      <h1 data-guide-page-title>ラッコを撮りに、<br>浜中町へ。</h1>
-      <p data-guide-page-lead>浜中町での撮影旅行に役立つ情報をまとめています。</p>
-    </div>
-  </section>
+  <article data-guide-article>
+    <section class="guide-article-hero">
+      <div class="container">
+        <nav class="breadcrumb" aria-label="パンくずリスト">
+          <a href="index.html">HOME</a>
+          <span aria-hidden="true">›</span>
+          <a href="guide.html">PHOTO GUIDE</a>
+          <span aria-hidden="true">›</span>
+          <span data-article-breadcrumb>記事</span>
+        </nav>
 
-  <section class="section section-soft">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <h2 class="section-title"><small>CONTENTS</small>知りたいことから選ぶ</h2>
-          <p class="section-lead" data-guide-index-lead>目的に合わせてフォトガイドをご覧ください。</p>
+        <div class="guide-article-hero-grid">
+          <div class="guide-article-heading">
+            <p class="eyebrow" data-article-eyebrow>PHOTO GUIDE</p>
+            <h1 data-article-title>記事を読み込んでいます。</h1>
+            <p class="guide-article-summary" data-article-summary></p>
+          </div>
+
+          <div class="guide-article-cover" data-article-cover-wrap hidden>
+            <img data-article-cover src="" alt="">
+          </div>
         </div>
       </div>
+    </section>
 
-      <div class="guide-menu-grid" data-guide-menu aria-live="polite">
-        <p class="section-lead">フォトガイドを読み込んでいます。</p>
+    <section class="section">
+      <div class="container guide-article-layout">
+        <div class="guide-article-body" data-article-blocks>
+          <p class="section-lead">記事を読み込んでいます。</p>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
+
+    <nav class="guide-article-navigation" aria-label="フォトガイド記事ナビゲーション">
+      <div class="container guide-article-nav-inner">
+        <a class="guide-nav-link guide-nav-prev" data-article-prev hidden></a>
+        <a class="btn btn-outline" href="guide.html">PHOTO GUIDEへ戻る</a>
+        <a class="guide-nav-link guide-nav-next" data-article-next hidden></a>
+      </div>
+    </nav>
+  </article>
 </main>
 
 <footer class="site-footer">
@@ -63,7 +82,7 @@
 </footer>
 
 <script src="assets/js/main.js"></script>
-<script src="assets/js/guide.js"></script>
+<script src="assets/js/guide-article.js"></script>
 <script src="assets/js/year.js"></script>
 </body>
 </html>
