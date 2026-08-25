@@ -1,7 +1,7 @@
 [
   {
     "id": "tokyo-camera-club-2026",
-    "status": "past",
+    "status": "current",
     "year": "2026",
     "title": "浜中町×東京カメラ部2026写真展",
     "shortTitle": "東京カメラ部2026写真展 展示作品",
@@ -122,7 +122,7 @@
   },
   {
     "id": "test-past-2026",
-    "status": "current",
+    "status": "past",
     "year": "2026",
     "title": "テストセレクション",
     "shortTitle": "テストセレクション",
@@ -138,14 +138,14 @@
         "camera": "テスト3",
         "lens": "テスト4",
         "settings": "テスト5",
-        "author": "曽根原　　麻由",
+        "author": "曽根原　麻由",
         "comment": "テスト"
       },
       {
         "id": 2,
         "title": "②テスト",
         "image": "assets/images/photo-04.webp",
-        "author": "浜中太郎　"
+        "author": "浜中　太郎"
       }
     ]
   },
@@ -162,7 +162,7 @@
         "id": 1,
         "title": "111",
         "image": "assets/images/guide-manner.webp",
-        "author": "hama"
+        "author": "らっこばやし"
       }
     ]
   }
