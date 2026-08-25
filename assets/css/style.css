@@ -2336,3 +2336,68 @@ summary:focus-visible {
   }
 
 }
+
+/* =========================================
+   HOME 3 CARDS
+   DARK MASK STYLE
+========================================= */
+
+/* PHOTO GUIDE */
+.feature-card.guide {
+  color: #fff;
+}
+
+.feature-card.guide::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 27, 42, .12),
+      rgba(9, 27, 42, .82)
+    );
+}
+
+
+/* PROJECT */
+.feature-card.project {
+  color: #fff;
+}
+
+.feature-card.project::before {
+  background:
+    linear-gradient(
+      180deg,
+      rgba(9, 27, 42, .12),
+      rgba(9, 27, 42, .82)
+    );
+}
+
+
+/* PHOTO GUIDE内の4つの小ボタン */
+.feature-card.guide .mini-links {
+  border-color:
+    rgba(255, 255, 255, .28);
+
+  background:
+    rgba(0, 0, 0, .18);
+}
+
+.feature-card.guide .mini-links a {
+  color: #fff;
+
+  border-color:
+    rgba(255, 255, 255, .20);
+}
+
+.feature-card.guide .mini-links a:hover {
+  background:
+    rgba(255, 255, 255, .14);
+}
+
+
+/* GUIDE・PROJECT下部ボタン */
+.feature-card.guide .btn-outline,
+.feature-card.project .btn-outline {
+  border-color: #fff;
+  background: #fff;
+  color: var(--navy);
+}
