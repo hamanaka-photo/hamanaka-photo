@@ -2401,3 +2401,285 @@ summary:focus-visible {
   background: #fff;
   color: var(--navy);
 }
+
+/* =========================================
+   PHOTOGRAPHER
+   SNS / QR / RELATED LINKS
+========================================= */
+
+.author-socials {
+  margin-top: 26px;
+
+  padding-top: 22px;
+
+  border-top:
+    1px solid
+    var(--line);
+}
+
+
+.author-social-title {
+  margin:
+    0 0 14px;
+
+  color:
+    var(--navy);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  letter-spacing: .10em;
+}
+
+
+/* 最大3件を想定 */
+
+.author-social-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      3,
+      minmax(0, 1fr)
+    );
+
+  gap: 12px;
+}
+
+
+/* カード全体をリンク化 */
+
+.author-social-link {
+  display: flex;
+
+  flex-direction: column;
+
+  min-width: 0;
+
+  overflow: hidden;
+
+  border:
+    1px solid
+    var(--line);
+
+  border-radius: 12px;
+
+  background: #fff;
+
+  color:
+    inherit;
+
+  text-decoration: none;
+
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+
+.author-social-link:hover {
+  transform:
+    translateY(-3px);
+
+  border-color:
+    #bfd1de;
+
+  box-shadow:
+    0 10px 28px
+    rgba(22, 55, 82, .10);
+}
+
+
+.author-social-link:focus-visible {
+  outline:
+    2px solid
+    var(--blue);
+
+  outline-offset: 3px;
+}
+
+
+/* QRコード・画像部分 */
+
+.author-social-image {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+
+  aspect-ratio:
+    1 / 1;
+
+  padding: 12px;
+
+  overflow: hidden;
+
+  background: #fff;
+}
+
+
+.author-social-image img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+}
+
+
+/* SNS情報 */
+
+.author-social-copy {
+  display: flex;
+
+  flex-direction: column;
+
+  align-items: center;
+
+  min-height: 72px;
+
+  padding:
+    11px 10px 13px;
+
+  border-top:
+    1px solid
+    var(--line);
+
+  text-align: center;
+}
+
+
+/* Instagram / X / Webサイト等 */
+
+.author-social-platform {
+  display: block;
+
+  margin-bottom: 4px;
+
+  color:
+    var(--blue);
+
+  font-size: 9px;
+  font-weight: 700;
+
+  line-height: 1.4;
+
+  letter-spacing: .08em;
+
+  text-transform: uppercase;
+}
+
+
+/* アカウント名 */
+
+.author-social-account {
+  display: block;
+
+  max-width: 100%;
+
+  color:
+    var(--navy);
+
+  font-size: 11px;
+  font-weight: 700;
+
+  line-height: 1.55;
+
+  overflow-wrap: anywhere;
+}
+
+
+/* 外部リンクを示す補助表示 */
+
+.author-social-open {
+  display: block;
+
+  margin-top: auto;
+
+  padding-top: 5px;
+
+  color:
+    var(--muted);
+
+  font-size: 8px;
+
+  line-height: 1.4;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .author-social-grid {
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+  }
+
+}
+
+
+/* =========================================
+   SMARTPHONE
+========================================= */
+
+@media (max-width: 480px) {
+
+  .author-social-grid {
+    grid-template-columns:
+      1fr;
+  }
+
+
+  .author-social-link {
+    display: grid;
+
+    grid-template-columns:
+      110px
+      minmax(0, 1fr);
+
+    align-items: center;
+  }
+
+
+  .author-social-image {
+    width: 110px;
+
+    aspect-ratio:
+      1 / 1;
+
+    padding: 10px;
+  }
+
+
+  .author-social-copy {
+    align-items:
+      flex-start;
+
+    justify-content:
+      center;
+
+    min-height: 110px;
+
+    padding:
+      14px 16px;
+
+    border-top: 0;
+
+    border-left:
+      1px solid
+      var(--line);
+
+    text-align: left;
+  }
+
+}
