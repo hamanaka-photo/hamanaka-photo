@@ -138,13 +138,14 @@
         "camera": "テスト3",
         "lens": "テスト4",
         "settings": "テスト5",
-        "author": "曽根原　麻由",
+        "author": "曽根原麻由",
         "comment": "テスト"
       },
       {
         "id": 2,
         "title": "②テスト",
-        "image": "assets/images/photo-04.webp"
+        "image": "assets/images/photo-04.webp",
+        "author": "浜中 太郎"
       }
     ]
   }
