@@ -5,14 +5,14 @@
 
 .guide-menu-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 24px;
+  grid-template-columns: 1fr;
+  gap: 20px;
 }
 
 .guide-menu-card {
   display: grid;
-  grid-template-columns: minmax(150px, .8fr) minmax(0, 1.2fr);
-  min-height: 260px;
+  grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
+  min-height: 220px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
