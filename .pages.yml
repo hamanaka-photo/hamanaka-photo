@@ -588,7 +588,7 @@ content:
             label: 作品コメント
             type: text
 
-  - name: photographers
+    - name: photographers
     label: 撮影者
     type: file
     path: data/photographers.json
@@ -596,14 +596,20 @@ content:
     list: true
     operations:
       delete: false
+
     fields:
+
       - name: name
         label: 氏名
         type: string
         required: true
+
+
       - name: nameEn
         label: 英字表記
         type: string
+
+
       - name: photo
         label: 顔写真
         type: image
@@ -611,12 +617,90 @@ content:
           media: images
           extensions: [jpg, jpeg, png, webp]
           rename: false
+
+
       - name: works
         label: Took photos
         type: string
+
+
       - name: profile
         label: プロフィール
         type: text
+
+
+      - name: socialLinks
+        label: SNS・関連リンク
+        type: object
+
+        description: >
+          Instagram、X、Webサイトなどを登録できます。
+          1名につき3件までを目安に登録してください。
+          QRコードやSNS画像をクリックすると、
+          登録したURLへ移動します。
+
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{account}"
+
+        fields:
+
+          - name: platform
+            label: 種類
+            type: select
+            required: true
+
+            options:
+              values:
+
+                - name: instagram
+                  label: Instagram
+
+                - name: x
+                  label: X
+
+                - name: facebook
+                  label: Facebook
+
+                - name: website
+                  label: Webサイト
+
+                - name: other
+                  label: その他
+
+
+          - name: account
+            label: 表示名・アカウント名
+            type: string
+            required: true
+
+            description: >
+              例：
+              @hamanaka_photo
+              公式Instagram
+              撮影者Webサイト
+
+
+          - name: image
+            label: QRコード・画像
+            type: image
+            required: true
+
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+
+          - name: url
+            label: リンク先URL
+            type: string
+            required: true
+
+            description: >
+              QRコードや画像をクリックしたときに
+              移動するURLを入力します。
 
   - name: photo_guide
     label: PHOTO GUIDE
