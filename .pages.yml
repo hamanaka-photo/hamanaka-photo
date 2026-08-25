@@ -11,7 +11,7 @@ media:
     input: downloads
     output: downloads
     categories: [document]
-    extensions: [pdf]
+    extensions: [pdf, zip]
     rename: false
 
 components:
@@ -48,6 +48,100 @@ components:
       - name: caption
         label: キャプション
         type: text
+
+  guide_gallery:
+    type: object
+    label: 画像ギャラリー
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: columns
+        label: PCでの列数
+        type: select
+        options:
+          values:
+            - name: "2"
+              label: 2列
+            - name: "3"
+              label: 3列
+            - name: "4"
+              label: 4列
+      - name: items
+        label: 画像
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption}"
+        fields:
+          - name: image
+            label: 画像
+            type: image
+            required: true
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: alt
+            label: 代替テキスト
+            type: string
+          - name: caption
+            label: キャプション
+            type: string
+
+  guide_map:
+    type: object
+    label: Googleマップ
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: url
+        label: Googleマップ埋め込みURL
+        type: string
+        required: true
+        description: Googleマップの「共有」→「地図を埋め込む」で表示されるiframeのsrc属性だけを入力します。
+      - name: caption
+        label: 補足説明
+        type: text
+      - name: size
+        label: 地図の高さ
+        type: select
+        options:
+          values:
+            - name: standard
+              label: 標準
+            - name: large
+              label: 大きめ
+      - name: openUrl
+        label: Googleマップで開くURL
+        type: string
+        description: 任意。通常のGoogleマップ共有URLを入力すると「Googleマップで開く」ボタンを表示します。
+
+  guide_basic_info:
+    type: object
+    label: 基本情報
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 基本情報
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 項目名
+            type: string
+            required: true
+          - name: value
+            label: 内容
+            type: text
+            required: true
 
   guide_note:
     type: object
@@ -93,6 +187,65 @@ components:
             type: string
             required: true
 
+  guide_table:
+    type: object
+    label: 表・比較表
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: caption
+        label: 表の説明
+        type: string
+      - name: headers
+        label: 列見出し
+        type: string
+        list: true
+      - name: rows
+        label: 行
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "行 {index}"
+        fields:
+          - name: cells
+            label: セル
+            type: string
+            list: true
+      - name: note
+        label: 注記
+        type: text
+
+  guide_faq:
+    type: object
+    label: FAQ
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 質問と回答
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{question}"
+        fields:
+          - name: question
+            label: 質問
+            type: string
+            required: true
+          - name: answer
+            label: 回答
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: images
+              switcher: true
+              rename: false
+
   guide_links:
     type: object
     label: リンク・ボタン
@@ -119,6 +272,40 @@ components:
           - name: external
             label: 外部サイトとして開く
             type: boolean
+
+  guide_download:
+    type: object
+    label: ダウンロード
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 説明
+        type: text
+      - name: items
+        label: ダウンロードファイル
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示名
+            type: string
+            required: true
+          - name: file
+            label: ファイル
+            type: file
+            required: true
+            options:
+              media: documents
+              extensions: [pdf, zip]
+              rename: false
+          - name: description
+            label: 補足
+            type: string
 
   guide_cards:
     type: object
@@ -152,6 +339,145 @@ components:
           - name: url
             label: リンク先
             type: string
+
+  guide_cta:
+    type: object
+    label: CTA・大きな誘導
+    fields:
+      - name: eyebrow
+        label: 小見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+        required: true
+      - name: text
+        label: 説明
+        type: text
+      - name: label
+        label: ボタン表示
+        type: string
+        required: true
+      - name: url
+        label: リンク先
+        type: string
+        required: true
+      - name: external
+        label: 外部サイトとして開く
+        type: boolean
+      - name: style
+        label: 表示スタイル
+        type: select
+        options:
+          values:
+            - name: blue
+              label: 青
+            - name: green
+              label: 緑
+            - name: light
+              label: 明るい背景
+
+  guide_media_text:
+    type: object
+    label: 画像＋文章
+    fields:
+      - name: image
+        label: 画像
+        type: image
+        required: true
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - name: alt
+        label: 代替テキスト
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: body
+        label: 本文
+        type: rich-text
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
+      - name: imagePosition
+        label: 画像位置
+        type: select
+        options:
+          values:
+            - name: left
+              label: 左
+            - name: right
+              label: 右
+
+  guide_related:
+    type: object
+    label: 関連記事
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 関連記事
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: articleId
+            label: 記事ID
+            type: string
+            required: true
+            description: 例 technique
+          - name: title
+            label: 表示タイトル
+            type: string
+            required: true
+          - name: text
+            label: 説明
+            type: text
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+  guide_quote:
+    type: object
+    label: 引用・コメント
+    fields:
+      - name: text
+        label: 引用・コメント本文
+        type: text
+        required: true
+      - name: author
+        label: 発言者・撮影者
+        type: string
+      - name: source
+        label: 出典・補足
+        type: string
+
+  guide_divider:
+    type: object
+    label: 区切り
+    fields:
+      - name: style
+        label: 区切り方
+        type: select
+        options:
+          values:
+            - name: line
+              label: 線
+            - name: space
+              label: 余白
+            - name: dots
+              label: ドット
 
 content:
   - name: selections
@@ -348,25 +674,48 @@ content:
           - name: icon
             label: 画像がない場合の文字アイコン
             type: string
-            description: coverが未設定のときだけ使います。例 MAP
           - name: blocks
             label: 記事本文
             type: block
-            list: true
+            list:
+              collapsible:
+                collapsed: true
             blockKey: type
             blocks:
               - name: richtext
                 component: guide_richtext
               - name: image
                 component: guide_image
+              - name: gallery
+                component: guide_gallery
+              - name: map
+                component: guide_map
+              - name: basic_info
+                component: guide_basic_info
               - name: note
                 component: guide_note
               - name: checklist
                 component: guide_checklist
+              - name: table
+                component: guide_table
+              - name: faq
+                component: guide_faq
               - name: links
                 component: guide_links
+              - name: download
+                component: guide_download
               - name: cards
                 component: guide_cards
+              - name: cta
+                component: guide_cta
+              - name: media_text
+                component: guide_media_text
+              - name: related
+                component: guide_related
+              - name: quote
+                component: guide_quote
+              - name: divider
+                component: guide_divider
 
       - name: guide_settings
         label: フォトガイド設定・PDF
