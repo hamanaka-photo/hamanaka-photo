@@ -3,13 +3,13 @@
   "pageLead": "フォトガイドブックの内容をWebでも使いやすく。撮影場所を探すところから、旅行準備、機材、撮影方法、マナーまでを一つにつなぎます。",
   "indexLead": "知りたいテーマを選んで、浜中町での撮影旅行に役立つ情報をご覧ください。",
   "guidebook": {
-    "enabled": false,
+    "enabled": true,
     "eyebrow": "06 / PHOTO GUIDE BOOK",
     "title": "HAMANAKA PHOTO GUIDE",
     "cardTitle": "ガイドブックを持っていく",
     "summary": "写真展で配布するフォトガイドブックをPDFでご覧いただけます。",
     "cover": "assets/images/guide-book.webp",
-    "pdf": "",
+    "pdf": "downloads/hamanaka-photo-guide.pdf",
     "buttonLabel": "PDFをダウンロード ↓"
   }
 }
