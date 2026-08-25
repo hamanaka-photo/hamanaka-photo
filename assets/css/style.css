@@ -856,3 +856,7 @@ button { cursor: pointer; }
   }
 
 }
+
+[data-current-link][hidden] {
+  display: none !important;
+}
