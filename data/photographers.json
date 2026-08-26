@@ -9,9 +9,29 @@
   {
     "name": "森山 雅友",
     "nameEn": "Masatomo Moriyama",
-    "photo": "assets/images/author-05.webp",
+    "photo": "assets/images/DSC_6621-scaled-e1755747803101-973x973.jpg",
     "works": "③,⑥",
-    "profile": "ここにプロフィールを入力します。"
+    "profile": "1979年生まれ、長崎県出身。\n\n大学卒業後にスチールカメラマンを志し、ブライダルスタジオで3年勤務して写真の基礎を徹底的に学びました。 その後、独立してフリーカメラマンへ。\n\n「自分の本当に好きなものを撮りたい」という想いから、幼い頃から大好きだった野生動物の撮影をスタート。 関東から日本全国のフィールドへ足を運ぶうちに、「もっと日常的に、より深く動物たちと接したい」という抑えきれない情景に駆られ、北海道・釧路への移住を決意しました。",
+    "socialLinks": [
+      {
+        "platform": "website",
+        "account": "来て！見て！道東の生き物たち / 動物フォトガイドツアー",
+        "image": "assets/images/MORIYAMA.png",
+        "url": "https://pp-smile.net/"
+      },
+      {
+        "platform": "instagram",
+        "account": "@masato_mo_nkey",
+        "image": "assets/images/masato_mo_nkey_qr.png",
+        "url": "https://www.instagram.com/masato_mo_nkey?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+      },
+      {
+        "platform": "other",
+        "account": "@Doto_Ikimono",
+        "image": "assets/images/QR_718971.png",
+        "url": "https://www.youtube.com/@doto_ikimono"
+      }
+    ]
   },
   {
     "name": "曽根原 麻由",
@@ -75,7 +95,7 @@
     "nameEn": "Raccobayashi",
     "photo": "assets/images/author-06.webp",
     "works": "⑨,⑩",
-    "profile": "ここにプロフィールを入力します。",
+    "profile": "I love seaotter. 野生のラッコと水族館でくらすラッコの写真、ラッコにまつわるエトセトラを紹介しています。\nラッコは\"楽\"しみを\"呼\"ぶ素敵な子たち。多彩な表情にいろいろ言葉をつけてみています。\nあなたならどんな一言をそえますか？#楽呼な一言を日々探求\n※無断転載はご遠慮ください ",
     "socialLinks": [
       {
         "platform": "instagram",
