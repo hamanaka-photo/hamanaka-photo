@@ -7,10 +7,6 @@
     '[data-home-selection-link]'
   );
 
-  const card = document.querySelector(
-    '[data-home-selection-card]'
-  );
-
   async function loadCurrentSelection() {
     try {
       const response = await fetch('data/selections.json');
@@ -47,10 +43,6 @@
       linkElements.forEach(element => {
         element.href = selectionUrl;
       });
-
-      if (card && current.cover) {
-        card.style.backgroundImage = `url("${current.cover}")`;
-      }
 
     } catch (error) {
       console.error(error);

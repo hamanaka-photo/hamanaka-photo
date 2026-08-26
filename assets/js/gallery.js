@@ -44,9 +44,11 @@
 
         <img
           class="photo-thumb"
-          src="${escapeHtml(item.image)}"
+          src="${escapeHtml(item.thumbnail || item.image)}"
           alt="${escapeHtml(item.title)}"
-          loading="lazy">
+          loading="lazy"
+          decoding="async"
+          fetchpriority="low">
 
         <div class="photo-meta">
 
@@ -82,7 +84,9 @@
           <img
             src="${escapeHtml(item.cover)}"
             alt="${escapeHtml(item.title)}"
-            loading="lazy">
+            loading="lazy"
+            decoding="async"
+            fetchpriority="low">
 
         </div>
 
@@ -136,7 +140,9 @@
     if (image) {
 
       image.src =
-        item.image ?? '';
+        item.image ||
+        item.thumbnail ||
+        '';
 
       image.alt =
         item.title ?? '';
@@ -187,6 +193,34 @@
   }
 
 
+  function preloadNeighbor(step = 1) {
+
+    if (!data.length) return;
+
+    const nextIndex =
+      (
+        currentIndex +
+        step +
+        data.length
+      ) % data.length;
+
+    const src =
+      data[nextIndex]?.image;
+
+    if (!src) return;
+
+    const preloader =
+      new Image();
+
+    preloader.decoding =
+      'async';
+
+    preloader.src =
+      src;
+
+  }
+
+
   function openById(id) {
 
     const index =
@@ -206,6 +240,9 @@
     fillModal(
       data[currentIndex]
     );
+
+
+    preloadNeighbor(1);
 
 
     modal.classList.add('open');
@@ -257,6 +294,11 @@
 
     fillModal(
       data[currentIndex]
+    );
+
+
+    preloadNeighbor(
+      step >= 0 ? 1 : -1
     );
 
   }
@@ -426,10 +468,7 @@
 
       const response =
         await fetch(
-          'data/selections.json',
-          {
-            cache: 'no-store'
-          }
+          'data/selections.json'
         );
 
 
