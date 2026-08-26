@@ -6,6 +6,55 @@ media:
     extensions: [jpg, jpeg, png, webp]
     rename: false
 
+  - name: gallery_images
+    label: ギャラリー画像
+    input: assets/images/02_gallery
+    output: assets/images/02_gallery
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_ohstubo_images
+    label: 大坪 俊裕 画像
+    input: assets/images/99_photographers/ohstubo
+    output: assets/images/99_photographers/ohstubo
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_sonehara_images
+    label: 曽根原 麻由 画像
+    input: assets/images/99_photographers/sonehara
+    output: assets/images/99_photographers/sonehara
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_hamanaka_images
+    label: 浜中 太郎 画像
+    input: assets/images/99_photographers/hamanaka
+    output: assets/images/99_photographers/hamanaka
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_kataoka_images
+    label: 片岡 義廣 画像
+    input: assets/images/99_photographers/kataoka
+    output: assets/images/99_photographers/kataoka
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_moriyama_images
+    label: 森山 雅友 画像
+    input: assets/images/99_photographers/moriyama
+    output: assets/images/99_photographers/moriyama
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: photographer_raccobayashi_images
+    label: らっこばやし 画像
+    input: assets/images/99_photographers/raccobayashi
+    output: assets/images/99_photographers/raccobayashi
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
   - name: documents
     label: 配布ファイル
     input: downloads
@@ -658,12 +707,25 @@ content:
             type: string
             required: true
 
-          - name: image
-            label: 作品画像
+          - name: thumbnail
+            label: サムネイル画像
             type: image
             required: true
+            description: 一覧表示用。長辺1000px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/thumbs に保存します。
             options:
-              media: images
+              media: gallery_images
+              path: tokyo_camera_club_2026/thumbs
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: image
+            label: フル画像（モーダル用）
+            type: image
+            required: true
+            description: 拡大表示用。長辺2200px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/full に保存します。
+            options:
+              media: gallery_images
+              path: tokyo_camera_club_2026/full
               extensions: [jpg, jpeg, png, webp]
               rename: false
 
@@ -712,85 +774,481 @@ content:
 
   - name: photographers
     label: 撮影者
-    type: file
-    path: data/photographers.json
-    format: json
-    list: true
-    operations:
-      delete: false
-    fields:
-      - name: name
-        label: 氏名
-        type: string
-        required: true
+    type: group
+    items:
+    - name: photographer_ohstubo
+      label: 大坪 俊裕
+      type: file
+      path: data/photographers/ohstubo.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
 
-      - name: nameEn
-        label: 英字表記
-        type: string
+        - name: nameEn
+          label: 英字表記
+          type: string
 
-      - name: photo
-        label: 顔写真
-        type: image
-        options:
-          media: images
-          extensions: [jpg, jpeg, png, webp]
-          rename: false
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_ohstubo_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
 
-      - name: works
-        label: Took photos
-        type: string
+        - name: profile
+          label: プロフィール
+          type: text
 
-      - name: profile
-        label: プロフィール
-        type: text
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
 
-      - name: socialLinks
-        label: SNS・関連リンク
-        type: object
-        description: Instagram、X、Webサイトなどを最大3件まで登録できます。
-        list:
-          max: 3
-          collapsible:
-            collapsed: true
-            summary: "{platform} / {account}"
-        fields:
-          - name: platform
-            label: 種類
-            type: select
-            required: true
-            options:
-              values:
-                - name: instagram
-                  label: Instagram
-                - name: x
-                  label: X
-                - name: facebook
-                  label: Facebook
-                - name: website
-                  label: Webサイト
-                - name: other
-                  label: その他
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
 
-          - name: account
-            label: 表示名・アカウント名
-            type: string
-            required: true
-            description: 例 @hamanaka_photo、公式Instagram、個人Webサイト
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: ohstubo
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
 
-          - name: image
-            label: QRコード・画像
-            type: image
-            required: true
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
 
-          - name: url
-            label: リンク先URL
-            type: string
-            required: true
-            description: QRコードや画像をクリックしたときに開くURLを入力します。
+    - name: photographer_sonehara
+      label: 曽根原 麻由
+      type: file
+      path: data/photographers/sonehara.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
+
+        - name: nameEn
+          label: 英字表記
+          type: string
+
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_sonehara_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+
+        - name: profile
+          label: プロフィール
+          type: text
+
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
+
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
+
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: sonehara
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
+
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
+
+    - name: photographer_hamanaka
+      label: 浜中 太郎
+      type: file
+      path: data/photographers/hamanaka.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
+
+        - name: nameEn
+          label: 英字表記
+          type: string
+
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_hamanaka_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+
+        - name: profile
+          label: プロフィール
+          type: text
+
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
+
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
+
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: hamanaka
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
+
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
+
+    - name: photographer_kataoka
+      label: 片岡 義廣
+      type: file
+      path: data/photographers/kataoka.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
+
+        - name: nameEn
+          label: 英字表記
+          type: string
+
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_kataoka_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+
+        - name: profile
+          label: プロフィール
+          type: text
+
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
+
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
+
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: kataoka
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
+
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
+
+    - name: photographer_moriyama
+      label: 森山 雅友
+      type: file
+      path: data/photographers/moriyama.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
+
+        - name: nameEn
+          label: 英字表記
+          type: string
+
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_moriyama_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+
+        - name: profile
+          label: プロフィール
+          type: text
+
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
+
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
+
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: moriyama
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
+
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
+
+    - name: photographer_raccobayashi
+      label: らっこばやし
+      type: file
+      path: data/photographers/raccobayashi.json
+      format: json
+      operations:
+        delete: false
+      fields:
+        - name: name
+          label: 氏名
+          type: string
+          required: true
+          readonly: true
+
+        - name: nameEn
+          label: 英字表記
+          type: string
+
+        - name: photo
+          label: 顔写真
+          type: image
+          required: true
+          description: profile.webp（800×800px前後）を推奨します。
+          options:
+            media: photographer_raccobayashi_images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+
+        - name: profile
+          label: プロフィール
+          type: text
+
+        - name: socialLinks
+          label: SNS・関連リンク
+          type: object
+          description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+          list:
+            max: 3
+            collapsible:
+              collapsed: true
+              summary: "{platform} / {account}"
+          fields:
+            - name: platform
+              label: 種類
+              type: select
+              required: true
+              options:
+                values:
+                  - name: instagram
+                    label: Instagram
+                  - name: x
+                    label: X
+                  - name: facebook
+                    label: Facebook
+                  - name: website
+                    label: Webサイト
+                  - name: other
+                    label: その他
+
+            - name: account
+              label: 表示名・アカウント名
+              type: string
+              required: true
+
+            - name: image
+              label: QRコード・画像
+              type: image
+              required: true
+              options:
+                media: photographer_images
+                path: raccobayashi
+                extensions: [jpg, jpeg, png, webp]
+                rename: false
+
+            - name: url
+              label: リンク先URL
+              type: string
+              required: true
 
   - name: photo_guide
     label: PHOTO GUIDE
