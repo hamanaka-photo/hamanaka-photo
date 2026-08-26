@@ -1,3 +1,8 @@
+/* =========================================
+   PHOTO GUIDE CMS
+   guide.html / guide-article.html
+========================================= */
+
 .guide-menu-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -126,6 +131,8 @@
   letter-spacing: .08em;
 }
 
+/* ARTICLE */
+
 .guide-article-hero {
   padding: 42px 0 56px;
   background:
@@ -210,6 +217,8 @@
   line-height: 1.5;
 }
 
+/* RICH TEXT */
+
 .guide-richtext {
   color: var(--ink);
   font-size: 15px;
@@ -257,6 +266,8 @@
   background: var(--blue-soft);
 }
 
+/* SINGLE IMAGE */
+
 .guide-image-block {
   margin: 0;
 }
@@ -274,6 +285,8 @@
   font-size: 11px;
   line-height: 1.7;
 }
+
+/* IMAGE GALLERY */
 
 .guide-gallery-grid {
   display: grid;
@@ -306,6 +319,8 @@
   border-radius: 12px;
 }
 
+/* GOOGLE MAP */
+
 .guide-map-frame {
   width: 100%;
   height: 420px;
@@ -335,6 +350,8 @@
 .guide-map-open {
   margin: 16px 0 0;
 }
+
+/* BASIC INFO */
 
 .guide-basic-info-list {
   margin: 0;
@@ -373,6 +390,8 @@
   line-height: 1.8;
 }
 
+/* NOTE */
+
 .guide-note {
   padding: 24px 26px;
   border-left: 5px solid var(--blue);
@@ -402,6 +421,8 @@
   line-height: 1.85;
 }
 
+/* CHECKLIST */
+
 .guide-checklist ul {
   display: grid;
   gap: 10px;
@@ -426,6 +447,8 @@
   color: var(--green);
   font-weight: 700;
 }
+
+/* TABLE */
 
 .guide-table-scroll {
   overflow-x: auto;
@@ -480,6 +503,8 @@
   font-size: 11px;
 }
 
+/* FAQ */
+
 .guide-faq-list {
   display: grid;
   gap: 10px;
@@ -526,11 +551,15 @@
   font-size: 13px;
 }
 
+/* LINKS */
+
 .guide-link-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
+
+/* DOWNLOAD */
 
 .guide-download-lead {
   margin: -6px 0 18px;
@@ -590,6 +619,8 @@
   font-size: 11px;
 }
 
+/* CARDS */
+
 .guide-info-card-grid {
   display: grid;
   grid-template-columns:
@@ -633,6 +664,8 @@
   font-size: 11px;
   font-weight: 700;
 }
+
+/* CTA */
 
 .guide-cta {
   display: grid;
@@ -679,6 +712,8 @@
   line-height: 1.85;
 }
 
+/* IMAGE + TEXT */
+
 .guide-media-text {
   display: grid;
   grid-template-columns:
@@ -702,6 +737,8 @@
 .guide-media-right .guide-media-copy {
   order: 1;
 }
+
+/* RELATED */
 
 .guide-related-grid {
   display: grid;
@@ -750,6 +787,8 @@
   font-weight: 700;
 }
 
+/* QUOTE */
+
 .guide-quote-block {
   margin: 0;
   padding: 30px 32px;
@@ -776,6 +815,8 @@
   color: var(--muted);
   font-size: 11px;
 }
+
+/* DIVIDER */
 
 .guide-divider {
   width: 100%;
@@ -804,6 +845,10 @@
   color: #9aabb7;
   letter-spacing: .35em;
 }
+
+
+
+/* STYLED TEXT */
 
 .guide-styled-text {
   overflow: hidden;
@@ -978,6 +1023,18 @@
   padding-right: 0;
 }
 
+@media (max-width: 620px) {
+  .guide-styled-size-xlarge {
+    font-size: clamp(22px, 7vw, 31px);
+  }
+
+  .guide-styled-spacing-wide {
+    padding: 30px 24px;
+  }
+}
+
+/* ARTICLE NAVIGATION */
+
 .guide-article-navigation {
   padding: 0 0 80px;
 }
@@ -1016,6 +1073,8 @@
   align-items: flex-end;
 }
 
+/* TABLET */
+
 @media (max-width: 900px) {
   .guide-article-hero-grid {
     grid-template-columns: 1fr;
@@ -1036,6 +1095,8 @@
     grid-template-columns: 1fr;
   }
 }
+
+/* SMARTPHONE */
 
 @media (max-width: 620px) {
   .guide-menu-card {
@@ -1107,14 +1168,6 @@
     font-size: 17px;
   }
 
-  .guide-styled-size-xlarge {
-    font-size: clamp(22px, 7vw, 31px);
-  }
-
-  .guide-styled-spacing-wide {
-    padding: 30px 24px;
-  }
-
   .guide-article-nav-inner {
     grid-template-columns: 1fr;
   }
@@ -1128,3 +1181,49 @@
     align-items: flex-start;
   }
 }
+
+/* =========================================
+   PERFORMANCE
+   Off-screen rendering / deferred Google Map
+========================================= */
+
+@supports (content-visibility: auto) {
+  .guide-article-body > .guide-content-block {
+    content-visibility: auto;
+    contain-intrinsic-size: 480px;
+  }
+
+  .guide-menu-card {
+    content-visibility: auto;
+    contain-intrinsic-size: 220px;
+  }
+}
+
+.guide-map-frame-idle {
+  display: grid;
+  place-items: center;
+}
+
+.guide-map-placeholder {
+  display: grid;
+  justify-items: center;
+  gap: 10px;
+  width: min(100%, 560px);
+  padding: 28px 20px;
+  text-align: center;
+}
+
+.guide-map-placeholder-label {
+  margin: 0;
+  color: var(--navy);
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.guide-map-placeholder-text {
+  margin: 0 0 6px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
