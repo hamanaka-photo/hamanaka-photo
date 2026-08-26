@@ -241,7 +241,7 @@ button {
       rgba(12, 38, 61, .08) 76%
     ),
 
-    url("../images/hero.webp")
+    url("../images/01_home/01_HOME.webp")
     center 46% /
     cover
     no-repeat;
@@ -501,7 +501,7 @@ button {
 
   background:
 
-    url("../images/gallery-cover.webp")
+    url("../images/01_home/02_GALLERY.webp")
     center /
     cover
     no-repeat;
@@ -527,7 +527,7 @@ button {
 
   background:
 
-    url("../images/guide-cover.webp")
+    url("../images/01_home/03_GUIDE.webp")
     center /
     cover
     no-repeat;
@@ -553,7 +553,7 @@ button {
 
   background:
 
-    url("../images/project-cover.webp")
+    url("../images/01_home/04_PROJECT.webp")
     center /
     cover
     no-repeat;
