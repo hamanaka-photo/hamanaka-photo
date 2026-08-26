@@ -89,6 +89,7 @@
 
       if (element.hasAttribute('href')) {
         const href = safeUrl(element.getAttribute('href'));
+
         if (href) {
           element.setAttribute('href', href);
         } else {
@@ -98,6 +99,7 @@
 
       if (element.hasAttribute('src')) {
         const src = safeUrl(element.getAttribute('src'));
+
         if (src) {
           element.setAttribute('src', src);
         } else {
@@ -120,6 +122,46 @@
     <section class="guide-content-block guide-richtext">
       ${sanitizeHtml(block.body || '')}
     </section>`;
+
+  const renderStyledText = block => {
+    const allowed = {
+      font: ['sans', 'serif'],
+      size: ['small', 'normal', 'large', 'xlarge'],
+      color: ['default', 'navy', 'blue', 'green', 'gray', 'white'],
+      weight: ['normal', 'bold'],
+      align: ['left', 'center', 'right'],
+      background: ['none', 'blue-soft', 'green-soft', 'beige', 'navy'],
+      spacing: ['compact', 'normal', 'wide']
+    };
+
+    const pick = (key, fallback) => {
+      const value = String(block[key] || '');
+      return allowed[key].includes(value) ? value : fallback;
+    };
+
+    const font = pick('font', 'sans');
+    const size = pick('size', 'normal');
+    const color = pick('color', 'default');
+    const weight = pick('weight', 'normal');
+    const align = pick('align', 'left');
+    const background = pick('background', 'none');
+    const spacing = pick('spacing', 'normal');
+
+    return `
+      <section
+        class="guide-content-block guide-styled-text
+               guide-styled-font-${font}
+               guide-styled-size-${size}
+               guide-styled-color-${color}
+               guide-styled-weight-${weight}
+               guide-styled-align-${align}
+               guide-styled-bg-${background}
+               guide-styled-spacing-${spacing}">
+        <div class="guide-styled-text-inner guide-richtext">
+          ${sanitizeHtml(block.body || '')}
+        </div>
+      </section>`;
+  };
 
   const renderImage = block => {
     if (!block.image) return '';
@@ -295,6 +337,7 @@
             <tbody>
               ${rows.map(row => {
                 const cells = Array.isArray(row.cells) ? row.cells : [];
+
                 return `<tr>
                   ${Array.from({ length: columnCount }, (_, index) =>
                     `<td>${escapeHtml(cells[index] || '')}</td>`
@@ -341,7 +384,9 @@
         <div class="guide-link-list">
           ${items.map(item => {
             const url = safeUrl(item.url);
+
             if (!url) return '';
+
             const external = item.external === true;
 
             return `
@@ -372,13 +417,23 @@
         <div class="guide-download-list">
           ${items.map(item => {
             const file = safeUrl(item.file);
+
             if (!file) return '';
 
             return `
-              <a class="guide-download-item" href="${escapeHtml(file)}" download>
-                <span class="guide-download-icon" aria-hidden="true">↓</span>
+              <a
+                class="guide-download-item"
+                href="${escapeHtml(file)}"
+                download>
+                <span
+                  class="guide-download-icon"
+                  aria-hidden="true">↓</span>
                 <span class="guide-download-copy">
-                  <strong>${escapeHtml(item.label || 'ファイルをダウンロード')}</strong>
+                  <strong>
+                    ${escapeHtml(
+                      item.label || 'ファイルをダウンロード'
+                    )}
+                  </strong>
                   ${
                     item.description
                       ? `<small>${escapeHtml(item.description)}</small>`
@@ -402,7 +457,10 @@
             const content = `
               ${
                 item.image
-                  ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy">`
+                  ? `<img
+                      src="${escapeHtml(item.image)}"
+                      alt=""
+                      loading="lazy">`
                   : ''
               }
               <div class="guide-info-card-copy">
@@ -414,7 +472,9 @@
             const url = safeUrl(item.url);
 
             return url
-              ? `<a class="guide-info-card" href="${escapeHtml(url)}">${content}</a>`
+              ? `<a
+                  class="guide-info-card"
+                  href="${escapeHtml(url)}">${content}</a>`
               : `<div class="guide-info-card">${content}</div>`;
           }).join('')}
         </div>
@@ -423,6 +483,7 @@
 
   const renderCta = block => {
     const url = safeUrl(block.url);
+
     if (!url) return '';
 
     const style = ['blue', 'green', 'light'].includes(block.style)
@@ -436,16 +497,21 @@
         <div class="guide-cta-copy">
           ${
             block.eyebrow
-              ? `<p class="guide-cta-eyebrow">${escapeHtml(block.eyebrow)}</p>`
+              ? `<p class="guide-cta-eyebrow">
+                  ${escapeHtml(block.eyebrow)}
+                </p>`
               : ''
           }
           <h2>${escapeHtml(block.title || '')}</h2>
           ${
             block.text
-              ? `<p>${escapeHtml(block.text).replace(/\r?\n/g, '<br>')}</p>`
+              ? `<p>
+                  ${escapeHtml(block.text).replace(/\r?\n/g, '<br>')}
+                </p>`
               : ''
           }
         </div>
+
         <a
           class="btn ${style === 'light' ? 'btn-blue' : 'btn-light'}"
           href="${escapeHtml(url)}"
@@ -459,10 +525,16 @@
   const renderMediaText = block => {
     if (!block.image) return '';
 
-    const side = block.imagePosition === 'right' ? 'right' : 'left';
+    const side =
+      block.imagePosition === 'right'
+        ? 'right'
+        : 'left';
 
     return `
-      <section class="guide-content-block guide-media-text guide-media-${side}">
+      <section
+        class="guide-content-block
+               guide-media-text
+               guide-media-${side}">
         <div class="guide-media-image">
           <img
             src="${escapeHtml(block.image)}"
@@ -470,7 +542,11 @@
             loading="lazy">
         </div>
         <div class="guide-media-copy guide-richtext">
-          ${block.title ? `<h2>${escapeHtml(block.title)}</h2>` : ''}
+          ${
+            block.title
+              ? `<h2>${escapeHtml(block.title)}</h2>`
+              : ''
+          }
           ${sanitizeHtml(block.body || '')}
         </div>
       </section>`;
@@ -478,6 +554,7 @@
 
   const renderRelated = block => {
     const items = Array.isArray(block.items) ? block.items : [];
+
     if (!items.length) return '';
 
     return `
@@ -486,6 +563,7 @@
         <div class="guide-related-grid">
           ${items.map(item => {
             const id = String(item.articleId || '').trim();
+
             if (!id) return '';
 
             return `
@@ -494,7 +572,10 @@
                 href="guide-article.html?article=${encodeURIComponent(id)}">
                 ${
                   item.image
-                    ? `<img src="${escapeHtml(item.image)}" alt="" loading="lazy">`
+                    ? `<img
+                        src="${escapeHtml(item.image)}"
+                        alt=""
+                        loading="lazy">`
                     : ''
                 }
                 <div>
@@ -520,8 +601,16 @@
       ${
         block.author || block.source
           ? `<figcaption>
-              ${block.author ? `<strong>${escapeHtml(block.author)}</strong>` : ''}
-              ${block.source ? `<span>${escapeHtml(block.source)}</span>` : ''}
+              ${
+                block.author
+                  ? `<strong>${escapeHtml(block.author)}</strong>`
+                  : ''
+              }
+              ${
+                block.source
+                  ? `<span>${escapeHtml(block.source)}</span>`
+                  : ''
+              }
             </figcaption>`
           : ''
       }
@@ -541,6 +630,7 @@
 
   const renderers = {
     richtext: renderRichtext,
+    styled_text: renderStyledText,
     image: renderImage,
     gallery: renderGallery,
     map: renderMap,
@@ -582,8 +672,13 @@
   }
 
   async function loadArticle() {
-    const params = new URLSearchParams(window.location.search);
-    const articleId = params.get('article');
+    const params =
+      new URLSearchParams(
+        window.location.search
+      );
+
+    const articleId =
+      params.get('article');
 
     if (!articleId) {
       showNotFound();
@@ -594,7 +689,9 @@
       const response =
         await fetch(
           'data/guide-articles.json',
-          { cache: 'no-store' }
+          {
+            cache: 'no-store'
+          }
         );
 
       if (!response.ok) {
@@ -603,7 +700,8 @@
         );
       }
 
-      const articles = await response.json();
+      const articles =
+        await response.json();
 
       if (!Array.isArray(articles)) {
         throw new Error(
@@ -613,7 +711,10 @@
 
       const published =
         articles
-          .filter(item => item.published !== false)
+          .filter(
+            item =>
+              item.published !== false
+          )
           .sort(
             (a, b) =>
               Number(a.order || 0) -
@@ -622,7 +723,8 @@
 
       const index =
         published.findIndex(
-          item => item.id === articleId
+          item =>
+            item.id === articleId
         );
 
       if (index < 0) {
@@ -630,13 +732,16 @@
         return;
       }
 
-      const article = published[index];
+      const article =
+        published[index];
 
       document.title =
         `${article.title}｜HAMANAKA PHOTO GUIDE`;
 
       document
-        .querySelector('meta[name="description"]')
+        .querySelector(
+          'meta[name="description"]'
+        )
         ?.setAttribute(
           'content',
           article.summary ||
@@ -644,29 +749,44 @@
         );
 
       const eyebrow =
-        document.querySelector('[data-article-eyebrow]');
+        document.querySelector(
+          '[data-article-eyebrow]'
+        );
 
       const title =
-        document.querySelector('[data-article-title]');
+        document.querySelector(
+          '[data-article-title]'
+        );
 
       const summary =
-        document.querySelector('[data-article-summary]');
+        document.querySelector(
+          '[data-article-summary]'
+        );
 
       const breadcrumb =
-        document.querySelector('[data-article-breadcrumb]');
+        document.querySelector(
+          '[data-article-breadcrumb]'
+        );
 
       const coverWrap =
-        document.querySelector('[data-article-cover-wrap]');
+        document.querySelector(
+          '[data-article-cover-wrap]'
+        );
 
       const cover =
-        document.querySelector('[data-article-cover]');
+        document.querySelector(
+          '[data-article-cover]'
+        );
 
       const blocks =
-        document.querySelector('[data-article-blocks]');
+        document.querySelector(
+          '[data-article-blocks]'
+        );
 
       if (eyebrow) {
         eyebrow.textContent =
-          article.eyebrow || 'PHOTO GUIDE';
+          article.eyebrow ||
+          'PHOTO GUIDE';
       }
 
       if (title) {
@@ -689,24 +809,35 @@
         cover &&
         article.cover
       ) {
-        cover.src = article.cover;
-        cover.alt = article.title || '';
-        coverWrap.hidden = false;
+        cover.src =
+          article.cover;
+
+        cover.alt =
+          article.title || '';
+
+        coverWrap.hidden =
+          false;
       }
 
       if (blocks) {
         blocks.innerHTML =
-          renderBlocks(article.blocks || []);
+          renderBlocks(
+            article.blocks || []
+          );
       }
 
       setNavLink(
-        document.querySelector('[data-article-prev]'),
+        document.querySelector(
+          '[data-article-prev]'
+        ),
         published[index - 1],
         'prev'
       );
 
       setNavLink(
-        document.querySelector('[data-article-next]'),
+        document.querySelector(
+          '[data-article-next]'
+        ),
         published[index + 1],
         'next'
       );
@@ -721,16 +852,23 @@
   }
 
   function showNotFound(
-    message = '指定された記事が見つかりません。'
+    message =
+      '指定された記事が見つかりません。'
   ) {
     const title =
-      document.querySelector('[data-article-title]');
+      document.querySelector(
+        '[data-article-title]'
+      );
 
     const summary =
-      document.querySelector('[data-article-summary]');
+      document.querySelector(
+        '[data-article-summary]'
+      );
 
     const blocks =
-      document.querySelector('[data-article-blocks]');
+      document.querySelector(
+        '[data-article-blocks]'
+      );
 
     if (title) {
       title.textContent =
@@ -738,7 +876,8 @@
     }
 
     if (summary) {
-      summary.textContent = message;
+      summary.textContent =
+        message;
     }
 
     if (blocks) {
@@ -747,7 +886,9 @@
           ${escapeHtml(message)}
         </p>
         <p>
-          <a class="btn btn-outline" href="guide.html">
+          <a
+            class="btn btn-outline"
+            href="guide.html">
             PHOTO GUIDEへ戻る
           </a>
         </p>`;
