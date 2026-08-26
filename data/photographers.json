@@ -45,7 +45,15 @@
     "nameEn": "Taro Hamanaka",
     "photo": "assets/images/author-03.webp",
     "works": "⑦",
-    "profile": "ここにプロフィールを入力します。"
+    "profile": "北海道浜中町霧多布に生息するラッコを撮っていきます。\nラッコ好きでつながりたい。",
+    "socialLinks": [
+      {
+        "platform": "instagram",
+        "account": "@kiritan555",
+        "image": "assets/images/kiritan555_qr.png",
+        "url": "https://www.instagram.com/kiritan555?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+      }
+    ]
   },
   {
     "name": "片岡 義廣",
