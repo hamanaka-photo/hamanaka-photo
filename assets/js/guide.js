@@ -17,7 +17,7 @@
 
   const articleCard = item => {
     const visual = item.cover
-      ? `<img src="${escapeHtml(item.cover)}" alt="" loading="lazy">`
+      ? `<img src="${escapeHtml(item.cover)}" alt="" loading="lazy" decoding="async" fetchpriority="low">`
       : `<span class="guide-menu-icon" aria-hidden="true">${escapeHtml(item.icon || 'PHOTO')}</span>`;
 
     return `
@@ -34,7 +34,7 @@
 
   const guidebookCard = book => {
     const visual = book.cover
-      ? `<img src="${escapeHtml(book.cover)}" alt="" loading="lazy">`
+      ? `<img src="${escapeHtml(book.cover)}" alt="" loading="lazy" decoding="async" fetchpriority="low">`
       : `<span class="guide-menu-icon" aria-hidden="true">PDF</span>`;
 
     if (book.enabled && book.pdf) {
@@ -65,8 +65,8 @@
   async function loadGuide() {
     try {
       const [articlesResponse, settingsResponse] = await Promise.all([
-        fetch('data/guide-articles.json', { cache: 'no-store' }),
-        fetch('data/guide-settings.json', { cache: 'no-store' })
+        fetch('data/guide-articles.json'),
+        fetch('data/guide-settings.json')
       ]);
 
       if (!articlesResponse.ok || !settingsResponse.ok) {

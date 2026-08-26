@@ -84,7 +84,7 @@
 
       return valueString;
 
-    } catch (error) {
+    } catch {
 
       return '';
 
@@ -179,6 +179,8 @@
                   src="${escapeHtml(item.image)}"
                   alt="${escapeHtml(imageAlt)}"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
                 >
 
               </div>
@@ -275,6 +277,8 @@
                   src="${escapeHtml(photo)}"
                   alt="${escapeHtml(name)}"
                   loading="lazy"
+                  decoding="async"
+                  fetchpriority="low"
                 >
               `
               : ''
@@ -427,10 +431,7 @@
 
       const response =
         await fetch(
-          'data/photographers.json',
-          {
-            cache: 'no-store'
-          }
+          'data/photographers.json'
         );
 
 
@@ -456,7 +457,8 @@
       }
 
 
-      photographers = data;
+      photographers =
+        data;
 
 
       if (
@@ -527,6 +529,33 @@
   );
 
 
-  loadPhotographers();
+  const scheduleLoad = callback => {
+
+    if (
+      'requestIdleCallback' in window
+    ) {
+
+      window.requestIdleCallback(
+        callback,
+        {
+          timeout: 1200
+        }
+      );
+
+      return;
+    }
+
+
+    window.setTimeout(
+      callback,
+      250
+    );
+
+  };
+
+
+  scheduleLoad(
+    loadPhotographers
+  );
 
 })();
