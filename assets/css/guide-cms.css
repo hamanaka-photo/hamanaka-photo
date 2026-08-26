@@ -1,8 +1,3 @@
-/* =========================================
-   PHOTO GUIDE CMS
-   guide.html / guide-article.html
-========================================= */
-
 .guide-menu-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -131,8 +126,6 @@
   letter-spacing: .08em;
 }
 
-/* ARTICLE */
-
 .guide-article-hero {
   padding: 42px 0 56px;
   background:
@@ -217,8 +210,6 @@
   line-height: 1.5;
 }
 
-/* RICH TEXT */
-
 .guide-richtext {
   color: var(--ink);
   font-size: 15px;
@@ -266,8 +257,6 @@
   background: var(--blue-soft);
 }
 
-/* SINGLE IMAGE */
-
 .guide-image-block {
   margin: 0;
 }
@@ -285,8 +274,6 @@
   font-size: 11px;
   line-height: 1.7;
 }
-
-/* IMAGE GALLERY */
 
 .guide-gallery-grid {
   display: grid;
@@ -319,8 +306,6 @@
   border-radius: 12px;
 }
 
-/* GOOGLE MAP */
-
 .guide-map-frame {
   width: 100%;
   height: 420px;
@@ -350,8 +335,6 @@
 .guide-map-open {
   margin: 16px 0 0;
 }
-
-/* BASIC INFO */
 
 .guide-basic-info-list {
   margin: 0;
@@ -390,8 +373,6 @@
   line-height: 1.8;
 }
 
-/* NOTE */
-
 .guide-note {
   padding: 24px 26px;
   border-left: 5px solid var(--blue);
@@ -421,8 +402,6 @@
   line-height: 1.85;
 }
 
-/* CHECKLIST */
-
 .guide-checklist ul {
   display: grid;
   gap: 10px;
@@ -447,8 +426,6 @@
   color: var(--green);
   font-weight: 700;
 }
-
-/* TABLE */
 
 .guide-table-scroll {
   overflow-x: auto;
@@ -503,8 +480,6 @@
   font-size: 11px;
 }
 
-/* FAQ */
-
 .guide-faq-list {
   display: grid;
   gap: 10px;
@@ -551,15 +526,11 @@
   font-size: 13px;
 }
 
-/* LINKS */
-
 .guide-link-list {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
-
-/* DOWNLOAD */
 
 .guide-download-lead {
   margin: -6px 0 18px;
@@ -619,8 +590,6 @@
   font-size: 11px;
 }
 
-/* CARDS */
-
 .guide-info-card-grid {
   display: grid;
   grid-template-columns:
@@ -664,8 +633,6 @@
   font-size: 11px;
   font-weight: 700;
 }
-
-/* CTA */
 
 .guide-cta {
   display: grid;
@@ -712,8 +679,6 @@
   line-height: 1.85;
 }
 
-/* IMAGE + TEXT */
-
 .guide-media-text {
   display: grid;
   grid-template-columns:
@@ -737,8 +702,6 @@
 .guide-media-right .guide-media-copy {
   order: 1;
 }
-
-/* RELATED */
 
 .guide-related-grid {
   display: grid;
@@ -787,8 +750,6 @@
   font-weight: 700;
 }
 
-/* QUOTE */
-
 .guide-quote-block {
   margin: 0;
   padding: 30px 32px;
@@ -815,8 +776,6 @@
   color: var(--muted);
   font-size: 11px;
 }
-
-/* DIVIDER */
 
 .guide-divider {
   width: 100%;
@@ -846,7 +805,178 @@
   letter-spacing: .35em;
 }
 
-/* ARTICLE NAVIGATION */
+.guide-styled-text {
+  overflow: hidden;
+  border-radius: var(--radius);
+}
+
+.guide-styled-text-inner {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  text-align: inherit;
+}
+
+.guide-styled-text-inner h2,
+.guide-styled-text-inner h3,
+.guide-styled-text-inner h4,
+.guide-styled-text-inner p,
+.guide-styled-text-inner li,
+.guide-styled-text-inner blockquote,
+.guide-styled-text-inner a {
+  color: inherit;
+  font-family: inherit;
+  font-weight: inherit;
+}
+
+.guide-styled-text-inner a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.guide-styled-font-sans {
+  font-family:
+    "Noto Sans CJK JP",
+    "Hiragino Kaku Gothic ProN",
+    "Yu Gothic",
+    sans-serif;
+}
+
+.guide-styled-font-serif {
+  font-family:
+    "Noto Serif CJK JP",
+    "Hiragino Mincho ProN",
+    "Yu Mincho",
+    serif;
+}
+
+.guide-styled-size-small {
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.guide-styled-size-normal {
+  font-size: 15px;
+  line-height: 2;
+}
+
+.guide-styled-size-large {
+  font-size: clamp(18px, 2.5vw, 24px);
+  line-height: 1.85;
+}
+
+.guide-styled-size-xlarge {
+  font-size: clamp(25px, 4vw, 38px);
+  line-height: 1.65;
+}
+
+.guide-styled-size-small h2,
+.guide-styled-size-small h3,
+.guide-styled-size-small h4,
+.guide-styled-size-normal h2,
+.guide-styled-size-normal h3,
+.guide-styled-size-normal h4,
+.guide-styled-size-large h2,
+.guide-styled-size-large h3,
+.guide-styled-size-large h4,
+.guide-styled-size-xlarge h2,
+.guide-styled-size-xlarge h3,
+.guide-styled-size-xlarge h4 {
+  font-size: 1.35em;
+  line-height: 1.5;
+}
+
+.guide-styled-color-default {
+  color: var(--ink);
+}
+
+.guide-styled-color-navy {
+  color: var(--navy);
+}
+
+.guide-styled-color-blue {
+  color: var(--blue);
+}
+
+.guide-styled-color-green {
+  color: var(--green);
+}
+
+.guide-styled-color-gray {
+  color: var(--muted);
+}
+
+.guide-styled-color-white {
+  color: #fff;
+}
+
+.guide-styled-weight-normal {
+  font-weight: 400;
+}
+
+.guide-styled-weight-bold {
+  font-weight: 700;
+}
+
+.guide-styled-align-left {
+  text-align: left;
+}
+
+.guide-styled-align-center {
+  text-align: center;
+}
+
+.guide-styled-align-right {
+  text-align: right;
+}
+
+.guide-styled-bg-none {
+  background: transparent;
+}
+
+.guide-styled-bg-blue-soft {
+  background: var(--blue-soft);
+}
+
+.guide-styled-bg-green-soft {
+  background: #edf4ef;
+}
+
+.guide-styled-bg-beige {
+  background: var(--sand-soft);
+}
+
+.guide-styled-bg-navy {
+  background: var(--navy);
+}
+
+.guide-styled-bg-navy.guide-styled-color-default,
+.guide-styled-bg-navy.guide-styled-color-navy,
+.guide-styled-bg-navy.guide-styled-color-blue,
+.guide-styled-bg-navy.guide-styled-color-green,
+.guide-styled-bg-navy.guide-styled-color-gray {
+  color: #fff;
+}
+
+.guide-styled-spacing-compact {
+  padding: 14px 18px;
+}
+
+.guide-styled-spacing-normal {
+  padding: 26px 30px;
+}
+
+.guide-styled-spacing-wide {
+  padding: 42px 48px;
+}
+
+.guide-styled-bg-none.guide-styled-spacing-compact,
+.guide-styled-bg-none.guide-styled-spacing-normal,
+.guide-styled-bg-none.guide-styled-spacing-wide {
+  padding-left: 0;
+  padding-right: 0;
+}
 
 .guide-article-navigation {
   padding: 0 0 80px;
@@ -886,8 +1016,6 @@
   align-items: flex-end;
 }
 
-/* TABLET */
-
 @media (max-width: 900px) {
   .guide-article-hero-grid {
     grid-template-columns: 1fr;
@@ -908,8 +1036,6 @@
     grid-template-columns: 1fr;
   }
 }
-
-/* SMARTPHONE */
 
 @media (max-width: 620px) {
   .guide-menu-card {
@@ -981,6 +1107,14 @@
     font-size: 17px;
   }
 
+  .guide-styled-size-xlarge {
+    font-size: clamp(22px, 7vw, 31px);
+  }
+
+  .guide-styled-spacing-wide {
+    padding: 30px 24px;
+  }
+
   .guide-article-nav-inner {
     grid-template-columns: 1fr;
   }
@@ -993,118 +1127,4 @@
     text-align: left;
     align-items: flex-start;
   }
-}
-/* =========================================
-   PHOTO GUIDE
-   COMPACT MENU CARDS
-========================================= */
-
-.guide-menu-grid {
-  gap: 14px;
-}
-
-.guide-menu-card {
-  grid-template-columns:
-    minmax(170px, 220px)
-    minmax(0, 1fr);
-
-  min-height: 160px;
-}
-
-.guide-menu-visual {
-  min-height: 160px;
-}
-
-.guide-menu-icon {
-  min-height: 160px;
-
-  font-size: 20px;
-}
-
-.guide-menu-copy {
-  padding: 20px 24px;
-}
-
-.guide-menu-eyebrow {
-  margin-bottom: 5px;
-
-  font-size: 9px;
-}
-
-.guide-menu-copy h3 {
-  margin-bottom: 7px;
-
-  font-size: 19px;
-}
-
-.guide-menu-copy > p:not(.guide-menu-eyebrow) {
-  font-size: 12px;
-
-  line-height: 1.7;
-}
-
-.guide-menu-action {
-  padding-top: 12px;
-
-  font-size: 11px;
-}
-
-
-/* スマートフォン */
-
-@media (max-width: 620px) {
-
-  .guide-menu-grid {
-    gap: 12px;
-  }
-
-  .guide-menu-card {
-    grid-template-columns:
-      120px
-      minmax(0, 1fr);
-
-    min-height: 125px;
-  }
-
-  .guide-menu-visual {
-    min-height: 125px;
-
-    aspect-ratio: auto;
-  }
-
-  .guide-menu-icon {
-    min-height: 125px;
-
-    font-size: 15px;
-  }
-
-  .guide-menu-copy {
-    padding: 15px 16px;
-  }
-
-  .guide-menu-copy h3 {
-    margin-bottom: 5px;
-
-    font-size: 16px;
-  }
-
-  .guide-menu-copy > p:not(.guide-menu-eyebrow) {
-    display: -webkit-box;
-
-    overflow: hidden;
-
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-
-    font-size: 11px;
-
-    line-height: 1.6;
-  }
-
-  .guide-menu-action {
-    padding-top: 8px;
-
-    font-size: 10px;
-  }
-
 }
