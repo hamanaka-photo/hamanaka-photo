@@ -1,0 +1,26 @@
+{
+  "name": "森山 雅友",
+  "nameEn": "Masatomo Moriyama",
+  "photo": "assets/images/99_photographers/moriyama/profile.webp",
+  "profile": "1979年生まれ、長崎県出身。\n\n大学卒業後にスチールカメラマンを志し、ブライダルスタジオで3年勤務して写真の基礎を徹底的に学びました。 その後、独立してフリーカメラマンへ。\n\n「自分の本当に好きなものを撮りたい」という想いから、幼い頃から大好きだった野生動物の撮影をスタート。 関東から日本全国のフィールドへ足を運ぶうちに、「もっと日常的に、より深く動物たちと接したい」という抑えきれない情景に駆られ、北海道・釧路への移住を決意しました。",
+  "socialLinks": [
+    {
+      "platform": "website",
+      "account": "来て！見て！道東の生き物たち / 動物フォトガイドツアー",
+      "image": "assets/images/99_photographers/moriyama/link01.webp",
+      "url": "https://pp-smile.net/"
+    },
+    {
+      "platform": "instagram",
+      "account": "@masato_mo_nkey",
+      "image": "assets/images/99_photographers/moriyama/link02.webp",
+      "url": "https://www.instagram.com/masato_mo_nkey?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+    },
+    {
+      "platform": "other",
+      "account": "@Doto_Ikimono",
+      "image": "assets/images/99_photographers/moriyama/link03.webp",
+      "url": "https://www.youtube.com/@doto_ikimono"
+    }
+  ]
+}

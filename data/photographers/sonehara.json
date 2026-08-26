@@ -1,0 +1,26 @@
+{
+  "name": "曽根原 麻由",
+  "nameEn": "Mayu Sonehara",
+  "photo": "assets/images/99_photographers/sonehara/profile.webp",
+  "profile": "北海道の東側、浜中町を彩る光と色を撮ります。\n推しは霧多布湿原。ときどき周辺道東地域。",
+  "socialLinks": [
+    {
+      "platform": "instagram",
+      "account": "@spicsmayu",
+      "image": "assets/images/99_photographers/sonehara/link01.webp",
+      "url": "https://www.instagram.com/spicsmayu?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+    },
+    {
+      "platform": "instagram",
+      "account": "@mayusonehara",
+      "image": "assets/images/99_photographers/sonehara/link02.webp",
+      "url": "https://www.instagram.com/spicsmayu?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+    },
+    {
+      "platform": "instagram",
+      "account": "@hamanaka.camera",
+      "image": "assets/images/99_photographers/sonehara/link03.webp",
+      "url": "https://www.instagram.com/hamanaka.camera?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+    }
+  ]
+}
