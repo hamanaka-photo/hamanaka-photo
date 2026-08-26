@@ -18,7 +18,27 @@
     "nameEn": "Mayu Sonehara",
     "photo": "assets/images/author-02.webp",
     "works": "④,⑤",
-    "profile": "ここにプロフィールを入力します。"
+    "profile": "ここにプロフィールを入力します。",
+    "socialLinks": [
+      {
+        "platform": "instagram",
+        "account": "@spicsmayu",
+        "image": "assets/images/spicsmayu_qr.png",
+        "url": "https://www.instagram.com/spicsmayu?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+      },
+      {
+        "platform": "instagram",
+        "account": "@mayusonehara",
+        "image": "assets/images/mayusonehara_qr.png",
+        "url": "https://www.instagram.com/spicsmayu?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+      },
+      {
+        "platform": "instagram",
+        "account": "@hamanaka.camera",
+        "image": "assets/images/hamanaka.camera_qr.png",
+        "url": "https://www.instagram.com/hamanaka.camera?utm_source=ig_web_button_share_sheet&igsi=ZDNlZDc0MzIxNw=="
+      }
+    ]
   },
   {
     "name": "浜中 太郎",
