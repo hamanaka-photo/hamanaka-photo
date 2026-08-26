@@ -1,0 +1,1030 @@
+media:
+  - name: images
+    label: 画像
+    input: assets/images
+    output: assets/images
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: gallery_images
+    label: ギャラリー画像
+    input: assets/images/02_gallery
+    output: assets/images/02_gallery
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
+  - name: documents
+    label: 配布ファイル
+    input: downloads
+    output: downloads
+    categories: [document]
+    extensions: [pdf, zip]
+    rename: false
+
+components:
+  guide_richtext:
+    type: object
+    label: 本文
+    fields:
+      - name: body
+        label: 本文
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
+
+  guide_styled_text:
+    type: object
+    label: 装飾テキスト
+    fields:
+      - name: body
+        label: 本文
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
+
+      - name: font
+        label: フォント
+        type: select
+        options:
+          values:
+            - name: sans
+              label: 標準ゴシック
+            - name: serif
+              label: 明朝
+
+      - name: size
+        label: 文字サイズ
+        type: select
+        options:
+          values:
+            - name: small
+              label: 小
+            - name: normal
+              label: 標準
+            - name: large
+              label: 大
+            - name: xlarge
+              label: 特大
+
+      - name: color
+        label: 文字色
+        type: select
+        options:
+          values:
+            - name: default
+              label: 標準
+            - name: navy
+              label: ネイビー
+            - name: blue
+              label: ブルー
+            - name: green
+              label: グリーン
+            - name: gray
+              label: グレー
+            - name: white
+              label: 白
+
+      - name: weight
+        label: 文字の太さ
+        type: select
+        options:
+          values:
+            - name: normal
+              label: 標準
+            - name: bold
+              label: 太字
+
+      - name: align
+        label: 文字揃え
+        type: select
+        options:
+          values:
+            - name: left
+              label: 左
+            - name: center
+              label: 中央
+            - name: right
+              label: 右
+
+      - name: background
+        label: 背景
+        type: select
+        options:
+          values:
+            - name: none
+              label: なし
+            - name: blue-soft
+              label: 薄いブルー
+            - name: green-soft
+              label: 薄いグリーン
+            - name: beige
+              label: 薄いベージュ
+            - name: navy
+              label: ネイビー
+
+      - name: spacing
+        label: 余白
+        type: select
+        options:
+          values:
+            - name: compact
+              label: 狭い
+            - name: normal
+              label: 標準
+            - name: wide
+              label: 広い
+
+  guide_image:
+    type: object
+    label: 画像
+    fields:
+      - name: image
+        label: 画像
+        type: image
+        required: true
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - name: alt
+        label: 代替テキスト
+        type: string
+        description: 画像の内容を短く説明します。装飾目的だけの画像なら空欄でも構いません。
+      - name: caption
+        label: キャプション
+        type: text
+
+  guide_gallery:
+    type: object
+    label: 画像ギャラリー
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: columns
+        label: PCでの列数
+        type: select
+        options:
+          values:
+            - name: "2"
+              label: 2列
+            - name: "3"
+              label: 3列
+            - name: "4"
+              label: 4列
+      - name: items
+        label: 画像
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{caption}"
+        fields:
+          - name: image
+            label: 画像
+            type: image
+            required: true
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: alt
+            label: 代替テキスト
+            type: string
+          - name: caption
+            label: キャプション
+            type: string
+
+  guide_map:
+    type: object
+    label: Googleマップ
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: url
+        label: Googleマップ埋め込みURL
+        type: string
+        required: true
+        description: Googleマップの「共有」→「地図を埋め込む」で表示されるiframeのsrc属性だけを入力します。
+      - name: caption
+        label: 補足説明
+        type: text
+      - name: size
+        label: 地図の高さ
+        type: select
+        options:
+          values:
+            - name: standard
+              label: 標準
+            - name: large
+              label: 大きめ
+      - name: openUrl
+        label: Googleマップで開くURL
+        type: string
+        description: 任意。通常のGoogleマップ共有URLを入力すると「Googleマップで開く」ボタンを表示します。
+
+  guide_basic_info:
+    type: object
+    label: 基本情報
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 基本情報
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 項目名
+            type: string
+            required: true
+          - name: value
+            label: 内容
+            type: text
+            required: true
+
+  guide_note:
+    type: object
+    label: 注意・ポイント
+    fields:
+      - name: tone
+        label: 表示タイプ
+        type: select
+        required: true
+        options:
+          values:
+            - name: info
+              label: ポイント
+            - name: important
+              label: 重要
+            - name: caution
+              label: 注意
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 内容
+        type: text
+        required: true
+
+  guide_checklist:
+    type: object
+    label: チェックリスト
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 項目
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{text}"
+        fields:
+          - name: text
+            label: 項目
+            type: string
+            required: true
+
+  guide_table:
+    type: object
+    label: 表・比較表
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: caption
+        label: 表の説明
+        type: string
+      - name: headers
+        label: 列見出し
+        type: string
+        list: true
+      - name: rows
+        label: 行
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "行 {index}"
+        fields:
+          - name: cells
+            label: セル
+            type: string
+            list: true
+      - name: note
+        label: 注記
+        type: text
+
+  guide_faq:
+    type: object
+    label: FAQ
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 質問と回答
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{question}"
+        fields:
+          - name: question
+            label: 質問
+            type: string
+            required: true
+          - name: answer
+            label: 回答
+            type: rich-text
+            required: true
+            options:
+              format: html
+              media: images
+              switcher: true
+              rename: false
+
+  guide_links:
+    type: object
+    label: リンク・ボタン
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: リンク
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示名
+            type: string
+            required: true
+          - name: url
+            label: URL
+            type: string
+            required: true
+          - name: external
+            label: 外部サイトとして開く
+            type: boolean
+
+  guide_download:
+    type: object
+    label: ダウンロード
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 説明
+        type: text
+      - name: items
+        label: ダウンロードファイル
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{label}"
+        fields:
+          - name: label
+            label: 表示名
+            type: string
+            required: true
+          - name: file
+            label: ファイル
+            type: file
+            required: true
+            options:
+              media: documents
+              extensions: [pdf, zip]
+              rename: false
+          - name: description
+            label: 補足
+            type: string
+
+  guide_cards:
+    type: object
+    label: カード一覧
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: カード
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: title
+            label: タイトル
+            type: string
+            required: true
+          - name: text
+            label: 説明
+            type: text
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: url
+            label: リンク先
+            type: string
+
+  guide_cta:
+    type: object
+    label: CTA・大きな誘導
+    fields:
+      - name: eyebrow
+        label: 小見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+        required: true
+      - name: text
+        label: 説明
+        type: text
+      - name: label
+        label: ボタン表示
+        type: string
+        required: true
+      - name: url
+        label: リンク先
+        type: string
+        required: true
+      - name: external
+        label: 外部サイトとして開く
+        type: boolean
+      - name: style
+        label: 表示スタイル
+        type: select
+        options:
+          values:
+            - name: blue
+              label: 青
+            - name: green
+              label: 緑
+            - name: light
+              label: 明るい背景
+
+  guide_media_text:
+    type: object
+    label: 画像＋文章
+    fields:
+      - name: image
+        label: 画像
+        type: image
+        required: true
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - name: alt
+        label: 代替テキスト
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: body
+        label: 本文
+        type: rich-text
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
+      - name: imagePosition
+        label: 画像位置
+        type: select
+        options:
+          values:
+            - name: left
+              label: 左
+            - name: right
+              label: 右
+
+  guide_related:
+    type: object
+    label: 関連記事
+    fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 関連記事
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: articleId
+            label: 記事ID
+            type: string
+            required: true
+            description: 例 technique
+          - name: title
+            label: 表示タイトル
+            type: string
+            required: true
+          - name: text
+            label: 説明
+            type: text
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+  guide_quote:
+    type: object
+    label: 引用・コメント
+    fields:
+      - name: text
+        label: 引用・コメント本文
+        type: text
+        required: true
+      - name: author
+        label: 発言者・撮影者
+        type: string
+      - name: source
+        label: 出典・補足
+        type: string
+
+  guide_divider:
+    type: object
+    label: 区切り
+    fields:
+      - name: style
+        label: 区切り方
+        type: select
+        options:
+          values:
+            - name: line
+              label: 線
+            - name: space
+              label: 余白
+            - name: dots
+              label: ドット
+
+content:
+  - name: selections
+    label: フォトセレクション
+    type: file
+    path: data/selections.json
+    format: json
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: id
+        label: セレクションID
+        type: string
+        required: true
+        description: 半角英数字とハイフンで入力します。例 tokyo-camera-club-2026
+
+      - name: status
+        label: 公開状態
+        type: select
+        required: true
+        options:
+          values:
+            - name: current
+              label: CURRENT 現在のセレクション
+            - name: past
+              label: PAST 過去のセレクション
+
+      - name: year
+        label: 年
+        type: string
+        required: true
+
+      - name: title
+        label: セレクションタイトル
+        type: string
+        required: true
+
+      - name: shortTitle
+        label: HOME表示用タイトル
+        type: string
+        required: true
+
+      - name: description
+        label: 紹介文
+        type: text
+
+      - name: cover
+        label: カバー画像
+        type: image
+        required: true
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+
+      - name: works
+        label: 掲載作品
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{title}"
+        fields:
+          - name: id
+            label: 作品番号
+            type: number
+            required: true
+
+          - name: title
+            label: 作品タイトル
+            type: string
+            required: true
+
+          - name: thumbnail
+            label: サムネイル画像
+            type: image
+            required: true
+            description: 一覧表示用。長辺1000px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/thumbs に保存します。
+            options:
+              media: gallery_images
+              path: tokyo_camera_club_2026/thumbs
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: image
+            label: フル画像（モーダル用）
+            type: image
+            required: true
+            description: 拡大表示用。長辺2200px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/full に保存します。
+            options:
+              media: gallery_images
+              path: tokyo_camera_club_2026/full
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: location
+            label: 撮影地
+            type: string
+
+          - name: season
+            label: 撮影時期
+            type: string
+
+          - name: camera
+            label: カメラ
+            type: string
+
+          - name: lens
+            label: レンズ
+            type: string
+
+          - name: settings
+            label: 撮影設定
+            type: string
+
+          - name: author
+            label: 撮影者
+            type: select
+            required: true
+            options:
+              values:
+                - name: "大坪　俊裕"
+                  label: "大坪 俊裕"
+                - name: "曽根原　麻由"
+                  label: "曽根原 麻由"
+                - name: "浜中　太郎"
+                  label: "浜中 太郎"
+                - name: "片岡　義廣"
+                  label: "片岡 義廣"
+                - name: "森山　雅友"
+                  label: "森山 雅友"
+                - name: "らっこばやし"
+                  label: "らっこばやし"
+
+          - name: comment
+            label: 作品コメント
+            type: text
+
+  - name: photographers
+    label: 撮影者
+    type: file
+    path: data/photographers.json
+    format: json
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: name
+        label: 氏名
+        type: string
+        required: true
+
+      - name: nameEn
+        label: 英字表記
+        type: string
+
+      - name: photo
+        label: 顔写真
+        type: image
+        options:
+          media: images
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+
+      - name: works
+        label: Took photos
+        type: string
+
+      - name: profile
+        label: プロフィール
+        type: text
+
+      - name: socialLinks
+        label: SNS・関連リンク
+        type: object
+        description: Instagram、X、Webサイトなどを最大3件まで登録できます。
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: "{platform} / {account}"
+        fields:
+          - name: platform
+            label: 種類
+            type: select
+            required: true
+            options:
+              values:
+                - name: instagram
+                  label: Instagram
+                - name: x
+                  label: X
+                - name: facebook
+                  label: Facebook
+                - name: website
+                  label: Webサイト
+                - name: other
+                  label: その他
+
+          - name: account
+            label: 表示名・アカウント名
+            type: string
+            required: true
+            description: 例 @hamanaka_photo、公式Instagram、個人Webサイト
+
+          - name: image
+            label: QRコード・画像
+            type: image
+            required: true
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: url
+            label: リンク先URL
+            type: string
+            required: true
+            description: QRコードや画像をクリックしたときに開くURLを入力します。
+
+  - name: photo_guide
+    label: PHOTO GUIDE
+    type: group
+    items:
+      - name: guide_articles
+        label: フォトガイド記事
+        type: file
+        path: data/guide-articles.json
+        format: json
+        list: true
+        operations:
+          delete: false
+        fields:
+          - name: id
+            label: 記事ID
+            type: string
+            required: true
+            pattern:
+              regex: "^[a-z0-9-]+$"
+              message: 半角英小文字・数字・ハイフンのみで入力してください。
+            description: URLに使用します。公開後は原則変更しません。
+
+          - name: published
+            label: 公開する
+            type: boolean
+            required: true
+
+          - name: order
+            label: 表示順
+            type: number
+            required: true
+
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+            required: true
+            description: 例 01 / PHOTO MAP
+
+          - name: title
+            label: 記事タイトル
+            type: string
+            required: true
+
+          - name: cardTitle
+            label: 目次カードのタイトル
+            type: string
+            required: true
+
+          - name: summary
+            label: 概要
+            type: text
+            required: true
+
+          - name: cover
+            label: カバー画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: icon
+            label: 画像がない場合の文字アイコン
+            type: string
+
+          - name: blocks
+            label: 記事本文
+            type: block
+            list:
+              collapsible:
+                collapsed: true
+            blockKey: type
+            blocks:
+              - name: richtext
+                component: guide_richtext
+              - name: styled_text
+                component: guide_styled_text
+              - name: image
+                component: guide_image
+              - name: gallery
+                component: guide_gallery
+              - name: map
+                component: guide_map
+              - name: basic_info
+                component: guide_basic_info
+              - name: note
+                component: guide_note
+              - name: checklist
+                component: guide_checklist
+              - name: table
+                component: guide_table
+              - name: faq
+                component: guide_faq
+              - name: links
+                component: guide_links
+              - name: download
+                component: guide_download
+              - name: cards
+                component: guide_cards
+              - name: cta
+                component: guide_cta
+              - name: media_text
+                component: guide_media_text
+              - name: related
+                component: guide_related
+              - name: quote
+                component: guide_quote
+              - name: divider
+                component: guide_divider
+
+      - name: guide_settings
+        label: フォトガイド設定・PDF
+        type: file
+        path: data/guide-settings.json
+        format: json
+        operations:
+          delete: false
+        fields:
+          - name: pageTitle
+            label: PHOTO GUIDEページタイトル
+            type: string
+            required: true
+
+          - name: pageLead
+            label: ページ上部の説明
+            type: text
+            required: true
+
+          - name: indexLead
+            label: 目次の説明
+            type: text
+
+          - name: guidebook
+            label: フォトガイドブック
+            type: object
+            fields:
+              - name: enabled
+                label: PDFダウンロードを公開する
+                type: boolean
+
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+
+              - name: title
+                label: ガイドブック名
+                type: string
+
+              - name: cardTitle
+                label: 目次カードのタイトル
+                type: string
+
+              - name: summary
+                label: 説明
+                type: text
+
+              - name: cover
+                label: 表紙画像
+                type: image
+                options:
+                  media: images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+
+              - name: pdf
+                label: PDFファイル
+                type: file
+                options:
+                  media: documents
+                  extensions: [pdf]
+                  rename: false
+
+              - name: buttonLabel
+                label: ダウンロードボタン表示
+                type: string
+
+  - name: news
+    label: お知らせ
+    type: file
+    path: data/news.json
+    format: json
+    list: true
+    operations:
+      delete: false
+    fields:
+      - name: date
+        label: 日付
+        type: date
+        required: true
+
+      - name: category
+        label: カテゴリ
+        type: select
+        options:
+          values:
+            - お知らせ
+            - 写真展
+            - フォトガイド
+            - イベント
+            - フォトコンテスト
+
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+
+      - name: url
+        label: リンク先
+        type: string
+
+settings:
+  commit:
+    templates:
+      create: "CMS: {path} を追加"
+      update: "CMS: {path} を更新"
+      delete: "CMS: {path} を削除"
