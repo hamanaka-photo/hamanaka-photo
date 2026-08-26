@@ -29,6 +29,112 @@ components:
           switcher: true
           rename: false
 
+  guide_styled_text:
+    type: object
+    label: 装飾テキスト
+    fields:
+      - name: body
+        label: 本文
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
+
+      - name: font
+        label: フォント
+        type: select
+        options:
+          values:
+            - name: sans
+              label: 標準ゴシック
+            - name: serif
+              label: 明朝
+
+      - name: size
+        label: 文字サイズ
+        type: select
+        options:
+          values:
+            - name: small
+              label: 小
+            - name: normal
+              label: 標準
+            - name: large
+              label: 大
+            - name: xlarge
+              label: 特大
+
+      - name: color
+        label: 文字色
+        type: select
+        options:
+          values:
+            - name: default
+              label: 標準
+            - name: navy
+              label: ネイビー
+            - name: blue
+              label: ブルー
+            - name: green
+              label: グリーン
+            - name: gray
+              label: グレー
+            - name: white
+              label: 白
+
+      - name: weight
+        label: 文字の太さ
+        type: select
+        options:
+          values:
+            - name: normal
+              label: 標準
+            - name: bold
+              label: 太字
+
+      - name: align
+        label: 文字揃え
+        type: select
+        options:
+          values:
+            - name: left
+              label: 左
+            - name: center
+              label: 中央
+            - name: right
+              label: 右
+
+      - name: background
+        label: 背景
+        type: select
+        options:
+          values:
+            - name: none
+              label: なし
+            - name: blue-soft
+              label: 薄いブルー
+            - name: green-soft
+              label: 薄いグリーン
+            - name: beige
+              label: 薄いベージュ
+            - name: navy
+              label: ネイビー
+
+      - name: spacing
+        label: 余白
+        type: select
+        options:
+          values:
+            - name: compact
+              label: 狭い
+            - name: normal
+              label: 標準
+            - name: wide
+              label: 広い
+
   guide_image:
     type: object
     label: 画像
@@ -761,6 +867,8 @@ content:
             blocks:
               - name: richtext
                 component: guide_richtext
+              - name: styled_text
+                component: guide_styled_text
               - name: image
                 component: guide_image
               - name: gallery
