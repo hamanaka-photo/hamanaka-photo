@@ -12,7 +12,7 @@
 .guide-menu-card {
   display: grid;
   grid-template-columns: minmax(220px, .7fr) minmax(0, 1.3fr);
-  min-height: 220px;
+  min-height: 150px;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
