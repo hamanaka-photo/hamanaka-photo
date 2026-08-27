@@ -6,6 +6,13 @@ media:
     extensions: [jpg, jpeg, png, webp]
     rename: false
 
+  - name: photo_map_images
+    label: PHOTO MAP画像
+    input: assets/images/03_guide/photo-map
+    output: assets/images/03_guide/photo-map
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
   - name: gallery_images
     label: ギャラリー画像
     input: assets/images/02_gallery
@@ -1254,6 +1261,223 @@ content:
     label: PHOTO GUIDE
     type: group
     items:
+      - name: photo_map_settings
+        label: フォトマップ設定
+        type: file
+        path: data/photo-map.json
+        format: json
+        operations:
+          delete: false
+        fields:
+          - name: hero
+            label: ページ上部
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: string
+                required: true
+              - name: lead
+                label: 説明文
+                type: text
+              - name: image
+                label: ヒーロー画像
+                type: image
+                options:
+                  media: photo_map_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+
+          - name: map
+            label: MAP
+            type: object
+            fields:
+              - name: image
+                label: 地図画像
+                type: image
+                description: ピンを重ねる浜中町の地図画像を登録します。横長〜正方形を推奨します。
+                options:
+                  media: photo_map_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: alt
+                label: 地図画像の代替テキスト
+                type: string
+
+          - name: coursesTitle
+            label: おすすめコース見出し
+            type: string
+
+          - name: courses
+            label: おすすめコース
+            type: object
+            list:
+              max: 6
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: コース名
+                type: string
+                required: true
+              - name: text
+                label: 立ち寄りスポット
+                type: text
+              - name: duration
+                label: 所要時間
+                type: string
+              - name: image
+                label: コース画像
+                type: image
+                options:
+                  media: photo_map_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+
+          - name: manner
+            label: 撮影マナー誘導
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+      - name: photo_spots
+        label: フォトマップ・撮影スポット
+        type: file
+        path: data/photo-spots.json
+        format: json
+        list: true
+        operations:
+          delete: true
+        fields:
+          - name: id
+            label: スポットID
+            type: string
+            required: true
+            pattern:
+              regex: "^[a-z0-9-]+$"
+              message: 半角英小文字・数字・ハイフンで入力してください。
+
+          - name: published
+            label: 公開する
+            type: boolean
+            required: true
+
+          - name: order
+            label: 表示順
+            type: number
+            required: true
+
+          - name: name
+            label: スポット名
+            type: string
+            required: true
+
+          - name: area
+            label: エリア名
+            type: string
+            required: true
+            description: 例 霧多布、琵琶瀬、火散布、茶内
+
+          - name: description
+            label: 紹介文
+            type: text
+
+          - name: image
+            label: スポット画像
+            type: image
+            options:
+              media: photo_map_images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+
+          - name: markerType
+            label: MAPピンの種類
+            type: select
+            required: true
+            options:
+              values:
+                - name: coast
+                  label: 海岸
+                - name: wetland
+                  label: 湿原
+                - name: wildlife
+                  label: 野生動物
+                - name: observatory
+                  label: 展望
+
+          - name: tags
+            label: 絞り込み条件
+            type: select
+            options:
+              multiple: true
+              values:
+                - name: coast
+                  label: 海岸
+                - name: wetland
+                  label: 湿原
+                - name: wildlife
+                  label: 野生動物
+                - name: sunset
+                  label: 夕景
+                - name: sunrise
+                  label: 朝景
+                - name: stars
+                  label: 星空
+                - name: beginner
+                  label: 初心者向け
+                - name: parking
+                  label: 駐車場あり
+
+          - name: bestSeason
+            label: おすすめ時期
+            type: string
+
+          - name: bestTime
+            label: おすすめ時間
+            type: string
+
+          - name: access
+            label: アクセス
+            type: string
+
+          - name: x
+            label: MAP横位置（0〜100）
+            type: number
+            required: true
+            description: 地図画像の左端を0、右端を100としてピン位置を入力します。
+
+          - name: y
+            label: MAP縦位置（0〜100）
+            type: number
+            required: true
+            description: 地図画像の上端を0、下端を100としてピン位置を入力します。
+
+          - name: detailUrl
+            label: 詳細ページURL
+            type: string
+            description: 未入力の場合は「詳細を見る」を表示しません。
+
       - name: guide_articles
         label: フォトガイド記事
         type: file
