@@ -2,6 +2,18 @@
   const root = document.querySelector('[data-guide-article]');
   if (!root) return;
 
+  const requestedArticle =
+    new URLSearchParams(window.location.search).get('article');
+
+  if (
+    requestedArticle === 'photo-map' &&
+    window.HAMANAKA_PHOTO_MAP &&
+    typeof window.HAMANAKA_PHOTO_MAP.init === 'function'
+  ) {
+    window.HAMANAKA_PHOTO_MAP.init(root);
+    return;
+  }
+
   const escapeHtml = (value = '') =>
     String(value).replace(/[&<>"']/g, char => ({
       '&': '&amp;',
