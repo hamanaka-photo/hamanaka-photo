@@ -1,0 +1,43 @@
+{
+  "hero": {
+    "eyebrow": "PHOTO MAP",
+    "title": "MAPから探す",
+    "lead": "浜中町の絶景スポットを、エリアや撮りたい被写体から探せます。自分だけのとっておきの1枚を見つけに出かけましょう。",
+    "image": ""
+  },
+  "map": {
+    "image": "",
+    "alt": "浜中町フォトマップ"
+  },
+  "coursesTitle": "おすすめの回り方",
+  "courses": [
+    {
+      "eyebrow": "HALF DAY",
+      "title": "半日コース",
+      "text": "琵琶瀬展望台\n霧多布岬\nアゼチの岬",
+      "duration": "約4時間",
+      "image": ""
+    },
+    {
+      "eyebrow": "SUNSET",
+      "title": "夕景コース",
+      "text": "茶内周辺（牧草地）\n琵琶瀬展望台\n霧多布岬",
+      "duration": "約5時間",
+      "image": ""
+    },
+    {
+      "eyebrow": "WILDLIFE",
+      "title": "野生動物コース",
+      "text": "火散布沼（タンチョウ）\n霧多布湿原（野鳥観察）\n茶内周辺",
+      "duration": "約6時間",
+      "image": ""
+    }
+  ],
+  "manner": {
+    "eyebrow": "PHOTO MANNER",
+    "title": "撮影マナーを守って楽しみましょう",
+    "text": "自然や地域の方々への思いやりが、素晴らしい景色を未来へつなぎます。",
+    "buttonLabel": "ルールを見る",
+    "url": "guide-article.html?article=manner"
+  }
+}
