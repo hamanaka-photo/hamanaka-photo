@@ -2,31 +2,104 @@
   "hero": {
     "eyebrow": "PHOTO MAP",
     "title": "MAPから探す",
-    "lead": "浜中町の絶景スポットを、エリアや撮りたい被写体から探せます。自分だけのとっておきの1枚を見つけに出かけましょう。"
+    "lead": "浜中町の絶景スポットを、エリアや撮りたい被写体から探せます。自分だけのとっておきの1枚を見つけに出かけましょう。",
+    "image": ""
   },
   "map": {
-    "image": "assets/images/03_guide/photo-map/map.webp",
+    "image": "",
     "alt": "浜中町フォトマップ"
   },
-  "coursesTitle": "おすすめの回り方",
+  "coursesTitle": "モデルコース",
   "courses": [
     {
       "eyebrow": "HALF DAY",
       "title": "半日コース",
-      "text": "琵琶瀬展望台\n霧多布岬\nアゼチの岬",
-      "duration": "約4時間"
+      "summary": "代表的な景観スポットを短時間で巡るモデルコースです。",
+      "duration": "約4時間",
+      "image": "",
+      "stops": [
+        {
+          "time": "09:00（例）",
+          "name": "琵琶瀬展望台",
+          "text": "湿原を一望できる展望スポット。撮影条件を確認しながら旅を始めます。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "11:00（例）",
+          "name": "霧多布岬",
+          "text": "断崖や灯台、太平洋の景観を撮影します。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "13:00（例）",
+          "name": "アゼチの岬",
+          "text": "岬の風景を楽しみながらコースを締めくくります。",
+          "image": "",
+          "url": ""
+        }
+      ]
     },
     {
       "eyebrow": "SUNSET",
       "title": "夕景コース",
-      "text": "茶内周辺（牧草地）\n琵琶瀬展望台\n霧多布岬",
-      "duration": "約5時間"
+      "summary": "午後から夕景まで、光の変化を楽しむモデルコースです。",
+      "duration": "約5時間",
+      "image": "",
+      "stops": [
+        {
+          "time": "13:00（例）",
+          "name": "茶内周辺",
+          "text": "牧草地など浜中町らしい風景を探します。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "15:30（例）",
+          "name": "琵琶瀬展望台",
+          "text": "湿原の広がりと午後の光を撮影します。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "17:30（例）",
+          "name": "霧多布岬",
+          "text": "日没時刻を確認し、安全に配慮しながら夕景を狙います。",
+          "image": "",
+          "url": ""
+        }
+      ]
     },
     {
       "eyebrow": "WILDLIFE",
       "title": "野生動物コース",
-      "text": "火散布沼（タンチョウ）\n霧多布湿原（野鳥観察）\n茶内周辺",
-      "duration": "約6時間"
+      "summary": "野生動物との距離を守りながら観察・撮影するモデルコースです。",
+      "duration": "約6時間",
+      "image": "",
+      "stops": [
+        {
+          "time": "06:00（例）",
+          "name": "火散布沼",
+          "text": "朝の時間帯に野鳥などを静かに観察します。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "09:30（例）",
+          "name": "霧多布湿原",
+          "text": "湿原景観と野鳥などを観察します。",
+          "image": "",
+          "url": ""
+        },
+        {
+          "time": "13:00（例）",
+          "name": "茶内周辺",
+          "text": "牧草地や地域の風景を撮影します。",
+          "image": "",
+          "url": ""
+        }
+      ]
     }
   ],
   "manner": {
@@ -35,5 +108,67 @@
     "text": "自然や地域の方々への思いやりが、素晴らしい景色を未来へつなぎます。",
     "buttonLabel": "ルールを見る",
     "url": "guide-article.html?article=manner"
-  }
+  },
+  "subjects": [
+    {
+      "id": "otter",
+      "label": "ラッコ",
+      "icon": "◉",
+      "description": "ラッコを撮りたいとき"
+    },
+    {
+      "id": "crane",
+      "label": "タンチョウ",
+      "icon": "◇",
+      "description": "タンチョウを撮りたいとき"
+    },
+    {
+      "id": "wild-birds",
+      "label": "野鳥",
+      "icon": "⌁",
+      "description": "野鳥を撮りたいとき"
+    },
+    {
+      "id": "ezo-deer",
+      "label": "エゾシカ",
+      "icon": "♢",
+      "description": "エゾシカなどの野生動物を撮りたいとき"
+    },
+    {
+      "id": "flowers",
+      "label": "花・湿原",
+      "icon": "♒",
+      "description": "湿原や季節の花を撮りたいとき"
+    },
+    {
+      "id": "coast",
+      "label": "海・岬",
+      "icon": "≋",
+      "description": "海岸、岬、灯台などを撮りたいとき"
+    },
+    {
+      "id": "pasture",
+      "label": "牧草地・酪農景観",
+      "icon": "▥",
+      "description": "浜中町らしい牧草地の風景を撮りたいとき"
+    },
+    {
+      "id": "sunset",
+      "label": "夕景",
+      "icon": "◒",
+      "description": "夕日や夕景を撮りたいとき"
+    },
+    {
+      "id": "sunrise",
+      "label": "朝景",
+      "icon": "☀",
+      "description": "朝日や朝景を撮りたいとき"
+    },
+    {
+      "id": "stars",
+      "label": "星空",
+      "icon": "✦",
+      "description": "星空や夜景を撮りたいとき"
+    }
+  ]
 }

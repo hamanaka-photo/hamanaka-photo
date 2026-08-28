@@ -8,18 +8,26 @@
     "description": "断崖と灯台、広がる太平洋が魅力の絶景スポット。",
     "image": "",
     "markerType": "coast",
-    "tags": [
-      "coast",
-      "sunset",
-      "beginner",
-      "parking"
-    ],
     "bestSeason": "5〜10月",
     "bestTime": "夕方",
     "access": "車で約40分",
     "x": 60,
     "y": 72,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "coast",
+        "note": "岬・灯台・海岸風景"
+      },
+      {
+        "id": "sunset",
+        "note": "夕景"
+      }
+    ],
+    "features": [
+      "beginner",
+      "parking"
+    ]
   },
   {
     "id": "azechi-cape",
@@ -30,18 +38,26 @@
     "description": "なだらかな岬と朝日のコントラストが美しい場所。",
     "image": "",
     "markerType": "coast",
-    "tags": [
-      "coast",
-      "sunrise",
-      "beginner",
-      "parking"
-    ],
     "bestSeason": "4〜9月",
     "bestTime": "朝",
     "access": "車で約35分",
     "x": 69,
     "y": 61,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "coast",
+        "note": "岬・海岸風景"
+      },
+      {
+        "id": "sunrise",
+        "note": "朝景"
+      }
+    ],
+    "features": [
+      "beginner",
+      "parking"
+    ]
   },
   {
     "id": "biwase-observatory",
@@ -52,18 +68,26 @@
     "description": "湿原を一望できる展望台。夕景もおすすめ。",
     "image": "",
     "markerType": "observatory",
-    "tags": [
-      "wetland",
-      "sunset",
-      "beginner",
-      "parking"
-    ],
     "bestSeason": "5〜10月",
     "bestTime": "夕方",
     "access": "車で約30分",
     "x": 59,
     "y": 51,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "flowers",
+        "note": "湿原景観"
+      },
+      {
+        "id": "sunset",
+        "note": "夕景"
+      }
+    ],
+    "features": [
+      "beginner",
+      "parking"
+    ]
   },
   {
     "id": "hichirippu-marsh",
@@ -74,18 +98,25 @@
     "description": "渡り鳥の宝庫。タンチョウとの出会いも。",
     "image": "",
     "markerType": "wildlife",
-    "tags": [
-      "wetland",
-      "wildlife",
-      "sunrise",
-      "parking"
-    ],
     "bestSeason": "3〜11月",
     "bestTime": "朝",
     "access": "車で約25分",
     "x": 24,
     "y": 26,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "crane",
+        "note": "タンチョウなど"
+      },
+      {
+        "id": "wild-birds",
+        "note": "野鳥"
+      }
+    ],
+    "features": [
+      "parking"
+    ]
   },
   {
     "id": "chanai",
@@ -96,18 +127,25 @@
     "description": "牧草地と海、野生動物など多彩な被写体に出会える。",
     "image": "",
     "markerType": "wetland",
-    "tags": [
-      "wetland",
-      "wildlife",
-      "sunset",
-      "parking"
-    ],
     "bestSeason": "4〜10月",
     "bestTime": "昼〜夕方",
     "access": "車で約15分",
     "x": 28,
     "y": 46,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "pasture",
+        "note": "牧草地・酪農景観"
+      },
+      {
+        "id": "wild-birds",
+        "note": "野鳥など"
+      }
+    ],
+    "features": [
+      "parking"
+    ]
   },
   {
     "id": "kiritappu-wetland",
@@ -118,16 +156,24 @@
     "description": "湿原の景観や野鳥などを楽しめるスポット。",
     "image": "",
     "markerType": "wetland",
-    "tags": [
-      "wetland",
-      "wildlife",
-      "beginner"
-    ],
     "bestSeason": "",
     "bestTime": "",
     "access": "",
     "x": 46,
     "y": 33,
-    "detailUrl": ""
+    "detailUrl": "",
+    "subjects": [
+      {
+        "id": "flowers",
+        "note": "湿原・季節の花"
+      },
+      {
+        "id": "wild-birds",
+        "note": "野鳥"
+      }
+    ],
+    "features": [
+      "beginner"
+    ]
   }
 ]
