@@ -1593,6 +1593,8 @@
     renderMapFilterButtons();
     renderList();
 
+    setView('map');
+
     if (selectedSpotId) {
       selectSpot(selectedSpotId);
     }
