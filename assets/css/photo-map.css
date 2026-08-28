@@ -1721,3 +1721,28 @@
   }
 }
 
+/* =========================================
+   PHOTO MAP v3
+   MAP / LIST tab visibility
+========================================= */
+
+/* Author CSS has display rules for both panels.
+   Make the HTML hidden state authoritative. */
+[data-map-panel][hidden] {
+  display: none !important;
+}
+
+.photo-map-view-tabs {
+  position: sticky;
+  top: 72px;
+  z-index: 30;
+  background: rgba(255, 255, 255, .97);
+  backdrop-filter: blur(10px);
+}
+
+@media (max-width: 680px) {
+  .photo-map-view-tabs {
+    position: static;
+  }
+}
+
