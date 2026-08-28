@@ -1016,3 +1016,708 @@
     width: 100%;
   }
 }
+
+
+/* =========================================
+   PHOTO MAP v2
+   MAP / LIST differentiation
+   hover pin captions
+   expandable model courses
+========================================= */
+
+.photo-map-map-panel {
+  display: grid;
+  gap: 14px;
+}
+
+.photo-map-map-toolbar {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: end;
+  padding: 4px 0 2px;
+}
+
+.photo-map-control-label {
+  margin: 0 0 7px;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.photo-map-map-toolbar .photo-map-filters {
+  align-self: end;
+  padding-bottom: 0;
+}
+
+.photo-map-map-view {
+  grid-template-columns:
+    minmax(0, 1.22fr)
+    minmax(310px, .58fr);
+}
+
+.photo-map-selected {
+  min-height: 600px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.photo-map-selected-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.photo-map-selected-visual {
+  min-height: 255px;
+  max-height: 315px;
+  overflow: hidden;
+  background: #e8f0f3;
+}
+
+.photo-map-selected-visual img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-map-selected-copy {
+  padding: 24px;
+}
+
+.photo-map-selected-area {
+  margin: 0 0 6px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.photo-map-selected-title {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  align-items: center;
+}
+
+.photo-map-selected-title h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 22px;
+}
+
+.photo-map-selected-description {
+  margin: 13px 0 0;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+.photo-map-selected-empty {
+  display: grid;
+  place-content: center;
+  min-height: 100%;
+  padding: 32px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.photo-map-selected-empty strong {
+  color: var(--navy);
+  font-size: 15px;
+}
+
+.photo-map-selected-empty p {
+  max-width: 280px;
+  margin: 10px auto 0;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+/* Pin itself is always the only visible element.
+   Caption appears on mouse hover / keyboard focus. */
+
+.photo-map-pin {
+  width: 30px;
+  height: 30px;
+  max-width: none;
+  padding: 0;
+  transform: translate(-50%, -50%);
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.photo-map-pin:hover,
+.photo-map-pin.is-selected {
+  transform: translate(-50%, -50%);
+  box-shadow: none;
+}
+
+.photo-map-pin-dot {
+  position: absolute;
+  inset: 3px;
+  width: auto;
+  height: auto;
+  border:
+    3px solid rgba(255, 255, 255, .96);
+  border-radius: 50% 50% 50% 0;
+  box-shadow:
+    0 4px 12px rgba(18, 58, 80, .28);
+}
+
+.photo-map-pin.is-selected .photo-map-pin-dot {
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, .88),
+    0 0 0 7px var(--marker-color),
+    0 5px 16px rgba(18, 58, 80, .3);
+}
+
+.photo-map-pin-caption {
+  position: absolute;
+  top: 50%;
+  left: calc(100% + 8px);
+  z-index: 8;
+  width: max-content;
+  max-width: 180px;
+  padding: 7px 10px;
+  transform:
+    translateY(-50%)
+    translateX(-4px);
+  border:
+    1px solid rgba(15, 45, 70, .12);
+  border-radius: 8px;
+  color: var(--navy);
+  background:
+    rgba(255, 255, 255, .98);
+  box-shadow:
+    0 6px 18px
+    rgba(18, 58, 80, .16);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  white-space: nowrap;
+  font-size: 10px;
+  font-weight: 700;
+  transition:
+    opacity .15s ease,
+    transform .15s ease,
+    visibility .15s ease;
+}
+
+.photo-map-pin:hover
+.photo-map-pin-caption,
+.photo-map-pin:focus-visible
+.photo-map-pin-caption {
+  opacity: 1;
+  visibility: visible;
+  transform:
+    translateY(-50%)
+    translateX(0);
+}
+
+.photo-map-pin:focus-visible {
+  outline:
+    3px solid rgba(27, 101, 160, .25);
+  outline-offset: 4px;
+}
+
+/* Subject badges */
+
+.photo-spot-subjects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.photo-spot-subject {
+  display: inline-flex;
+  gap: 5px;
+  align-items: center;
+  min-height: 24px;
+  padding: 0 9px;
+  border-radius: 999px;
+  color: #365d52;
+  background: #eef5f1;
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.photo-spot-subject i {
+  font-style: normal;
+}
+
+/* LIST view has its own behavior */
+
+.photo-map-list-view {
+  padding-top: 8px;
+}
+
+.photo-map-list-head {
+  display: flex;
+  gap: 24px;
+  align-items: end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.photo-map-list-head h2 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 22px;
+}
+
+.photo-map-list-modes {
+  display: inline-flex;
+  gap: 6px;
+}
+
+.photo-map-list-modes button {
+  min-height: 36px;
+  padding: 0 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: #fff;
+  font: inherit;
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-map-list-modes button.is-active {
+  border-color: var(--navy);
+  color: #fff;
+  background: var(--navy);
+}
+
+.photo-map-list-results {
+  display: grid;
+  gap: 34px;
+}
+
+.photo-map-list-group {
+  display: grid;
+  gap: 14px;
+}
+
+.photo-map-list-group-heading {
+  display: grid;
+  grid-template-columns:
+    1fr auto;
+  align-items: end;
+  column-gap: 16px;
+}
+
+.photo-map-list-group-heading p {
+  grid-column: 1;
+  margin: 0 0 3px;
+  color: var(--blue);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .1em;
+}
+
+.photo-map-list-group-heading h3 {
+  grid-column: 1;
+  margin: 0;
+  color: var(--navy);
+  font-size: 18px;
+}
+
+.photo-map-list-group-heading small {
+  grid-column: 1;
+  margin-top: 5px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.photo-map-list-group-heading > span {
+  grid-column: 2;
+  grid-row: 1 / span 3;
+  color: var(--muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+/* MODEL COURSE */
+
+.photo-map-section-heading > span {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.photo-map-course-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+
+.photo-map-course {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fff;
+}
+
+.photo-map-course-summary {
+  display: grid;
+  grid-template-columns:
+    minmax(220px, .38fr)
+    minmax(0, 1fr);
+  cursor: pointer;
+  list-style: none;
+}
+
+.photo-map-course-summary::-webkit-details-marker {
+  display: none;
+}
+
+.photo-map-course-summary::marker {
+  display: none;
+  content: "";
+}
+
+.photo-map-course .photo-map-course-image {
+  min-height: 210px;
+  aspect-ratio: auto;
+}
+
+.photo-map-course-copy {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 210px;
+  padding: 24px 64px 24px 26px;
+}
+
+.photo-map-course-summary-text {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.photo-map-course-duration {
+  margin-top: 12px;
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.photo-map-course-open {
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.photo-map-course-open b {
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border: 1px solid var(--blue);
+  border-radius: 50%;
+  font-size: 15px;
+  font-weight: 400;
+  transition: transform .2s ease;
+}
+
+.photo-map-course[open]
+.photo-map-course-open b {
+  transform: rotate(45deg);
+}
+
+.photo-map-course-expanded {
+  padding:
+    26px
+    clamp(20px, 4vw, 44px)
+    34px;
+  border-top: 1px solid var(--line);
+  background: #f8fafb;
+}
+
+.photo-map-course-expanded-head {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  align-items: baseline;
+  margin-bottom: 22px;
+}
+
+.photo-map-course-expanded-head p {
+  width: 100%;
+  margin: 0;
+  color: var(--blue);
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: .12em;
+}
+
+.photo-map-course-expanded-head h4 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 19px;
+}
+
+.photo-map-course-expanded-head strong {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.photo-map-course-timeline {
+  position: relative;
+  display: grid;
+  gap: 0;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.photo-map-course-timeline::before {
+  content: "";
+  position: absolute;
+  top: 15px;
+  bottom: 15px;
+  left: 74px;
+  width: 2px;
+  background: #cfdee5;
+}
+
+.photo-map-course-stop {
+  position: relative;
+  display: grid;
+  grid-template-columns:
+    58px
+    minmax(0, 1fr);
+  gap: 28px;
+  padding: 0 0 24px;
+}
+
+.photo-map-course-stop:last-child {
+  padding-bottom: 0;
+}
+
+.photo-map-course-stop::before {
+  content: "";
+  position: absolute;
+  top: 7px;
+  left: 68px;
+  z-index: 2;
+  width: 14px;
+  height: 14px;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: var(--blue);
+  box-shadow:
+    0 0 0 2px #b9d0dc;
+}
+
+.photo-map-course-time {
+  padding-top: 3px;
+  color: var(--navy);
+  font-size: 10px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.photo-map-course-stop-body {
+  display: grid;
+  grid-template-columns:
+    130px
+    minmax(0, 1fr);
+  gap: 16px;
+  min-height: 105px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.photo-map-course-stop-image {
+  min-height: 105px;
+  overflow: hidden;
+  background: #e8f0f3;
+}
+
+.photo-map-course-stop-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-map-course-stop-copy {
+  padding: 16px;
+}
+
+.photo-map-course-stop-body:not(
+  :has(.photo-map-course-stop-image)
+)
+.photo-map-course-stop-copy {
+  grid-column: 1 / -1;
+}
+
+.photo-map-course-stop-copy h4 {
+  margin: 0 0 6px;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.photo-map-course-stop-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.75;
+}
+
+.photo-map-course-stop-copy a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--blue);
+  font-size: 9px;
+  font-weight: 700;
+}
+
+.photo-map-course-no-stops {
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+@media (max-width: 980px) {
+  .photo-map-map-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-map-view {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-selected {
+    min-height: 0;
+  }
+
+  .photo-map-selected-card {
+    display: grid;
+    grid-template-columns:
+      minmax(190px, .4fr)
+      minmax(0, 1fr);
+  }
+
+  .photo-map-selected-visual {
+    min-height: 220px;
+    max-height: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .photo-map-map-toolbar {
+    gap: 12px;
+  }
+
+  .photo-map-pin {
+    width: 27px;
+    height: 27px;
+  }
+
+  .photo-map-pin-caption {
+    max-width: 140px;
+    font-size: 9px;
+  }
+
+  .photo-map-selected-card {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-selected-visual {
+    min-height: 190px;
+  }
+
+  .photo-map-list-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .photo-map-list-modes {
+    display: grid;
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .photo-map-list-modes button {
+    padding: 0 8px;
+  }
+
+  .photo-map-list-group-heading {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-list-group-heading > span {
+    grid-column: 1;
+    grid-row: auto;
+    margin-top: 5px;
+  }
+
+  .photo-map-course-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-course .photo-map-course-image {
+    min-height: 190px;
+  }
+
+  .photo-map-course-copy {
+    min-height: 0;
+    padding: 22px 54px 24px 22px;
+  }
+
+  .photo-map-course-open {
+    right: 18px;
+    bottom: 18px;
+  }
+
+  .photo-map-course-timeline::before {
+    left: 16px;
+  }
+
+  .photo-map-course-stop {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    padding-left: 38px;
+  }
+
+  .photo-map-course-stop::before {
+    left: 10px;
+  }
+
+  .photo-map-course-time {
+    text-align: left;
+  }
+
+  .photo-map-course-stop-body {
+    grid-template-columns: 1fr;
+  }
+
+  .photo-map-course-stop-image {
+    min-height: 160px;
+  }
+}
+
