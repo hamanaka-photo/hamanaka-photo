@@ -6,14 +6,7 @@
     "name": "霧多布岬",
     "area": "霧多布",
     "description": "断崖と灯台、広がる太平洋が魅力の絶景スポット。",
-    "image": "",
     "markerType": "coast",
-    "bestSeason": "5〜10月",
-    "bestTime": "夕方",
-    "access": "車で約40分",
-    "x": 60,
-    "y": 72,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "coast",
@@ -27,7 +20,13 @@
     "features": [
       "beginner",
       "parking"
-    ]
+    ],
+    "bestSeason": "5〜10月",
+    "bestTime": "夕方",
+    "access": "車で約40分",
+    "x": 60,
+    "y": 72,
+    "detailUrl": "https://maps.app.goo.gl/SgEYqvbxA687csa96"
   },
   {
     "id": "azechi-cape",
@@ -36,14 +35,7 @@
     "name": "アゼチの岬",
     "area": "霧多布",
     "description": "なだらかな岬と朝日のコントラストが美しい場所。",
-    "image": "",
     "markerType": "coast",
-    "bestSeason": "4〜9月",
-    "bestTime": "朝",
-    "access": "車で約35分",
-    "x": 69,
-    "y": 61,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "coast",
@@ -57,7 +49,12 @@
     "features": [
       "beginner",
       "parking"
-    ]
+    ],
+    "bestSeason": "4〜9月",
+    "bestTime": "朝",
+    "access": "車で約35分",
+    "x": 69,
+    "y": 61
   },
   {
     "id": "biwase-observatory",
@@ -66,14 +63,7 @@
     "name": "琵琶瀬展望台",
     "area": "琵琶瀬",
     "description": "湿原を一望できる展望台。夕景もおすすめ。",
-    "image": "",
     "markerType": "observatory",
-    "bestSeason": "5〜10月",
-    "bestTime": "夕方",
-    "access": "車で約30分",
-    "x": 59,
-    "y": 51,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "flowers",
@@ -87,7 +77,12 @@
     "features": [
       "beginner",
       "parking"
-    ]
+    ],
+    "bestSeason": "5〜10月",
+    "bestTime": "夕方",
+    "access": "車で約30分",
+    "x": 59,
+    "y": 51
   },
   {
     "id": "hichirippu-marsh",
@@ -96,14 +91,7 @@
     "name": "火散布沼",
     "area": "火散布",
     "description": "渡り鳥の宝庫。タンチョウとの出会いも。",
-    "image": "",
     "markerType": "wildlife",
-    "bestSeason": "3〜11月",
-    "bestTime": "朝",
-    "access": "車で約25分",
-    "x": 24,
-    "y": 26,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "crane",
@@ -116,7 +104,12 @@
     ],
     "features": [
       "parking"
-    ]
+    ],
+    "bestSeason": "3〜11月",
+    "bestTime": "朝",
+    "access": "車で約25分",
+    "x": 24,
+    "y": 26
   },
   {
     "id": "chanai",
@@ -125,14 +118,7 @@
     "name": "茶内周辺",
     "area": "茶内",
     "description": "牧草地と海、野生動物など多彩な被写体に出会える。",
-    "image": "",
     "markerType": "wetland",
-    "bestSeason": "4〜10月",
-    "bestTime": "昼〜夕方",
-    "access": "車で約15分",
-    "x": 28,
-    "y": 46,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "pasture",
@@ -145,7 +131,12 @@
     ],
     "features": [
       "parking"
-    ]
+    ],
+    "bestSeason": "4〜10月",
+    "bestTime": "昼〜夕方",
+    "access": "車で約15分",
+    "x": 28,
+    "y": 46
   },
   {
     "id": "kiritappu-wetland",
@@ -154,14 +145,7 @@
     "name": "霧多布湿原",
     "area": "霧多布",
     "description": "湿原の景観や野鳥などを楽しめるスポット。",
-    "image": "",
     "markerType": "wetland",
-    "bestSeason": "",
-    "bestTime": "",
-    "access": "",
-    "x": 46,
-    "y": 33,
-    "detailUrl": "",
     "subjects": [
       {
         "id": "flowers",
@@ -174,6 +158,8 @@
     ],
     "features": [
       "beginner"
-    ]
+    ],
+    "x": 46,
+    "y": 33
   }
 ]
