@@ -1298,7 +1298,7 @@ content:
               - name: image
                 label: 地図画像
                 type: image
-                description: ピンを重ねる浜中町の地図画像を登録します。横長〜正方形を推奨します。
+                description: ピンを重ねる浜中町の地図画像を登録します。
                 options:
                   media: photo_map_images
                   extensions: [jpg, jpeg, png, webp]
@@ -1307,12 +1307,64 @@ content:
                 label: 地図画像の代替テキスト
                 type: string
 
+          - name: subjects
+            label: 被写体・撮影テーマ
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            description: 「被写体で探す」と「被写体別一覧」で使用する表示名・説明を設定します。
+            fields:
+              - name: id
+                label: 被写体ID
+                type: select
+                required: true
+                options:
+                  values:
+
+                    - name: otter
+                      label: ラッコ
+                    - name: crane
+                      label: タンチョウ
+                    - name: wild-birds
+                      label: 野鳥
+                    - name: ezo-deer
+                      label: エゾシカ
+                    - name: flowers
+                      label: 花・湿原
+                    - name: coast
+                      label: 海・岬
+                    - name: pasture
+                      label: 牧草地・酪農景観
+                    - name: sunset
+                      label: 夕景
+                    - name: sunrise
+                      label: 朝景
+                    - name: stars
+                      label: 星空
+
+              - name: label
+                label: 表示名
+                type: string
+                required: true
+
+              - name: icon
+                label: アイコン文字
+                type: string
+                description: 任意。1〜2文字程度の記号を推奨します。
+
+              - name: description
+                label: 説明
+                type: string
+                description: 被写体別一覧の見出し下に表示します。
+
           - name: coursesTitle
-            label: おすすめコース見出し
+            label: モデルコース見出し
             type: string
 
           - name: courses
-            label: おすすめコース
+            label: モデルコース
             type: object
             list:
               max: 6
@@ -1323,16 +1375,21 @@ content:
               - name: eyebrow
                 label: 英字見出し
                 type: string
+
               - name: title
                 label: コース名
                 type: string
                 required: true
-              - name: text
-                label: 立ち寄りスポット
+
+              - name: summary
+                label: コース概要
                 type: text
+
               - name: duration
                 label: 所要時間
                 type: string
+                description: 例 約4時間
+
               - name: image
                 label: コース画像
                 type: image
@@ -1340,6 +1397,41 @@ content:
                   media: photo_map_images
                   extensions: [jpg, jpeg, png, webp]
                   rename: false
+
+              - name: stops
+                label: コース内の地点・時刻
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{time} / {name}"
+                fields:
+                  - name: time
+                    label: 時刻
+                    type: string
+                    required: true
+                    description: 例 09:00
+
+                  - name: name
+                    label: 地点名
+                    type: string
+                    required: true
+
+                  - name: text
+                    label: 地点の説明
+                    type: text
+
+                  - name: image
+                    label: 地点画像
+                    type: image
+                    options:
+                      media: photo_map_images
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+                  - name: url
+                    label: 地点のリンク先
+                    type: string
 
           - name: manner
             label: 撮影マナー誘導
@@ -1426,24 +1518,54 @@ content:
                 - name: observatory
                   label: 展望
 
-          - name: tags
-            label: 絞り込み条件
+          - name: subjects
+            label: この場所で狙える被写体・撮影テーマ
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{id} / {note}"
+            description: 「被写体で探す」の絞り込み対象になります。複数登録できます。
+            fields:
+              - name: id
+                label: 被写体・撮影テーマ
+                type: select
+                required: true
+                options:
+                  values:
+
+                    - name: otter
+                      label: ラッコ
+                    - name: crane
+                      label: タンチョウ
+                    - name: wild-birds
+                      label: 野鳥
+                    - name: ezo-deer
+                      label: エゾシカ
+                    - name: flowers
+                      label: 花・湿原
+                    - name: coast
+                      label: 海・岬
+                    - name: pasture
+                      label: 牧草地・酪農景観
+                    - name: sunset
+                      label: 夕景
+                    - name: sunrise
+                      label: 朝景
+                    - name: stars
+                      label: 星空
+
+              - name: note
+                label: この場所での補足
+                type: string
+                description: 例 岬・灯台・海岸風景、朝に野鳥を狙いやすい等
+
+          - name: features
+            label: 条件
             type: select
             options:
               multiple: true
               values:
-                - name: coast
-                  label: 海岸
-                - name: wetland
-                  label: 湿原
-                - name: wildlife
-                  label: 野生動物
-                - name: sunset
-                  label: 夕景
-                - name: sunrise
-                  label: 朝景
-                - name: stars
-                  label: 星空
                 - name: beginner
                   label: 初心者向け
                 - name: parking
