@@ -75,6 +75,178 @@
             "text": "撮影に必要な持ち物"
           }
         ]
+      },
+      {
+        "type": "richtext",
+        "body": "<p>本文はこちら</p>"
+      },
+      {
+        "type": "styled_text",
+        "body": "<p>装飾テキストはこちら</p>",
+        "font": "serif",
+        "size": "xlarge",
+        "color": "navy",
+        "weight": "bold",
+        "align": "center",
+        "background": "blue-soft",
+        "spacing": "compact"
+      },
+      {
+        "type": "gallery",
+        "title": "画像ギャラリー",
+        "columns": "3",
+        "items": [
+          {
+            "image": "assets/images/20250703-1450-432 mm-1-200 秒 (f - 8.0)-3.jpg",
+            "caption": "キャプション1"
+          },
+          {
+            "image": "assets/images/20250720-1842-268 mm-1-125 秒 (f - 8.0).jpg",
+            "caption": "キャプション2"
+          },
+          {
+            "image": "assets/images/20250720-1839-570 mm-1-125 秒 (f - 8.0).jpg",
+            "caption": "キャプション3"
+          },
+          {
+            "image": "assets/images/20250608-1536-800 mm-1-1000 秒 (f - 9.0).jpg",
+            "caption": "キャプション4"
+          }
+        ]
+      },
+      {
+        "type": "map",
+        "title": "Googleマップ",
+        "url": "https://www.google.com/maps/d/u/0/embed?mid=17cRFMC4vh6wYBfq5p3xiBvENDqWqmcc&ehbc=2E312F",
+        "caption": "補足説明",
+        "size": "large",
+        "openUrl": "https://www.google.com/maps/d/u/0/edit?hl=ja&mid=17cRFMC4vh6wYBfq5p3xiBvENDqWqmcc&ll=43.07396912911458%2C145.1153370111078&z=15"
+      },
+      {
+        "type": "basic_info",
+        "title": "基本情報",
+        "items": [
+          {
+            "label": "項目名",
+            "value": "内容hogehoge"
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "tone": "info",
+        "title": "ポイント１",
+        "text": "内容ほげほげ"
+      },
+      {
+        "type": "note",
+        "tone": "important",
+        "title": "重要なみだし",
+        "text": "重要な内容"
+      },
+      {
+        "type": "note",
+        "tone": "caution",
+        "title": "注意涙し",
+        "text": "注意な内容"
+      },
+      {
+        "type": "checklist",
+        "title": "チェックリストの見出し",
+        "items": [
+          {
+            "text": "チェックリスト１"
+          },
+          {
+            "text": "チェックリスト２"
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "表の見出し",
+        "caption": "説明",
+        "headers": [
+          "列見出し1",
+          "列見出し２"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "行見出し１",
+              "行見出し２"
+            ]
+          }
+        ],
+        "note": "注記注記注記注記注記注記注記注記注記注記"
+      },
+      {
+        "type": "faq",
+        "title": "FAQ1",
+        "items": [
+          {
+            "question": "質問質問質問質問",
+            "answer": "<p>質問質問</p>"
+          }
+        ]
+      },
+      {
+        "type": "links",
+        "title": "見出し",
+        "items": [
+          {
+            "label": "浜中町役場",
+            "url": "https://www.townhamanaka.jp/",
+            "external": false
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "title": "カード一覧",
+        "items": [
+          {
+            "title": "カード1",
+            "text": "setumeisetumeisetumeisetumeisetumeisetumei",
+            "url": "https://www.townhamanaka.jp/"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "eyebrow": "CTA大きな誘導",
+        "title": "みだし",
+        "text": "説明",
+        "label": "ボタン表示",
+        "url": "https://www.townhamanaka.jp/",
+        "external": true,
+        "style": "blue"
+      },
+      {
+        "type": "media_text",
+        "image": "assets/images/20250608-1536-800 mm-1-1000 秒 (f - 9.0)-1.jpg",
+        "title": "見出し見出し",
+        "body": "<p>本文本文本文本文本文本文本文本文本文本文本文本文</p>"
+      },
+      {
+        "type": "related",
+        "title": "関連記事",
+        "items": [
+          {
+            "articleId": "project",
+            "title": "プロジェクト"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "引用引用引用引用引用引用引用引用引用引用",
+        "author": "わたし",
+        "source": "出展補足出展補足出展補足出展補足出展補足出展補足出展補足出展補足出展補足"
+      },
+      {
+        "type": "divider",
+        "style": "line"
       }
     ]
   },
