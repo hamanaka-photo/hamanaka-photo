@@ -1422,8 +1422,9 @@ content:
                     type: text
 
                   - name: image
-                    label: 地点画像
+                    label: 地点画像（任意）
                     type: image
+                    description: 任意項目です。画像を登録しない場合は、公開ページでも画像枠を表示しません。
                     options:
                       media: photo_map_images
                       extensions: [jpg, jpeg, png, webp]
