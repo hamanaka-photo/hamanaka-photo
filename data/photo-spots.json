@@ -24,6 +24,7 @@
     "bestSeason": "5〜10月",
     "bestTime": "夕方",
     "access": "車で約40分",
+    "position": "60,61",
     "x": 60,
     "y": 72,
     "detailUrl": "https://maps.app.goo.gl/SgEYqvbxA687csa96"
@@ -53,6 +54,7 @@
     "bestSeason": "4〜9月",
     "bestTime": "朝",
     "access": "車で約35分",
+    "position": "51,64",
     "x": 69,
     "y": 61
   },
@@ -81,6 +83,7 @@
     "bestSeason": "5〜10月",
     "bestTime": "夕方",
     "access": "車で約30分",
+    "position": "40,72",
     "x": 59,
     "y": 51
   },
@@ -108,6 +111,7 @@
     "bestSeason": "3〜11月",
     "bestTime": "朝",
     "access": "車で約25分",
+    "position": "26,72",
     "x": 24,
     "y": 26
   },
@@ -135,6 +139,7 @@
     "bestSeason": "4〜10月",
     "bestTime": "昼〜夕方",
     "access": "車で約15分",
+    "position": "29,45",
     "x": 28,
     "y": 46
   },
@@ -159,6 +164,7 @@
     "features": [
       "beginner"
     ],
+    "position": "40,59",
     "x": 46,
     "y": 33
   }
