@@ -318,6 +318,42 @@
       font-weight: 700;
     }
 
+    .context-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 8px 14px;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 16px 18px;
+      border: 1px solid #cfe0e9;
+      border-radius: 12px;
+      background: #edf6fa;
+    }
+
+    .context-card strong {
+      grid-column: 1 / -1;
+      color: var(--navy);
+      font-size: 14px;
+    }
+
+    .context-label {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .06em;
+    }
+
+    .context-value {
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .context-value.is-empty {
+      color: var(--muted);
+      font-weight: 500;
+    }
+
     .steps {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -389,6 +425,27 @@
   </header>
 
   <main class="wrap">
+    <section
+      class="context-card"
+      aria-label="現在設定している内容">
+      <strong>現在設定している内容</strong>
+
+      <span class="context-label">設定場所</span>
+      <span class="context-value" id="contextPath">
+        フォトマップ・撮影スポット
+      </span>
+
+      <span class="context-label">スポット</span>
+      <span class="context-value is-empty" id="contextSpot">
+        スポット名を取得できませんでした
+      </span>
+
+      <span class="context-label">設定項目</span>
+      <span class="context-value" id="contextField">
+        MAP位置（x,y）
+      </span>
+    </section>
+
     <div class="toolbar">
       <div class="coord" aria-live="polite">
         <small>選択位置</small>
@@ -523,6 +580,52 @@
 
       const status =
         document.getElementById('status');
+
+      const contextPath =
+        document.getElementById('contextPath');
+
+      const contextSpot =
+        document.getElementById('contextSpot');
+
+      const contextField =
+        document.getElementById('contextField');
+
+      const params =
+        new URLSearchParams(
+          window.location.search
+        );
+
+      const contextName =
+        params.get('context') ||
+        'フォトマップ・撮影スポット';
+
+      const spotName =
+        params.get('spot') || '';
+
+      const fieldName =
+        params.get('field') ||
+        'MAP位置（x,y）';
+
+      const initialPosition =
+        params.get('position') || '';
+
+      contextPath.textContent =
+        contextName;
+
+      contextField.textContent =
+        fieldName;
+
+      if (spotName) {
+        contextSpot.textContent =
+          spotName;
+
+        contextSpot.classList.remove(
+          'is-empty'
+        );
+
+        document.title =
+          `${spotName}のMAP位置を指定｜HAMANAKA PHOTO`;
+      }
 
       let selected = null;
       let spots = [];
@@ -942,6 +1045,36 @@
         }
       };
 
+      const applyInitialPosition = () => {
+        const matched =
+          String(initialPosition)
+            .trim()
+            .match(
+              /^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$/
+            );
+
+        if (!matched) {
+          return;
+        }
+
+        selected = {
+          x: Number(matched[1]),
+          y: Number(matched[2])
+        };
+
+        coord.textContent =
+          `X: ${selected.x}　Y: ${selected.y}`;
+
+        copyAndCloseBtn.disabled =
+          false;
+
+        setStatus(
+          `現在の登録座標 ${selected.x},${selected.y} を表示しています。`
+        );
+
+        draw();
+      };
+
       const loadData = async () => {
         let mapImage =
           DEFAULT_MAP_IMAGE;
@@ -1120,7 +1253,10 @@
         observer.observe(frame);
       }
 
-      loadData();
+      loadData()
+        .finally(() => {
+          applyInitialPosition();
+        });
     })();
   </script>
 </body>
