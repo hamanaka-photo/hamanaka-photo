@@ -1587,7 +1587,7 @@ content:
           - name: position
             label: MAP位置（x,y）
             type: string
-            description: "座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=62 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71"
+            description: "座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=63 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71"
             pattern:
               regex: "^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$"
               message: "1〜100の範囲で x,y の形式で入力してください。座標は100×100グリッドのセル番号です。例 63,71"
