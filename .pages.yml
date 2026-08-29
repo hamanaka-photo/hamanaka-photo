@@ -1587,7 +1587,7 @@ content:
           - name: position
             label: MAP位置（x,y）
             type: string
-            description: "地図上で指定 → https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html  座標選択ツールで場所をクリックし、「座標をコピーしてCMSに戻る」を押した後、この欄で Ctrl+V してください。例 63,71"
+            description: "座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=61 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。例 63,71"
             pattern:
               regex: "^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$"
               message: "1〜100の範囲で x,y の形式で入力してください。例 63,71"
@@ -1603,9 +1603,9 @@ content:
             hidden: true
 
           - name: detailUrl
-            label: 詳細ページURL
+            label: Google Map URL
             type: string
-            description: 未入力の場合は「詳細を見る」を表示しません。
+            description: Google Mapsでこのスポットを開くURLを入力します。未入力の場合は「Google Mapで開く」リンクを表示しません。
 
       - name: guide_articles
         label: フォトガイド記事
