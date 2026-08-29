@@ -14,6 +14,15 @@
     return;
   }
 
+  if (
+    requestedArticle === 'trip' &&
+    window.HAMANAKA_TRIP &&
+    typeof window.HAMANAKA_TRIP.init === 'function'
+  ) {
+    window.HAMANAKA_TRIP.init(root);
+    return;
+  }
+
   const escapeHtml = (value = '') =>
     String(value).replace(/[&<>"']/g, char => ({
       '&': '&amp;',
