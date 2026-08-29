@@ -88,6 +88,21 @@
       ? spot.features.map(String)
       : [];
 
+  const gridCoordinateToPercent = value => {
+    const number = Number(value);
+
+    if (!Number.isFinite(number)) {
+      return 49.5;
+    }
+
+    const cell = Math.min(
+      100,
+      Math.max(1, number)
+    );
+
+    return cell - 0.5;
+  };
+
   const getSpotPosition = spot => {
     const raw =
       String(spot.position || '')
@@ -186,21 +201,13 @@
       getSpotPosition(spot);
 
     const x =
-      Math.min(
-        100,
-        Math.max(
-          0,
-          position.x
-        )
+      gridCoordinateToPercent(
+        position.x
       );
 
     const y =
-      Math.min(
-        100,
-        Math.max(
-          0,
-          position.y
-        )
+      gridCoordinateToPercent(
+        position.y
       );
 
     return `
@@ -208,6 +215,8 @@
         class="photo-map-pin ${markerClass(spot)}"
         type="button"
         style="--map-x:${x}%;--map-y:${y}%"
+        data-map-x="${escapeHtml(position.x)}"
+        data-map-y="${escapeHtml(position.y)}"
         data-map-pin="${escapeHtml(spot.id)}"
         data-map-area="${escapeHtml(spot.area || '')}"
         data-map-subjects="${escapeHtml(subjectIds(spot).join(','))}"
