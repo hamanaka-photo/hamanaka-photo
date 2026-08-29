@@ -1025,24 +1025,6 @@
             )}
           </p>
 
-          <div class="photo-map-hero-actions">
-
-            <a
-              class="photo-map-hero-button photo-map-hero-button-primary"
-              href="#photo-map-explorer"
-              data-hero-mode="area">
-              エリアで探す
-            </a>
-
-            <a
-              class="photo-map-hero-button"
-              href="#photo-map-explorer"
-              data-hero-mode="subject">
-              撮りたい被写体で探す
-            </a>
-
-          </div>
-
         </div>
 
       </section>
