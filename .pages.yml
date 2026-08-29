@@ -1584,17 +1584,23 @@ content:
             label: アクセス
             type: string
 
+          - name: position
+            label: MAP位置（x,y）
+            type: string
+            description: "地図上で指定 → https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html  座標選択ツールで場所をクリックし、「座標をコピーしてCMSに戻る」を押した後、この欄で Ctrl+V してください。例 63,71"
+            pattern:
+              regex: "^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$"
+              message: "1〜100の範囲で x,y の形式で入力してください。例 63,71"
+
           - name: x
-            label: MAP横位置（0〜100）
+            label: 旧MAP横位置
             type: number
-            required: true
-            description: 地図画像の左端を0、右端を100としてピン位置を入力します。
+            hidden: true
 
           - name: y
-            label: MAP縦位置（0〜100）
+            label: 旧MAP縦位置
             type: number
-            required: true
-            description: 地図画像の上端を0、下端を100としてピン位置を入力します。
+            hidden: true
 
           - name: detailUrl
             label: 詳細ページURL

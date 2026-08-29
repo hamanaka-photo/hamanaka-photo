@@ -1,0 +1,1127 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="HAMANAKA PHOTO フォトマップ座標選択ツール">
+  <title>MAP位置を指定｜HAMANAKA PHOTO</title>
+
+  <style>
+    :root {
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans JP",
+        sans-serif;
+      color: #17364d;
+      background: #f5f7f8;
+      --navy: #17364d;
+      --blue: #247bc5;
+      --muted: #687b89;
+      --line: #d6e0e5;
+      --orange: #e06d2f;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        linear-gradient(
+          180deg,
+          #eef4f6 0,
+          #f8fafb 220px,
+          #f8fafb 100%
+        );
+    }
+
+    button,
+    input {
+      font: inherit;
+    }
+
+    .tool-header {
+      padding: 26px 20px 20px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,.96);
+    }
+
+    .tool-header-inner {
+      width: min(100%, 1120px);
+      margin: 0 auto;
+    }
+
+    .brand {
+      margin: 0 0 6px;
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .14em;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(25px, 4vw, 38px);
+      line-height: 1.3;
+    }
+
+    .lead {
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .wrap {
+      width: min(calc(100% - 32px), 1120px);
+      margin: 24px auto 48px;
+    }
+
+    .toolbar {
+      display: grid;
+      grid-template-columns: minmax(220px, auto) 1fr auto;
+      gap: 12px;
+      align-items: center;
+      margin-bottom: 14px;
+    }
+
+    .coord {
+      display: flex;
+      gap: 9px;
+      align-items: baseline;
+      min-height: 48px;
+      padding: 11px 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 5px 20px rgba(23,54,77,.04);
+    }
+
+    .coord small {
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .coord strong {
+      font-size: 20px;
+      letter-spacing: .04em;
+    }
+
+    .toolbar-options {
+      display: flex;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    label {
+      display: inline-flex;
+      gap: 7px;
+      align-items: center;
+      user-select: none;
+    }
+
+    .plain-button {
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid var(--line);
+      border-radius: 9px;
+      color: var(--navy);
+      background: #fff;
+      cursor: pointer;
+    }
+
+    .plain-button:hover {
+      background: #f2f6f8;
+    }
+
+    .map-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      box-shadow: 0 14px 35px rgba(23,54,77,.07);
+    }
+
+    .map-frame {
+      position: relative;
+      width: 100%;
+      min-height: 420px;
+      overflow: hidden;
+      background: #dcecf0;
+    }
+
+    #map {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 420px;
+      object-fit: cover;
+      user-select: none;
+      -webkit-user-drag: none;
+    }
+
+    #map[hidden] {
+      display: none;
+    }
+
+    .map-fallback {
+      display: grid;
+      place-content: center;
+      min-height: 560px;
+      padding: 40px;
+      color: var(--muted);
+      text-align: center;
+      background:
+        radial-gradient(
+          circle at 35% 34%,
+          rgba(108,161,108,.42) 0 9%,
+          transparent 10%
+        ),
+        radial-gradient(
+          circle at 52% 48%,
+          rgba(96,158,115,.38) 0 17%,
+          transparent 18%
+        ),
+        linear-gradient(
+          145deg,
+          #d5edf1 0 35%,
+          #d9e8d6 36% 66%,
+          #bfe0e9 67% 100%
+        );
+    }
+
+    .map-fallback[hidden] {
+      display: none;
+    }
+
+    .map-fallback strong {
+      display: block;
+      color: var(--navy);
+      font-size: 24px;
+      letter-spacing: .12em;
+    }
+
+    .map-fallback span {
+      display: block;
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    #overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 3;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+      touch-action: manipulation;
+    }
+
+    .existing-pins {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    .existing-pin {
+      position: absolute;
+      left: var(--x);
+      top: var(--y);
+      width: 13px;
+      height: 13px;
+      transform: translate(-50%, -50%);
+      border: 3px solid rgba(255,255,255,.95);
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 3px 9px rgba(23,54,77,.35);
+    }
+
+    .existing-pin span {
+      position: absolute;
+      left: 17px;
+      top: 50%;
+      width: max-content;
+      max-width: 160px;
+      transform: translateY(-50%);
+      padding: 4px 7px;
+      border-radius: 6px;
+      color: var(--navy);
+      background: rgba(255,255,255,.9);
+      font-size: 9px;
+      font-weight: 700;
+      box-shadow: 0 3px 9px rgba(23,54,77,.08);
+    }
+
+    .map-footer {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 20px;
+      align-items: center;
+      padding: 18px 20px;
+      border-top: 1px solid var(--line);
+    }
+
+    .help {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .copy-button {
+      min-height: 48px;
+      padding: 0 22px;
+      border: 0;
+      border-radius: 9px;
+      color: #fff;
+      background: var(--navy);
+      font-weight: 800;
+      cursor: pointer;
+    }
+
+    .copy-button:hover:not(:disabled) {
+      background: #0f2a3e;
+    }
+
+    .copy-button:disabled {
+      cursor: not-allowed;
+      opacity: .42;
+    }
+
+    .status {
+      min-height: 26px;
+      margin: 12px 2px 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.7;
+    }
+
+    .status.is-success {
+      color: #2f6e4c;
+      font-weight: 700;
+    }
+
+    .status.is-error {
+      color: #a94b31;
+      font-weight: 700;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .step {
+      padding: 15px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: #fff;
+    }
+
+    .step b {
+      display: block;
+      margin-bottom: 5px;
+      color: var(--blue);
+      font-size: 10px;
+      letter-spacing: .08em;
+    }
+
+    .step span {
+      color: var(--navy);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 760px) {
+      .toolbar {
+        grid-template-columns: 1fr;
+      }
+
+      .map-frame,
+      #map {
+        min-height: 360px;
+      }
+
+      .existing-pin span {
+        display: none;
+      }
+
+      .map-footer {
+        grid-template-columns: 1fr;
+      }
+
+      .copy-button {
+        width: 100%;
+      }
+
+      .steps {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="tool-header">
+    <div class="tool-header-inner">
+      <p class="brand">HAMANAKA PHOTO / MAP POSITION TOOL</p>
+      <h1>地図上でスポット位置を指定</h1>
+      <p class="lead">
+        MAP上の場所をクリックまたはタップすると、
+        CMSへ貼り付ける「x,y」座標を取得できます。
+      </p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="toolbar">
+      <div class="coord" aria-live="polite">
+        <small>選択位置</small>
+        <strong id="coord">X: —　Y: —</strong>
+      </div>
+
+      <div class="toolbar-options">
+        <label>
+          <input type="checkbox" id="gridToggle" checked>
+          100×100グリッドを表示
+        </label>
+
+        <label>
+          <input type="checkbox" id="spotsToggle" checked>
+          登録済みスポットを表示
+        </label>
+      </div>
+
+      <button
+        class="plain-button"
+        id="clearBtn"
+        type="button">
+        選択解除
+      </button>
+    </div>
+
+    <section class="map-card">
+      <div class="map-frame" id="frame">
+        <img
+          id="map"
+          alt="浜中町フォトマップ"
+          hidden>
+
+        <div
+          class="map-fallback"
+          id="mapFallback"
+          hidden>
+          <div>
+            <strong>HAMANAKA</strong>
+            <span>
+              地図画像を読み込めませんでした。<br>
+              PHOTO MAP設定の地図画像を確認してください。
+            </span>
+          </div>
+        </div>
+
+        <div
+          class="existing-pins"
+          id="existingPins"
+          aria-hidden="true">
+        </div>
+
+        <canvas
+          id="overlay"
+          aria-label="地図上の位置を選択">
+        </canvas>
+      </div>
+
+      <div class="map-footer">
+        <p class="help">
+          左上を X=1・Y=1、右下を X=100・Y=100 として座標を返します。
+          登録済みスポットは青い点で表示されます。
+        </p>
+
+        <button
+          class="copy-button"
+          id="copyAndCloseBtn"
+          type="button"
+          disabled>
+          座標をコピーしてCMSに戻る
+        </button>
+      </div>
+    </section>
+
+    <p class="status" id="status" aria-live="polite"></p>
+
+    <div class="steps" aria-label="使い方">
+      <div class="step">
+        <b>STEP 1</b>
+        <span>地図上の登録したい場所をクリック</span>
+      </div>
+
+      <div class="step">
+        <b>STEP 2</b>
+        <span>「座標をコピーしてCMSに戻る」をクリック</span>
+      </div>
+
+      <div class="step">
+        <b>STEP 3</b>
+        <span>CMSの「MAP位置（x,y）」で Ctrl+V</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    (() => {
+      const DEFAULT_MAP_IMAGE =
+        'assets/images/guide-map.webp';
+
+      const img =
+        document.getElementById('map');
+
+      const fallback =
+        document.getElementById('mapFallback');
+
+      const frame =
+        document.getElementById('frame');
+
+      const canvas =
+        document.getElementById('overlay');
+
+      const ctx =
+        canvas.getContext('2d');
+
+      const coord =
+        document.getElementById('coord');
+
+      const gridToggle =
+        document.getElementById('gridToggle');
+
+      const spotsToggle =
+        document.getElementById('spotsToggle');
+
+      const clearBtn =
+        document.getElementById('clearBtn');
+
+      const copyAndCloseBtn =
+        document.getElementById('copyAndCloseBtn');
+
+      const existingPins =
+        document.getElementById('existingPins');
+
+      const status =
+        document.getElementById('status');
+
+      let selected = null;
+      let spots = [];
+
+      const clamp =
+        (value, min, max) =>
+          Math.min(max, Math.max(min, value));
+
+      const parsePosition = spot => {
+        const raw =
+          String(spot.position || '')
+            .trim()
+            .replace(/[，\s]/g, match =>
+              match === '，' ? ',' : ''
+            );
+
+        const matched =
+          raw.match(
+            /^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$/
+          );
+
+        if (matched) {
+          return {
+            x: Number(matched[1]),
+            y: Number(matched[2])
+          };
+        }
+
+        const x =
+          Number(spot.x);
+
+        const y =
+          Number(spot.y);
+
+        if (
+          Number.isFinite(x) &&
+          Number.isFinite(y)
+        ) {
+          return {
+            x: clamp(x, 1, 100),
+            y: clamp(y, 1, 100)
+          };
+        }
+
+        return null;
+      };
+
+      const setStatus =
+        (message, type = '') => {
+          status.textContent = message;
+          status.className =
+            `status${type ? ` is-${type}` : ''}`;
+        };
+
+      const resizeCanvas = () => {
+        const rect =
+          frame.getBoundingClientRect();
+
+        if (!rect.width || !rect.height) {
+          return;
+        }
+
+        const dpr =
+          window.devicePixelRatio || 1;
+
+        canvas.width =
+          Math.round(rect.width * dpr);
+
+        canvas.height =
+          Math.round(rect.height * dpr);
+
+        canvas.style.width =
+          `${rect.width}px`;
+
+        canvas.style.height =
+          `${rect.height}px`;
+
+        ctx.setTransform(
+          dpr,
+          0,
+          0,
+          dpr,
+          0,
+          0
+        );
+
+        draw();
+      };
+
+      const draw = () => {
+        const w =
+          canvas.clientWidth;
+
+        const h =
+          canvas.clientHeight;
+
+        ctx.clearRect(0, 0, w, h);
+
+        if (gridToggle.checked) {
+          ctx.save();
+
+          for (let i = 1; i < 100; i += 1) {
+            const x =
+              w * i / 100;
+
+            const y =
+              h * i / 100;
+
+            ctx.beginPath();
+            ctx.lineWidth =
+              i % 10 === 0
+                ? 0.8
+                : 0.35;
+
+            ctx.strokeStyle =
+              i % 10 === 0
+                ? 'rgba(40,55,45,.28)'
+                : 'rgba(40,55,45,.12)';
+
+            ctx.moveTo(x, 0);
+            ctx.lineTo(x, h);
+            ctx.stroke();
+
+            ctx.beginPath();
+            ctx.lineWidth =
+              i % 10 === 0
+                ? 0.8
+                : 0.35;
+
+            ctx.strokeStyle =
+              i % 10 === 0
+                ? 'rgba(40,55,45,.28)'
+                : 'rgba(40,55,45,.12)';
+
+            ctx.moveTo(0, y);
+            ctx.lineTo(w, y);
+            ctx.stroke();
+          }
+
+          ctx.restore();
+        }
+
+        if (selected) {
+          const cellW =
+            w / 100;
+
+          const cellH =
+            h / 100;
+
+          const left =
+            (selected.x - 1) * cellW;
+
+          const top =
+            (selected.y - 1) * cellH;
+
+          ctx.save();
+
+          ctx.fillStyle =
+            'rgba(255,135,45,.28)';
+
+          ctx.fillRect(
+            left,
+            top,
+            cellW,
+            cellH
+          );
+
+          ctx.strokeStyle =
+            'rgba(210,85,10,.95)';
+
+          ctx.lineWidth = 2;
+
+          ctx.strokeRect(
+            left,
+            top,
+            cellW,
+            cellH
+          );
+
+          const cx =
+            left + cellW / 2;
+
+          const cy =
+            top + cellH / 2;
+
+          ctx.beginPath();
+          ctx.arc(
+            cx,
+            cy,
+            5,
+            0,
+            Math.PI * 2
+          );
+
+          ctx.fillStyle =
+            'rgba(190,60,0,.95)';
+
+          ctx.fill();
+
+          ctx.restore();
+        }
+      };
+
+      const renderExistingPins = () => {
+        existingPins.innerHTML = '';
+
+        spots
+          .filter(
+            spot =>
+              spot &&
+              spot.published !== false
+          )
+          .forEach(spot => {
+            const position =
+              parsePosition(spot);
+
+            if (!position) {
+              return;
+            }
+
+            const pin =
+              document.createElement('div');
+
+            pin.className =
+              'existing-pin';
+
+            pin.style.setProperty(
+              '--x',
+              `${position.x}%`
+            );
+
+            pin.style.setProperty(
+              '--y',
+              `${position.y}%`
+            );
+
+            const label =
+              document.createElement('span');
+
+            label.textContent =
+              String(
+                spot.name ||
+                '登録済みスポット'
+              );
+
+            pin.appendChild(label);
+            existingPins.appendChild(pin);
+          });
+
+        existingPins.hidden =
+          !spotsToggle.checked;
+      };
+
+      const pick = event => {
+        const rect =
+          canvas.getBoundingClientRect();
+
+        const px =
+          Math.max(
+            0,
+            Math.min(
+              rect.width - 0.0001,
+              event.clientX - rect.left
+            )
+          );
+
+        const py =
+          Math.max(
+            0,
+            Math.min(
+              rect.height - 0.0001,
+              event.clientY - rect.top
+            )
+          );
+
+        const x =
+          Math.floor(
+            px / rect.width * 100
+          ) + 1;
+
+        const y =
+          Math.floor(
+            py / rect.height * 100
+          ) + 1;
+
+        selected = {
+          x,
+          y
+        };
+
+        coord.textContent =
+          `X: ${x}　Y: ${y}`;
+
+        copyAndCloseBtn.disabled =
+          false;
+
+        setStatus(
+          `選択座標は ${x},${y} です。`
+        );
+
+        draw();
+
+        window.dispatchEvent(
+          new CustomEvent(
+            'map-coordinate-selected',
+            {
+              detail: {
+                x,
+                y
+              }
+            }
+          )
+        );
+      };
+
+      const copyText = async text => {
+        if (
+          navigator.clipboard &&
+          window.isSecureContext
+        ) {
+          await navigator.clipboard.writeText(
+            text
+          );
+          return;
+        }
+
+        const textarea =
+          document.createElement('textarea');
+
+        textarea.value = text;
+        textarea.setAttribute(
+          'readonly',
+          ''
+        );
+
+        textarea.style.position =
+          'fixed';
+
+        textarea.style.opacity =
+          '0';
+
+        document.body.appendChild(
+          textarea
+        );
+
+        textarea.select();
+
+        const copied =
+          document.execCommand('copy');
+
+        textarea.remove();
+
+        if (!copied) {
+          throw new Error(
+            'Clipboard copy failed'
+          );
+        }
+      };
+
+      const copyAndReturn = async () => {
+        if (!selected) {
+          setStatus(
+            '先に地図上の位置を選択してください。',
+            'error'
+          );
+          return;
+        }
+
+        const value =
+          `${selected.x},${selected.y}`;
+
+        try {
+          await copyText(value);
+
+          setStatus(
+            `${value} をコピーしました。CMSの「MAP位置（x,y）」欄で Ctrl+V してください。`,
+            'success'
+          );
+
+          copyAndCloseBtn.textContent =
+            'コピーしました';
+
+          try {
+            if (
+              window.opener &&
+              !window.opener.closed
+            ) {
+              window.opener.focus();
+            }
+          } catch (error) {
+            console.warn(error);
+          }
+
+          window.setTimeout(() => {
+            window.close();
+
+            window.setTimeout(() => {
+              if (!window.closed) {
+                copyAndCloseBtn.textContent =
+                  'コピー済み・このタブを閉じる';
+
+                setStatus(
+                  `${value} はコピー済みです。ブラウザの仕様で自動的に閉じられない場合は、このタブを閉じてCMSへ戻ってください。`,
+                  'success'
+                );
+              }
+            }, 300);
+          }, 220);
+
+        } catch (error) {
+          console.error(error);
+
+          setStatus(
+            `コピーできませんでした。表示されている座標 ${value} を手動でコピーしてください。`,
+            'error'
+          );
+        }
+      };
+
+      const loadData = async () => {
+        let mapImage =
+          DEFAULT_MAP_IMAGE;
+
+        try {
+          const response =
+            await fetch(
+              'data/photo-map.json',
+              {
+                cache: 'no-cache'
+              }
+            );
+
+          if (response.ok) {
+            const settings =
+              await response.json();
+
+            if (
+              settings &&
+              settings.map &&
+              settings.map.image
+            ) {
+              mapImage =
+                String(
+                  settings.map.image
+                );
+            }
+
+            if (
+              settings &&
+              settings.map &&
+              settings.map.alt
+            ) {
+              img.alt =
+                String(
+                  settings.map.alt
+                );
+            }
+          }
+        } catch (error) {
+          console.warn(
+            'MAP設定を読み込めませんでした。',
+            error
+          );
+        }
+
+        try {
+          const response =
+            await fetch(
+              'data/photo-spots.json',
+              {
+                cache: 'no-cache'
+              }
+            );
+
+          if (response.ok) {
+            const data =
+              await response.json();
+
+            spots =
+              Array.isArray(data)
+                ? data
+                : [];
+          }
+        } catch (error) {
+          console.warn(
+            '登録済みスポットを読み込めませんでした。',
+            error
+          );
+        }
+
+        renderExistingPins();
+
+        img.addEventListener(
+          'load',
+          () => {
+            fallback.hidden = true;
+            img.hidden = false;
+
+            requestAnimationFrame(
+              resizeCanvas
+            );
+          },
+          {
+            once: true
+          }
+        );
+
+        img.addEventListener(
+          'error',
+          () => {
+            img.hidden = true;
+            fallback.hidden = false;
+
+            requestAnimationFrame(
+              resizeCanvas
+            );
+          },
+          {
+            once: true
+          }
+        );
+
+        img.src = mapImage;
+
+        if (img.complete) {
+          if (
+            img.naturalWidth > 0
+          ) {
+            fallback.hidden = true;
+            img.hidden = false;
+          } else {
+            img.hidden = true;
+            fallback.hidden = false;
+          }
+
+          requestAnimationFrame(
+            resizeCanvas
+          );
+        }
+      };
+
+      canvas.addEventListener(
+        'pointerdown',
+        pick
+      );
+
+      gridToggle.addEventListener(
+        'change',
+        draw
+      );
+
+      spotsToggle.addEventListener(
+        'change',
+        () => {
+          existingPins.hidden =
+            !spotsToggle.checked;
+        }
+      );
+
+      clearBtn.addEventListener(
+        'click',
+        () => {
+          selected = null;
+
+          coord.textContent =
+            'X: —　Y: —';
+
+          copyAndCloseBtn.disabled =
+            true;
+
+          copyAndCloseBtn.textContent =
+            '座標をコピーしてCMSに戻る';
+
+          setStatus('');
+          draw();
+        }
+      );
+
+      copyAndCloseBtn.addEventListener(
+        'click',
+        copyAndReturn
+      );
+
+      window.addEventListener(
+        'resize',
+        resizeCanvas
+      );
+
+      if ('ResizeObserver' in window) {
+        const observer =
+          new ResizeObserver(
+            resizeCanvas
+          );
+
+        observer.observe(frame);
+      }
+
+      loadData();
+    })();
+  </script>
+</body>
+</html>
