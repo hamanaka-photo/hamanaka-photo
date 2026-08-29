@@ -6,6 +6,14 @@ media:
     extensions: [jpg, jpeg, png, webp]
     rename: false
 
+
+  - name: trip_images
+    label: 準備編画像
+    input: assets/images/03_guide/trip
+    output: assets/images/03_guide/trip
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
   - name: photo_map_images
     label: PHOTO MAP画像
     input: assets/images/03_guide/photo-map
@@ -1261,6 +1269,391 @@ content:
     label: PHOTO GUIDE
     type: group
     items:
+      - name: trip_settings
+        label: 準備編
+        type: file
+        path: data/trip.json
+        format: json
+        operations:
+          delete: false
+        fields:
+          - name: hero
+            label: ページ上部
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: text
+                required: true
+              - name: lead
+                label: 説明文
+                type: text
+              - name: image
+                label: ヒーロー画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: primaryLabel
+                label: 左ボタン表示
+                type: string
+              - name: primaryUrl
+                label: 左ボタンリンク先
+                type: string
+              - name: secondaryLabel
+                label: 右ボタン表示
+                type: string
+              - name: secondaryUrl
+                label: 右ボタンリンク先
+                type: string
+
+          - name: stepsTitle
+            label: 5 STEP見出し
+            type: string
+          - name: steps
+            label: 5 STEP
+            type: object
+            list:
+              max: 5
+              collapsible:
+                collapsed: true
+                summary: "{number} {title}"
+            fields:
+              - name: number
+                label: STEP番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+                required: true
+              - name: image
+                label: 画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: anchor
+                label: 移動先ID
+                type: select
+                options:
+                  values:
+                    - name: access
+                      label: アクセス
+                    - name: stay
+                      label: 宿泊
+                    - name: weather
+                      label: 天気
+                    - name: clothing
+                      label: 服装
+                    - name: checklist
+                      label: 出発前チェック
+                    - name: gear
+                      label: 機材
+
+          - name: access
+            label: アクセス
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明文
+                type: text
+              - name: route
+                label: 移動ルート
+                type: object
+                list:
+                  max: 3
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 地点名
+                    type: string
+                  - name: sub
+                    label: 補足
+                    type: string
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: trip_images
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+              - name: routeNotes
+                label: ルート間の説明
+                type: string
+                list: true
+              - name: methods
+                label: 移動方法カード
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: buttonLabel
+                    label: ボタン表示
+                    type: string
+                  - name: url
+                    label: リンク先
+                    type: string
+              - name: driveTipsTitle
+                label: 車利用向け見出し
+                type: string
+              - name: driveTips
+                label: 車利用のポイント
+                type: object
+                list:
+                  max: 6
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 項目
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+              - name: tipsButtonLabel
+                label: 詳細リンク表示
+                type: string
+              - name: tipsUrl
+                label: 詳細リンク先
+                type: string
+
+          - name: stay
+            label: 宿泊
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: image
+                label: 背景画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+          - name: weather
+            label: 天気
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: items
+                label: 天気カード
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: trip_images
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+          - name: clothing
+            label: 服装
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: seasons
+                label: 季節タブ
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
+                fields:
+                  - name: label
+                    label: タブ名
+                    type: string
+                  - name: note
+                    label: 補足
+                    type: string
+                  - name: items
+                    label: 服装・持ち物
+                    type: string
+                    list: true
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: trip_images
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+          - name: checklist
+            label: 出発前チェック
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: categories
+                label: チェック項目グループ
+                type: object
+                list:
+                  max: 6
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: グループ名
+                    type: string
+                  - name: items
+                    label: 項目
+                    type: string
+                    list: true
+
+          - name: gear
+            label: 機材への誘導
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: image
+                label: 画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+          - name: noCar
+            label: 車を運転しない方向け
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: image
+                label: 画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
+          - name: ready
+            label: ページ末尾
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: image
+                label: 背景画像
+                type: image
+                options:
+                  media: trip_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+
       - name: photo_map_settings
         label: フォトマップ設定
         type: file
