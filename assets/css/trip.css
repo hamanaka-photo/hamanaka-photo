@@ -260,3 +260,130 @@
   }
 }
 
+/* =========================================
+   PHOTO TRIP v2.2
+   WHAT TO WEAR content scale-up
+========================================= */
+
+.trip-wear {
+  min-height: 360px;
+  padding: 22px;
+}
+
+.trip-wear .trip-feature-heading {
+  margin-bottom: 14px;
+}
+
+.trip-wear .trip-feature-heading p {
+  font-size: 11px;
+}
+
+.trip-wear .trip-feature-heading h2 {
+  font-size: clamp(22px, 2vw, 28px);
+  line-height: 1.25;
+}
+
+.trip-season-tabs {
+  min-height: 44px;
+  margin-bottom: 16px;
+}
+
+.trip-season-tabs button {
+  min-height: 44px;
+  padding: 0 18px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.trip-season-panel {
+  grid-template-columns: minmax(0, 1fr) minmax(150px, .9fr);
+  gap: 18px;
+  align-items: stretch;
+}
+
+.trip-season-list {
+  display: grid;
+  align-content: start;
+  gap: 11px;
+  margin: 0;
+  padding: 0;
+}
+
+.trip-season-list li {
+  min-height: 30px;
+  padding-left: 26px;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.trip-season-list li::before {
+  top: 4px;
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+}
+
+.trip-season-image {
+  min-height: 220px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #eef3f4;
+}
+
+.trip-season-image img {
+  width: 100%;
+  height: 100%;
+  min-height: 220px;
+  object-fit: cover;
+}
+
+.trip-wear .trip-outline-link {
+  min-height: 42px;
+  margin-top: 16px;
+  padding: 0 18px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+@media (max-width: 1050px) {
+  .trip-wear {
+    min-height: 350px;
+  }
+
+  .trip-season-panel {
+    grid-template-columns: minmax(0, 1fr) minmax(140px, .82fr);
+    gap: 14px;
+  }
+
+  .trip-season-image,
+  .trip-season-image img {
+    min-height: 200px;
+  }
+}
+
+@media (max-width: 720px) {
+  .trip-wear {
+    min-height: 0;
+    padding: 20px;
+  }
+
+  .trip-season-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .trip-season-tabs button {
+    width: 100%;
+    padding-inline: 10px;
+  }
+
+  .trip-season-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-season-image,
+  .trip-season-image img {
+    min-height: 240px;
+  }
+}
+
