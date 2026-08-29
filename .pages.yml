@@ -1352,8 +1352,6 @@ content:
                       label: 服装
                     - name: checklist
                       label: 出発前チェック
-                    - name: gear
-                      label: 機材
 
           - name: access
             label: アクセス
@@ -1366,8 +1364,9 @@ content:
                 label: 見出し
                 type: string
               - name: lead
-                label: 説明文
-                type: text
+                label: 補足
+                type: string
+                description: デスクトップでは見出し横に1行で表示します。
               - name: route
                 label: 移動ルート
                 type: object
@@ -1394,14 +1393,10 @@ content:
                 label: ルート間の説明
                 type: string
                 list: true
-              - name: methods
-                label: 移動方法カード
+
+              - name: flight
+                label: 飛行機で行く
                 type: object
-                list:
-                  max: 4
-                  collapsible:
-                    collapsed: true
-                    summary: "{title}"
                 fields:
                   - name: title
                     label: 見出し
@@ -1413,8 +1408,40 @@ content:
                     label: ボタン表示
                     type: string
                   - name: url
-                    label: リンク先
+                    label: Google検索URL
                     type: string
+                    description: 初期値は「羽田から釧路」のGoogle検索です。
+
+              - name: rental
+                label: レンタカーで行く
+                type: object
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: companiesTitle
+                    label: 展開後の見出し
+                    type: string
+                  - name: companies
+                    label: レンタカー営業所
+                    type: object
+                    list:
+                      collapsible:
+                        collapsed: true
+                        summary: "{name}"
+                    fields:
+                      - name: name
+                        label: 会社・営業所名
+                        type: string
+                        required: true
+                      - name: url
+                        label: 公式サイトURL
+                        type: string
+                        required: true
+
               - name: driveTipsTitle
                 label: 車利用向け見出し
                 type: string
@@ -1438,6 +1465,26 @@ content:
                 type: string
               - name: tipsUrl
                 label: 詳細リンク先
+                type: string
+
+          - name: noCar
+            label: 車を運転しない方向け
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
                 type: string
 
           - name: stay
@@ -1464,8 +1511,9 @@ content:
                 label: ボタン表示
                 type: string
               - name: url
-                label: リンク先
+                label: 宿泊情報URL
                 type: string
+                description: 浜中町観光協会の宿泊情報ページ等を指定します。
 
           - name: weather
             label: 天気
@@ -1575,60 +1623,6 @@ content:
                     label: 項目
                     type: string
                     list: true
-
-          - name: gear
-            label: 機材への誘導
-            type: object
-            fields:
-              - name: eyebrow
-                label: 英字見出し
-                type: string
-              - name: title
-                label: 見出し
-                type: string
-              - name: text
-                label: 説明
-                type: text
-              - name: image
-                label: 画像
-                type: image
-                options:
-                  media: trip_images
-                  extensions: [jpg, jpeg, png, webp]
-                  rename: false
-              - name: buttonLabel
-                label: ボタン表示
-                type: string
-              - name: url
-                label: リンク先
-                type: string
-
-          - name: noCar
-            label: 車を運転しない方向け
-            type: object
-            fields:
-              - name: eyebrow
-                label: 英字見出し
-                type: string
-              - name: title
-                label: 見出し
-                type: string
-              - name: text
-                label: 説明
-                type: text
-              - name: image
-                label: 画像
-                type: image
-                options:
-                  media: trip_images
-                  extensions: [jpg, jpeg, png, webp]
-                  rename: false
-              - name: buttonLabel
-                label: ボタン表示
-                type: string
-              - name: url
-                label: リンク先
-                type: string
 
           - name: ready
             label: ページ末尾
