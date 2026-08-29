@@ -39,13 +39,13 @@
       "number": "05",
       "title": "機材を確認する",
       "image": "",
-      "anchor": "gear"
+      "anchor": "checklist"
     }
   ],
   "access": {
     "eyebrow": "ACCESS",
     "title": "浜中町への行き方",
-    "lead": "出発地や季節に合わせて、無理のない移動計画を立てましょう。所要時間や運航状況は利用前に最新情報をご確認ください。",
+    "lead": "出発地や季節に合わせて、無理のない移動計画を。所要時間や運航状況は利用前に最新情報をご確認ください。",
     "route": [
       {
         "title": "羽田空港",
@@ -67,20 +67,6 @@
       "航空便で移動",
       "レンタカー等で移動"
     ],
-    "methods": [
-      {
-        "title": "飛行機で行く",
-        "text": "利用する航空便、乗り継ぎ、運航状況を確認して余裕のある計画を立てます。",
-        "buttonLabel": "航空便を調べる",
-        "url": ""
-      },
-      {
-        "title": "レンタカーで行く",
-        "text": "撮影地点を複数巡る場合は、荷物を積める車移動が便利です。季節ごとの道路状況も確認しましょう。",
-        "buttonLabel": "レンタカーについて詳しく見る",
-        "url": ""
-      }
-    ],
     "driveTipsTitle": "車で撮影する人へ",
     "driveTips": [
       {
@@ -101,15 +87,48 @@
       }
     ],
     "tipsButtonLabel": "アクセス情報を詳しく見る",
-    "tipsUrl": ""
+    "tipsUrl": "",
+    "flight": {
+      "title": "飛行機で行く",
+      "text": "羽田空港からたんちょう釧路空港までの便や所要時間をGoogleで確認します。",
+      "buttonLabel": "飛行機で行く",
+      "url": "https://www.google.com/search?q=%E7%BE%BD%E7%94%B0%E3%81%8B%E3%82%89%E9%87%A7%E8%B7%AF"
+    },
+    "rental": {
+      "title": "レンタカーで行く",
+      "text": "撮影地点を複数巡る場合は、荷物を積めるレンタカーが便利です。クリックすると釧路空港周辺の営業所を確認できます。",
+      "companiesTitle": "釧路空港周辺のレンタカー営業所",
+      "companies": [
+        {
+          "name": "トヨタレンタリース釧路",
+          "url": "https://rent.toyota.co.jp/shop/detail.aspx?eCode=003&rCode=61401"
+        },
+        {
+          "name": "ニッポンレンタカー北海道",
+          "url": "https://store.nipponrentacar.co.jp/b/nrs/info/810148/"
+        },
+        {
+          "name": "オリックスレンタカー",
+          "url": "https://car.orix.co.jp/search_airports/?airports_pk=6"
+        },
+        {
+          "name": "日産レンタカー",
+          "url": "https://nissan-rentacar.com/"
+        },
+        {
+          "name": "タイムズカー",
+          "url": "https://rental.timescar.jp/hokkaido/shop/0112/"
+        }
+      ]
+    }
   },
   "stay": {
     "eyebrow": "STAY",
     "title": "浜中町に泊まろう",
     "text": "朝や夕方も撮りたいなら、町内や周辺に泊まることで撮影時間を取りやすくなります。",
     "image": "",
-    "buttonLabel": "宿泊施設を探す",
-    "url": ""
+    "buttonLabel": "浜中町の宿泊施設を見る",
+    "url": "http://www.kiritappu.jp/stay/"
   },
   "weather": {
     "eyebrow": "WEATHER",
@@ -197,19 +216,10 @@
       }
     ]
   },
-  "gear": {
-    "eyebrow": "CAMERA",
-    "title": "撮影機材も忘れずに",
-    "text": "撮りたい被写体をイメージしながら、レンズ・バッテリー・記録メディアなどを確認しましょう。",
-    "image": "",
-    "buttonLabel": "機材の選び方を見る",
-    "url": "guide-article.html?article=gear"
-  },
   "noCar": {
     "eyebrow": "NO CAR?",
     "title": "車を運転しない方へ",
     "text": "鉄道・バス・送迎・タクシーなど、利用できる移動手段を事前に確認しましょう。",
-    "image": "",
     "buttonLabel": "アクセス方法を確認する",
     "url": ""
   },
