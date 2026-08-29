@@ -105,7 +105,7 @@
 .trip-no-car-compact>span { display:block; margin-top:7px; color:#5c7280; font-size:11px; line-height:1.65; }
 
 .trip-feature-section { padding:0 0 44px; border-top:1px solid var(--guide-line); }
-.trip-feature-row { display:grid; grid-template-columns:1.08fr 1fr .82fr; overflow:hidden; border:1px solid var(--guide-line); border-top:0; border-radius:0 0 10px 10px; }
+.trip-feature-row { display:grid; grid-template-columns:.76fr 1.18fr 1.06fr; overflow:hidden; border:1px solid var(--guide-line); border-top:0; border-radius:0 0 10px 10px; }
 .trip-feature { position:relative; min-width:0; min-height:390px; padding:24px; overflow:hidden; border-right:1px solid var(--guide-line); }
 .trip-feature:last-child { border-right:0; }
 .trip-feature-bg { position:absolute; inset:0; }
@@ -200,3 +200,63 @@
   .trip-ready-link { width:100%; }
   .trip-next-links { grid-template-columns:1fr 1fr; }
 }
+
+/* =========================================
+   PHOTO TRIP v2.1
+   Stay sizing / utility buttons
+========================================= */
+
+.trip-stay {
+  min-height: 360px;
+}
+
+.trip-stay .trip-feature-copy > span {
+  max-width: 270px;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.trip-stay .trip-solid-link {
+  min-width: 0;
+  width: auto;
+  padding-inline: 15px;
+}
+
+.trip-compact-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 40px;
+  margin-top: 14px;
+  padding: 0 14px;
+  border: 1px solid #b9cdd5;
+  border-radius: 7px;
+  color: #173e57;
+  background: #fff;
+  font-size: 11px;
+  font-weight: 800;
+  text-align: center;
+}
+
+.trip-compact-button:hover {
+  background: #f7fafb;
+}
+
+.trip-weather > .trip-outline-link {
+  margin-top: 16px;
+}
+
+@media (max-width: 1050px) {
+  .trip-stay {
+    min-height: 350px;
+  }
+}
+
+@media (max-width: 720px) {
+  .trip-stay {
+    min-height: 320px;
+  }
+}
+
