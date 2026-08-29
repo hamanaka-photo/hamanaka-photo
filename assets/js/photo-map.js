@@ -330,7 +330,7 @@
               ? `<a
                   class="photo-spot-detail"
                   href="${escapeHtml(detailUrl)}">
-                  詳細を見る →
+                  Google Mapで開く→
                 </a>`
               : ''
           }
@@ -392,7 +392,7 @@
           ${
             detailUrl
               ? `<a href="${escapeHtml(detailUrl)}">
-                  詳細を見る →
+                  Google Mapde
                 </a>`
               : ''
           }
