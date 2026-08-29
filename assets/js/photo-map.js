@@ -370,8 +370,10 @@
             detailUrl
               ? `<a
                   class="photo-spot-detail"
-                  href="${escapeHtml(detailUrl)}">
-                  詳細を見る →
+                  href="${escapeHtml(detailUrl)}"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Google Mapで開く →
                 </a>`
               : ''
           }
@@ -432,8 +434,11 @@
 
           ${
             detailUrl
-              ? `<a href="${escapeHtml(detailUrl)}">
-                  詳細を見る →
+              ? `<a
+                  href="${escapeHtml(detailUrl)}"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Google Mapで開く →
                 </a>`
               : ''
           }
