@@ -1746,3 +1746,30 @@
   }
 }
 
+/* =========================================
+   PHOTO MAP v6
+   Square map canvas
+========================================= */
+
+.photo-map-canvas {
+  aspect-ratio: 1 / 1;
+  min-height: 0;
+}
+
+.photo-map-base-image,
+.photo-map-base-placeholder {
+  width: 100%;
+  height: 100%;
+}
+
+.photo-map-base-image {
+  object-fit: contain;
+  background: #fff;
+}
+
+@media (max-width: 980px) {
+  .photo-map-canvas {
+    aspect-ratio: 1 / 1;
+  }
+}
+
