@@ -66,18 +66,67 @@
       </section>`;
   };
 
-  const renderAccess = access => {
+  const renderFlight = flight => {
+    const href = safeUrl(flight.url);
+    if (!href) return '';
+    return `
+      <a class="trip-method-card trip-method-card-link" href="${escapeHtml(href)}" target="_blank" rel="noopener noreferrer">
+        <div class="trip-method-icon" aria-hidden="true">AIR</div>
+        <div class="trip-method-content">
+          <span class="trip-method-kicker">GOOGLE SEARCH</span>
+          <h3>${escapeHtml(flight.title || '飛行機で行く')}</h3>
+          <p>${escapeHtml(flight.text || '')}</p>
+          <strong class="trip-method-action">${escapeHtml(flight.buttonLabel || '飛行機で行く')} <span aria-hidden="true">↗</span></strong>
+        </div>
+      </a>`;
+  };
+
+  const renderRental = rental => {
+    const companies = Array.isArray(rental.companies) ? rental.companies : [];
+    return `
+      <details class="trip-method-card trip-rental-card">
+        <summary>
+          <div class="trip-method-icon" aria-hidden="true">CAR</div>
+          <div class="trip-method-content">
+            <span class="trip-method-kicker">RENT A CAR</span>
+            <h3>${escapeHtml(rental.title || 'レンタカーで行く')}</h3>
+            <p>${escapeHtml(rental.text || '')}</p>
+            <strong class="trip-method-action">営業所を見る <span class="trip-details-plus" aria-hidden="true">＋</span></strong>
+          </div>
+        </summary>
+        <div class="trip-rental-expanded">
+          <h4>${escapeHtml(rental.companiesTitle || '釧路空港周辺のレンタカー営業所')}</h4>
+          <div class="trip-rental-links">
+            ${companies.map(company => {
+              const url = safeUrl(company.url);
+              return url ? `<a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer"><span>${escapeHtml(company.name || '')}</span><b aria-hidden="true">↗</b></a>` : '';
+            }).join('')}
+          </div>
+        </div>
+      </details>`;
+  };
+
+  const renderNoCar = noCar => `
+    <article class="trip-no-car-compact">
+      <p>${escapeHtml(noCar.eyebrow || 'NO CAR?')}</p>
+      <h3>${escapeHtml(noCar.title || '車を運転しない方へ')}</h3>
+      <span>${escapeHtml(noCar.text || '')}</span>
+      ${link(noCar.url, noCar.buttonLabel, 'trip-text-link')}
+    </article>`;
+
+  const renderAccess = (access, noCar) => {
     const route = Array.isArray(access.route) ? access.route : [];
     const notes = Array.isArray(access.routeNotes) ? access.routeNotes : [];
-    const methods = Array.isArray(access.methods) ? access.methods : [];
     const tips = Array.isArray(access.driveTips) ? access.driveTips : [];
     return `
       <section class="trip-section trip-access" id="access">
         <div class="container">
-          <div class="trip-section-heading">
+          <div class="trip-section-heading trip-access-heading">
             <p>${escapeHtml(access.eyebrow || 'ACCESS')}</p>
-            <h2>${escapeHtml(access.title || '')}</h2>
-            ${access.lead ? `<span>${escapeHtml(access.lead)}</span>` : ''}
+            <div class="trip-heading-row">
+              <h2>${escapeHtml(access.title || '')}</h2>
+              ${access.lead ? `<span>${escapeHtml(access.lead)}</span>` : ''}
+            </div>
           </div>
           <div class="trip-access-layout">
             <div class="trip-access-main">
@@ -92,24 +141,20 @@
                 `).join('')}
               </div>
               <div class="trip-method-grid">
-                ${methods.map(method => `
-                  <article class="trip-method-card">
-                    <div class="trip-method-icon" aria-hidden="true">${method.title?.includes('飛行機') ? 'AIR' : 'CAR'}</div>
-                    <div>
-                      <h3>${escapeHtml(method.title || '')}</h3>
-                      <p>${escapeHtml(method.text || '')}</p>
-                      ${link(method.url, method.buttonLabel, 'trip-inline-link')}
-                    </div>
-                  </article>`).join('')}
+                ${renderFlight(access.flight || {})}
+                ${renderRental(access.rental || {})}
               </div>
             </div>
-            <aside class="trip-drive-tips">
-              <h3>${escapeHtml(access.driveTipsTitle || '車で撮影する人へ')}</h3>
-              <div class="trip-tip-grid">
-                ${tips.map(tip => `<div class="trip-tip"><b>${escapeHtml(tip.title || '')}</b><span>${escapeHtml(tip.text || '')}</span></div>`).join('')}
-              </div>
-              ${link(access.tipsUrl, access.tipsButtonLabel, 'trip-text-link')}
-            </aside>
+            <div class="trip-access-side">
+              <aside class="trip-drive-tips">
+                <h3>${escapeHtml(access.driveTipsTitle || '車で撮影する人へ')}</h3>
+                <div class="trip-tip-grid">
+                  ${tips.map(tip => `<div class="trip-tip"><b>${escapeHtml(tip.title || '')}</b><span>${escapeHtml(tip.text || '')}</span></div>`).join('')}
+                </div>
+                ${link(access.tipsUrl, access.tipsButtonLabel, 'trip-text-link')}
+              </aside>
+              ${renderNoCar(noCar || {})}
+            </div>
           </div>
         </div>
       </section>`;
@@ -122,52 +167,56 @@
     const weatherItems = Array.isArray(weather.items) ? weather.items : [];
     const seasons = Array.isArray(clothing.seasons) ? clothing.seasons : [];
     return `
-      <section class="trip-feature-row">
-        <article class="trip-feature trip-stay" id="stay">
-          <div class="trip-feature-bg">${image(stay.image, stay.title)}</div>
-          <div class="trip-feature-shade"></div>
-          <div class="trip-feature-copy trip-feature-copy-light">
-            <p>${escapeHtml(stay.eyebrow || 'STAY')}</p>
-            <h2>${escapeHtml(stay.title || '')}</h2>
-            <span>${escapeHtml(stay.text || '')}</span>
-            ${link(stay.url, stay.buttonLabel, 'trip-solid-link')}
+      <section class="trip-feature-section">
+        <div class="container">
+          <div class="trip-feature-row">
+            <article class="trip-feature trip-stay" id="stay">
+              <div class="trip-feature-bg">${image(stay.image, stay.title)}</div>
+              <div class="trip-feature-shade"></div>
+              <div class="trip-feature-copy trip-feature-copy-light">
+                <p>${escapeHtml(stay.eyebrow || 'STAY')}</p>
+                <h2>${escapeHtml(stay.title || '')}</h2>
+                <span>${escapeHtml(stay.text || '')}</span>
+                ${link(stay.url, stay.buttonLabel, 'trip-solid-link')}
+              </div>
+            </article>
+            <article class="trip-feature trip-weather" id="weather">
+              <div class="trip-feature-copy">
+                <p>${escapeHtml(weather.eyebrow || 'WEATHER')}</p>
+                <h2>${escapeHtml(weather.title || '')}</h2>
+              </div>
+              <div class="trip-weather-grid">
+                ${weatherItems.map(item => `
+                  <div class="trip-weather-item">
+                    <div>${image(item.image, item.title)}</div>
+                    <h3>${escapeHtml(item.title || '')}</h3>
+                    <p>${escapeHtml(item.text || '')}</p>
+                  </div>`).join('')}
+              </div>
+              ${link(weather.url, weather.buttonLabel, 'trip-outline-link')}
+            </article>
+            <article class="trip-feature trip-clothing" id="clothing">
+              <div class="trip-feature-copy">
+                <p>${escapeHtml(clothing.eyebrow || 'WHAT TO WEAR')}</p>
+                <h2>${escapeHtml(clothing.title || '')}</h2>
+              </div>
+              <div class="trip-season-tabs" data-trip-season-tabs>
+                ${seasons.map((season, i) => `<button type="button" class="${i === 0 ? 'is-active' : ''}" data-season-tab="${i}">${escapeHtml(season.label || '')}</button>`).join('')}
+              </div>
+              <div class="trip-season-panels">
+                ${seasons.map((season, i) => `
+                  <div class="trip-season-panel" data-season-panel="${i}" ${i === 0 ? '' : 'hidden'}>
+                    <div class="trip-season-list">
+                      ${season.note ? `<p>${escapeHtml(season.note)}</p>` : ''}
+                      <ul>${(Array.isArray(season.items) ? season.items : []).map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
+                    </div>
+                    <div class="trip-season-image">${image(season.image, `${season.label}の服装`)}</div>
+                  </div>`).join('')}
+              </div>
+              ${link(clothing.url, clothing.buttonLabel, 'trip-outline-link')}
+            </article>
           </div>
-        </article>
-        <article class="trip-feature trip-weather" id="weather">
-          <div class="trip-feature-copy">
-            <p>${escapeHtml(weather.eyebrow || 'WEATHER')}</p>
-            <h2>${escapeHtml(weather.title || '')}</h2>
-          </div>
-          <div class="trip-weather-grid">
-            ${weatherItems.map(item => `
-              <div class="trip-weather-item">
-                <div>${image(item.image, item.title)}</div>
-                <h3>${escapeHtml(item.title || '')}</h3>
-                <p>${escapeHtml(item.text || '')}</p>
-              </div>`).join('')}
-          </div>
-          ${link(weather.url, weather.buttonLabel, 'trip-outline-link')}
-        </article>
-        <article class="trip-feature trip-clothing" id="clothing">
-          <div class="trip-feature-copy">
-            <p>${escapeHtml(clothing.eyebrow || 'WHAT TO WEAR')}</p>
-            <h2>${escapeHtml(clothing.title || '')}</h2>
-          </div>
-          <div class="trip-season-tabs" data-trip-season-tabs>
-            ${seasons.map((season, i) => `<button type="button" class="${i === 0 ? 'is-active' : ''}" data-season-tab="${i}">${escapeHtml(season.label || '')}</button>`).join('')}
-          </div>
-          <div class="trip-season-panels">
-            ${seasons.map((season, i) => `
-              <div class="trip-season-panel" data-season-panel="${i}" ${i === 0 ? '' : 'hidden'}>
-                <div class="trip-season-list">
-                  ${season.note ? `<p>${escapeHtml(season.note)}</p>` : ''}
-                  <ul>${(Array.isArray(season.items) ? season.items : []).map(item => `<li>${escapeHtml(item)}</li>`).join('')}</ul>
-                </div>
-                <div class="trip-season-image">${image(season.image, `${season.label}の服装`)}</div>
-              </div>`).join('')}
-          </div>
-          ${link(clothing.url, clothing.buttonLabel, 'trip-outline-link')}
-        </article>
+        </div>
       </section>`;
   };
 
@@ -177,44 +226,24 @@
       <section class="trip-section trip-checklist" id="checklist">
         <div class="container">
           <div class="trip-section-heading trip-heading-inline">
-            <p>${escapeHtml(checklist.eyebrow || 'CHECK LIST')}</p>
-            <h2>${escapeHtml(checklist.title || '')}</h2>
+            <div>
+              <p>${escapeHtml(checklist.eyebrow || 'CHECK LIST')}</p>
+              <h2>${escapeHtml(checklist.title || '')}</h2>
+            </div>
+            <button class="trip-check-reset" type="button" data-trip-check-reset>チェックをリセット</button>
           </div>
           <div class="trip-check-grid">
-            ${categories.map(category => `
-              <details class="trip-check-card" open>
-                <summary>${escapeHtml(category.title || '')}<span aria-hidden="true">⌄</span></summary>
-                <ul>${(Array.isArray(category.items) ? category.items : []).map(item => `<li><span aria-hidden="true"></span>${escapeHtml(item)}</li>`).join('')}</ul>
-              </details>`).join('')}
+            ${categories.map((category, categoryIndex) => `
+              <article class="trip-check-card">
+                <h3>${escapeHtml(category.title || '')}</h3>
+                <div class="trip-check-items">
+                  ${(Array.isArray(category.items) ? category.items : []).map((item, itemIndex) => {
+                    const key = `c${categoryIndex}-i${itemIndex}`;
+                    return `<label class="trip-check-item"><input type="checkbox" data-trip-check="${key}"><span class="trip-check-box" aria-hidden="true"></span><span>${escapeHtml(item)}</span></label>`;
+                  }).join('')}
+                </div>
+              </article>`).join('')}
           </div>
-        </div>
-      </section>`;
-  };
-
-  const renderBottomCards = data => {
-    const gear = data.gear || {};
-    const noCar = data.noCar || {};
-    return `
-      <section class="trip-bottom-cards">
-        <div class="container trip-bottom-grid">
-          <article class="trip-bottom-card" id="gear">
-            <div class="trip-bottom-copy">
-              <p>${escapeHtml(gear.eyebrow || 'CAMERA')}</p>
-              <h2>${escapeHtml(gear.title || '')}</h2>
-              <span>${escapeHtml(gear.text || '')}</span>
-            </div>
-            <div class="trip-bottom-image">${image(gear.image, gear.title)}</div>
-            ${link(gear.url, gear.buttonLabel, 'trip-solid-link')}
-          </article>
-          <article class="trip-bottom-card trip-no-car">
-            <div class="trip-bottom-copy">
-              <p>${escapeHtml(noCar.eyebrow || 'NO CAR?')}</p>
-              <h2>${escapeHtml(noCar.title || '')}</h2>
-              <span>${escapeHtml(noCar.text || '')}</span>
-            </div>
-            <div class="trip-bottom-image">${image(noCar.image, noCar.title)}</div>
-            ${link(noCar.url, noCar.buttonLabel, 'trip-solid-link')}
-          </article>
         </div>
       </section>`;
   };
@@ -258,20 +287,42 @@
         </div>
       </section>
       ${renderSteps(data)}
-      ${renderAccess(data.access || {})}
+      ${renderAccess(data.access || {}, data.noCar || {})}
       ${renderStayWeatherClothing(data)}
       ${renderChecklist(data.checklist || {})}
-      ${renderBottomCards(data)}
       ${renderReady(data.ready || {})}`;
   };
 
+  const CHECK_STORAGE_PREFIX = 'hamanaka-trip-check:';
+
   const initInteractions = root => {
     root.addEventListener('click', event => {
-      const button = event.target.closest('[data-season-tab]');
-      if (!button) return;
-      const index = button.dataset.seasonTab;
-      root.querySelectorAll('[data-season-tab]').forEach(el => el.classList.toggle('is-active', el === button));
-      root.querySelectorAll('[data-season-panel]').forEach(panel => { panel.hidden = panel.dataset.seasonPanel !== index; });
+      const seasonButton = event.target.closest('[data-season-tab]');
+      if (seasonButton) {
+        const index = seasonButton.dataset.seasonTab;
+        root.querySelectorAll('[data-season-tab]').forEach(el => el.classList.toggle('is-active', el === seasonButton));
+        root.querySelectorAll('[data-season-panel]').forEach(panel => { panel.hidden = panel.dataset.seasonPanel !== index; });
+        return;
+      }
+
+      const resetButton = event.target.closest('[data-trip-check-reset]');
+      if (resetButton) {
+        root.querySelectorAll('[data-trip-check]').forEach(input => {
+          input.checked = false;
+          try { localStorage.removeItem(CHECK_STORAGE_PREFIX + input.dataset.tripCheck); } catch (error) { /* storage may be unavailable */ }
+        });
+      }
+    });
+
+    root.querySelectorAll('[data-trip-check]').forEach(input => {
+      const storageKey = CHECK_STORAGE_PREFIX + input.dataset.tripCheck;
+      try { input.checked = localStorage.getItem(storageKey) === '1'; } catch (error) { /* storage may be unavailable */ }
+      input.addEventListener('change', () => {
+        try {
+          if (input.checked) localStorage.setItem(storageKey, '1');
+          else localStorage.removeItem(storageKey);
+        } catch (error) { /* storage may be unavailable */ }
+      });
     });
   };
 
