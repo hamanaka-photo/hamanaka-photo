@@ -1844,3 +1844,249 @@
   transform: translateY(0) translateX(0);
 }
 
+/* =========================================
+   PHOTO MAP v6.3
+   Exact SVG pin anchor + readability
+========================================= */
+
+/*
+  --map-x / --map-y is the coordinate itself.
+  The SVG viewBox bottom center (16,40) is placed exactly
+  on that point, so the visible pin tip cannot drift sideways.
+*/
+.photo-map-pin {
+  width: 32px;
+  height: 40px;
+  padding: 0;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+
+.photo-map-pin:hover,
+.photo-map-pin.is-selected {
+  transform: translate(-50%, -100%);
+  box-shadow: none;
+}
+
+.photo-map-pin-icon {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 32px;
+  height: 40px;
+  overflow: visible;
+  filter: drop-shadow(0 4px 5px rgba(18, 58, 80, .28));
+}
+
+.photo-map-pin-shape {
+  fill: var(--marker-color, var(--blue));
+  stroke: rgba(255, 255, 255, .98);
+  stroke-width: 2.5;
+  stroke-linejoin: round;
+}
+
+.photo-map-pin-hole {
+  fill: #fff;
+}
+
+.photo-map-pin.is-selected .photo-map-pin-icon {
+  filter:
+    drop-shadow(0 0 0 rgba(0,0,0,0))
+    drop-shadow(0 0 4px var(--marker-color))
+    drop-shadow(0 5px 7px rgba(18, 58, 80, .30));
+}
+
+/* Disable the old CSS-marker geometry completely. */
+.photo-map-pin-dot,
+.photo-map-pin-dot::before,
+.photo-map-pin-dot::after {
+  display: none !important;
+}
+
+.photo-map-pin-caption {
+  top: 7px;
+  left: calc(100% + 8px);
+  padding: 8px 11px;
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+/* Main controls */
+.photo-map-view-tabs button {
+  font-size: 15px;
+}
+
+.photo-map-control-label {
+  font-size: 12px;
+}
+
+.photo-map-search-mode button {
+  min-height: 40px;
+  padding: 0 16px;
+  font-size: 12px;
+}
+
+.photo-map-filters button {
+  min-height: 42px;
+  padding: 0 17px;
+  font-size: 12px;
+}
+
+/* Selected spot panel */
+.photo-map-selected-copy {
+  padding: 28px;
+}
+
+.photo-map-selected-area {
+  margin-bottom: 8px;
+  font-size: 12px;
+}
+
+.photo-map-selected-title h2 {
+  font-size: 26px;
+  line-height: 1.35;
+}
+
+.photo-map-selected-description {
+  margin-top: 15px;
+  font-size: 15px;
+  line-height: 1.85;
+}
+
+.photo-spot-type {
+  min-height: 23px;
+  padding: 0 9px;
+  font-size: 10px;
+}
+
+.photo-spot-subjects {
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.photo-spot-subject {
+  min-height: 29px;
+  padding: 0 11px;
+  font-size: 11px;
+}
+
+.photo-spot-meta {
+  gap: 10px 18px;
+  margin-top: 15px;
+}
+
+.photo-spot-meta-item {
+  gap: 3px;
+}
+
+.photo-spot-meta-item small {
+  font-size: 10px;
+  line-height: 1.4;
+}
+
+.photo-spot-meta-item strong {
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.photo-spot-detail,
+.photo-spot-list-copy > a {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* List view */
+.photo-map-list-head h2 {
+  font-size: 25px;
+}
+
+.photo-map-list-modes button {
+  min-height: 40px;
+  font-size: 12px;
+}
+
+.photo-map-list-group-heading p {
+  font-size: 10px;
+}
+
+.photo-map-list-group-heading h3 {
+  font-size: 21px;
+}
+
+.photo-map-list-group-heading small,
+.photo-map-list-group-heading > span {
+  font-size: 11px;
+}
+
+.photo-spot-card h3,
+.photo-spot-list-card h3 {
+  font-size: 18px;
+}
+
+.photo-spot-card-copy > p,
+.photo-spot-list-copy > p {
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+/* Legend */
+.photo-map-legend {
+  padding: 19px 22px;
+}
+
+.photo-map-legend h2 {
+  margin-bottom: 13px;
+  font-size: 17px;
+}
+
+.photo-map-legend-grid {
+  gap: 16px;
+}
+
+.photo-map-legend-grid strong {
+  font-size: 12px;
+}
+
+.photo-map-legend-grid small {
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+@media (max-width: 680px) {
+  .photo-map-view-tabs button {
+    font-size: 14px;
+  }
+
+  .photo-map-control-label,
+  .photo-map-search-mode button,
+  .photo-map-filters button {
+    font-size: 11px;
+  }
+
+  .photo-map-selected-copy {
+    padding: 22px;
+  }
+
+  .photo-map-selected-title h2 {
+    font-size: 23px;
+  }
+
+  .photo-map-selected-description {
+    font-size: 14px;
+  }
+
+  .photo-map-legend-grid strong {
+    font-size: 11px;
+  }
+
+  .photo-map-legend-grid small {
+    font-size: 9px;
+  }
+}
+
