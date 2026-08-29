@@ -223,10 +223,20 @@
         data-map-features="${escapeHtml(featureIds(spot).join(','))}"
         aria-label="${escapeHtml(spot.name)}を選択">
 
-        <span
-          class="photo-map-pin-dot"
-          aria-hidden="true">
-        </span>
+        <svg
+          class="photo-map-pin-icon"
+          viewBox="0 0 32 40"
+          aria-hidden="true"
+          focusable="false">
+          <path
+            class="photo-map-pin-shape"
+            d="M16 1.5C8.54 1.5 2.5 7.54 2.5 15c0 10.24 10.55 20.97 13.5 23.5 2.95-2.53 13.5-13.26 13.5-23.5C29.5 7.54 23.46 1.5 16 1.5Z" />
+          <circle
+            class="photo-map-pin-hole"
+            cx="16"
+            cy="15"
+            r="5" />
+        </svg>
 
         <span
           class="photo-map-pin-caption"
