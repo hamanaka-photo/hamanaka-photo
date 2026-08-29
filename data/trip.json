@@ -145,8 +145,8 @@
         "image": ""
       }
     ],
-    "buttonLabel": "天気予報をチェックする",
-    "url": ""
+    "buttonLabel": "現在の天気を確認する",
+    "url": "https://weathernews.jp/onebox/tenki/doutou/01663/"
   },
   "clothing": {
     "eyebrow": "WHAT TO WEAR",
@@ -220,8 +220,8 @@
     "eyebrow": "NO CAR?",
     "title": "車を運転しない方へ",
     "text": "鉄道・バス・送迎・タクシーなど、利用できる移動手段を事前に確認しましょう。",
-    "buttonLabel": "アクセス方法を確認する",
-    "url": ""
+    "buttonLabel": "公共交通・アクセス情報を見る",
+    "url": "https://www.townhamanaka.jp/kankou/2025-1222-1619-28.html"
   },
   "ready": {
     "eyebrow": "READY FOR HAMANAKA?",
