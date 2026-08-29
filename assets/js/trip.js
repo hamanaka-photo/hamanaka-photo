@@ -111,7 +111,7 @@
       <p>${escapeHtml(noCar.eyebrow || 'NO CAR?')}</p>
       <h3>${escapeHtml(noCar.title || '車を運転しない方へ')}</h3>
       <span>${escapeHtml(noCar.text || '')}</span>
-      ${link(noCar.url, noCar.buttonLabel, 'trip-text-link')}
+      ${link(noCar.url, noCar.buttonLabel, 'trip-compact-button')}
     </article>`;
 
   const renderAccess = (access, noCar) => {
