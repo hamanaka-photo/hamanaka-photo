@@ -1773,3 +1773,74 @@
   }
 }
 
+/* =========================================
+   PHOTO MAP v6.2
+   Exact 100 x 100 coordinate alignment
+========================================= */
+
+/*
+  x,y are 1-100 grid-cell numbers.
+  JavaScript converts them to each cell center:
+  1 -> 0.5%, 100 -> 99.5%.
+
+  The bottom-center of the marker button is the
+  actual coordinate. This makes the visible pin tip
+  match the coordinate picker exactly.
+*/
+.photo-map-pin {
+  width: 32px;
+  height: 34px;
+  transform: translate(-50%, -100%);
+  transform-origin: 50% 100%;
+}
+
+.photo-map-pin:hover,
+.photo-map-pin.is-selected {
+  transform: translate(-50%, -100%);
+}
+
+.photo-map-pin-dot {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  inset: auto;
+  width: 20px;
+  height: 20px;
+  transform: translateX(-50%) rotate(-45deg);
+  transform-origin: center;
+  border: 3px solid rgba(255, 255, 255, .96);
+  border-radius: 50% 50% 50% 0;
+  background: var(--marker-color, var(--blue));
+  box-shadow: 0 4px 12px rgba(18, 58, 80, .28);
+}
+
+.photo-map-pin-dot::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .96);
+}
+
+.photo-map-pin.is-selected .photo-map-pin-dot {
+  box-shadow:
+    0 0 0 4px rgba(255, 255, 255, .88),
+    0 0 0 7px var(--marker-color),
+    0 5px 16px rgba(18, 58, 80, .3);
+}
+
+.photo-map-pin-caption {
+  top: 8px;
+  left: calc(100% + 6px);
+  transform: translateY(0) translateX(-4px);
+}
+
+.photo-map-pin:hover .photo-map-pin-caption,
+.photo-map-pin:focus-visible .photo-map-pin-caption {
+  transform: translateY(0) translateX(0);
+}
+
