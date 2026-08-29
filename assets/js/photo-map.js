@@ -88,6 +88,44 @@
       ? spot.features.map(String)
       : [];
 
+  const getSpotPosition = spot => {
+    const raw =
+      String(spot.position || '')
+        .trim()
+        .replace(/[，\s]/g, match =>
+          match === '，' ? ',' : ''
+        );
+
+    const matched =
+      raw.match(
+        /^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$/
+      );
+
+    if (matched) {
+      return {
+        x: Number(matched[1]),
+        y: Number(matched[2])
+      };
+    }
+
+    const legacyX =
+      Number(spot.x);
+
+    const legacyY =
+      Number(spot.y);
+
+    return {
+      x:
+        Number.isFinite(legacyX)
+          ? legacyX
+          : 50,
+      y:
+        Number.isFinite(legacyY)
+          ? legacyY
+          : 50
+    };
+  };
+
   const subjectDefinitionMap = settings => {
     const map = new Map();
 
@@ -144,12 +182,15 @@
   };
 
   const renderPin = spot => {
+    const position =
+      getSpotPosition(spot);
+
     const x =
       Math.min(
         100,
         Math.max(
           0,
-          Number(spot.x || 50)
+          position.x
         )
       );
 
@@ -158,7 +199,7 @@
         100,
         Math.max(
           0,
-          Number(spot.y || 50)
+          position.y
         )
       );
 
@@ -330,7 +371,7 @@
               ? `<a
                   class="photo-spot-detail"
                   href="${escapeHtml(detailUrl)}">
-                  Google Mapで開く→
+                  詳細を見る →
                 </a>`
               : ''
           }
@@ -392,7 +433,7 @@
           ${
             detailUrl
               ? `<a href="${escapeHtml(detailUrl)}">
-                  Google Mapde
+                  詳細を見る →
                 </a>`
               : ''
           }
