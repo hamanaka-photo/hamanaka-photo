@@ -479,7 +479,7 @@
 <body>
   <header class="tool-header">
     <div class="tool-header-inner">
-      <p class="brand">HAMANAKA PHOTO / MAP POSITION TOOL / v6.1</p>
+      <p class="brand">HAMANAKA PHOTO / MAP POSITION TOOL / v6.2</p>
       <h1>地図上でスポット位置を指定</h1>
       <p class="lead">
         MAP上の場所をクリックまたはタップすると、
@@ -616,7 +616,7 @@
 
       <div class="map-footer">
         <p class="help">
-          左上を X=1・Y=1、右下を X=100・Y=100 として座標を返します。
+          地図を100×100のセルに分け、クリックしたセル番号を返します。公開MAPでは各セルの中心にピン先端を合わせます。
           登録済みスポットは青い点で表示されます。
         </p>
 
@@ -945,6 +945,16 @@
 
           ctx.fill();
 
+          ctx.beginPath();
+          ctx.moveTo(cx - 12, cy);
+          ctx.lineTo(cx + 12, cy);
+          ctx.moveTo(cx, cy - 12);
+          ctx.lineTo(cx, cy + 12);
+          ctx.strokeStyle =
+            'rgba(190,60,0,.95)';
+          ctx.lineWidth = 1.5;
+          ctx.stroke();
+
           ctx.restore();
         }
       };
@@ -974,12 +984,12 @@
 
             pin.style.setProperty(
               '--x',
-              `${position.x}%`
+              `${position.x - 0.5}%`
             );
 
             pin.style.setProperty(
               '--y',
-              `${position.y}%`
+              `${position.y - 0.5}%`
             );
 
             const label =
