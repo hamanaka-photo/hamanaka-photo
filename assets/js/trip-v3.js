@@ -127,13 +127,13 @@
             <div class="trip-v3-rental-wrap">
               <div class="trip-v3-rental-main">
                 <p>${esc(rental.text || '複数の撮影地点を巡るなら、レンタカーが便利です。')}</p>
-                <details class="trip-v3-rental-details">
-                  <summary><span>${esc(rental.companiesTitle || '釧路空港周辺のレンタカー営業所')}</span><b>＋</b></summary>
+                <div class="trip-v3-rental-links-wrap">
+                  <span class="trip-v3-rental-links-title">${esc(rental.companiesTitle || '釧路空港周辺のレンタカー営業所')}</span>
                   <div class="trip-v3-rental-links">
                     ${companies.map(c => safe(c.url) ? `
                       <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(c.name)}</span><b>↗</b></a>` : '').join('')}
                   </div>
-                </details>
+                </div>
               </div>
               <aside class="trip-v3-point">
                 <span class="trip-v3-point-badge">POINT / 要チェック</span>
@@ -149,7 +149,7 @@
             <div class="trip-v3-access-label"><p>PUBLIC TRANSPORT</p><h3>公共交通機関で行く</h3></div>
             <div class="trip-v3-transit">
               <p>${esc(noCar.text || '鉄道・バス・ハイヤーなどを組み合わせて移動します。運行日や予約条件を事前に確認してください。')}</p>
-              ${safe(noCar.url) ? `<a class="trip-v3-button trip-v3-button-primary" href="${esc(noCar.url)}" target="_blank" rel="noopener noreferrer">${esc(noCar.buttonLabel || '公共交通情報を見る')} ↗</a>` : ''}
+              ${safe(cfg.access.publicTransportUrl || noCar.url) ? `<a class="trip-v3-button trip-v3-button-primary" href="${esc(cfg.access.publicTransportUrl || noCar.url)}" target="_blank" rel="noopener noreferrer">${esc(cfg.access.publicTransportLabel || noCar.buttonLabel || '公共交通情報を見る')} ↗</a>` : ''}
             </div>
           </div>
         </div>
@@ -188,14 +188,37 @@
     const yTemp = v => T + innerH * (1 - (v - tempMin) / (tempMax - tempMin));
     const yPrecip = v => T + innerH * (1 - v / precipMax);
     const poly = values => values.map((v, i) => `${x(i)},${yTemp(v)}`).join(' ');
+    const hit = (cx, cy, label, cls) =>
+      `<circle class="trip-v3-chart-hit ${cls}" cx="${cx}" cy="${cy}" r="8" tabindex="0" data-chart-tooltip="${esc(label)}"/>`;
+
     const bars = climate.precipitation.map((v, i) => {
       const bw = 26, px = x(i) - bw / 2, py = yPrecip(v);
-      return `<rect x="${px}" y="${py}" width="${bw}" height="${T + innerH - py}" rx="3" fill="rgba(70,123,132,.20)"/>`;
+      const label = `${climate.months[i]} / 降水量 ${v}mm`;
+      return `
+        <rect x="${px}" y="${py}" width="${bw}" height="${T + innerH - py}" rx="3" fill="rgba(70,123,132,.20)"/>
+        <rect class="trip-v3-chart-hit trip-v3-chart-hit-bar" x="${px}" y="${py}" width="${bw}" height="${T + innerH - py}" rx="3" tabindex="0" data-chart-tooltip="${esc(label)}"/>`;
     }).join('');
+
     const grids = [-10,0,10,20].map(v => `
       <line x1="${L}" x2="${W-R}" y1="${yTemp(v)}" y2="${yTemp(v)}" stroke="#dce6e8" stroke-width="1"/>
       <text x="${L-8}" y="${yTemp(v)+4}" text-anchor="end" font-size="9" fill="#7a8c95">${v}°</text>`).join('');
-    const labels = climate.months.map((m, i) => `<text x="${x(i)}" y="${H-13}" text-anchor="middle" font-size="9" fill="#6f8189">${esc(m)}</text>`).join('');
+
+    const labels = climate.months.map((m, i) =>
+      `<text x="${x(i)}" y="${H-13}" text-anchor="middle" font-size="9" fill="#6f8189">${esc(m)}</text>`
+    ).join('');
+
+    const highHits = climate.high.map((v, i) =>
+      hit(x(i), yTemp(v), `${climate.months[i]} / 日最高気温 ${v}℃`, 'trip-v3-chart-hit-high')
+    ).join('');
+
+    const avgHits = climate.average.map((v, i) =>
+      hit(x(i), yTemp(v), `${climate.months[i]} / 平均気温 ${v}℃`, 'trip-v3-chart-hit-average')
+    ).join('');
+
+    const lowHits = climate.low.map((v, i) =>
+      hit(x(i), yTemp(v), `${climate.months[i]} / 日最低気温 ${v}℃`, 'trip-v3-chart-hit-low')
+    ).join('');
+
     return `
       <svg viewBox="0 0 ${W} ${H}" role="img" aria-label="榊町の月別平均気温、最高気温、最低気温、降水量">
         ${grids}
@@ -206,10 +229,14 @@
         ${climate.high.map((v,i)=>`<circle cx="${x(i)}" cy="${yTemp(v)}" r="2.8" fill="#c87350"/>`).join('')}
         ${climate.average.map((v,i)=>`<circle cx="${x(i)}" cy="${yTemp(v)}" r="2.8" fill="#397b70"/>`).join('')}
         ${climate.low.map((v,i)=>`<circle cx="${x(i)}" cy="${yTemp(v)}" r="2.8" fill="#507c9a"/>`).join('')}
+        ${highHits}
+        ${avgHits}
+        ${lowHits}
         ${labels}
         <text x="${W-R+7}" y="${T+4}" font-size="9" fill="#7a8c95">降水量</text>
         <text x="${W-R+7}" y="${T+18}" font-size="9" fill="#7a8c95">0〜180mm</text>
-      </svg>`;
+      </svg>
+      <div class="trip-v3-chart-tooltip" data-v3-chart-tooltip hidden></div>`;
   };
 
   const renderClimate = cfg => `
@@ -350,6 +377,40 @@
           </div>
         </div>
       </section>`;
+  };
+
+
+  const initChartTooltips = root => {
+    const tooltip = root.querySelector('[data-v3-chart-tooltip]');
+    if (!tooltip) return;
+
+    const show = (target, event) => {
+      const text = target?.dataset?.chartTooltip;
+      if (!text) return;
+      tooltip.textContent = text;
+      tooltip.hidden = false;
+
+      if (event && typeof event.clientX === 'number') {
+        tooltip.style.left = `${event.clientX + 12}px`;
+        tooltip.style.top = `${event.clientY + 12}px`;
+      } else {
+        const rect = target.getBoundingClientRect();
+        tooltip.style.left = `${rect.left + rect.width / 2 + 10}px`;
+        tooltip.style.top = `${rect.top - 8}px`;
+      }
+    };
+
+    const hide = () => {
+      tooltip.hidden = true;
+    };
+
+    root.querySelectorAll('[data-chart-tooltip]').forEach(target => {
+      target.addEventListener('pointerenter', event => show(target, event));
+      target.addEventListener('pointermove', event => show(target, event));
+      target.addEventListener('pointerleave', hide);
+      target.addEventListener('focus', () => show(target));
+      target.addEventListener('blur', hide);
+    });
   };
 
   const loadForecast = async (root, cfg) => {
@@ -714,6 +775,7 @@
 
       ready.before(shell);
       document.body.classList.add('trip-v3-ready');
+      initChartTooltips(shell);
       loadForecast(shell, cfg);
       initPlanner(shell.querySelector('[data-v3-planner]'), base, cfg);
       return true;
