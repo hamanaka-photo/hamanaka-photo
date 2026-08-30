@@ -713,6 +713,7 @@
       ].join('');
 
       ready.before(shell);
+      document.body.classList.add('trip-v3-ready');
       loadForecast(shell, cfg);
       initPlanner(shell.querySelector('[data-v3-planner]'), base, cfg);
       return true;
@@ -722,16 +723,36 @@
     }
   };
 
-  const start = () => {
-    if (build()) return;
+  const start = async () => {
+    if (await build()) return;
+
     const observer = new MutationObserver(async () => {
-      if (await build()) observer.disconnect();
+      if (await build()) {
+        observer.disconnect();
+      }
     });
-    observer.observe(document.body, { childList:true, subtree:true });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+
+    window.setTimeout(() => {
+      if (!document.querySelector('.trip-v3')) {
+        observer.disconnect();
+        console.warn(
+          'PHOTO TRIP v3.1: v3の描画を確認できなかったため、旧準備編を表示したままにします。'
+        );
+      }
+    }, 15000);
   };
 
   if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start, { once:true });
+    document.addEventListener(
+      'DOMContentLoaded',
+      () => { start(); },
+      { once: true }
+    );
   } else {
     start();
   }
