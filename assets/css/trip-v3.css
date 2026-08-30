@@ -3,11 +3,11 @@
    Five-section layout + local trip planner
 ========================================= */
 
-.trip-page .trip-hero-actions,
-.trip-page .trip-steps,
-.trip-page .trip-access,
-.trip-page .trip-feature-section,
-.trip-page .trip-checklist {
+.trip-page.trip-v3-ready .trip-hero-actions,
+.trip-page.trip-v3-ready .trip-steps,
+.trip-page.trip-v3-ready .trip-access,
+.trip-page.trip-v3-ready .trip-feature-section,
+.trip-page.trip-v3-ready .trip-checklist {
   display: none !important;
 }
 
