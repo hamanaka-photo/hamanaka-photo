@@ -1,0 +1,18 @@
+# .pages.yml 追加用 GEAR設定スニペット
+#
+# 1. media: の中へ追加
+#
+#   - name: gear_images
+#     label: 機材編画像
+#     input: assets/images/03_guide/gear
+#     output: assets/images/03_guide/gear
+#     extensions: [jpg, jpeg, png, webp]
+#     rename: false
+#
+# 2. PHOTO GUIDE > items: の中へ gear_settings を追加してください。
+#
+# data/gear.json は公開ページ側ですでに分離してあるため、
+# Pages CMSのfieldsを追加すれば画面編集へ移行できます。
+#
+# v1では公開ページの構造を先に固定し、
+# CMS項目の粒度は実際の表示確認後に整理する想定です。
