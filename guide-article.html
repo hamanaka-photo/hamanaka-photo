@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="assets/css/photo-map.css">
   <link rel="stylesheet" href="assets/css/trip.css">
   <link rel="stylesheet" href="assets/css/trip-v3.css?v=3">
+  <link rel="stylesheet" href="assets/css/gear.css?v=1">
 </head>
 <body>
 <a class="skip-link" href="#main">本文へ移動</a>
@@ -88,7 +89,20 @@
 <script src="assets/js/photo-map.js"></script>
 <script src="assets/js/trip.js"></script>
 <script src="assets/js/trip-v3.js?v=3"></script>
-<script src="assets/js/guide-article.js"></script>
+<script>
+(() => {
+  const articleId = new URLSearchParams(window.location.search).get('article');
+  const script = document.createElement('script');
+
+  if (articleId === 'gear') {
+    script.src = 'assets/js/gear.js?v=1';
+  } else {
+    script.src = 'assets/js/guide-article.js';
+  }
+
+  document.body.appendChild(script);
+})();
+</script>
 <script src="assets/js/year.js"></script>
 </body>
 </html>
