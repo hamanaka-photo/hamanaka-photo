@@ -1108,52 +1108,50 @@
   }
 }
 
-/* v3.4 weather-code illustrations: subtle card background */
+/* v3.5 weather-code illustrations: actual IMG used as subtle background */
 .trip-v3-forecast-day {
   position: relative;
   overflow: hidden;
   isolation: isolate;
 }
 
-.trip-v3-forecast-day::after {
-  content: '';
+.trip-v3-forecast-bg-icon {
   position: absolute;
   z-index: 0;
-  right: 5px;
-  bottom: 3px;
-  width: 70px;
-  height: 70px;
-  background-image: var(--trip-weather-icon);
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: contain;
-  opacity: .11;
+  right: 4px;
+  bottom: 1px;
+  width: 76px;
+  height: 76px;
+  object-fit: contain;
+  opacity: .18;
   pointer-events: none;
+  user-select: none;
 }
 
-.trip-v3-forecast-day:first-child::after {
-  right: 9px;
-  bottom: 4px;
-  width: 88px;
-  height: 88px;
-  opacity: .12;
+.trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+  right: 8px;
+  bottom: 2px;
+  width: 96px;
+  height: 96px;
+  opacity: .20;
 }
 
-.trip-v3-forecast-day > * {
+.trip-v3-forecast-day > :not(.trip-v3-forecast-bg-icon) {
   position: relative;
   z-index: 1;
 }
 
 @media (max-width: 760px) {
-  .trip-v3-forecast-day::after {
-    width: 62px;
-    height: 62px;
-    opacity: .1;
+  .trip-v3-forecast-bg-icon {
+    width: 66px;
+    height: 66px;
+    opacity: .16;
   }
 
-  .trip-v3-forecast-day:first-child::after {
-    width: 76px;
-    height: 76px;
+  .trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+    width: 82px;
+    height: 82px;
+    opacity: .18;
   }
 }
 
