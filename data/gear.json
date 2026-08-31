@@ -2,163 +2,367 @@
   "hero": {
     "eyebrow": "GEAR",
     "title": "ラッコと出会うための、\n撮影機材を選ぼう。",
-    "lead": "遠くのラッコの表情まで捉えるために。\n撮影スタイルに合わせた機材選びの考え方を紹介します。",
+    "lead": "まずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えます。",
     "image": "",
-    "pointsTitle": "機材選びのポイント",
+    "pointsTitle": "どんな機材が必要？",
     "points": [
-      "400〜600mm前後の望遠域をひとつの目安に",
-      "高速シャッターを使いやすい構成にする",
-      "動物AFや連写機能があると撮影しやすい"
-    ]
-  },
-  "subjects": {
-    "title": "浜中町で出会える被写体",
-    "lead": "被写体によって必要な焦点距離や機動性が変わります。",
-    "items": [
       {
-        "label": "ラッコ",
-        "short": "OTTER"
+        "number": "01",
+        "text": "表情まで撮るなら500mm以上が理想！"
       },
       {
-        "label": "野鳥",
-        "short": "BIRD"
+        "number": "02",
+        "text": "高解像ボディがあると安心！"
       },
       {
-        "label": "エゾシカ",
-        "short": "DEER"
-      },
-      {
-        "label": "風景・湿原",
-        "short": "LAND"
+        "number": "03",
+        "text": "動物AFや高速連写機能があると便利！"
       }
     ]
   },
-  "recommended": {
-    "eyebrow": "RECOMMENDED",
-    "title": "ラッコ撮影におすすめの機材",
-    "lead": "メーカーや製品名ではなく、撮影スタイルごとに必要な焦点距離と特徴から選びます。",
-    "note": "焦点距離はフルサイズ換算の目安です。",
-    "items": [
-      {
-        "badge": "バランス重視",
-        "title": "100〜500mm級 望遠ズーム",
-        "text": "風景を入れたカットからラッコの表情まで、画角を変えながら狙いやすい構成です。",
-        "image": "",
-        "range": "100〜500mm前後",
-        "uses": [
-          "ラッコ",
-          "風景",
-          "野鳥"
-        ]
-      },
-      {
-        "badge": "望遠重視",
-        "title": "200〜600mm級 超望遠ズーム",
-        "text": "遠くの被写体を大きく写したいときに使いやすい、ラッコ撮影の中心となる焦点域です。",
-        "image": "",
-        "range": "200〜600mm前後",
-        "uses": [
-          "ラッコ",
-          "野鳥"
-        ]
-      },
-      {
-        "badge": "機動性重視",
-        "title": "180〜600mm級 軽量望遠",
-        "text": "歩いて移動しながら撮る場合は、望遠性能と持ち運びやすさのバランスも重要です。",
-        "image": "",
-        "range": "180〜600mm前後",
-        "uses": [
-          "ラッコ",
-          "野鳥",
-          "動物"
-        ]
-      },
-      {
-        "badge": "手軽さ重視",
-        "title": "高倍率ズーム一体型",
-        "text": "レンズ交換をせず幅広い焦点距離を使えるため、旅行の荷物を抑えたい人にも向きます。",
-        "image": "",
-        "range": "広角〜超望遠",
-        "uses": [
-          "ラッコ",
-          "風景",
-          "旅行"
-        ]
-      }
-    ]
-  },
-  "lensGuide": {
-    "eyebrow": "LENS",
-    "title": "レンズの選び方ガイド",
-    "lead": "ラッコ撮影では、焦点距離によって写真の見え方が大きく変わります。",
+  "focalExperience": {
+    "eyebrow": "01 / FOCAL LENGTH",
+    "title": "焦点距離で、見え方はこんなに変わる。",
+    "lead": "同じ撮影位置でも、焦点距離によって写る範囲とラッコの大きさは大きく変わります。数字を動かして比べてみてください。",
+    "note": "焦点距離は35mm判換算の目安です。比較画像は同じ撮影位置・同じ被写体で揃えることを推奨します。",
+    "defaultFocal": 500,
     "samples": [
       {
-        "focal": "200mm",
-        "label": "風景も入れやすい",
+        "focal": 24,
+        "label": "周囲の風景を大きく入れる",
+        "description": "岬や海の広がりを含めて、その場所の雰囲気を写しやすい画角です。",
         "image": ""
       },
       {
-        "focal": "400mm",
-        "label": "姿を捉えやすい",
+        "focal": 50,
+        "label": "人の視野に近い感覚",
+        "description": "被写体だけでなく周囲の環境も含めた記録に向きます。",
         "image": ""
       },
       {
-        "focal": "600mm",
-        "label": "表情を狙いやすい",
+        "focal": 100,
+        "label": "風景の中のラッコ",
+        "description": "ラッコのいる海域と周囲の景観を一緒に見せやすい焦点距離です。",
         "image": ""
       },
       {
-        "focal": "800mm",
-        "label": "より大きく写せる",
+        "focal": 200,
+        "label": "ラッコの姿が見えてくる",
+        "description": "被写体を意識した構図を作りやすくなります。",
         "image": ""
-      }
-    ],
-    "teleconverter": {
-      "title": "テレコンバーターという選択",
-      "text": "対応レンズではテレコンバーターを使って焦点距離を伸ばせます。AF性能や開放F値への影響も確認して選びましょう。",
-      "image": ""
-    }
-  },
-  "bodyGuide": {
-    "eyebrow": "CAMERA BODY",
-    "title": "カメラボディの選び方",
-    "lead": "高画素、連写、軽さなど、優先したい撮影スタイルから考えます。",
-    "items": [
-      {
-        "title": "高画素タイプ",
-        "value": "トリミング耐性を重視",
-        "text": "遠い被写体をあとから切り出す撮影と相性があります。"
       },
       {
-        "title": "バランスタイプ",
-        "value": "画質と連写の両立",
-        "text": "風景と動物の両方を撮りたい場合に選びやすいタイプです。"
+        "focal": 300,
+        "label": "動きや姿を捉えやすい",
+        "description": "ラッコの全身や周辺の波を含めた撮影に使いやすい画角です。",
+        "image": ""
       },
       {
-        "title": "軽量タイプ",
-        "value": "携帯性を重視",
-        "text": "長時間歩いたり旅行の荷物を軽くしたい場合に向きます。"
+        "focal": 400,
+        "label": "ラッコを主役に",
+        "description": "被写体の存在感を高めながら、少し周囲も残せます。",
+        "image": ""
+      },
+      {
+        "focal": 500,
+        "label": "表情まで狙いやすい",
+        "description": "浜中町でラッコ撮影を楽しむ際のひとつの目安となる望遠域です。",
+        "image": ""
+      },
+      {
+        "focal": 600,
+        "label": "表情やしぐさを大きく",
+        "description": "遠い位置からでもラッコの細かな動きを狙いやすくなります。",
+        "image": ""
+      },
+      {
+        "focal": 800,
+        "label": "より遠くから大きく",
+        "description": "超望遠ならではの大きな描写が可能ですが、画角が狭く被写体を追う難易度も上がります。",
+        "image": ""
       }
     ]
   },
+  "gearFinder": {
+    "eyebrow": "02 / GEAR FINDER",
+    "title": "レンズ × ボディを選ぶ。",
+    "lead": "4つの選び方から条件を指定すると、装着できるレンズとボディの組み合わせだけを表示します。",
+    "modes": [
+      {
+        "id": "manufacturer",
+        "label": "メーカーから選ぶ"
+      },
+      {
+        "id": "focal",
+        "label": "焦点距離から選ぶ"
+      },
+      {
+        "id": "resolution",
+        "label": "解像度から選ぶ"
+      },
+      {
+        "id": "function",
+        "label": "機能から選ぶ"
+      }
+    ],
+    "manufacturers": [
+      "Canon",
+      "SONY",
+      "Nikon"
+    ],
+    "focalOptions": [
+      400,
+      500,
+      600,
+      800
+    ],
+    "resolutionOptions": [
+      24,
+      30,
+      40,
+      45,
+      50
+    ],
+    "featureOptions": [
+      {
+        "id": "animal-af",
+        "label": "動物AF",
+        "target": "body"
+      },
+      {
+        "id": "high-speed-burst",
+        "label": "高速連写",
+        "target": "body"
+      },
+      {
+        "id": "stabilization",
+        "label": "手ブレ補正",
+        "target": "pair"
+      },
+      {
+        "id": "weather-sealed",
+        "label": "防塵・防滴への配慮",
+        "target": "pair"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "canon-rf100500",
+        "manufacturer": "Canon",
+        "name": "RF100-500mm F4.5-7.1 L IS USM",
+        "mount": "RF",
+        "image": "",
+        "minFocal": 100,
+        "maxFocal": 500,
+        "aperture": "F4.5-7.1",
+        "weight": "約1.37kg",
+        "summary": "100mmから500mmまでを1本でカバーする望遠ズーム。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "canon-rf200800",
+        "manufacturer": "Canon",
+        "name": "RF200-800mm F6.3-9 IS USM",
+        "mount": "RF",
+        "image": "",
+        "minFocal": 200,
+        "maxFocal": 800,
+        "aperture": "F6.3-9",
+        "weight": "約2.05kg",
+        "summary": "800mmまで届く超望遠ズーム。遠距離の被写体を大きく狙いたいときの候補。",
+        "features": [
+          "stabilization"
+        ]
+      },
+      {
+        "id": "sony-fe100400",
+        "manufacturer": "SONY",
+        "name": "FE 100-400mm F4.5-5.6 GM OSS",
+        "mount": "E",
+        "image": "",
+        "minFocal": 100,
+        "maxFocal": 400,
+        "aperture": "F4.5-5.6",
+        "weight": "約1.40kg",
+        "summary": "機動性と望遠域のバランスを取りやすい100-400mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "sony-fe200600",
+        "manufacturer": "SONY",
+        "name": "FE 200-600mm F5.6-6.3 G OSS",
+        "mount": "E",
+        "image": "",
+        "minFocal": 200,
+        "maxFocal": 600,
+        "aperture": "F5.6-6.3",
+        "weight": "約2.12kg",
+        "summary": "ラッコや野鳥など、遠距離の被写体を狙いやすい200-600mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z100400",
+        "manufacturer": "Nikon",
+        "name": "NIKKOR Z 100-400mm f/4.5-5.6 VR S",
+        "mount": "Z",
+        "image": "",
+        "minFocal": 100,
+        "maxFocal": 400,
+        "aperture": "F4.5-5.6",
+        "weight": "約1.36kg",
+        "summary": "移動しながらの撮影でも扱いやすい100-400mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z180600",
+        "manufacturer": "Nikon",
+        "name": "NIKKOR Z 180-600mm f/5.6-6.3 VR",
+        "mount": "Z",
+        "image": "",
+        "minFocal": 180,
+        "maxFocal": 600,
+        "aperture": "F5.6-6.3",
+        "weight": "約1.96kg",
+        "summary": "600mmまでの望遠域をカバーし、野生動物撮影に使いやすいズーム。",
+        "features": [
+          "stabilization"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "id": "canon-r5m2",
+        "manufacturer": "Canon",
+        "name": "EOS R5 Mark II",
+        "mount": "RF",
+        "image": "",
+        "resolution": 45.0,
+        "resolutionLabel": "約45MP",
+        "burst": "高速連写対応",
+        "summary": "高解像と被写体検出を重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "canon-r7",
+        "manufacturer": "Canon",
+        "name": "EOS R7",
+        "mount": "RF",
+        "image": "",
+        "resolution": 32.5,
+        "resolutionLabel": "約32.5MP",
+        "burst": "高速連写対応",
+        "summary": "APS-Cの画角を活かして望遠撮影を楽しみたい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization"
+        ]
+      },
+      {
+        "id": "sony-a1m2",
+        "manufacturer": "SONY",
+        "name": "α1 II",
+        "mount": "E",
+        "image": "",
+        "resolution": 50.1,
+        "resolutionLabel": "約50.1MP",
+        "burst": "高速連写対応",
+        "summary": "高解像と高速性能を両立したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "sony-a7rv",
+        "manufacturer": "SONY",
+        "name": "α7R V",
+        "mount": "E",
+        "image": "",
+        "resolution": 61.0,
+        "resolutionLabel": "約61MP",
+        "burst": "連写対応",
+        "summary": "高画素を活かしたトリミング耐性を重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z8",
+        "manufacturer": "Nikon",
+        "name": "Z8",
+        "mount": "Z",
+        "image": "",
+        "resolution": 45.7,
+        "resolutionLabel": "約45.7MP",
+        "burst": "高速連写対応",
+        "summary": "高画素と動体撮影性能のバランスを求める場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z6iii",
+        "manufacturer": "Nikon",
+        "name": "Z6III",
+        "mount": "Z",
+        "image": "",
+        "resolution": 24.5,
+        "resolutionLabel": "約24.5MP",
+        "burst": "高速連写対応",
+        "summary": "画質・速度・扱いやすさのバランスを重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      }
+    ],
+    "disclaimer": "掲載製品は機材選びを考えるための参考例です。仕様や販売状況は各メーカーの最新情報をご確認ください。"
+  },
   "accessories": {
-    "eyebrow": "ACCESSORIES",
-    "title": "あると便利なアクセサリー",
+    "eyebrow": "03 / ACCESSORIES",
+    "title": "撮影を支えるもの。",
+    "lead": "海霧、風、寒さ、長時間の観察。浜中町の撮影環境を考えて、機材を支える小物も準備します。",
     "items": [
       {
         "title": "三脚・一脚",
-        "text": "長時間の観察や重い望遠レンズの補助に。",
+        "text": "重い望遠レンズを長時間構えるときの負担軽減に。",
         "image": ""
       },
       {
         "title": "予備バッテリー",
-        "text": "寒い時期や連写では消耗が早くなることがあります。",
+        "text": "寒い季節や連写では消耗が早くなることがあります。",
         "image": ""
       },
       {
         "title": "メモリーカード",
-        "text": "連写を使うなら十分な容量と書き込み速度を確認。",
+        "text": "連写を使うなら容量と書き込み速度に余裕を。",
         "image": ""
       },
       {
@@ -173,53 +377,30 @@
       }
     ]
   },
-  "settings": {
-    "eyebrow": "BASIC SETTINGS",
-    "title": "撮影時の基本設定の目安",
-    "lead": "状況によって変わりますが、動くラッコを撮影するときの出発点として使える設定です。",
-    "items": [
-      {
-        "title": "シャッタースピード",
-        "value": "1/500〜1/1000秒",
-        "text": "動きや波でブレる場合はさらに速くします。"
-      },
-      {
-        "title": "ISO感度",
-        "value": "AUTO",
-        "text": "シャッタースピードを優先し、明るさに合わせて調整します。"
-      },
-      {
-        "title": "フォーカスモード",
-        "value": "AF-C",
-        "text": "動く被写体を追従しやすい設定を基本にします。"
-      },
-      {
-        "title": "ドライブモード",
-        "value": "連写",
-        "text": "表情や動きの変化を残したい場面で活用します。"
-      }
-    ],
-    "techniqueLabel": "詳しい撮影テクニックを見る",
-    "techniqueUrl": "guide-article.html?article=technique"
-  },
   "rental": {
-    "eyebrow": "RENTAL",
-    "title": "機材レンタルも活用しよう",
-    "text": "高価な望遠機材は、旅行中だけレンタルする方法もあります。購入前に使い心地を試したいときにも便利です。",
+    "eyebrow": "04 / RENTAL",
+    "title": "レンタルという選択肢も！",
+    "lead": "超望遠レンズや高性能ボディは、購入すると大きな負担になります。旅行の前に一度使って練習してみたい場合は、レンタルサービスを活用する方法もあります。",
+    "reasonTitle": "こんなときに",
+    "reasons": [
+      "いきなり購入するには高い",
+      "浜中町へ行く前に望遠レンズを練習したい",
+      "自分のカメラとの組み合わせを試してみたい"
+    ],
+    "serviceLabel": "撮影機材レンタルサービスの一例",
+    "serviceName": "GOOPASS",
+    "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
     "image": "",
-    "buttonLabel": "",
-    "url": ""
-  },
-  "diagnosis": {
-    "eyebrow": "CHOOSING GEAR",
-    "title": "機材選びで迷ったら",
-    "text": "まずは撮りたい被写体、必要な望遠域、持ち運べる重さの3点から考えてみましょう。",
-    "buttonLabel": "レンズの選び方を見る",
-    "url": "#gear-lens-guide"
+    "buttonLabel": "GOOPASSで機材を探す",
+    "url": "https://goopass.jp/",
+    "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
   },
   "next": {
     "eyebrow": "NEXT STEP",
     "title": "機材を選んだら、撮り方を学ぼう。",
+    "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
+    "buttonLabel": "テクニック編へ",
+    "url": "guide-article.html?article=technique",
     "image": ""
   }
 }
