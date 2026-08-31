@@ -351,23 +351,28 @@
     "items": [
       {
         "title": "三脚・一脚",
-        "text": "重い望遠レンズを長時間構えるときの負担軽減に。"
+        "text": "重い望遠レンズを長時間構えるときの負担軽減に。",
+        "image": "assets/images/03_guide/gear/stand.webp"
       },
       {
         "title": "予備バッテリー",
-        "text": "寒い季節や連写では消耗が早くなることがあります。"
+        "text": "寒い季節や連写では消耗が早くなることがあります。",
+        "image": "assets/images/03_guide/gear/buttrys.webp"
       },
       {
         "title": "メモリーカード",
-        "text": "連写を使うなら容量と書き込み速度に余裕を。"
+        "text": "連写を使うなら容量と書き込み速度に余裕を。",
+        "image": "assets/images/03_guide/gear/SD.webp"
       },
       {
         "title": "レンズクロス",
-        "text": "海霧や水滴が付いたときのために複数枚あると安心。"
+        "text": "海霧や水滴が付いたときのために複数枚あると安心。",
+        "image": "assets/images/03_guide/gear/lenscloth.webp"
       },
       {
         "title": "レインカバー",
-        "text": "霧や小雨からカメラとレンズを守ります。"
+        "text": "霧や小雨からカメラとレンズを守ります。",
+        "image": "assets/images/03_guide/gear/lenscover.webp"
       }
     ]
   },
@@ -384,7 +389,7 @@
     "serviceLabel": "撮影機材レンタルサービスの一例",
     "serviceName": "GOOPASS",
     "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
-    "image": "assets/images/03_guide/gear/goopass.jpeg",
+    "image": "assets/images/03_guide/gear/goopass.webp",
     "buttonLabel": "GOOPASSで機材を探す",
     "url": "https://goopass.jp/",
     "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
