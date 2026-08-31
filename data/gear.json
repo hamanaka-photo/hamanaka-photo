@@ -384,6 +384,7 @@
     "serviceLabel": "撮影機材レンタルサービスの一例",
     "serviceName": "GOOPASS",
     "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
+    "image": "assets/images/03_guide/gear/goopass.jpeg",
     "buttonLabel": "GOOPASSで機材を探す",
     "url": "https://goopass.jp/",
     "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
