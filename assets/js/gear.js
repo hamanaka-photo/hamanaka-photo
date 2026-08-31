@@ -373,7 +373,7 @@
               </div>
               <div class="gear-v2-rental-service-copy">
                 <span>${escapeHtml(section.serviceLabel || '')}</span>
-                <h3>${escapeHtml(section.serviceName || '')}</h3>
+                ${section.image ? '' : `<h3>${escapeHtml(section.serviceName || '')}</h3>`}
                 <p>${escapeHtml(section.serviceText || '')}</p>
                 ${url ? `
                   <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
