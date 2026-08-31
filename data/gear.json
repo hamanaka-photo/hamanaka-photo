@@ -3,7 +3,6 @@
     "eyebrow": "GEAR",
     "title": "ラッコと出会うための、\n撮影機材を選ぼう。",
     "lead": "まずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えます。",
-    "image": "",
     "pointsTitle": "どんな機材が必要？",
     "points": [
       {
@@ -31,55 +30,55 @@
         "focal": 24,
         "label": "周囲の風景を大きく入れる",
         "description": "岬や海の広がりを含めて、その場所の雰囲気を写しやすい画角です。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/24.webp"
       },
       {
         "focal": 50,
         "label": "人の視野に近い感覚",
         "description": "被写体だけでなく周囲の環境も含めた記録に向きます。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/50.webp"
       },
       {
         "focal": 100,
         "label": "風景の中のラッコ",
         "description": "ラッコのいる海域と周囲の景観を一緒に見せやすい焦点距離です。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/100.webp"
       },
       {
         "focal": 200,
         "label": "ラッコの姿が見えてくる",
         "description": "被写体を意識した構図を作りやすくなります。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/200.webp"
       },
       {
         "focal": 300,
         "label": "動きや姿を捉えやすい",
         "description": "ラッコの全身や周辺の波を含めた撮影に使いやすい画角です。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/300.webp"
       },
       {
         "focal": 400,
         "label": "ラッコを主役に",
         "description": "被写体の存在感を高めながら、少し周囲も残せます。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/400.webp"
       },
       {
         "focal": 500,
         "label": "表情まで狙いやすい",
         "description": "浜中町でラッコ撮影を楽しむ際のひとつの目安となる望遠域です。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/500.webp"
       },
       {
         "focal": 600,
         "label": "表情やしぐさを大きく",
         "description": "遠い位置からでもラッコの細かな動きを狙いやすくなります。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/600.webp"
       },
       {
         "focal": 800,
         "label": "より遠くから大きく",
         "description": "超望遠ならではの大きな描写が可能ですが、画角が狭く被写体を追う難易度も上がります。",
-        "image": ""
+        "image": "assets/images/03_guide/gear/800.webp"
       }
     ]
   },
@@ -151,7 +150,6 @@
         "manufacturer": "Canon",
         "name": "RF100-500mm F4.5-7.1 L IS USM",
         "mount": "RF",
-        "image": "",
         "minFocal": 100,
         "maxFocal": 500,
         "aperture": "F4.5-7.1",
@@ -167,7 +165,6 @@
         "manufacturer": "Canon",
         "name": "RF200-800mm F6.3-9 IS USM",
         "mount": "RF",
-        "image": "",
         "minFocal": 200,
         "maxFocal": 800,
         "aperture": "F6.3-9",
@@ -182,7 +179,6 @@
         "manufacturer": "SONY",
         "name": "FE 100-400mm F4.5-5.6 GM OSS",
         "mount": "E",
-        "image": "",
         "minFocal": 100,
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
@@ -198,7 +194,6 @@
         "manufacturer": "SONY",
         "name": "FE 200-600mm F5.6-6.3 G OSS",
         "mount": "E",
-        "image": "",
         "minFocal": 200,
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
@@ -214,7 +209,6 @@
         "manufacturer": "Nikon",
         "name": "NIKKOR Z 100-400mm f/4.5-5.6 VR S",
         "mount": "Z",
-        "image": "",
         "minFocal": 100,
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
@@ -230,7 +224,6 @@
         "manufacturer": "Nikon",
         "name": "NIKKOR Z 180-600mm f/5.6-6.3 VR",
         "mount": "Z",
-        "image": "",
         "minFocal": 180,
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
@@ -247,8 +240,7 @@
         "manufacturer": "Canon",
         "name": "EOS R5 Mark II",
         "mount": "RF",
-        "image": "",
-        "resolution": 45.0,
+        "resolution": 45,
         "resolutionLabel": "約45MP",
         "burst": "高速連写対応",
         "summary": "高解像と被写体検出を重視したい場合の候補。",
@@ -264,7 +256,6 @@
         "manufacturer": "Canon",
         "name": "EOS R7",
         "mount": "RF",
-        "image": "",
         "resolution": 32.5,
         "resolutionLabel": "約32.5MP",
         "burst": "高速連写対応",
@@ -280,7 +271,6 @@
         "manufacturer": "SONY",
         "name": "α1 II",
         "mount": "E",
-        "image": "",
         "resolution": 50.1,
         "resolutionLabel": "約50.1MP",
         "burst": "高速連写対応",
@@ -297,8 +287,7 @@
         "manufacturer": "SONY",
         "name": "α7R V",
         "mount": "E",
-        "image": "",
-        "resolution": 61.0,
+        "resolution": 61,
         "resolutionLabel": "約61MP",
         "burst": "連写対応",
         "summary": "高画素を活かしたトリミング耐性を重視したい場合の候補。",
@@ -313,7 +302,6 @@
         "manufacturer": "Nikon",
         "name": "Z8",
         "mount": "Z",
-        "image": "",
         "resolution": 45.7,
         "resolutionLabel": "約45.7MP",
         "burst": "高速連写対応",
@@ -330,7 +318,6 @@
         "manufacturer": "Nikon",
         "name": "Z6III",
         "mount": "Z",
-        "image": "",
         "resolution": 24.5,
         "resolutionLabel": "約24.5MP",
         "burst": "高速連写対応",
@@ -352,28 +339,23 @@
     "items": [
       {
         "title": "三脚・一脚",
-        "text": "重い望遠レンズを長時間構えるときの負担軽減に。",
-        "image": ""
+        "text": "重い望遠レンズを長時間構えるときの負担軽減に。"
       },
       {
         "title": "予備バッテリー",
-        "text": "寒い季節や連写では消耗が早くなることがあります。",
-        "image": ""
+        "text": "寒い季節や連写では消耗が早くなることがあります。"
       },
       {
         "title": "メモリーカード",
-        "text": "連写を使うなら容量と書き込み速度に余裕を。",
-        "image": ""
+        "text": "連写を使うなら容量と書き込み速度に余裕を。"
       },
       {
         "title": "レンズクロス",
-        "text": "海霧や水滴が付いたときのために複数枚あると安心。",
-        "image": ""
+        "text": "海霧や水滴が付いたときのために複数枚あると安心。"
       },
       {
         "title": "レインカバー",
-        "text": "霧や小雨からカメラとレンズを守ります。",
-        "image": ""
+        "text": "霧や小雨からカメラとレンズを守ります。"
       }
     ]
   },
@@ -390,7 +372,6 @@
     "serviceLabel": "撮影機材レンタルサービスの一例",
     "serviceName": "GOOPASS",
     "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
-    "image": "",
     "buttonLabel": "GOOPASSで機材を探す",
     "url": "https://goopass.jp/",
     "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
@@ -400,7 +381,6 @@
     "title": "機材を選んだら、撮り方を学ぼう。",
     "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
     "buttonLabel": "テクニック編へ",
-    "url": "guide-article.html?article=technique",
-    "image": ""
+    "url": "guide-article.html?article=technique"
   }
 }
