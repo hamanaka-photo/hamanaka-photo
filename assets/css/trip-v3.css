@@ -1155,3 +1155,23 @@
   }
 }
 
+
+
+/* v3.6 weather icon visibility */
+.trip-v3-forecast-bg-icon {
+  opacity: .28;
+}
+
+.trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+  opacity: .32;
+}
+
+@media (max-width: 760px) {
+  .trip-v3-forecast-bg-icon {
+    opacity: .24;
+  }
+
+  .trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+    opacity: .28;
+  }
+}
