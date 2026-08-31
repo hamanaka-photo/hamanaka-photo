@@ -61,31 +61,41 @@
       </div>
     </nav>`;
 
-  const renderHero = hero => {
-    const points = Array.isArray(hero.points) ? hero.points : [];
+  const renderHero = hero => `
+    <section
+      class="gear-v2-hero"
+      ${hero.image ? `style="--gear-v2-hero-image:url('${escapeHtml(hero.image)}')"` : ''}>
+      ${renderFieldNav()}
+      <div class="gear-v2-hero-shade"></div>
+      <div class="container gear-v2-hero-inner">
+        <div class="gear-v2-hero-copy">
+          <p class="gear-v2-eyebrow">${escapeHtml(hero.eyebrow || 'GEAR')}</p>
+          <h1>${nl2br(hero.title || '撮影機材を選ぼう。')}</h1>
+          <p class="gear-v2-hero-lead">${nl2br(hero.lead || '')}</p>
+        </div>
+      </div>
+    </section>`;
+
+  const renderIntroPoints = section => {
+    const points = Array.isArray(section.points) ? section.points : [];
 
     return `
-      <section
-        class="gear-v2-hero"
-        ${hero.image ? `style="--gear-v2-hero-image:url('${escapeHtml(hero.image)}')"` : ''}>
-        ${renderFieldNav()}
-        <div class="gear-v2-hero-shade"></div>
-        <div class="container gear-v2-hero-inner">
-          <div class="gear-v2-hero-copy">
-            <p class="gear-v2-eyebrow">${escapeHtml(hero.eyebrow || 'GEAR')}</p>
-            <h1>${nl2br(hero.title || '撮影機材を選ぼう。')}</h1>
-            <p class="gear-v2-hero-lead">${nl2br(hero.lead || '')}</p>
-
-            <div class="gear-v2-hero-points">
-              <p>${escapeHtml(hero.pointsTitle || 'どんな機材が必要？')}</p>
-              <div class="gear-v2-point-grid">
-                ${points.map(point => `
-                  <div class="gear-v2-point">
-                    <span>${escapeHtml(point.number || '')}</span>
-                    <strong>${escapeHtml(point.text || '')}</strong>
-                  </div>`).join('')}
-              </div>
+      <section class="gear-v2-intro-points" aria-labelledby="gear-intro-title">
+        <div class="container">
+          <div class="gear-v2-intro-heading">
+            <div>
+              <p>GEAR BASICS</p>
+              <h2 id="gear-intro-title">${escapeHtml(section.title || 'どんな機材が必要？')}</h2>
             </div>
+            <span>${escapeHtml(section.lead || '')}</span>
+          </div>
+
+          <div class="gear-v2-intro-card-grid">
+            ${points.map(point => `
+              <article class="gear-v2-intro-card">
+                <span>${escapeHtml(point.number || '')}</span>
+                <strong>${escapeHtml(point.text || '')}</strong>
+              </article>`).join('')}
           </div>
         </div>
       </section>`;
@@ -211,6 +221,37 @@
       </article>`;
   };
 
+  const renderIntegratedCard = camera => {
+    if (!camera) {
+      return `<div class="gear-v2-product-empty">条件に合う一体型カメラがありません。</div>`;
+    }
+
+    return `
+      <article class="gear-v2-integrated-card">
+        <div class="gear-v2-product-type">LENS + BODY / 一体型</div>
+        <div class="gear-v2-integrated-image">
+          ${image(camera.image, camera.name || '一体型カメラ')}
+        </div>
+        <div class="gear-v2-product-copy">
+          <span>${escapeHtml(camera.manufacturer || '')} / INTEGRATED CAMERA</span>
+          <h3>${escapeHtml(camera.name || '')}</h3>
+          <p>${escapeHtml(camera.summary || '')}</p>
+          <dl>
+            <div><dt>焦点距離</dt><dd>${escapeHtml(camera.focalLabel || `${camera.minFocal}–${camera.maxFocal}mm`)}</dd></div>
+            <div><dt>開放F値</dt><dd>${escapeHtml(camera.aperture || '')}</dd></div>
+            <div><dt>解像度</dt><dd>${escapeHtml(camera.resolutionLabel || '')}</dd></div>
+            <div><dt>重量</dt><dd>${escapeHtml(camera.weight || '')}</dd></div>
+            <div><dt>連写</dt><dd>${escapeHtml(camera.burst || '')}</dd></div>
+          </dl>
+          <div class="gear-v2-feature-tags">
+            ${(camera.features || []).map(id =>
+              featureLabels[id] ? `<span>${escapeHtml(featureLabels[id])}</span>` : ''
+            ).join('')}
+          </div>
+        </div>
+      </article>`;
+  };
+
   const renderFinder = section => {
     const modes = Array.isArray(section.modes) ? section.modes : [];
     const firstMode = modes[0]?.id || 'manufacturer';
@@ -246,16 +287,21 @@
               <div data-finder-filters></div>
             </aside>
 
-            <div class="gear-v2-product-column">
+            <div class="gear-v2-product-column" data-finder-lens-column>
               <div class="gear-v2-column-label">LENS</div>
               <div data-finder-lens></div>
             </div>
 
-            <div class="gear-v2-multiply" aria-hidden="true">×</div>
+            <div class="gear-v2-multiply" data-finder-multiply aria-hidden="true">×</div>
 
-            <div class="gear-v2-product-column">
+            <div class="gear-v2-product-column" data-finder-body-column>
               <div class="gear-v2-column-label">CAMERA BODY</div>
               <div data-finder-body></div>
+            </div>
+
+            <div class="gear-v2-integrated-column" data-finder-integrated hidden>
+              <div class="gear-v2-column-label">INTEGRATED CAMERA</div>
+              <div data-finder-integrated-card></div>
             </div>
           </div>
 
@@ -416,10 +462,19 @@
 
     const lenses = Array.isArray(section.lenses) ? section.lenses : [];
     const bodies = Array.isArray(section.bodies) ? section.bodies : [];
+    const integrated = Array.isArray(section.integratedCameras)
+      ? section.integratedCameras
+      : [];
     const modes = Array.isArray(section.modes) ? section.modes : [];
+
     const filters = finder.querySelector('[data-finder-filters]');
     const lensBox = finder.querySelector('[data-finder-lens]');
     const bodyBox = finder.querySelector('[data-finder-body]');
+    const integratedBox = finder.querySelector('[data-finder-integrated-card]');
+    const lensColumn = finder.querySelector('[data-finder-lens-column]');
+    const bodyColumn = finder.querySelector('[data-finder-body-column]');
+    const multiply = finder.querySelector('[data-finder-multiply]');
+    const integratedColumn = finder.querySelector('[data-finder-integrated]');
     const count = finder.querySelector('[data-pair-count]');
     const prev = finder.querySelector('[data-pair-prev]');
     const next = finder.querySelector('[data-pair-next]');
@@ -431,46 +486,68 @@
       focal: Number(section.focalOptions?.[0] || 400),
       resolution: Number(section.resolutionOptions?.[0] || 24),
       functions: [],
-      pairIndex: 0
+      candidateIndex: 0
     };
 
-    const allPairs = () => {
-      const pairs = [];
+    const allCandidates = () => {
+      const candidates = [];
+
       lenses.forEach(lens => {
         bodies.forEach(body => {
           if (String(lens.mount) === String(body.mount)) {
-            pairs.push({ lens, body });
+            candidates.push({
+              type: 'pair',
+              manufacturer: body.manufacturer,
+              minFocal: Number(lens.minFocal || 0),
+              maxFocal: Number(lens.maxFocal || 0),
+              resolution: Number(body.resolution || 0),
+              features: [...new Set([
+                ...(lens.features || []),
+                ...(body.features || [])
+              ])],
+              lens,
+              body
+            });
           }
         });
       });
-      return pairs;
+
+      integrated.forEach(camera => {
+        candidates.push({
+          type: 'integrated',
+          manufacturer: camera.manufacturer,
+          minFocal: Number(camera.minFocal || 0),
+          maxFocal: Number(camera.maxFocal || 0),
+          resolution: Number(camera.resolution || 0),
+          features: [...new Set(camera.features || [])],
+          camera
+        });
+      });
+
+      return candidates;
     };
 
-    const filteredPairs = () => {
-      return allPairs().filter(pair => {
+    const filteredCandidates = () =>
+      allCandidates().filter(candidate => {
         if (state.mode === 'manufacturer') {
-          return pair.body.manufacturer === state.manufacturer;
+          return candidate.manufacturer === state.manufacturer;
         }
 
         if (state.mode === 'focal') {
-          return Number(pair.lens.maxFocal || 0) >= state.focal;
+          return candidate.maxFocal >= state.focal;
         }
 
         if (state.mode === 'resolution') {
-          return Number(pair.body.resolution || 0) >= state.resolution;
+          return candidate.resolution >= state.resolution;
         }
 
         if (state.mode === 'function' && state.functions.length) {
-          const union = new Set([
-            ...(pair.lens.features || []),
-            ...(pair.body.features || [])
-          ]);
-          return state.functions.every(feature => union.has(feature));
+          const features = new Set(candidate.features || []);
+          return state.functions.every(feature => features.has(feature));
         }
 
         return true;
       });
-    };
 
     const radioList = (name, values, current, formatter = value => String(value)) => `
       <div class="gear-v2-filter-options">
@@ -505,7 +582,7 @@
           )}`;
       } else if (state.mode === 'resolution') {
         filters.innerHTML = `
-          <p>ボディの解像度を選択</p>
+          <p>ボディまたは一体型カメラの解像度を選択</p>
           ${radioList(
             'gear-resolution',
             section.resolutionOptions || [],
@@ -528,10 +605,26 @@
       }
     };
 
-    const renderPair = () => {
-      const pairs = filteredPairs();
-      if (!pairs.length) {
-        state.pairIndex = 0;
+    const showPairLayout = () => {
+      lensColumn.hidden = false;
+      bodyColumn.hidden = false;
+      multiply.hidden = false;
+      integratedColumn.hidden = true;
+    };
+
+    const showIntegratedLayout = () => {
+      lensColumn.hidden = true;
+      bodyColumn.hidden = true;
+      multiply.hidden = true;
+      integratedColumn.hidden = false;
+    };
+
+    const renderCandidate = () => {
+      const candidates = filteredCandidates();
+
+      if (!candidates.length) {
+        state.candidateIndex = 0;
+        showPairLayout();
         lensBox.innerHTML = renderLensCard(null);
         bodyBox.innerHTML = renderBodyCard(null);
         count.textContent = '候補 0 / 0';
@@ -540,19 +633,31 @@
         return;
       }
 
-      state.pairIndex = Math.max(0, Math.min(state.pairIndex, pairs.length - 1));
-      const pair = pairs[state.pairIndex];
+      state.candidateIndex = Math.max(
+        0,
+        Math.min(state.candidateIndex, candidates.length - 1)
+      );
 
-      lensBox.innerHTML = renderLensCard(pair.lens);
-      bodyBox.innerHTML = renderBodyCard(pair.body);
-      count.textContent = `候補 ${state.pairIndex + 1} / ${pairs.length}`;
-      prev.disabled = pairs.length <= 1;
-      next.disabled = pairs.length <= 1;
+      const candidate = candidates[state.candidateIndex];
+
+      if (candidate.type === 'integrated') {
+        showIntegratedLayout();
+        integratedBox.innerHTML = renderIntegratedCard(candidate.camera);
+      } else {
+        showPairLayout();
+        lensBox.innerHTML = renderLensCard(candidate.lens);
+        bodyBox.innerHTML = renderBodyCard(candidate.body);
+      }
+
+      count.textContent =
+        `候補 ${state.candidateIndex + 1} / ${candidates.length}`;
+      prev.disabled = candidates.length <= 1;
+      next.disabled = candidates.length <= 1;
     };
 
-    const resetPair = () => {
-      state.pairIndex = 0;
-      renderPair();
+    const resetCandidate = () => {
+      state.candidateIndex = 0;
+      renderCandidate();
     };
 
     modeButtons.forEach(button => {
@@ -560,13 +665,10 @@
         state.mode = button.dataset.finderMode || 'manufacturer';
         finder.dataset.mode = state.mode;
         modeButtons.forEach(item => {
-          item.setAttribute(
-            'aria-selected',
-            String(item === button)
-          );
+          item.setAttribute('aria-selected', String(item === button));
         });
         renderFilters();
-        resetPair();
+        resetCandidate();
       });
     });
 
@@ -581,29 +683,32 @@
       } else if (state.mode === 'resolution') {
         state.resolution = Number(input.value);
       } else {
-        state.functions = [...filters.querySelectorAll('input[type="checkbox"]:checked')]
-          .map(item => item.value);
+        state.functions = [
+          ...filters.querySelectorAll('input[type="checkbox"]:checked')
+        ].map(item => item.value);
       }
 
-      resetPair();
+      resetCandidate();
     });
 
     prev.addEventListener('click', () => {
-      const pairs = filteredPairs();
-      if (!pairs.length) return;
-      state.pairIndex = (state.pairIndex - 1 + pairs.length) % pairs.length;
-      renderPair();
+      const candidates = filteredCandidates();
+      if (!candidates.length) return;
+      state.candidateIndex =
+        (state.candidateIndex - 1 + candidates.length) % candidates.length;
+      renderCandidate();
     });
 
     next.addEventListener('click', () => {
-      const pairs = filteredPairs();
-      if (!pairs.length) return;
-      state.pairIndex = (state.pairIndex + 1) % pairs.length;
-      renderPair();
+      const candidates = filteredCandidates();
+      if (!candidates.length) return;
+      state.candidateIndex =
+        (state.candidateIndex + 1) % candidates.length;
+      renderCandidate();
     });
 
     renderFilters();
-    renderPair();
+    renderCandidate();
   };
 
   const renderPage = data => {
@@ -621,6 +726,7 @@
 
     root.innerHTML = `
       ${renderHero(hero)}
+      ${renderIntroPoints(data.introPoints || {})}
       ${renderFocal(data.focalExperience || {})}
       ${renderFinder(data.gearFinder || {})}
       ${renderAccessories(data.accessories || {})}

@@ -5,6 +5,16 @@
 
   const STORAGE_KEY = 'hamanaka-trip-v3';
   const WEATHER_API = 'https://api.open-meteo.com/v1/forecast';
+  const WEATHER_ICON_BASE = 'assets/images/03_guide/trip';
+  const WEATHER_ICON_CODES = new Set([
+    0, 1, 2, 3, 45, 48,
+    51, 53, 55, 56, 57,
+    61, 63, 65, 66, 67,
+    71, 73, 75, 77,
+    80, 81, 82,
+    85, 86,
+    95
+  ]);
 
   const esc = (v = '') => String(v).replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
@@ -58,6 +68,15 @@
     if ([71,73,75,77,85,86].includes(c)) return '雪';
     if ([95,96,99].includes(c)) return '雷雨';
     return '天気変化';
+  };
+
+  const weatherIconPath = code => {
+    const c = Number(code);
+    const iconCode = WEATHER_ICON_CODES.has(c)
+      ? c
+      : ([96, 99].includes(c) ? 95 : 3);
+
+    return `${WEATHER_ICON_BASE}/${iconCode}.webp`;
   };
 
   const storageAvailable = () => {
@@ -432,10 +451,22 @@
       box.innerHTML = (d.time || []).map((date, i) => {
         const day = new Date(`${date}T00:00:00+09:00`);
         const label = new Intl.DateTimeFormat('ja-JP', { month:'numeric', day:'numeric', weekday:'short' }).format(day);
+        const weatherCode = Number(d.weather_code?.[i]);
+        const weather = weatherText(weatherCode);
+        const iconPath = weatherIconPath(weatherCode);
+
         return `
           <div class="trip-v3-forecast-day">
             <div class="trip-v3-forecast-date">${esc(label)}</div>
-            <div class="trip-v3-forecast-weather">${esc(weatherText(d.weather_code?.[i]))}</div>
+            <div class="trip-v3-forecast-main">
+              <img
+                class="trip-v3-forecast-icon"
+                src="${esc(iconPath)}"
+                alt=""
+                loading="lazy"
+                decoding="async">
+              <div class="trip-v3-forecast-weather">${esc(weather)}</div>
+            </div>
             <div class="trip-v3-forecast-temp">
               <span class="high">${Math.round(d.temperature_2m_max?.[i])}℃</span>
               <span class="low">${Math.round(d.temperature_2m_min?.[i])}℃</span>
