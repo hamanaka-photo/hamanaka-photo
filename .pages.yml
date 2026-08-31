@@ -14,6 +14,13 @@ media:
     extensions: [jpg, jpeg, png, webp]
     rename: false
 
+  - name: gear_images
+    label: 機材編画像
+    input: assets/images/03_guide/gear
+    output: assets/images/03_guide/gear
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
   - name: photo_map_images
     label: PHOTO MAP画像
     input: assets/images/03_guide/photo-map
@@ -1647,6 +1654,411 @@ content:
               - name: url
                 label: リンク先
                 type: string
+
+      - name: gear_settings
+        label: 機材編
+        type: file
+        path: data/gear.json
+        format: json
+        operations:
+          delete: false
+        fields:
+          - name: hero
+            label: ページ上部
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: text
+                required: true
+              - name: lead
+                label: 説明文
+                type: text
+              - name: image
+                label: ヒーロー画像
+                type: image
+                options:
+                  media: gear_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: pointsTitle
+                label: 3ポイント見出し
+                type: string
+              - name: points
+                label: 機材選びの3ポイント
+                type: object
+                list:
+                  max: 3
+                  collapsible:
+                    collapsed: true
+                    summary: "{number} {text}"
+                fields:
+                  - name: number
+                    label: 番号
+                    type: string
+                  - name: text
+                    label: 内容
+                    type: string
+                    required: true
+
+          - name: focalExperience
+            label: 01 焦点距離体験
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: note
+                label: 注記
+                type: text
+              - name: defaultFocal
+                label: 初期表示の焦点距離
+                type: number
+                description: 24 / 50 / 100 / 200 / 300 / 400 / 500 / 600 / 800 のいずれかを推奨します。
+              - name: samples
+                label: 焦点距離別作例
+                type: object
+                list:
+                  max: 9
+                  collapsible:
+                    collapsed: true
+                    summary: "{focal}mm / {label}"
+                fields:
+                  - name: focal
+                    label: 焦点距離 mm
+                    type: number
+                    required: true
+                  - name: label
+                    label: 短い説明
+                    type: string
+                  - name: description
+                    label: 詳細説明
+                    type: text
+                  - name: image
+                    label: 作例画像
+                    type: image
+                    options:
+                      media: gear_images
+                      path: focal
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+          - name: gearFinder
+            label: 02 レンズ × ボディ
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+
+              - name: modes
+                label: 選び方
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
+                fields:
+                  - name: id
+                    label: ID
+                    type: select
+                    required: true
+                    options:
+                      values:
+                        - name: manufacturer
+                          label: メーカー
+                        - name: focal
+                          label: 焦点距離
+                        - name: resolution
+                          label: 解像度
+                        - name: function
+                          label: 機能
+                  - name: label
+                    label: 表示名
+                    type: string
+                    required: true
+
+              - name: manufacturers
+                label: メーカー選択肢
+                type: string
+                list: true
+
+              - name: focalOptions
+                label: 焦点距離選択肢 mm
+                type: number
+                list: true
+
+              - name: resolutionOptions
+                label: 解像度選択肢 MP
+                type: number
+                list: true
+
+              - name: featureOptions
+                label: 機能選択肢
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
+                fields:
+                  - name: id
+                    label: 機能ID
+                    type: string
+                    required: true
+                    description: animal-af / high-speed-burst / stabilization / weather-sealed など。
+                  - name: label
+                    label: 表示名
+                    type: string
+                    required: true
+                  - name: target
+                    label: 主な対象
+                    type: select
+                    options:
+                      values:
+                        - name: body
+                          label: ボディ
+                        - name: lens
+                          label: レンズ
+                        - name: pair
+                          label: 組み合わせ全体
+
+              - name: lenses
+                label: レンズ
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{manufacturer} / {name}"
+                fields:
+                  - name: id
+                    label: レンズID
+                    type: string
+                    required: true
+                  - name: manufacturer
+                    label: メーカー
+                    type: string
+                    required: true
+                  - name: name
+                    label: 製品名
+                    type: string
+                    required: true
+                  - name: mount
+                    label: マウント
+                    type: string
+                    required: true
+                    description: RF / E / Z など。ボディ側と同じ文字列なら組み合わせ候補になります。
+                  - name: image
+                    label: 製品画像
+                    type: image
+                    options:
+                      media: gear_images
+                      path: products/lens
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+                  - name: minFocal
+                    label: 最短焦点距離 mm
+                    type: number
+                    required: true
+                  - name: maxFocal
+                    label: 最長焦点距離 mm
+                    type: number
+                    required: true
+                  - name: aperture
+                    label: 開放F値
+                    type: string
+                  - name: weight
+                    label: 重量
+                    type: string
+                  - name: summary
+                    label: 性能概要
+                    type: text
+                  - name: features
+                    label: 機能ID
+                    type: string
+                    list: true
+
+              - name: bodies
+                label: カメラボディ
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{manufacturer} / {name}"
+                fields:
+                  - name: id
+                    label: ボディID
+                    type: string
+                    required: true
+                  - name: manufacturer
+                    label: メーカー
+                    type: string
+                    required: true
+                  - name: name
+                    label: 製品名
+                    type: string
+                    required: true
+                  - name: mount
+                    label: マウント
+                    type: string
+                    required: true
+                    description: RF / E / Z など。レンズ側と同じ文字列なら組み合わせ候補になります。
+                  - name: image
+                    label: 製品画像
+                    type: image
+                    options:
+                      media: gear_images
+                      path: products/body
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+                  - name: resolution
+                    label: 解像度 MP
+                    type: number
+                    required: true
+                  - name: resolutionLabel
+                    label: 解像度表示
+                    type: string
+                  - name: burst
+                    label: 連写性能表示
+                    type: string
+                  - name: summary
+                    label: 性能概要
+                    type: text
+                  - name: features
+                    label: 機能ID
+                    type: string
+                    list: true
+
+              - name: disclaimer
+                label: 製品情報の注記
+                type: text
+
+          - name: accessories
+            label: 03 アクセサリー
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: items
+                label: アクセサリー
+                type: object
+                list:
+                  max: 8
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 名称
+                    type: string
+                    required: true
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: gear_images
+                      path: accessories
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+          - name: rental
+            label: 04 レンタル
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: reasonTitle
+                label: 理由見出し
+                type: string
+              - name: reasons
+                label: レンタルを検討する理由
+                type: string
+                list: true
+              - name: serviceLabel
+                label: サービス紹介の注記
+                type: string
+              - name: serviceName
+                label: サービス名
+                type: string
+              - name: serviceText
+                label: サービス説明
+                type: text
+              - name: image
+                label: サービス画像
+                type: image
+                options:
+                  media: gear_images
+                  path: rental
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: 公式サイトURL
+                type: string
+              - name: note
+                label: 注記
+                type: text
+
+          - name: next
+            label: ページ末尾
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: buttonLabel
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+              - name: image
+                label: 背景画像
+                type: image
+                options:
+                  media: gear_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
 
       - name: photo_map_settings
         label: フォトマップ設定
