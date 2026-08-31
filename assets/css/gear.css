@@ -1006,3 +1006,194 @@
     width: fit-content;
   }
 }
+
+/* =========================================
+   PHOTO GUIDE / GEAR v3 adjustments
+========================================= */
+
+/* Three gear basics cards now sit between hero and Section 01 */
+.gear-v2-intro-points {
+  padding: 34px 0 38px;
+  border-bottom: 1px solid var(--gear-line);
+  background: #fff;
+}
+
+.gear-v2-intro-heading {
+  display: grid;
+  grid-template-columns: minmax(0, .8fr) minmax(280px, 1.2fr);
+  gap: 28px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.gear-v2-intro-heading p {
+  margin: 0 0 4px;
+  color: var(--gear-teal);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .1em;
+}
+
+.gear-v2-intro-heading h2 {
+  margin: 0;
+  color: var(--gear-navy);
+  font-size: 24px;
+}
+
+.gear-v2-intro-heading > span {
+  color: var(--gear-muted);
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+.gear-v2-intro-card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.gear-v2-intro-card {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 13px;
+  align-items: center;
+  min-height: 92px;
+  padding: 17px 19px;
+  border: 1px solid var(--gear-line);
+  border-radius: 9px;
+  background: #f7f9f9;
+}
+
+.gear-v2-intro-card span {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--gear-teal);
+  font-size: 10px;
+  font-weight: 900;
+}
+
+.gear-v2-intro-card strong {
+  color: var(--gear-navy);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+/* Section 01 title stays on one line on desktop */
+.gear-v2-focal .gear-v2-heading {
+  grid-template-columns: 1fr;
+  gap: 9px;
+}
+
+.gear-v2-focal .gear-v2-heading h2 {
+  white-space: nowrap;
+  font-size: clamp(27px, 3vw, 40px);
+}
+
+.gear-v2-focal .gear-v2-heading > span {
+  max-width: 780px;
+}
+
+/* Keep focal number and "mm" at the same visual size */
+.gear-v2-focal-figure figcaption > strong [data-focal-number] {
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* Integrated cameras occupy the whole LENS × BODY result area */
+.gear-v2-integrated-column {
+  grid-column: 2 / 5;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid var(--gear-line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.gear-v2-integrated-column[hidden] {
+  display: none !important;
+}
+
+.gear-v2-integrated-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(280px, .86fr) minmax(0, 1.14fr);
+  min-height: 470px;
+  overflow: hidden;
+  border-radius: 8px;
+  background: #f8f9f8;
+}
+
+.gear-v2-integrated-image {
+  min-height: 420px;
+  background: #fff;
+}
+
+.gear-v2-integrated-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* GOOPASS image is displayed as a horizontal visual */
+.gear-v2-rental-service {
+  display: block;
+}
+
+.gear-v2-rental-service-image {
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 16 / 7;
+}
+
+.gear-v2-rental-service-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gear-v2-rental-service-copy {
+  min-height: 230px;
+}
+
+@media (max-width: 1050px) {
+  .gear-v2-intro-heading {
+    grid-template-columns: 1fr;
+    gap: 7px;
+  }
+
+  .gear-v2-integrated-card {
+    grid-template-columns: .9fr 1.1fr;
+  }
+}
+
+@media (max-width: 760px) {
+  .gear-v2-intro-card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .gear-v2-focal .gear-v2-heading h2 {
+    white-space: normal;
+  }
+
+  .gear-v2-integrated-column {
+    grid-column: auto;
+  }
+
+  .gear-v2-integrated-card {
+    grid-template-columns: 1fr;
+  }
+
+  .gear-v2-integrated-image {
+    min-height: 260px;
+  }
+
+  .gear-v2-rental-service-image {
+    aspect-ratio: 16 / 8.5;
+  }
+}
+
