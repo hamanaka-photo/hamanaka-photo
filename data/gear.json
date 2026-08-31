@@ -3,7 +3,11 @@
     "eyebrow": "GEAR",
     "title": "ラッコと出会うための、\n撮影機材を選ぼう。",
     "lead": "まずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えます。",
-    "pointsTitle": "どんな機材が必要？",
+    "image": ""
+  },
+  "introPoints": {
+    "title": "どんな機材が必要？",
+    "lead": "ラッコ撮影の機材を考えるときは、まずこの3つを基準にすると選びやすくなります。",
     "points": [
       {
         "number": "01",
@@ -247,7 +251,7 @@
         "name": "EOS R5 Mark II",
         "mount": "RF",
         "image": "assets/images/03_guide/gear/eos_r5_mk2.jpg",
-        "resolution": 45,
+        "resolution": 45.0,
         "resolutionLabel": "約45MP",
         "burst": "高速連写対応",
         "summary": "高解像と被写体検出を重視したい場合の候補。",
@@ -297,7 +301,7 @@
         "name": "α7R V",
         "mount": "E",
         "image": "assets/images/03_guide/gear/α7r_v.jpg",
-        "resolution": 61,
+        "resolution": 61.0,
         "resolutionLabel": "約61MP",
         "burst": "連写対応",
         "summary": "高画素を活かしたトリミング耐性を重視したい場合の候補。",
@@ -342,7 +346,27 @@
         ]
       }
     ],
-    "disclaimer": "掲載製品は機材選びを考えるための参考例です。仕様や販売状況は各メーカーの最新情報をご確認ください。"
+    "disclaimer": "掲載製品は機材選びを考えるための参考例です。レンズ交換式と一体型カメラを同じ条件から検索できます。仕様や販売状況は各メーカーの最新情報をご確認ください。",
+    "integratedCameras": [
+      {
+        "id": "nikon-coolpix-p1100",
+        "manufacturer": "Nikon",
+        "name": "COOLPIX P1100",
+        "image": "",
+        "minFocal": 24,
+        "maxFocal": 3000,
+        "focalLabel": "24〜3000mm相当",
+        "aperture": "F2.8-8",
+        "resolution": 16.05,
+        "resolutionLabel": "約16.05MP",
+        "weight": "約1.41kg",
+        "burst": "連写機能あり",
+        "summary": "24〜3000mm相当をレンズ交換なしでカバーできる、高倍率ズーム一体型カメラ。",
+        "features": [
+          "stabilization"
+        ]
+      }
+    ]
   },
   "accessories": {
     "eyebrow": "03 / ACCESSORIES",
@@ -399,6 +423,7 @@
     "title": "機材を選んだら、撮り方を学ぼう。",
     "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
     "buttonLabel": "テクニック編へ",
-    "url": "guide-article.html?article=technique"
+    "url": "guide-article.html?article=technique",
+    "image": ""
   }
 }
