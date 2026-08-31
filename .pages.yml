@@ -1684,11 +1684,18 @@ content:
                   media: gear_images
                   extensions: [jpg, jpeg, png, webp]
                   rename: false
-              - name: pointsTitle
-                label: 3ポイント見出し
+          - name: introPoints
+            label: 機材選びの3ポイント
+            type: object
+            fields:
+              - name: title
+                label: 見出し
                 type: string
+              - name: lead
+                label: 説明
+                type: text
               - name: points
-                label: 機材選びの3ポイント
+                label: 3つのカード
                 type: object
                 list:
                   max: 3
@@ -1944,6 +1951,71 @@ content:
                     type: string
                     list: true
 
+              - name: integratedCameras
+                label: 一体型カメラ
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{manufacturer} / {name}"
+                description: COOLPIXのようなレンズ一体型カメラを登録します。レンズとボディの組み合わせ候補と同じ検索条件で表示されます。
+                fields:
+                  - name: id
+                    label: カメラID
+                    type: string
+                    required: true
+                  - name: manufacturer
+                    label: メーカー
+                    type: string
+                    required: true
+                  - name: name
+                    label: 製品名
+                    type: string
+                    required: true
+                  - name: image
+                    label: 製品画像
+                    type: image
+                    options:
+                      media: gear_images
+                      path: products/integrated
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+                  - name: minFocal
+                    label: 最短焦点距離 mm相当
+                    type: number
+                    required: true
+                  - name: maxFocal
+                    label: 最長焦点距離 mm相当
+                    type: number
+                    required: true
+                  - name: focalLabel
+                    label: 焦点距離表示
+                    type: string
+                    description: 例 24〜3000mm相当
+                  - name: aperture
+                    label: 開放F値
+                    type: string
+                  - name: resolution
+                    label: 解像度 MP
+                    type: number
+                    required: true
+                  - name: resolutionLabel
+                    label: 解像度表示
+                    type: string
+                  - name: weight
+                    label: 重量
+                    type: string
+                  - name: burst
+                    label: 連写性能表示
+                    type: string
+                  - name: summary
+                    label: 性能概要
+                    type: text
+                  - name: features
+                    label: 機能ID
+                    type: string
+                    list: true
+
               - name: disclaimer
                 label: 製品情報の注記
                 type: text
@@ -2018,6 +2090,7 @@ content:
               - name: image
                 label: サービス画像
                 type: image
+                description: 横長画像を推奨します。16:7前後を目安にすると公開ページの比率に合います。
                 options:
                   media: gear_images
                   path: rental
