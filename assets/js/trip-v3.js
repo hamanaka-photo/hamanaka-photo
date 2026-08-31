@@ -456,9 +456,14 @@
         const iconPath = weatherIconPath(weatherCode);
 
         return `
-          <div
-            class="trip-v3-forecast-day"
-            style="--trip-weather-icon:url('${esc(iconPath)}')">
+          <div class="trip-v3-forecast-day">
+            <img
+              class="trip-v3-forecast-bg-icon"
+              src="${esc(iconPath)}"
+              alt=""
+              aria-hidden="true"
+              loading="lazy"
+              decoding="async">
             <div class="trip-v3-forecast-date">${esc(label)}</div>
             <div class="trip-v3-forecast-weather">${esc(weather)}</div>
             <div class="trip-v3-forecast-temp">
