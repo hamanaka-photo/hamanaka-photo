@@ -1708,3 +1708,154 @@
   }
 }
 
+
+
+/* =========================================
+   PHOTO GUIDE / GEAR v6.2
+   Rental left-side vertical hierarchy
+========================================= */
+
+/*
+  Left order:
+  01 small title
+  02 title
+  03 supplemental description
+  04 three points
+*/
+.gear-v6-rental-left {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto minmax(0, 1fr);
+  gap: 20px;
+  align-items: stretch;
+  min-height: 100%;
+  padding: 28px 30px 26px;
+}
+
+.gear-v6-rental-message {
+  display: block;
+  min-width: 0;
+}
+
+.gear-v6-rental-message > p {
+  margin-bottom: 8px;
+}
+
+.gear-v6-rental-message h2 {
+  white-space: normal;
+}
+
+.gear-v6-rental-rule {
+  display: none;
+}
+
+.gear-v6-rental-lead {
+  max-width: 720px;
+  margin-top: 12px;
+}
+
+/*
+  The three points fill the remaining height of the left panel.
+  Because the outer shell uses stretch, the bottom edge aligns
+  with the complete GOOPASS card on the right.
+*/
+.gear-v6-rental-reasons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+  align-items: stretch;
+  min-height: 0;
+}
+
+.gear-v6-rental-reason {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 150px;
+  padding: 15px 12px 10px;
+}
+
+.gear-v6-rental-reason-circle {
+  width: clamp(110px, 8.6vw, 130px);
+  height: clamp(110px, 8.6vw, 130px);
+  flex: 0 0 auto;
+}
+
+.gear-v6-rental-reason > strong {
+  max-width: 190px;
+  margin-top: 1px;
+  font-size: 10px;
+}
+
+/* Both sides always use the same outer height on desktop. */
+.gear-v6-rental-shell {
+  align-items: stretch;
+}
+
+.gear-v6-rental-left,
+.gear-v6-rental-service {
+  height: 100%;
+}
+
+@media (max-width: 1180px) {
+  .gear-v6-rental-left {
+    min-height: auto;
+  }
+
+  .gear-v6-rental-left,
+  .gear-v6-rental-service {
+    height: auto;
+  }
+}
+
+@media (max-width: 820px) {
+  .gear-v6-rental-left {
+    gap: 20px;
+  }
+
+  .gear-v6-rental-reasons {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .gear-v6-rental-reason {
+    min-height: 138px;
+  }
+}
+
+@media (max-width: 560px) {
+  .gear-v6-rental-left {
+    padding: 24px 19px 22px;
+  }
+
+  .gear-v6-rental-reasons {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .gear-v6-rental-reason {
+    display: grid;
+    grid-template-columns: 82px 1fr;
+    grid-template-rows: auto;
+    gap: 12px;
+    justify-items: start;
+    min-height: 96px;
+    padding: 8px 10px;
+    text-align: left;
+  }
+
+  .gear-v6-rental-reason-circle {
+    grid-row: 1;
+    width: 78px;
+    height: 78px;
+    margin: 0;
+  }
+
+  .gear-v6-rental-reason > strong {
+    grid-column: 2;
+    grid-row: 1;
+    align-self: center;
+    margin: 0;
+    font-size: 9px;
+  }
+}

@@ -1175,3 +1175,24 @@
     opacity: .28;
   }
 }
+
+
+/* v3.7 weather icon visibility
+   Lighter mask / clearer illustrations */
+.trip-v3-forecast-bg-icon {
+  opacity: .38;
+}
+
+.trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+  opacity: .42;
+}
+
+@media (max-width: 760px) {
+  .trip-v3-forecast-bg-icon {
+    opacity: .34;
+  }
+
+  .trip-v3-forecast-day:first-child .trip-v3-forecast-bg-icon {
+    opacity: .38;
+  }
+}
