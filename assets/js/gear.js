@@ -344,12 +344,12 @@
 
   const rentalReasonIcon = index => {
     if (index === 0) {
-      return `<span class="gear-v4-rental-yen" aria-hidden="true">¥</span>`;
+      return `<span class="gear-v5-rental-yen" aria-hidden="true">¥</span>`;
     }
 
     if (index === 1) {
       return `
-        <svg class="gear-v4-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+        <svg class="gear-v5-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
           <path d="M14 16h7l2-4h8l2 4h3a5 5 0 0 1 5 5v15H7V21a5 5 0 0 1 5-5h2Z"/>
           <circle cx="24" cy="27" r="7"/>
           <path d="M11 21h5"/>
@@ -357,7 +357,7 @@
     }
 
     return `
-      <svg class="gear-v4-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+      <svg class="gear-v5-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
         <path d="M17 9h14l3 6v18l-3 6H17l-3-6V15l3-6Z"/>
         <path d="M14 18h20M14 29h20M19 9v30M29 9v30"/>
       </svg>`;
@@ -377,13 +377,13 @@
     ].filter(Boolean);
 
     if (!visualItems.length) {
-      return `<div class="gear-v4-rental-visual-empty" aria-hidden="true"></div>`;
+      return `<div class="gear-v5-rental-visual-empty" aria-hidden="true"></div>`;
     }
 
     return `
-      <div class="gear-v4-rental-visual-products" aria-hidden="true">
+      <div class="gear-v5-rental-visual-products" aria-hidden="true">
         ${visualItems.map((item, index) => `
-          <div class="gear-v4-rental-visual-product is-${index + 1}">
+          <div class="gear-v5-rental-visual-product is-${index + 1}">
             <img
               src="${escapeHtml(item.image)}"
               alt=""
@@ -398,59 +398,81 @@
     const reasons = Array.isArray(section.reasons) ? section.reasons : [];
 
     return `
-      <section class="gear-v2-section gear-v4-rental" id="gear-rental">
+      <section class="gear-v2-section gear-v5-rental" id="gear-rental">
         <div class="container">
-          <div class="gear-v4-rental-shell">
-            <div class="gear-v4-rental-left">
-              <div class="gear-v4-rental-message">
-                <p>${escapeHtml(section.eyebrow || '04 / RENTAL')}</p>
-                <h2>${escapeHtml(section.title || 'レンタルという選択肢も！')}</h2>
-                <span class="gear-v4-rental-rule" aria-hidden="true"></span>
-                <div class="gear-v4-rental-lead">
+          <div class="gear-v5-rental-shell">
+
+            <section class="gear-v5-rental-left" aria-labelledby="gear-rental-title">
+              <p class="gear-v5-rental-eyebrow">
+                ${escapeHtml(section.eyebrow || '04 / RENTAL')}
+              </p>
+
+              <h2 class="gear-v5-rental-title" id="gear-rental-title">
+                ${escapeHtml(section.title || 'レンタルという選択肢も！')}
+              </h2>
+
+              <div class="gear-v5-rental-left-bottom">
+                <div class="gear-v5-rental-lead">
                   ${nl2br(section.lead || '')}
                 </div>
-              </div>
 
-              <div class="gear-v4-rental-reasons">
                 ${reasons.slice(0, 3).map((reason, index) => `
-                  <article class="gear-v4-rental-reason">
-                    <div class="gear-v4-rental-reason-circle">
+                  <article class="gear-v5-rental-reason">
+                    <div class="gear-v5-rental-reason-icon">
                       ${rentalReasonIcon(index)}
-                      <b>0${index + 1}</b>
                     </div>
+                    <b>0${index + 1}</b>
                     <strong>${escapeHtml(reason)}</strong>
                   </article>`).join('')}
               </div>
-            </div>
+            </section>
 
-            <article class="gear-v4-rental-service">
-              <div class="gear-v4-rental-service-copy">
-                <span class="gear-v4-rental-service-label">
-                  ${escapeHtml(section.serviceLabel || '撮影機材レンタルサービスの一例')}
+            <article class="gear-v5-rental-service">
+              <div class="gear-v5-rental-service-copy">
+                <span class="gear-v5-rental-service-label">
+                  ${escapeHtml(
+                    section.serviceLabel ||
+                    '撮影機材レンタルサービスの一例'
+                  )}
                 </span>
 
-                <div class="gear-v4-rental-logo">
+                <div class="gear-v5-rental-logo">
                   ${section.image
-                    ? image(section.image, section.serviceName || 'GOOPASS')
-                    : `<strong>${escapeHtml(section.serviceName || 'GOOPASS')}</strong>`}
+                    ? image(
+                        section.image,
+                        section.serviceName || 'GOOPASS'
+                      )
+                    : `<strong>${escapeHtml(
+                        section.serviceName || 'GOOPASS'
+                      )}</strong>`}
                 </div>
 
-                <p>${escapeHtml(section.serviceText || '')}</p>
+                <p class="gear-v5-rental-service-text">
+                  ${escapeHtml(section.serviceText || '')}
+                </p>
 
                 ${url ? `
-                  <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
-                    ${escapeHtml(section.buttonLabel || 'GOOPASSで機材を探す')}
+                  <a
+                    class="gear-v5-rental-button"
+                    href="${escapeHtml(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    ${escapeHtml(
+                      section.buttonLabel || 'GOOPASSで機材を探す'
+                    )}
                     <span aria-hidden="true">↗</span>
                   </a>` : ''}
               </div>
 
-              <div class="gear-v4-rental-service-visual">
+              <div class="gear-v5-rental-service-visual">
                 ${renderRentalVisual(gearFinder)}
               </div>
             </article>
           </div>
 
-          <p class="gear-v4-rental-note">${escapeHtml(section.note || '')}</p>
+          <p class="gear-v5-rental-note">
+            ${escapeHtml(section.note || '')}
+          </p>
         </div>
       </section>`;
   };
