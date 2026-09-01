@@ -21,6 +21,13 @@ media:
     extensions: [jpg, jpeg, png, webp]
     rename: false
 
+  - name: technique_images
+    label: テクニック編画像
+    input: assets/images/03_guide/technique
+    output: assets/images/03_guide/technique
+    extensions: [jpg, jpeg, png, webp]
+    rename: false
+
   - name: photo_map_images
     label: PHOTO MAP画像
     input: assets/images/03_guide/photo-map
@@ -2141,6 +2148,388 @@ content:
                   media: gear_images
                   extensions: [jpg, jpeg, png, webp]
                   rename: false
+
+      - name: technique_settings
+        label: テクニック編
+        type: file
+        path: data/technique.json
+        format: json
+        operations:
+          delete: false
+        fields:
+          - name: hero
+            label: ページ上部
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: text
+                required: true
+              - name: lead
+                label: 説明文
+                type: text
+              - name: image
+                label: ヒーロー画像
+                type: image
+                options:
+                  media: technique_images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+
+          - name: sectionNav
+            label: ページ内ナビ
+            type: object
+            list:
+              max: 6
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - name: id
+                label: セクションID
+                type: select
+                required: true
+                options:
+                  values:
+                    - name: time-place
+                      label: 時間と場所
+                    - name: find
+                      label: ラッコの見つけ方
+                    - name: settings
+                      label: 基本設定
+                    - name: scenes
+                      label: シーン別
+                    - name: faq
+                      label: Q&A
+                    - name: gallery
+                      label: 作例
+              - name: label
+                label: 表示名
+                type: string
+              - name: icon
+                label: アイコン文字
+                type: string
+
+          - name: timePlace
+            label: 01 時間と場所
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: spot
+                label: 撮影スポット
+                type: object
+                fields:
+                  - name: eyebrow
+                    label: 小見出し
+                    type: string
+                  - name: title
+                    label: スポット名
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: technique_images
+                      path: time-place
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+                  - name: buttonLabel
+                    label: ボタン表示
+                    type: string
+                  - name: url
+                    label: リンク先
+                    type: string
+              - name: times
+                label: おすすめ時間帯
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{title} {time}"
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: time
+                    label: 時間
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 作例画像
+                    type: image
+                    options:
+                      media: technique_images
+                      path: time-place
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+              - name: sun
+                label: 日の出・日の入り
+                type: object
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: buttonLabel
+                    label: ボタン表示
+                    type: string
+                  - name: url
+                    label: リンク先
+                    type: string
+
+          - name: find
+            label: 02 ラッコの見つけ方
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: image
+                label: メイン画像
+                type: image
+                options:
+                  media: technique_images
+                  path: find
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: tips
+                label: 見つけ方のポイント
+                type: object
+                list:
+                  max: 6
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+              - name: behavior
+                label: 行動を知る
+                type: object
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: technique_images
+                      path: find
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+          - name: settings
+            label: 03 撮影の基本設定
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: items
+                label: 設定項目
+                type: object
+                list:
+                  max: 8
+                  collapsible:
+                    collapsed: true
+                    summary: "{label} / {value}"
+                fields:
+                  - name: label
+                    label: 項目名
+                    type: string
+                  - name: value
+                    label: 目安
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+              - name: blurTips
+                label: ブレを防ぐコツ
+                type: object
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: items
+                    label: ポイント
+                    type: string
+                    list: true
+                  - name: image
+                    label: 画像
+                    type: image
+                    options:
+                      media: technique_images
+                      path: settings
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+          - name: scenes
+            label: 04 シーン別の撮り方
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: items
+                label: シーン
+                type: object
+                list:
+                  max: 8
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: title
+                    label: 見出し
+                    type: string
+                  - name: text
+                    label: 説明
+                    type: text
+                  - name: image
+                    label: 作例画像
+                    type: image
+                    options:
+                      media: technique_images
+                      path: scenes
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+
+          - name: faq
+            label: 05 よくある悩みQ&A
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: items
+                label: 質問と回答
+                type: object
+                list:
+                  collapsible:
+                    collapsed: true
+                    summary: "{question}"
+                fields:
+                  - name: question
+                    label: 質問
+                    type: string
+                  - name: answer
+                    label: 回答
+                    type: text
+
+          - name: gallery
+            label: 06 作例ギャラリー
+            type: object
+            fields:
+              - name: eyebrow
+                label: 番号
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: lead
+                label: 説明
+                type: text
+              - name: items
+                label: 作例
+                type: object
+                list:
+                  max: 12
+                  collapsible:
+                    collapsed: true
+                    summary: "{caption}"
+                fields:
+                  - name: image
+                    label: 作例画像
+                    type: image
+                    required: true
+                    options:
+                      media: technique_images
+                      path: gallery
+                      extensions: [jpg, jpeg, png, webp]
+                      rename: false
+                  - name: caption
+                    label: キャプション
+                    type: string
+
+          - name: next
+            label: ページ末尾
+            type: object
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: 見出し
+                type: string
+              - name: text
+                label: 説明
+                type: text
+              - name: links
+                label: 関連ページ
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{label}"
+                fields:
+                  - name: label
+                    label: 表示名
+                    type: string
+                  - name: url
+                    label: リンク先
+                    type: string
 
       - name: photo_map_settings
         label: フォトマップ設定
