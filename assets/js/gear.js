@@ -344,12 +344,12 @@
 
   const rentalReasonIcon = index => {
     if (index === 0) {
-      return `<span class="gear-v5-rental-yen" aria-hidden="true">¥</span>`;
+      return `<span class="gear-v6-rental-yen" aria-hidden="true">¥</span>`;
     }
 
     if (index === 1) {
       return `
-        <svg class="gear-v5-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+        <svg class="gear-v6-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
           <path d="M14 16h7l2-4h8l2 4h3a5 5 0 0 1 5 5v15H7V21a5 5 0 0 1 5-5h2Z"/>
           <circle cx="24" cy="27" r="7"/>
           <path d="M11 21h5"/>
@@ -357,86 +357,55 @@
     }
 
     return `
-      <svg class="gear-v5-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+      <svg class="gear-v6-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
         <path d="M17 9h14l3 6v18l-3 6H17l-3-6V15l3-6Z"/>
         <path d="M14 18h20M14 29h20M19 9v30M29 9v30"/>
       </svg>`;
   };
 
-  const renderRentalVisual = gearFinder => {
-    const bodies = (Array.isArray(gearFinder.bodies) ? gearFinder.bodies : [])
-      .filter(item => item?.image);
-    const lenses = (Array.isArray(gearFinder.lenses) ? gearFinder.lenses : [])
-      .filter(item => item?.image);
-
-    const visualItems = [
-      bodies[0],
-      bodies[2] || bodies[1],
-      bodies[4] || bodies[3],
-      lenses.find(item => Number(item.maxFocal || 0) >= 600) || lenses[0]
-    ].filter(Boolean);
-
-    if (!visualItems.length) {
-      return `<div class="gear-v5-rental-visual-empty" aria-hidden="true"></div>`;
-    }
-
-    return `
-      <div class="gear-v5-rental-visual-products" aria-hidden="true">
-        ${visualItems.map((item, index) => `
-          <div class="gear-v5-rental-visual-product is-${index + 1}">
-            <img
-              src="${escapeHtml(item.image)}"
-              alt=""
-              loading="lazy"
-              decoding="async">
-          </div>`).join('')}
-      </div>`;
-  };
-
-  const renderRental = (section, gearFinder = {}) => {
+  const renderRental = section => {
     const url = safeUrl(section.url);
     const reasons = Array.isArray(section.reasons) ? section.reasons : [];
 
     return `
-      <section class="gear-v2-section gear-v5-rental" id="gear-rental">
+      <section class="gear-v2-section gear-v6-rental" id="gear-rental">
         <div class="container">
-          <div class="gear-v5-rental-shell">
+          <div class="gear-v6-rental-shell">
 
-            <section class="gear-v5-rental-left" aria-labelledby="gear-rental-title">
-              <p class="gear-v5-rental-eyebrow">
-                ${escapeHtml(section.eyebrow || '04 / RENTAL')}
-              </p>
-
-              <h2 class="gear-v5-rental-title" id="gear-rental-title">
-                ${escapeHtml(section.title || 'レンタルという選択肢も！')}
-              </h2>
-
-              <div class="gear-v5-rental-left-bottom">
-                <div class="gear-v5-rental-lead">
+            <section class="gear-v6-rental-left" aria-labelledby="gear-rental-title">
+              <div class="gear-v6-rental-message">
+                <p>${escapeHtml(section.eyebrow || '04 / RENTAL')}</p>
+                <h2 id="gear-rental-title">
+                  ${escapeHtml(section.title || 'レンタルという選択肢も！')}
+                </h2>
+                <span class="gear-v6-rental-rule" aria-hidden="true"></span>
+                <div class="gear-v6-rental-lead">
                   ${nl2br(section.lead || '')}
                 </div>
+              </div>
 
+              <div class="gear-v6-rental-reasons">
                 ${reasons.slice(0, 3).map((reason, index) => `
-                  <article class="gear-v5-rental-reason">
-                    <div class="gear-v5-rental-reason-icon">
+                  <article class="gear-v6-rental-reason">
+                    <div class="gear-v6-rental-reason-circle">
                       ${rentalReasonIcon(index)}
+                      <b>0${index + 1}</b>
                     </div>
-                    <b>0${index + 1}</b>
                     <strong>${escapeHtml(reason)}</strong>
                   </article>`).join('')}
               </div>
             </section>
 
-            <article class="gear-v5-rental-service">
-              <div class="gear-v5-rental-service-copy">
-                <span class="gear-v5-rental-service-label">
+            <article class="gear-v6-rental-service">
+              <div class="gear-v6-rental-service-copy">
+                <span class="gear-v6-rental-service-label">
                   ${escapeHtml(
                     section.serviceLabel ||
                     '撮影機材レンタルサービスの一例'
                   )}
                 </span>
 
-                <div class="gear-v5-rental-logo">
+                <div class="gear-v6-rental-logo">
                   ${section.image
                     ? image(
                         section.image,
@@ -447,13 +416,10 @@
                       )}</strong>`}
                 </div>
 
-                <p class="gear-v5-rental-service-text">
-                  ${escapeHtml(section.serviceText || '')}
-                </p>
+                <p>${escapeHtml(section.serviceText || '')}</p>
 
                 ${url ? `
                   <a
-                    class="gear-v5-rental-button"
                     href="${escapeHtml(url)}"
                     target="_blank"
                     rel="noopener noreferrer">
@@ -464,13 +430,22 @@
                   </a>` : ''}
               </div>
 
-              <div class="gear-v5-rental-service-visual">
-                ${renderRentalVisual(gearFinder)}
+              <div class="gear-v6-rental-service-visual">
+                ${section.visualImage
+                  ? image(
+                      section.visualImage,
+                      'GOOPASS レンタル機材イメージ'
+                    )
+                  : `
+                    <div class="gear-v6-rental-visual-placeholder">
+                      <span>RENTAL IMAGE</span>
+                      <small>右側の横長画像を設定</small>
+                    </div>`}
               </div>
             </article>
           </div>
 
-          <p class="gear-v5-rental-note">
+          <p class="gear-v6-rental-note">
             ${escapeHtml(section.note || '')}
           </p>
         </div>
@@ -819,7 +794,7 @@
       ${renderFocal(data.focalExperience || {})}
       ${renderFinder(data.gearFinder || {})}
       ${renderAccessories(data.accessories || {})}
-      ${renderRental(data.rental || {}, data.gearFinder || {})}
+      ${renderRental(data.rental || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});
