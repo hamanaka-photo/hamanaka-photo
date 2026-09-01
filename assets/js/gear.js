@@ -342,48 +342,115 @@
       </section>`;
   };
 
-  const renderRental = section => {
+  const rentalReasonIcon = index => {
+    if (index === 0) {
+      return `<span class="gear-v4-rental-yen" aria-hidden="true">¥</span>`;
+    }
+
+    if (index === 1) {
+      return `
+        <svg class="gear-v4-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M14 16h7l2-4h8l2 4h3a5 5 0 0 1 5 5v15H7V21a5 5 0 0 1 5-5h2Z"/>
+          <circle cx="24" cy="27" r="7"/>
+          <path d="M11 21h5"/>
+        </svg>`;
+    }
+
+    return `
+      <svg class="gear-v4-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M17 9h14l3 6v18l-3 6H17l-3-6V15l3-6Z"/>
+        <path d="M14 18h20M14 29h20M19 9v30M29 9v30"/>
+      </svg>`;
+  };
+
+  const renderRentalVisual = gearFinder => {
+    const bodies = (Array.isArray(gearFinder.bodies) ? gearFinder.bodies : [])
+      .filter(item => item?.image);
+    const lenses = (Array.isArray(gearFinder.lenses) ? gearFinder.lenses : [])
+      .filter(item => item?.image);
+
+    const visualItems = [
+      bodies[0],
+      bodies[2] || bodies[1],
+      bodies[4] || bodies[3],
+      lenses.find(item => Number(item.maxFocal || 0) >= 600) || lenses[0]
+    ].filter(Boolean);
+
+    if (!visualItems.length) {
+      return `<div class="gear-v4-rental-visual-empty" aria-hidden="true"></div>`;
+    }
+
+    return `
+      <div class="gear-v4-rental-visual-products" aria-hidden="true">
+        ${visualItems.map((item, index) => `
+          <div class="gear-v4-rental-visual-product is-${index + 1}">
+            <img
+              src="${escapeHtml(item.image)}"
+              alt=""
+              loading="lazy"
+              decoding="async">
+          </div>`).join('')}
+      </div>`;
+  };
+
+  const renderRental = (section, gearFinder = {}) => {
     const url = safeUrl(section.url);
     const reasons = Array.isArray(section.reasons) ? section.reasons : [];
 
     return `
-      <section class="gear-v2-section gear-v2-rental" id="gear-rental">
+      <section class="gear-v2-section gear-v4-rental" id="gear-rental">
         <div class="container">
-          <div class="gear-v2-heading">
-            <div>
-              <p>${escapeHtml(section.eyebrow || '04 / RENTAL')}</p>
-              <h2>${escapeHtml(section.title || '')}</h2>
-            </div>
-            <span>${escapeHtml(section.lead || '')}</span>
-          </div>
-
-          <div class="gear-v2-rental-grid">
-            <div class="gear-v2-rental-reasons">
-              <span>${escapeHtml(section.reasonTitle || 'こんなときに')}</span>
-              ${reasons.map((reason, index) => `
-                <div>
-                  <b>0${index + 1}</b>
-                  <strong>${escapeHtml(reason)}</strong>
-                </div>`).join('')}
-            </div>
-
-            <article class="gear-v2-rental-service">
-              <div class="gear-v2-rental-service-image">
-                ${image(section.image, section.serviceName || 'GOOPASS')}
+          <div class="gear-v4-rental-shell">
+            <div class="gear-v4-rental-left">
+              <div class="gear-v4-rental-message">
+                <p>${escapeHtml(section.eyebrow || '04 / RENTAL')}</p>
+                <h2>${escapeHtml(section.title || 'レンタルという選択肢も！')}</h2>
+                <span class="gear-v4-rental-rule" aria-hidden="true"></span>
+                <div class="gear-v4-rental-lead">
+                  ${nl2br(section.lead || '')}
+                </div>
               </div>
-              <div class="gear-v2-rental-service-copy">
-                <span>${escapeHtml(section.serviceLabel || '')}</span>
-                ${section.image ? '' : `<h3>${escapeHtml(section.serviceName || '')}</h3>`}
+
+              <div class="gear-v4-rental-reasons">
+                ${reasons.slice(0, 3).map((reason, index) => `
+                  <article class="gear-v4-rental-reason">
+                    <div class="gear-v4-rental-reason-circle">
+                      ${rentalReasonIcon(index)}
+                      <b>0${index + 1}</b>
+                    </div>
+                    <strong>${escapeHtml(reason)}</strong>
+                  </article>`).join('')}
+              </div>
+            </div>
+
+            <article class="gear-v4-rental-service">
+              <div class="gear-v4-rental-service-copy">
+                <span class="gear-v4-rental-service-label">
+                  ${escapeHtml(section.serviceLabel || '撮影機材レンタルサービスの一例')}
+                </span>
+
+                <div class="gear-v4-rental-logo">
+                  ${section.image
+                    ? image(section.image, section.serviceName || 'GOOPASS')
+                    : `<strong>${escapeHtml(section.serviceName || 'GOOPASS')}</strong>`}
+                </div>
+
                 <p>${escapeHtml(section.serviceText || '')}</p>
+
                 ${url ? `
                   <a href="${escapeHtml(url)}" target="_blank" rel="noopener noreferrer">
-                    ${escapeHtml(section.buttonLabel || '公式サイトを見る')}
+                    ${escapeHtml(section.buttonLabel || 'GOOPASSで機材を探す')}
                     <span aria-hidden="true">↗</span>
                   </a>` : ''}
-                <small>${escapeHtml(section.note || '')}</small>
+              </div>
+
+              <div class="gear-v4-rental-service-visual">
+                ${renderRentalVisual(gearFinder)}
               </div>
             </article>
           </div>
+
+          <p class="gear-v4-rental-note">${escapeHtml(section.note || '')}</p>
         </div>
       </section>`;
   };
@@ -730,7 +797,7 @@
       ${renderFocal(data.focalExperience || {})}
       ${renderFinder(data.gearFinder || {})}
       ${renderAccessories(data.accessories || {})}
-      ${renderRental(data.rental || {})}
+      ${renderRental(data.rental || {}, data.gearFinder || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});
