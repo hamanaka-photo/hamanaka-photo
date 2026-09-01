@@ -2088,9 +2088,18 @@ content:
                 label: サービス説明
                 type: text
               - name: image
-                label: サービス画像
+                label: GOOPASSロゴ画像
                 type: image
-                description: 横長画像を推奨します。16:7前後を目安にすると公開ページの比率に合います。
+                description: GOOPASSロゴを登録します。透過PNGまたは余白の少ないWebPを推奨します。
+                options:
+                  media: gear_images
+                  path: rental
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: visualImage
+                label: 右側のレンタル機材イメージ
+                type: image
+                description: 右側に1枚で表示する横長画像です。16:9〜2:1程度、横1400〜1800px前後を推奨します。
                 options:
                   media: gear_images
                   path: rental
