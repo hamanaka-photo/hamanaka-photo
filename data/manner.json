@@ -1,0 +1,132 @@
+{
+  "hero": {
+    "eyebrow": "RULES",
+    "title": "美しい自然を、\n未来へつなぐために。",
+    "lead": "ラッコや野生動物、そしてこの町の自然を守ることが、\nまた会いに来られる未来につながります。\nルールとマナーを守って、気持ちのよい撮影を。",
+    "image": "assets/images/guide-manner.webp"
+  },
+  "intro": {
+    "title": "浜中町での撮影の心得",
+    "lead": "野生動物と自然環境を守るため、浜中町のラッコ鑑賞ルールを必ず守りましょう。"
+  },
+  "rules": [
+    {
+      "number": "01",
+      "icon": "boat",
+      "title": "船舶・カヌー等で\nラッコに近づかない",
+      "text": "撮影・見学のために、船舶やカヌー等を使ってラッコへ近づかないでください。",
+      "image": ""
+    },
+    {
+      "number": "02",
+      "icon": "food",
+      "title": "えさを与えない",
+      "text": "野生のラッコへの餌付けは行わないでください。",
+      "image": ""
+    },
+    {
+      "number": "03",
+      "icon": "sound",
+      "title": "大声や騒音を\n出さない",
+      "text": "ラッコに向けて大きな音を出さず、静かに観察・撮影しましょう。",
+      "image": ""
+    },
+    {
+      "number": "04",
+      "icon": "water",
+      "title": "水面・水中での\n観察や撮影をしない",
+      "text": "シュノーケリングや潜水機器などを使った水面・水中での観察や撮影は行わないでください。",
+      "image": ""
+    },
+    {
+      "number": "05",
+      "icon": "drone",
+      "title": "岬周辺でドローンを\n飛行させない",
+      "text": "湯沸岬・アゼチの岬周辺では、ラッコ鑑賞や撮影を目的としたドローン飛行を行わないでください。",
+      "image": ""
+    },
+    {
+      "number": "06",
+      "icon": "path",
+      "title": "遊歩道から\n外れない",
+      "text": "霧多布岬では遊歩道や展望台から鑑賞し、安全柵の外へ立ち入らないでください。",
+      "image": ""
+    }
+  ],
+  "photographerManner": {
+    "eyebrow": "FOR PHOTOGRAPHERS",
+    "title": "撮影者としてのマナー",
+    "items": [
+      "遊歩道や展望スペースから撮影する",
+      "駐車場を利用し、路肩や私有地へ無断で入らない",
+      "同じ場所を長時間占有せず、周囲の人にも配慮する",
+      "強風時は機材や荷物の転倒・飛散に注意する"
+    ],
+    "visuals": [
+      {
+        "image": "",
+        "caption": "遊歩道・展望スペースから観察・撮影"
+      },
+      {
+        "image": "",
+        "caption": "譲り合って気持ちよく撮影"
+      },
+      {
+        "image": "",
+        "caption": "風や天候にも注意して安全を優先"
+      }
+    ]
+  },
+  "messages": [
+    {
+      "type": "quiet",
+      "title": "ラッコに出会えないこともあります",
+      "text": "ラッコは野生動物のため、いつでも会えるとは限りません。見つからないときも、焦らず自然のリズムを楽しみましょう。",
+      "image": ""
+    },
+    {
+      "type": "future",
+      "title": "美しい景色を、これからも。",
+      "text": "ラッコをはじめとする野生動物と浜中町の自然が、これからも続くように。一人ひとりの行動が大切です。",
+      "image": ""
+    },
+    {
+      "type": "official",
+      "title": "ルールについて確認したいときは",
+      "text": "最新のラッコ鑑賞ルールや詳細は、浜中町公式サイトでご確認ください。",
+      "buttonLabel": "浜中町のラッコ鑑賞ルールを見る",
+      "url": "https://www.townhamanaka.jp/kakuka/syoukoukankouka/kankou/2025-1017-1512-28.html",
+      "pdfLabel": "自主ルールPDFを見る",
+      "pdfUrl": "https://www.townhamanaka.jp/kakuka/syoukoukankouka/kankou/files/rakkoru-ru.pdf",
+      "image": ""
+    }
+  ],
+  "next": {
+    "eyebrow": "NEXT STEP",
+    "title": "マナーを守って、\n思い出に残る撮影旅を。",
+    "text": "みんなで自然を守り、また会いに来たくなる浜中町へ。",
+    "image": "",
+    "links": [
+      {
+        "label": "撮影スポットを探す",
+        "sub": "SPOT",
+        "url": "guide-article.html?article=photo-map"
+      },
+      {
+        "label": "機材を選ぶ",
+        "sub": "GEAR",
+        "url": "guide-article.html?article=gear"
+      },
+      {
+        "label": "撮り方を学ぶ",
+        "sub": "TECHNIQUE",
+        "url": "guide-article.html?article=technique"
+      },
+      {
+        "label": "準備を整える",
+        "sub": "PREPARATION",
+        "url": "guide-article.html?article=trip"
+      }
+    ]
+  }
+}
