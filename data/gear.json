@@ -440,6 +440,21 @@
         "image": "assets/images/03_guide/gear/24.webp",
         "equipment": "EOS R5 ＋ RF200-800mm F6.3-9 IS USM",
         "caption": "テスト2"
+      },
+      {
+        "image": "assets/images/03_guide/gear/500.webp",
+        "equipment": "EOS R5 ＋ RF200-800mm F6.3-9 IS USM",
+        "caption": "テスト３"
+      },
+      {
+        "image": "assets/images/03_guide/gear/300.webp",
+        "equipment": "EOS R5 ＋ RF200-800mm F6.3-9 IS USM",
+        "caption": "テスト４"
+      },
+      {
+        "image": "assets/images/03_guide/gear/200.webp",
+        "equipment": "EOS R5 ＋ RF200-800mm F6.3-9 IS USM",
+        "caption": "テスト５"
       }
     ]
   },
