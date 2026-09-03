@@ -1381,6 +1381,14 @@ content:
                 label: 補足
                 type: string
                 description: デスクトップでは見出し横に1行で表示します。
+              - name: exampleTitle
+                label: アクセス例の小見出し
+                type: string
+                description: 例「東京方面からの代表的なアクセス例」
+              - name: exampleNote
+                label: アクセス例の注釈
+                type: text
+                description: 羽田発を例にしていることや、出発地によりルートが異なることを記載します。
               - name: route
                 label: 移動ルート
                 type: object
@@ -1440,7 +1448,26 @@ content:
                     label: 展開後の見出し
                     type: string
                   - name: companies
-                    label: レンタカー営業所
+                    label: 釧路空港周辺のレンタカー営業所
+                    type: object
+                    list:
+                      collapsible:
+                        collapsed: true
+                        summary: "{name}"
+                    fields:
+                      - name: name
+                        label: 会社・営業所名
+                        type: string
+                        required: true
+                      - name: url
+                        label: 公式サイトURL
+                        type: string
+                        required: true
+                  - name: nakashibetsuCompaniesTitle
+                    label: 中標津側の展開見出し
+                    type: string
+                  - name: nakashibetsuCompanies
+                    label: 中標津空港周辺のレンタカー営業所
                     type: object
                     list:
                       collapsible:
@@ -1578,6 +1605,43 @@ content:
               - name: title
                 label: 見出し
                 type: string
+              - name: sectionTitle
+                label: 公開ページのセクション見出し
+                type: string
+                description: 例「服装と必需品を準備する」
+              - name: sectionLead
+                label: 公開ページのセクション説明
+                type: text
+              - name: conditionCards
+                label: 天候別の服装カード
+                type: object
+                list:
+                  max: 4
+                  collapsible:
+                    collapsed: true
+                    summary: "{title}"
+                fields:
+                  - name: eyebrow
+                    label: 英字小見出し
+                    type: string
+                  - name: title
+                    label: カード見出し
+                    type: string
+                    required: true
+                  - name: lead
+                    label: 説明
+                    type: text
+                  - name: items
+                    label: 服装・持ち物
+                    type: string
+                    list: true
+              - name: essentialsTitle
+                label: 必需品の見出し
+                type: string
+              - name: essentials
+                label: その他の必需品
+                type: string
+                list: true
               - name: seasons
                 label: 季節タブ
                 type: object
