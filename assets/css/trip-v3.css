@@ -1580,3 +1580,13 @@
       1fr 22px 1fr 22px 1fr;
   }
 }
+
+
+/* TRIP v8 / climate feature cards */
+.trip-v8-climate-features { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
+.trip-v8-climate-feature { padding:20px; border:1px solid var(--v3-line); border-radius:10px; background:#fff; }
+.trip-v8-climate-feature > span { color:var(--v3-teal); font-size:9px; font-weight:900; letter-spacing:.1em; }
+.trip-v8-climate-feature h3 { margin:5px 0 13px; color:var(--v3-navy); font-size:19px; }
+.trip-v8-climate-feature div { display:flex; flex-wrap:wrap; gap:7px; }
+.trip-v8-climate-feature b { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; color:#365d68; background:#eef5f3; font-size:10px; }
+@media (max-width:760px) { .trip-v8-climate-features { grid-template-columns:1fr; } }
