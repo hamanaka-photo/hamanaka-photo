@@ -2,20 +2,19 @@
   "hero": {
     "eyebrow": "GEAR",
     "title": "ラッコと出会うための、\n撮影機材を選ぼう。",
-    "lead": "野生のラッコに出会える霧多布岬。ですが岬の遊歩道は海面から約40mの高さにあります。\nそのため、ラッコ撮影には望遠レンズが必須。\nまずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えましょう。",
-    "image": "assets/images/03_guide/gear/20260901-1102-.webp"
+    "lead": "まずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えます。"
   },
   "introPoints": {
-    "title": "ラッコを撮るなら、どんな機材が必要？",
+    "title": "どんな機材が必要？",
     "lead": "ラッコ撮影の機材を考えるときは、まずこの3つを基準にすると選びやすくなります。",
     "points": [
       {
         "number": "01",
-        "text": "表情まで撮るなら焦点距離500mm以上が理想！"
+        "text": "表情まで撮るなら500mm以上が理想！"
       },
       {
         "number": "02",
-        "text": "4000万画素以上の高解像ボディがあると安心！"
+        "text": "高解像ボディがあると安心！"
       },
       {
         "number": "03",
@@ -27,7 +26,7 @@
     "eyebrow": "01 / FOCAL LENGTH",
     "title": "焦点距離で、見え方はこんなに変わる。",
     "lead": "同じ撮影位置でも、焦点距離によって写る範囲とラッコの大きさは大きく変わります。数字を動かして比べてみてください。",
-    "note": "※焦点距離は35mm判換算の目安です。\n※ラッコとの距離や位置によって、見え方は大きく変わります。作例はあくまで参考としてご覧ください。",
+    "note": "焦点距離は35mm判換算の目安です。比較画像は同じ撮影位置・同じ被写体で揃えることを推奨します。",
     "defaultFocal": 500,
     "samples": [
       {
@@ -87,25 +86,17 @@
     ]
   },
   "gearFinder": {
-    "eyebrow": "02 / GEAR FINDER",
-    "title": "レンズ × ボディを選ぶ。",
-    "lead": "4つの選び方から条件を指定すると、装着できるレンズとボディの組み合わせが表示されます。",
+    "eyebrow": "02 / LENS & BODY",
+    "title": "レンズを選ぶ。ボディを選ぶ。",
+    "lead": "まずレンズを一覧から選びます。メーカーや焦点距離で絞り込み、選択したレンズに対応するボディ候補を確認できます。",
     "modes": [
       {
         "id": "manufacturer",
-        "label": "メーカーから選ぶ"
+        "label": "メーカーで選ぶ"
       },
       {
         "id": "focal",
-        "label": "焦点距離から選ぶ"
-      },
-      {
-        "id": "resolution",
-        "label": "解像度から選ぶ"
-      },
-      {
-        "id": "function",
-        "label": "機能から選ぶ"
+        "label": "焦点距離で選ぶ"
       }
     ],
     "manufacturers": [
@@ -115,9 +106,7 @@
     ],
     "focalOptions": [
       400,
-      500,
-      600,
-      800
+      500
     ],
     "resolutionOptions": [
       24,
@@ -158,12 +147,15 @@
         "minFocal": 100,
         "maxFocal": 500,
         "aperture": "F4.5-7.1",
-        "weight": "約1.37kg",
-        "summary": "100mmから500mmまでを1本でカバーする望遠ズーム。\nラッコを撮影するならテレコンバーターも併用するのがおすすめ。",
+        "weight": "約1,370g",
+        "summary": "100mmから500mmまでを1本でカバーする望遠ズーム。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ93.8 × 長さ 207.6mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS"
       },
       {
         "id": "canon-rf200800",
@@ -174,11 +166,14 @@
         "minFocal": 200,
         "maxFocal": 800,
         "aperture": "F6.3-9",
-        "weight": "約2.05kg",
-        "summary": "このレンズ1本で、200mmから800mmまでをカバーする超望遠ズーム。少し引いて周囲の景色を入れたいときから、遠くの被写体をぐっと大きく捉えたいときまで、幅広い撮影シーンで活躍。",
+        "weight": "約2,060g",
+        "summary": "800mmまで届く超望遠ズーム。遠距離の被写体を大きく狙いたいときの候補。",
         "features": [
           "stabilization"
-        ]
+        ],
+        "dimensions": "最大径 φ102.3 × 長さ 314.1mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS"
       },
       {
         "id": "sony-fe100400",
@@ -189,12 +184,15 @@
         "minFocal": 100,
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
-        "weight": "約1.40kg",
-        "summary": "機動性と望遠域のバランスを取りやすい100-400mmクラス。ラッコを撮影するならテレコンバーターとの併用がおすすめ。",
+        "weight": "約1,395g",
+        "summary": "機動性と望遠域のバランスを取りやすい100-400mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ93.9 × 長さ 205mm",
+        "autofocus": "DDSSM＋ダブルリニアモーター",
+        "stabilizationLabel": "レンズ内OSS"
       },
       {
         "id": "sony-fe200600",
@@ -205,12 +203,15 @@
         "minFocal": 200,
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
-        "weight": "約2.12kg",
+        "weight": "約2,115g",
         "summary": "ラッコや野鳥など、遠距離の被写体を狙いやすい200-600mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ111.5 × 長さ 318mm",
+        "autofocus": "DDSSM",
+        "stabilizationLabel": "レンズ内OSS"
       },
       {
         "id": "nikon-z100400",
@@ -221,12 +222,15 @@
         "minFocal": 100,
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
-        "weight": "約1.36kg",
-        "summary": "移動しながらの撮影でも扱いやすい100-400mmクラス。ラッコを撮影するならテレコンバーターとの併用がおすすめ。",
+        "weight": "約1,435g",
+        "summary": "移動しながらの撮影でも扱いやすい100-400mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 約φ98 × 長さ 222mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR"
       },
       {
         "id": "nikon-z180600",
@@ -237,11 +241,14 @@
         "minFocal": 180,
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
-        "weight": "約1.96kg",
+        "weight": "約1,955g",
         "summary": "600mmまでの望遠域をカバーし、野生動物撮影に使いやすいズーム。",
         "features": [
           "stabilization"
-        ]
+        ],
+        "dimensions": "最大径 約φ110 × 長さ 315.5mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR"
       }
     ],
     "bodies": [
@@ -370,32 +377,32 @@
   },
   "accessories": {
     "eyebrow": "03 / ACCESSORIES",
-    "title": "撮影を支えるアイテム",
-    "lead": "海霧、風、寒さ、長時間の観察。浜中町の撮影環境を考えて、機材を支える小物を準備しておくと安心です。",
+    "title": "撮影を支えるもの。",
+    "lead": "海霧、風、寒さ、長時間の観察。浜中町の撮影環境を考えて、機材を支える小物も準備します。",
     "items": [
       {
         "title": "三脚・一脚",
-        "text": "重い望遠レンズを長時間構えるときの負担軽減に。軽さや駆動力を重視するなら一脚がおすすめです。動画も撮るなら三脚を選びましょう。",
+        "text": "重い望遠レンズを長時間構えるときの負担軽減に。",
         "image": "assets/images/03_guide/gear/stand.webp"
       },
       {
         "title": "予備バッテリー",
-        "text": "寒い季節や連写では消耗が早くなることがあります。予備バッテリーを持参しておくと安心です。",
+        "text": "寒い季節や連写では消耗が早くなることがあります。",
         "image": "assets/images/03_guide/gear/buttrys.webp"
       },
       {
         "title": "メモリーカード",
-        "text": "連写を使うなら容量と書き込み速度に余裕があるものを用意するとよいでしょう。",
+        "text": "連写を使うなら容量と書き込み速度に余裕を。",
         "image": "assets/images/03_guide/gear/SD.webp"
       },
       {
         "title": "レンズクロス",
-        "text": "4月〜8月は海霧に覆われる事もある霧多布岬。水滴が付いたときのために複数枚あると安心です。",
+        "text": "海霧や水滴が付いたときのために複数枚あると安心。",
         "image": "assets/images/03_guide/gear/lenscloth.webp"
       },
       {
         "title": "レインカバー",
-        "text": "霧や小雨からカメラとレンズを守ります。絶対にレンズを濡らしたくない、という方は持参しましょう。",
+        "text": "霧や小雨からカメラとレンズを守ります。",
         "image": "assets/images/03_guide/gear/lenscover.webp"
       }
     ]
@@ -414,7 +421,7 @@
     "serviceName": "GOOPASS",
     "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
     "image": "assets/images/03_guide/gear/goopass.webp",
-    "visualImage": "assets/images/03_guide/gear/rental.webp",
+    "visualImage": "",
     "buttonLabel": "GOOPASSで機材を探す",
     "url": "https://goopass.jp/",
     "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
@@ -425,5 +432,11 @@
     "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
     "buttonLabel": "テクニック編へ",
     "url": "guide-article.html?article=technique"
+  },
+  "examples": {
+    "eyebrow": "05 / EXAMPLES",
+    "title": "機材で見る、作例ギャラリー。",
+    "lead": "使用したレンズやボディがひと目で分かる作例を掲載します。機材選びの参考としてご覧ください。",
+    "items": []
   }
 }
