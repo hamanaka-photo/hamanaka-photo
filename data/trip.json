@@ -3,73 +3,14 @@
     "eyebrow": "PREPARATION",
     "title": "浜中町へ、\n撮りに行こう。",
     "lead": "天気、アクセス、宿、持ち物。\n浜中町での撮影旅行に必要な準備をまとめました。",
-    "image": "assets/images/03_guide/trip/hero.webp",
-    "primaryLabel": "はじめての方はこちら",
-    "primaryUrl": "#access",
-    "secondaryLabel": "出発前チェック",
-    "secondaryUrl": "#checklist"
+    "image": "assets/images/03_guide/trip/hero.webp"
   },
-  "stepsTitle": "撮影旅行までの 5 STEP",
-  "steps": [
-    {
-      "number": "01",
-      "title": "行き方を決める",
-      "anchor": "access"
-    },
-    {
-      "number": "02",
-      "title": "宿を予約する",
-      "anchor": "stay"
-    },
-    {
-      "number": "03",
-      "title": "天気を確認する",
-      "anchor": "weather"
-    },
-    {
-      "number": "04",
-      "title": "服装・持ち物を準備",
-      "anchor": "clothing"
-    },
-    {
-      "number": "05",
-      "title": "機材を確認する",
-      "anchor": "checklist"
-    }
-  ],
   "access": {
-    "eyebrow": "ACCESS",
     "title": "浜中町への行き方",
     "lead": "出発地や季節に合わせて、無理のない移動計画を。所要時間や運航状況は利用前に最新情報をご確認ください。",
     "exampleTitle": "東京方面からの代表的なアクセス例",
     "exampleNote": "ここでは、羽田空港から浜中町へ向かう場合を例に紹介します。出発地によって利用する空港や交通手段は異なります。",
-    "route": [
-      {
-        "title": "羽田空港",
-        "sub": "東京"
-      },
-      {
-        "title": "釧路たんちょう空港",
-        "sub": "道東の空の玄関口"
-      },
-      {
-        "title": "浜中町",
-        "sub": "撮影旅行の目的地"
-      }
-    ],
-    "routeNotes": [
-      "航空便で移動",
-      "レンタカー等で移動"
-    ],
-    "flight": {
-      "title": "飛行機で行く",
-      "text": "羽田空港からたんちょう釧路空港までの便や所要時間をGoogleで確認します。",
-      "buttonLabel": "飛行機で行く",
-      "url": "https://www.google.com/search?q=%E7%BE%BD%E7%94%B0%E3%81%8B%E3%82%89%E9%87%A7%E8%B7%AF"
-    },
     "rental": {
-      "title": "レンタカーで行く",
-      "text": "空港から撮影スポットを自由に巡りたい方にはレンタカーが便利です。利用する空港に合わせて営業所を確認してください。",
       "companiesTitle": "釧路空港周辺のレンタカー営業所",
       "companies": [
         {
@@ -131,12 +72,9 @@
         "title": "冬道",
         "text": "積雪・凍結時は車間を十分にとり、余裕を持った運転を"
       }
-    ],
-    "tipsButtonLabel": "アクセス情報を詳しく見る"
+    ]
   },
   "noCar": {
-    "eyebrow": "NO CAR?",
-    "title": "車を運転しない方へ",
     "text": "鉄道・バス・送迎・タクシーなど、利用できる移動手段を事前に確認しましょう。",
     "buttonLabel": "公共交通・アクセス情報を見る",
     "url": "https://www.townhamanaka.jp/kankou/2025-1222-1619-28.html"
@@ -149,25 +87,7 @@
     "buttonLabel": "浜中町の宿泊施設を見る",
     "url": "http://www.kiritappu.jp/stay/"
   },
-  "weather": {
-    "eyebrow": "WEATHER",
-    "title": "浜中町の天気を知る",
-    "items": [
-      {
-        "title": "晴れた日",
-        "text": "光の方向や時間帯を意識して景色と撮影を楽しみます。"
-      },
-      {
-        "title": "霧の日",
-        "text": "霧ならではの静かな景観に出会えることもあります。"
-      }
-    ],
-    "buttonLabel": "現在の天気を確認する",
-    "url": "https://weathernews.jp/onebox/tenki/doutou/01663/"
-  },
   "clothing": {
-    "eyebrow": "WHAT TO WEAR",
-    "title": "何を着ていく？",
     "sectionTitle": "服装と必需品を準備する",
     "sectionLead": "晴天だけでなく、海霧や風を想定した装備を。撮影機材の保護用品も忘れずに。",
     "conditionCards": [
@@ -198,7 +118,7 @@
     ],
     "essentialsTitle": "その他の必需品",
     "essentials": [
-      "カメラ・レンズ",
+      "カメラ・レンズ（必須）",
       "予備バッテリー",
       "SDカード",
       "レンズクロス",
@@ -206,35 +126,9 @@
       "虫除け",
       "モバイルバッテリー",
       "ごみ袋・保護袋"
-    ],
-    "seasons": [
-      {
-        "label": "春・夏・秋",
-        "note": "気温差に対応できる重ね着を基本に",
-        "items": [
-          "帽子",
-          "風を通しにくい上着",
-          "タオル",
-          "虫除け対策",
-          "汚れてもよい靴"
-        ]
-      },
-      {
-        "label": "冬",
-        "note": "防寒と滑りにくさを優先",
-        "items": [
-          "防寒帽子・手袋・耳当て",
-          "防風性の高い上着",
-          "防寒靴",
-          "予備の防寒具"
-        ]
-      }
-    ],
-    "buttonLabel": "季節ごとの服装を詳しく見る"
+    ]
   },
   "checklist": {
-    "eyebrow": "CHECK LIST",
-    "title": "出発前チェック",
     "categories": [
       {
         "title": "旅の持ち物",
