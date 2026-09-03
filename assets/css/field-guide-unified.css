@@ -1,0 +1,195 @@
+/* PHOTO GUIDE shared visual system
+   Gear-style hero + Preparation-style page sequence
+===================================================== */
+
+.field-guide-unified-page {
+  --fgu-navy: #153a5b;
+  --fgu-deep: #0d3149;
+  --fgu-teal: #397b70;
+  --fgu-line: #dbe5e8;
+  --fgu-soft: #f7f9f9;
+  --fgu-muted: #6d808a;
+}
+
+.field-guide-unified-page .guide-article-navigation {
+  display: none !important;
+}
+
+.field-guide-unified-page .trip-ready,
+.field-guide-unified-page .gear-v2-next,
+.field-guide-unified-page .tech-v2-next,
+.field-guide-unified-page .manner-v2-next {
+  display: none !important;
+}
+
+.field-guide-unified-hero {
+  position: relative !important;
+  min-height: 520px !important;
+  color: #fff !important;
+  background-position: center !important;
+  background-size: cover !important;
+  overflow: hidden;
+}
+
+.field-guide-unified-hero .photo-map-hero-overlay,
+.field-guide-unified-hero .trip-hero-shade,
+.field-guide-unified-hero .gear-v2-hero-shade,
+.field-guide-unified-hero .tech-v2-hero-shade,
+.field-guide-unified-hero .manner-v2-hero-shade {
+  position: absolute !important;
+  inset: 0 !important;
+  background:
+    linear-gradient(
+      90deg,
+      rgba(4, 28, 44, .84) 0%,
+      rgba(4, 28, 44, .62) 43%,
+      rgba(4, 28, 44, .15) 76%
+    ) !important;
+}
+
+.field-guide-unified-hero .photo-map-hero-inner,
+.field-guide-unified-hero .trip-hero-inner,
+.field-guide-unified-hero .gear-v2-hero-inner,
+.field-guide-unified-hero .tech-v2-hero-inner,
+.field-guide-unified-hero .manner-v2-hero-inner {
+  position: relative !important;
+  z-index: 2 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: flex-start !important;
+  min-height: 444px !important;
+  padding-top: 42px !important;
+  padding-bottom: 48px !important;
+}
+
+.field-guide-unified-hero h1 {
+  max-width: 760px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  color: #fff !important;
+  font-size: clamp(43px, 5.1vw, 64px) !important;
+  line-height: 1.16 !important;
+  letter-spacing: .01em;
+}
+
+.field-guide-unified-hero p,
+.field-guide-unified-hero span {
+  color: inherit;
+}
+
+.field-guide-unified-nav {
+  position: relative !important;
+  z-index: 8 !important;
+  margin: 0 !important;
+  border-bottom: 1px solid rgba(255,255,255,.16) !important;
+  background: transparent !important;
+  color: #fff !important;
+}
+
+.field-guide-unified-nav a {
+  color: #fff !important;
+}
+
+.field-guide-unified-nav [aria-current="page"] {
+  opacity: 1 !important;
+}
+
+.field-guide-unified-page [data-guide-article] > section:not(.field-guide-unified-hero):not(.field-guide-sequence) {
+  scroll-margin-top: 84px;
+}
+
+.field-guide-sequence {
+  padding: 38px 0 44px;
+  border-top: 1px solid var(--fgu-line);
+  background: var(--fgu-soft);
+}
+
+.field-guide-sequence-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.field-guide-sequence-card {
+  display: grid;
+  min-height: 128px;
+  padding: 23px 25px;
+  border: 1px solid var(--fgu-line);
+  border-radius: 10px;
+  background: #fff;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    box-shadow .18s ease;
+}
+
+.field-guide-sequence-card:hover {
+  transform: translateY(-2px);
+  border-color: #9bb8c0;
+  box-shadow: 0 9px 26px rgba(21, 58, 91, .07);
+}
+
+.field-guide-sequence-card > span {
+  color: var(--fgu-teal);
+  font-size: 9px;
+  font-weight: 900;
+  letter-spacing: .09em;
+}
+
+.field-guide-sequence-card > small {
+  margin-top: 15px;
+  color: var(--fgu-muted);
+  font-size: 8px;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.field-guide-sequence-card > b {
+  margin-top: 3px;
+  color: var(--fgu-navy);
+  font-size: 19px;
+}
+
+.field-guide-sequence-card.is-next {
+  text-align: right;
+}
+
+.field-guide-sequence.is-next-only .is-next {
+  grid-column: 2;
+}
+
+.field-guide-sequence.is-prev-only .is-prev {
+  grid-column: 1;
+}
+
+@media (max-width: 760px) {
+  .field-guide-unified-hero {
+    min-height: 510px !important;
+  }
+
+  .field-guide-unified-hero .photo-map-hero-inner,
+  .field-guide-unified-hero .trip-hero-inner,
+  .field-guide-unified-hero .gear-v2-hero-inner,
+  .field-guide-unified-hero .tech-v2-hero-inner,
+  .field-guide-unified-hero .manner-v2-hero-inner {
+    min-height: 400px !important;
+  }
+
+  .field-guide-unified-hero h1 {
+    font-size: 39px !important;
+  }
+
+  .field-guide-sequence-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .field-guide-sequence.is-next-only .is-next,
+  .field-guide-sequence.is-prev-only .is-prev {
+    grid-column: 1;
+  }
+
+  .field-guide-sequence-card.is-next {
+    text-align: left;
+  }
+}
