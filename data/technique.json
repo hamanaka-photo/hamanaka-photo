@@ -27,6 +27,11 @@
       "sub": "SETTINGS"
     },
     {
+      "id": "video",
+      "label": "解説動画",
+      "sub": "MOVIE"
+    },
+    {
       "id": "gallery",
       "label": "作例",
       "sub": "GALLERY"
@@ -145,8 +150,15 @@
       }
     ]
   },
+  "video": {
+    "eyebrow": "05 / MOVIE",
+    "title": "撮影方法を動画で見る",
+    "lead": "ラッコを見失わないズームの仕方や、望遠レンズでの構え方を動画で確認できます。",
+    "youtubeUrl": "",
+    "caption": "YouTubeの解説動画を掲載します。動画URLが未設定の間も、このフレームは表示されます。"
+  },
   "gallery": {
-    "eyebrow": "05 / GALLERY",
+    "eyebrow": "06 / GALLERY",
     "title": "作例ギャラリー",
     "lead": "時間帯やシャッタースピード、構図の違いを見比べながら、自分の撮り方を考えてみましょう。",
     "items": [
