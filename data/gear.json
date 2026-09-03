@@ -149,14 +149,14 @@
         "maxFocal": 500,
         "aperture": "F4.5-7.1",
         "weight": "約1,370g",
-        "dimensions": "最大径 φ93.8 × 長さ 207.6mm",
-        "autofocus": "Nano USM",
-        "stabilizationLabel": "レンズ内IS",
         "summary": "100mmから500mmまでを1本でカバーする望遠ズーム。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ93.8 × 長さ 207.6mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS"
       },
       {
         "id": "canon-rf200800",
@@ -168,13 +168,13 @@
         "maxFocal": 800,
         "aperture": "F6.3-9",
         "weight": "約2,060g",
-        "dimensions": "最大径 φ102.3 × 長さ 314.1mm",
-        "autofocus": "Nano USM",
-        "stabilizationLabel": "レンズ内IS",
         "summary": "800mmまで届く超望遠ズーム。遠距離の被写体を大きく狙いたいときの候補。",
         "features": [
           "stabilization"
-        ]
+        ],
+        "dimensions": "最大径 φ102.3 × 長さ 314.1mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS"
       },
       {
         "id": "sony-fe100400",
@@ -186,14 +186,14 @@
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
         "weight": "約1,395g",
-        "dimensions": "最大径 φ93.9 × 長さ 205mm",
-        "autofocus": "DDSSM＋ダブルリニアモーター",
-        "stabilizationLabel": "レンズ内OSS",
         "summary": "機動性と望遠域のバランスを取りやすい100-400mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ93.9 × 長さ 205mm",
+        "autofocus": "DDSSM＋ダブルリニアモーター",
+        "stabilizationLabel": "レンズ内OSS"
       },
       {
         "id": "sony-fe200600",
@@ -205,14 +205,14 @@
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
         "weight": "約2,115g",
-        "dimensions": "最大径 φ111.5 × 長さ 318mm",
-        "autofocus": "DDSSM",
-        "stabilizationLabel": "レンズ内OSS",
         "summary": "ラッコや野鳥など、遠距離の被写体を狙いやすい200-600mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 φ111.5 × 長さ 318mm",
+        "autofocus": "DDSSM",
+        "stabilizationLabel": "レンズ内OSS"
       },
       {
         "id": "nikon-z100400",
@@ -224,14 +224,14 @@
         "maxFocal": 400,
         "aperture": "F4.5-5.6",
         "weight": "約1,435g",
-        "dimensions": "最大径 約φ98 × 長さ 222mm",
-        "autofocus": "STM",
-        "stabilizationLabel": "レンズシフト方式VR",
         "summary": "移動しながらの撮影でも扱いやすい100-400mmクラス。",
         "features": [
           "stabilization",
           "weather-sealed"
-        ]
+        ],
+        "dimensions": "最大径 約φ98 × 長さ 222mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR"
       },
       {
         "id": "nikon-z180600",
@@ -243,13 +243,13 @@
         "maxFocal": 600,
         "aperture": "F5.6-6.3",
         "weight": "約1,955g",
-        "dimensions": "最大径 約φ110 × 長さ 315.5mm",
-        "autofocus": "STM",
-        "stabilizationLabel": "レンズシフト方式VR",
         "summary": "600mmまでの望遠域をカバーし、野生動物撮影に使いやすいズーム。",
         "features": [
           "stabilization"
-        ]
+        ],
+        "dimensions": "最大径 約φ110 × 長さ 315.5mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR"
       }
     ],
     "bodies": [
@@ -422,10 +422,17 @@
     "serviceName": "GOOPASS",
     "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
     "image": "assets/images/03_guide/gear/goopass.webp",
-    "visualImage": "assets/images/03_guide/gear/rental.webp",
+    "visualImage": "",
     "buttonLabel": "GOOPASSで機材を探す",
     "url": "https://goopass.jp/",
     "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
+  },
+  "next": {
+    "eyebrow": "NEXT STEP",
+    "title": "機材を選んだら、撮り方を学ぼう。",
+    "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
+    "buttonLabel": "テクニック編へ",
+    "url": "guide-article.html?article=technique"
   },
   "examples": {
     "eyebrow": "05 / EXAMPLES",
@@ -458,12 +465,5 @@
         "caption": "テスト５"
       }
     ]
-  },
-  "next": {
-    "eyebrow": "NEXT STEP",
-    "title": "機材を選んだら、撮り方を学ぼう。",
-    "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
-    "buttonLabel": "テクニック編へ",
-    "url": "guide-article.html?article=technique"
   }
 }
