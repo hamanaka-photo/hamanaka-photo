@@ -102,73 +102,251 @@
     </section>`;
 
   const renderAccess = (base, cfg) => {
-    const rental = base.access?.rental || {};
-    const companies = Array.isArray(rental.companies) ? rental.companies : [];
-    const tips = Array.isArray(base.access?.driveTips) ? base.access.driveTips : [];
+    const access = base.access || {};
+    const rental = access.rental || {};
+    const tips = Array.isArray(access.driveTips) ? access.driveTips : [];
     const noCar = base.noCar || {};
+
+    const rentalGroups = [
+      {
+        title:
+          rental.companiesTitle ||
+          '釧路空港周辺のレンタカー営業所',
+        companies:
+          Array.isArray(rental.companies)
+            ? rental.companies
+            : []
+      },
+      {
+        title:
+          rental.nakashibetsuCompaniesTitle ||
+          '中標津空港周辺のレンタカー営業所',
+        companies:
+          Array.isArray(rental.nakashibetsuCompanies)
+            ? rental.nakashibetsuCompanies
+            : []
+      }
+    ].filter(group => group.companies.length);
+
+    const rentalDetails = rentalGroups.map((group, index) => `
+      <details class="trip-v4-rental-details" ${index === 0 ? 'open' : ''}>
+        <summary>
+          <span>${esc(group.title)}</span>
+          <b aria-hidden="true">＋</b>
+        </summary>
+        <div class="trip-v4-rental-links">
+          ${group.companies.map(company => {
+            const url = safe(company.url);
+            return url ? `
+              <a href="${esc(url)}" target="_blank" rel="noopener noreferrer">
+                <span>${esc(company.name)}</span>
+                <b aria-hidden="true">↗</b>
+              </a>` : '';
+          }).join('')}
+        </div>
+      </details>`).join('');
+
     return `
-      <section class="trip-v3-section" id="trip-v3-access">
+      <section class="trip-v3-section trip-v4-access" id="trip-v3-access">
         <div class="container">
           <div class="trip-v3-heading">
-            <div><p>01 / ACCESS</p><h2>浜中町への行き方</h2></div>
-            <span>まずは浜中町までの移動方法を整理。航空便、レンタカー、公共交通機関の順に確認できます。</span>
+            <div>
+              <p>01 / ACCESS</p>
+              <h2>${esc(access.title || '浜中町への行き方')}</h2>
+            </div>
+            <span>${esc(
+              access.lead ||
+              '出発地や季節に合わせて、無理のない移動計画を。'
+            )}</span>
           </div>
 
-          <div class="trip-v3-route">
-            <div class="trip-v3-route-stop">${esc(cfg.access.route[0])}</div>
-            <div class="trip-v3-route-arrow">→</div>
-            <div class="trip-v3-route-stop">${esc(cfg.access.route[1])}</div>
-            <div class="trip-v3-route-arrow">→</div>
-            <div class="trip-v3-route-stop">${esc(cfg.access.route[2])}</div>
+          <div class="trip-v4-access-example">
+            <strong>${esc(
+              access.exampleTitle ||
+              '東京方面からの代表的なアクセス例'
+            )}</strong>
+            <p>${esc(
+              access.exampleNote ||
+              'ここでは、羽田空港から浜中町へ向かう場合を例に紹介します。出発地によって利用する空港や交通手段は異なります。'
+            )}</p>
           </div>
-          <p class="trip-v3-airport-note">${esc(cfg.access.airportNote)}　${esc(cfg.access.flightUpdatedLabel)}</p>
 
-          <div class="trip-v3-access-row">
-            <div class="trip-v3-access-label"><p>BY AIR</p><h3>飛行機で行く</h3></div>
+          <div class="trip-v4-access-step">
+            <div class="trip-v4-step-head">
+              <span>${esc(cfg.access.step1Label || 'STEP 1')}</span>
+              <div>
+                <h3>${esc(cfg.access.step1Title || '飛行機で道東へ')}</h3>
+                <p>${esc(
+                  cfg.access.step1Lead ||
+                  '羽田空港から、釧路空港または中標津空港へ。'
+                )}</p>
+              </div>
+            </div>
+
+            <div
+              class="trip-v4-origin-flow"
+              aria-label="羽田空港から道東の空港へ">
+              <strong>羽田空港</strong>
+              <span aria-hidden="true">→</span>
+              <b>釧路空港</b>
+              <em>または</em>
+              <b>中標津空港</b>
+            </div>
+
+            <p class="trip-v3-airport-note">
+              ${esc(cfg.access.airportNote)}
+              　
+              ${esc(cfg.access.flightUpdatedLabel)}
+            </p>
+
             <div class="trip-v3-flight-grid">
               ${(cfg.access.flights || []).map(f => `
                 <article class="trip-v3-flight">
                   <span class="trip-v3-flight-code">${esc(f.code)}</span>
                   <h4>${esc(f.title)}</h4>
                   <div class="trip-v3-flight-facts">
-                    <div><span>便数</span><b>${esc(f.flights)}</b></div>
-                    <div><span>航空会社</span><b>${esc(f.airlines)}</b></div>
-                    <div><span>フライト時間</span><b>${esc(f.duration)}</b></div>
+                    <div>
+                      <span>便数</span>
+                      <b>${esc(f.flights)}</b>
+                    </div>
+                    <div>
+                      <span>航空会社</span>
+                      <b>${esc(f.airlines)}</b>
+                    </div>
+                    <div>
+                      <span>フライト時間</span>
+                      <b>${esc(f.duration)}</b>
+                    </div>
                   </div>
                   <p class="trip-v3-flight-note">${esc(f.note)}</p>
-                  <a class="trip-v3-button" href="${esc(safe(f.searchUrl))}" target="_blank" rel="noopener noreferrer">${esc(f.searchLabel)} ↗</a>
+                  ${safe(f.searchUrl) ? `
+                    <a
+                      class="trip-v3-button"
+                      href="${esc(f.searchUrl)}"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      ${esc(f.searchLabel)} ↗
+                    </a>` : ''}
                 </article>`).join('')}
             </div>
           </div>
 
-          <div class="trip-v3-access-row">
-            <div class="trip-v3-access-label"><p>RENT A CAR</p><h3>レンタカーで行く</h3></div>
-            <div class="trip-v3-rental-wrap">
-              <div class="trip-v3-rental-main">
-                <p>${esc(rental.text || '複数の撮影地点を巡るなら、レンタカーが便利です。')}</p>
-                <div class="trip-v3-rental-links-wrap">
-                  <span class="trip-v3-rental-links-title">${esc(rental.companiesTitle || '釧路空港周辺のレンタカー営業所')}</span>
-                  <div class="trip-v3-rental-links">
-                    ${companies.map(c => safe(c.url) ? `
-                      <a href="${esc(c.url)}" target="_blank" rel="noopener noreferrer"><span>${esc(c.name)}</span><b>↗</b></a>` : '').join('')}
+          <div class="trip-v4-access-step trip-v4-access-step-second">
+            <div class="trip-v4-step-head">
+              <span>${esc(cfg.access.step2Label || 'STEP 2')}</span>
+              <div>
+                <h3>${esc(cfg.access.step2Title || '空港から浜中町へ')}</h3>
+                <p>${esc(
+                  cfg.access.step2Lead ||
+                  '空港到着後は、レンタカーまたは公共交通機関を組み合わせて浜中町へ向かいます。'
+                )}</p>
+              </div>
+              <strong class="trip-v4-options-title">
+                ${esc(
+                  cfg.access.optionsTitle ||
+                  'どちらの方法で浜中町へ？'
+                )}
+              </strong>
+            </div>
+
+            <div class="trip-v4-access-options">
+              <article class="trip-v4-access-option is-rental">
+                <div class="trip-v4-option-title">
+                  <span>${esc(cfg.access.rentalOptionLabel || 'A')}</span>
+                  <div>
+                    <h3>${esc(
+                      cfg.access.rentalOptionTitle ||
+                      '飛行機＋レンタカー'
+                    )}</h3>
+                    <p>${esc(
+                      cfg.access.rentalOptionLead ||
+                      rental.text ||
+                      '空港からレンタカーで浜中町へ向かいます。'
+                    )}</p>
                   </div>
                 </div>
-              </div>
-              <aside class="trip-v3-point">
-                <span class="trip-v3-point-badge">POINT / 要チェック</span>
-                <h4>${esc(base.access?.driveTipsTitle || '車で撮影する人へ')}</h4>
-                <div class="trip-v3-point-list">
-                  ${tips.map(t => `<div><b>${esc(t.title)}</b><span>${esc(t.text)}</span></div>`).join('')}
-                </div>
-              </aside>
-            </div>
-          </div>
 
-          <div class="trip-v3-access-row">
-            <div class="trip-v3-access-label"><p>PUBLIC TRANSPORT</p><h3>公共交通機関で行く</h3></div>
-            <div class="trip-v3-transit">
-              <p>${esc(noCar.text || '鉄道・バス・ハイヤーなどを組み合わせて移動します。運行日や予約条件を事前に確認してください。')}</p>
-              ${safe(cfg.access.publicTransportUrl || noCar.url) ? `<a class="trip-v3-button trip-v3-button-primary" href="${esc(cfg.access.publicTransportUrl || noCar.url)}" target="_blank" rel="noopener noreferrer">${esc(cfg.access.publicTransportLabel || noCar.buttonLabel || '公共交通情報を見る')} ↗</a>` : ''}
+                <div class="trip-v4-route-flow">
+                  <span>空港</span>
+                  <b aria-hidden="true">→</b>
+                  <span>レンタカー</span>
+                  <b aria-hidden="true">→</b>
+                  <span>浜中町</span>
+                </div>
+
+                <div class="trip-v4-rental-groups">
+                  ${rentalDetails}
+                </div>
+
+                <aside class="trip-v3-point trip-v4-drive-point">
+                  <span class="trip-v3-point-badge">
+                    POINT / 要チェック
+                  </span>
+                  <h4>${esc(
+                    access.driveTipsTitle ||
+                    '車で撮影する人へ'
+                  )}</h4>
+                  <div class="trip-v3-point-list">
+                    ${tips.map(t => `
+                      <div>
+                        <b>${esc(t.title)}</b>
+                        <span>${esc(t.text)}</span>
+                      </div>`).join('')}
+                  </div>
+                </aside>
+              </article>
+
+              <article class="trip-v4-access-option is-public">
+                <div class="trip-v4-option-title">
+                  <span>${esc(cfg.access.publicOptionLabel || 'B')}</span>
+                  <div>
+                    <h3>${esc(
+                      cfg.access.publicOptionTitle ||
+                      '飛行機＋公共交通機関'
+                    )}</h3>
+                    <p>${esc(
+                      cfg.access.publicOptionLead ||
+                      noCar.text ||
+                      '空港から公共交通機関で浜中町へ向かいます。'
+                    )}</p>
+                  </div>
+                </div>
+
+                <div class="trip-v4-route-flow">
+                  <span>空港</span>
+                  <b aria-hidden="true">→</b>
+                  <span>バス・JR等</span>
+                  <b aria-hidden="true">→</b>
+                  <span>浜中町</span>
+                </div>
+
+                <div class="trip-v4-public-copy">
+                  <span class="trip-v3-kicker">
+                    PUBLIC TRANSPORT
+                  </span>
+                  <h4>公共交通機関を利用する方へ</h4>
+                  <p>${esc(
+                    noCar.text ||
+                    '鉄道・バス・送迎・タクシーなど、利用できる移動手段を事前に確認しましょう。'
+                  )}</p>
+
+                  ${safe(cfg.access.publicTransportUrl || noCar.url) ? `
+                    <a
+                      class="trip-v3-button trip-v3-button-primary"
+                      href="${esc(
+                        cfg.access.publicTransportUrl ||
+                        noCar.url
+                      )}"
+                      target="_blank"
+                      rel="noopener noreferrer">
+                      ${esc(
+                        cfg.access.publicTransportLabel ||
+                        noCar.buttonLabel ||
+                        '公共交通情報を見る'
+                      )} ↗
+                    </a>` : ''}
+                </div>
+              </article>
             </div>
           </div>
         </div>
@@ -291,28 +469,87 @@
       </div>
     </section>`;
 
-  const renderWear = cfg => {
-    const card = (obj, label) => `
+  const renderWear = (base, cfg) => {
+    const clothing = base.clothing || {};
+    const fallbackWear = cfg.wear || {};
+
+    const fallbackCards = [
+      {
+        eyebrow: 'SUNNY DAY',
+        ...(fallbackWear.sunny || {})
+      },
+      {
+        eyebrow: 'CLOUDY / FOGGY',
+        ...(fallbackWear.foggy || {})
+      }
+    ];
+
+    const cards =
+      Array.isArray(clothing.conditionCards) &&
+      clothing.conditionCards.length
+        ? clothing.conditionCards
+        : fallbackCards;
+
+    const essentials = Array.isArray(clothing.essentials)
+      ? clothing.essentials
+      : (
+          Array.isArray(fallbackWear.essentials)
+            ? fallbackWear.essentials
+            : []
+        );
+
+    const card = (obj, index) => `
       <article class="trip-v3-wear-card">
-        <span class="trip-v3-kicker">${label}</span>
-        <h3>${esc(obj.title)}</h3>
-        <p>${esc(obj.lead)}</p>
-        <ul class="trip-v3-wear-list">${obj.items.map(x => `<li>${esc(x)}</li>`).join('')}</ul>
+        <span class="trip-v3-kicker">
+          ${esc(
+            obj.eyebrow ||
+            (
+              index === 0
+                ? 'SUNNY DAY'
+                : 'CLOUDY / FOGGY'
+            )
+          )}
+        </span>
+        <h3>${esc(obj.title || '')}</h3>
+        <p>${esc(obj.lead || '')}</p>
+        <ul class="trip-v3-wear-list">
+          ${(Array.isArray(obj.items) ? obj.items : [])
+            .map(item => `<li>${esc(item)}</li>`)
+            .join('')}
+        </ul>
       </article>`;
+
     return `
       <section class="trip-v3-section" id="trip-v3-wear">
         <div class="container">
           <div class="trip-v3-heading">
-            <div><p>04 / WEAR & ESSENTIALS</p><h2>服装と必需品を準備する</h2></div>
-            <span>晴天だけでなく、海霧や風を想定した装備を。撮影機材の保護用品も忘れずに。</span>
+            <div>
+              <p>04 / WEAR & ESSENTIALS</p>
+              <h2>${esc(
+                clothing.sectionTitle ||
+                '服装と必需品を準備する'
+              )}</h2>
+            </div>
+            <span>${esc(
+              clothing.sectionLead ||
+              '晴天だけでなく、海霧や風を想定した装備を。撮影機材の保護用品も忘れずに。'
+            )}</span>
           </div>
+
           <div class="trip-v3-wear-grid">
-            ${card(cfg.wear.sunny, 'SUNNY DAY')}
-            ${card(cfg.wear.foggy, 'CLOUDY / FOGGY')}
+            ${cards.map(card).join('')}
           </div>
+
           <div class="trip-v3-essentials">
-            <h3>その他の必需品</h3>
-            <div class="trip-v3-essential-grid">${cfg.wear.essentials.map(x => `<span>${esc(x)}</span>`).join('')}</div>
+            <h3>${esc(
+              clothing.essentialsTitle ||
+              'その他の必需品'
+            )}</h3>
+            <div class="trip-v3-essential-grid">
+              ${essentials
+                .map(item => `<span>${esc(item)}</span>`)
+                .join('')}
+            </div>
           </div>
         </div>
       </section>`;
@@ -799,7 +1036,7 @@
         renderAccess(base, cfg),
         renderStay(base),
         renderClimate(cfg),
-        renderWear(cfg),
+        renderWear(base, cfg),
         renderPlan(base, cfg)
       ].join('');
 
