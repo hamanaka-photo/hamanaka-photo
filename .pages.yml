@@ -1633,8 +1633,7 @@ content:
     - name: position
       label: MAP位置（x,y）
       type: string
-      description: 座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=63 で位置を選び、「座標をコピー」を押した後、この欄へ
-        Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71
+      description: 座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=63 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71
       pattern:
         regex: ^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$
         message: 1〜100の範囲で x,y の形式で入力してください。座標は100×100グリッドのセル番号です。例 63,71
@@ -1651,7 +1650,7 @@ content:
       type: string
       description: Google Mapsでこのスポットを開くURLを入力します。未入力の場合は「Google Mapで開く」リンクを表示しません。
   - name: trip_settings
-    label: 準備｜ページ基本情報・宿泊・服装
+    label: 準備｜HERO・01・02・04・NEXT
     type: file
     path: data/trip.json
     format: json
@@ -2267,6 +2266,26 @@ content:
       - name: sourceUrl
         label: 気象庁データURL
         type: string
+      - name: features
+        label: 気候の特徴カード
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: season
+          label: 英字ラベル
+          type: string
+        - name: title
+          label: 見出し
+          type: string
+          required: true
+        - name: items
+          label: 特徴
+          type: string
+          list: true
       - name: months
         label: 月
         type: string
@@ -2468,7 +2487,7 @@ content:
             - webp
             rename: false
     - name: gearFinder
-      label: 02｜レンズ × ボディを選ぶ。
+      label: 02｜レンズを選ぶ → ボディを選ぶ
       type: object
       fields:
       - name: eyebrow
@@ -2484,7 +2503,7 @@ content:
         label: 選び方
         type: object
         list:
-          max: 4
+          max: 2
           collapsible:
             collapsed: true
             summary: '{label}'
@@ -2499,10 +2518,6 @@ content:
               label: メーカー
             - name: focal
               label: 焦点距離
-            - name: resolution
-              label: 解像度
-            - name: function
-              label: 機能
         - name: label
           label: 表示名
           type: string
@@ -2519,6 +2534,7 @@ content:
         label: 解像度選択肢 MP
         type: number
         list: true
+        hidden: true
       - name: featureOptions
         label: 機能選択肢
         type: object
@@ -2547,6 +2563,7 @@ content:
               label: レンズ
             - name: pair
               label: 組み合わせ全体
+        hidden: true
       - name: lenses
         label: レンズ
         type: object
@@ -2598,6 +2615,18 @@ content:
         - name: weight
           label: 重量
           type: string
+        - name: dimensions
+          label: 大きさ
+          type: string
+          description: 例 最大径 φ93.8 × 長さ 207.6mm
+        - name: autofocus
+          label: AF
+          type: string
+          description: 例 Nano USM / DDSSM / STM
+        - name: stabilizationLabel
+          label: 手ぶれ補正
+          type: string
+          description: 例 レンズ内IS / レンズ内OSS / レンズシフト方式VR
         - name: summary
           label: 性能概要
           type: text
@@ -2835,6 +2864,49 @@ content:
       - name: note
         label: 注記
         type: text
+    - name: examples
+      label: 05｜機材作例ギャラリー
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: items
+        label: 作例
+        type: object
+        list:
+          max: 12
+          collapsible:
+            collapsed: true
+            summary: '{equipment} / {caption}'
+        fields:
+        - name: image
+          label: 作例画像
+          type: image
+          required: true
+          options:
+            media: gear_images
+            path: examples
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: equipment
+          label: 使用機材
+          type: string
+          required: true
+          description: 例 EOS R5 Mark II ＋ RF200-800mm F6.3-9 IS USM
+        - name: caption
+          label: キャプション
+          type: string
     - name: next
       label: NEXT｜機材を選んだら、撮り方を学ぼう。
       type: object
@@ -3440,12 +3512,6 @@ content:
         type: string
       - name: url
         label: リンク先
-        type: string
-      - name: pdfLabel
-        label: PDFボタン表示
-        type: string
-      - name: pdfUrl
-        label: PDFリンク先
         type: string
     - name: next
       label: NEXT｜マナーを守って、思い出に残る撮影旅を。
