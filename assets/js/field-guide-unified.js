@@ -49,7 +49,7 @@
   const selectors = {
     'photo-map': {
       hero: '.photo-map-hero',
-      nav: '.photo-map-field-nav'
+      nav: '.field-guide-nav'
     },
     trip: {
       hero: '.trip-hero',
@@ -115,18 +115,19 @@
     const hero = root.querySelector(setting.hero);
     const nav = root.querySelector(setting.nav);
 
-    if (hero) {
-      hero.classList.add('field-guide-unified-hero');
+    if (!hero) return;
 
-      if (nav) {
-        nav.classList.add('field-guide-unified-nav');
-        if (!hero.contains(nav)) {
-          hero.insertBefore(nav, hero.firstChild);
-        }
+    hero.classList.add('field-guide-unified-hero');
+
+    if (nav) {
+      nav.classList.add('field-guide-unified-nav');
+
+      if (!hero.contains(nav)) {
+        hero.insertBefore(nav, hero.firstChild);
       }
-
-      createSequenceNav();
     }
+
+    createSequenceNav();
   };
 
   enhance();
