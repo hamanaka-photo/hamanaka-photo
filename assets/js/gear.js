@@ -257,9 +257,10 @@
     const focalOptions = Array.isArray(section.focalOptions)
       ? section.focalOptions
       : [400, 500];
+    const firstLens = lenses[0] || {};
 
     return `
-      <section class="gear-v2-section gear-v7-finder" id="gear-finder" data-gear-finder>
+      <section class="gear-v2-section gear-v7-finder gear-v8-finder" id="gear-finder" data-gear-finder>
         <div class="container">
           <div class="gear-v2-heading">
             <div>
@@ -273,11 +274,11 @@
             <span>STEP 1 / LENS</span>
             <div>
               <h3>まず、レンズを選ぶ</h3>
-              <p>すべてのレンズを比較しながら、必要に応じて条件で絞り込めます。</p>
+              <p>条件で絞り込み、一覧の行を選ぶと対応するボディ候補を表示します。</p>
             </div>
           </div>
 
-          <div class="gear-v7-filter-shell">
+          <div class="gear-v7-filter-shell gear-v8-filter-shell">
             <div class="gear-v7-filter-modes" aria-label="レンズの絞り込み方法">
               <button type="button" data-lens-mode="manufacturer">メーカーで選ぶ</button>
               <button type="button" data-lens-mode="focal">焦点距離で選ぶ</button>
@@ -306,66 +307,76 @@
             </div>
           </div>
 
-          <div class="gear-v7-table-headline">
-            <strong>登録レンズ一覧</strong>
-            <span data-lens-result-count>${lenses.length}本を表示</span>
+          <div class="gear-v8-lens-layout">
+            <div class="gear-v7-lens-table-wrap">
+              <table class="gear-v7-lens-table gear-v8-lens-table">
+                <thead>
+                  <tr>
+                    <th>レンズ</th>
+                    <th>焦点距離</th>
+                    <th>開放F値</th>
+                    <th>大きさ・重さ</th>
+                    <th>AF</th>
+                    <th>手ぶれ補正</th>
+                    <th>マウント</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${lenses.map((lens, index) => `
+                    <tr
+                      data-lens-row
+                      data-lens-id="${escapeHtml(lens.id)}"
+                      data-manufacturer="${escapeHtml(lens.manufacturer)}"
+                      data-max-focal="${escapeHtml(lens.maxFocal)}"
+                      tabindex="0"
+                      role="button"
+                      aria-pressed="${index === 0 ? 'true' : 'false'}"
+                      class="${index === 0 ? 'is-selected' : ''}">
+                      <td class="gear-v7-lens-name">
+                        <span>${escapeHtml(lens.manufacturer || '')}</span>
+                        <strong>${escapeHtml(lens.name || '')}</strong>
+                      </td>
+                      <td>${escapeHtml(lens.minFocal)}–${escapeHtml(lens.maxFocal)}mm</td>
+                      <td>${escapeHtml(lens.aperture || '')}</td>
+                      <td>
+                        <span>${escapeHtml(lens.dimensions || '')}</span>
+                        <small>${escapeHtml(lens.weight || '')}</small>
+                      </td>
+                      <td>${escapeHtml(lens.autofocus || 'AF対応')}</td>
+                      <td>${escapeHtml(
+                        lens.stabilizationLabel ||
+                        ((lens.features || []).includes('stabilization') ? 'あり' : 'なし')
+                      )}</td>
+                      <td><b>${escapeHtml(lens.mount || '')}</b></td>
+                    </tr>`).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <aside class="gear-v8-selected-preview" data-selected-lens-preview>
+              <span>SELECTED LENS</span>
+              <div class="gear-v8-selected-image" data-selected-lens-image>
+                ${image(firstLens.image, firstLens.name || '選択レンズ')}
+              </div>
+              <div class="gear-v8-selected-copy">
+                <small data-selected-lens-maker>${escapeHtml(firstLens.manufacturer || '')}</small>
+                <h4 data-selected-lens-title>${escapeHtml(firstLens.name || '')}</h4>
+                <p data-selected-lens-summary>${escapeHtml(firstLens.summary || '')}</p>
+              </div>
+            </aside>
           </div>
 
-          <div class="gear-v7-lens-table-wrap">
-            <table class="gear-v7-lens-table">
-              <thead>
-                <tr>
-                  <th>レンズ</th>
-                  <th>焦点距離</th>
-                  <th>開放F値</th>
-                  <th>大きさ・重さ</th>
-                  <th>AF</th>
-                  <th>手ぶれ補正</th>
-                  <th>マウント</th>
-                  <th>選択</th>
-                </tr>
-              </thead>
-              <tbody>
-                ${lenses.map(lens => `
-                  <tr
-                    data-lens-row
-                    data-lens-id="${escapeHtml(lens.id)}"
-                    data-manufacturer="${escapeHtml(lens.manufacturer)}"
-                    data-max-focal="${escapeHtml(lens.maxFocal)}">
-                    <td class="gear-v7-lens-name">
-                      <span>${escapeHtml(lens.manufacturer || '')}</span>
-                      <strong>${escapeHtml(lens.name || '')}</strong>
-                    </td>
-                    <td>${escapeHtml(lens.minFocal)}–${escapeHtml(lens.maxFocal)}mm</td>
-                    <td>${escapeHtml(lens.aperture || '')}</td>
-                    <td>
-                      <span>${escapeHtml(lens.dimensions || '')}</span>
-                      <small>${escapeHtml(lens.weight || '')}</small>
-                    </td>
-                    <td>${escapeHtml(lens.autofocus || 'AF対応')}</td>
-                    <td>${escapeHtml(lens.stabilizationLabel || ((lens.features || []).includes('stabilization') ? 'あり' : 'なし'))}</td>
-                    <td><b>${escapeHtml(lens.mount || '')}</b></td>
-                    <td>
-                      <button type="button" data-lens-select="${escapeHtml(lens.id)}">
-                        このレンズを選ぶ
-                      </button>
-                    </td>
-                  </tr>`).join('')}
-              </tbody>
-            </table>
-          </div>
-
-          <div class="gear-v7-body-stage" data-body-stage hidden>
+          <div class="gear-v7-body-stage" data-body-stage>
             <div class="gear-v7-step-heading">
               <span>STEP 2 / BODY</span>
               <div>
                 <h3>選んだレンズに合うボディ</h3>
-                <p>マウントが一致する、登録済みのボディ候補を表示します。</p>
+                <p>選択したレンズとマウントが一致するボディ候補を表示します。</p>
               </div>
             </div>
             <div class="gear-v7-selected-lens">
               <span>SELECTED LENS</span>
-              <strong data-selected-lens-name></strong>
+              <strong data-selected-lens-name>${escapeHtml(firstLens.name || '')}</strong>
             </div>
             <div class="gear-v7-body-grid" data-body-grid></div>
           </div>
@@ -523,7 +534,7 @@
     const items = Array.isArray(section.items) ? section.items : [];
 
     return `
-      <section class="gear-v2-section gear-v7-examples" id="gear-examples">
+      <section class="gear-v2-section gear-v7-examples gear-v8-examples" id="gear-examples">
         <div class="container">
           <div class="gear-v2-heading">
             <div>
@@ -534,15 +545,20 @@
           </div>
 
           ${items.length ? `
-            <div class="gear-v7-example-grid">
-              ${items.map(item => `
-                <figure class="gear-v7-example-card">
-                  <div class="gear-v7-example-image">${image(item.image, item.caption || item.equipment || '機材作例')}</div>
-                  <figcaption>
-                    <strong>${escapeHtml(item.equipment || '')}</strong>
-                    ${item.caption ? `<span>${escapeHtml(item.caption)}</span>` : ''}
-                  </figcaption>
-                </figure>`).join('')}
+            <div class="gear-v8-example-carousel" data-example-carousel>
+              <button
+                type="button"
+                class="gear-v8-example-nav is-prev"
+                data-example-prev
+                aria-label="前の作例"
+                ${items.length <= 3 ? 'hidden' : ''}>←</button>
+              <div class="gear-v8-example-window" data-example-window></div>
+              <button
+                type="button"
+                class="gear-v8-example-nav is-next"
+                data-example-next
+                aria-label="次の作例"
+                ${items.length <= 3 ? 'hidden' : ''}>→</button>
             </div>` : `
             <div class="gear-v7-example-empty">
               <span>PHOTO EXAMPLES</span>
@@ -633,15 +649,18 @@
     const filterPanel = finder.querySelector('[data-lens-filter-panel]');
     const filterGroups = [...finder.querySelectorAll('[data-lens-filter-group]')];
     const reset = finder.querySelector('[data-lens-reset]');
-    const resultCount = finder.querySelector('[data-lens-result-count]');
     const bodyStage = finder.querySelector('[data-body-stage]');
     const bodyGrid = finder.querySelector('[data-body-grid]');
     const selectedLensName = finder.querySelector('[data-selected-lens-name]');
+    const selectedImage = finder.querySelector('[data-selected-lens-image]');
+    const selectedMaker = finder.querySelector('[data-selected-lens-maker]');
+    const selectedTitle = finder.querySelector('[data-selected-lens-title]');
+    const selectedSummary = finder.querySelector('[data-selected-lens-summary]');
 
     const state = {
       mode: '',
       value: '',
-      selectedLensId: ''
+      selectedLensId: lenses[0]?.id || ''
     };
 
     const visibleFor = lens => {
@@ -655,15 +674,58 @@
       return true;
     };
 
+    const compatibleBodies = lens =>
+      bodies
+        .filter(body => String(body.mount) === String(lens.mount))
+        .sort((a, b) => Number(b.resolution || 0) - Number(a.resolution || 0));
+
+    const selectLens = (lens, scroll = false) => {
+      if (!lens) return;
+      state.selectedLensId = lens.id;
+
+      rows.forEach(row => {
+        const selected = row.dataset.lensId === lens.id;
+        row.classList.toggle('is-selected', selected);
+        row.setAttribute('aria-pressed', String(selected));
+      });
+
+      selectedLensName.textContent = lens.name || '';
+      selectedMaker.textContent = `${lens.manufacturer || ''} / ${lens.mount || ''} MOUNT`;
+      selectedTitle.textContent = lens.name || '';
+      selectedSummary.textContent = lens.summary || '';
+      selectedImage.innerHTML = image(lens.image, lens.name || '選択レンズ');
+
+      const compatible = compatibleBodies(lens);
+      bodyGrid.innerHTML = compatible.length
+        ? compatible.map((body, index) => `
+            <div class="gear-v7-body-choice ${index === 0 ? 'is-primary' : ''}">
+              ${index === 0 ? '<span class="gear-v7-recommend-badge">RECOMMENDED</span>' : ''}
+              ${renderBodyCard(body)}
+            </div>`).join('')
+        : '<div class="gear-v2-product-empty">対応する登録ボディがありません。</div>';
+
+      bodyStage.hidden = false;
+      if (scroll) {
+        bodyStage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    };
+
     const applyFilter = () => {
-      let count = 0;
+      const visibleRows = [];
       rows.forEach(row => {
         const lens = lenses.find(item => item.id === row.dataset.lensId);
         const visible = lens ? visibleFor(lens) : false;
         row.hidden = !visible;
-        if (visible) count += 1;
+        if (visible && lens) visibleRows.push(lens);
       });
-      resultCount.textContent = `${count}本を表示`;
+
+      const selectedStillVisible = visibleRows.some(
+        lens => lens.id === state.selectedLensId
+      );
+
+      if (!selectedStillVisible && visibleRows[0]) {
+        selectLens(visibleRows[0], false);
+      }
     };
 
     const openMode = mode => {
@@ -671,7 +733,10 @@
       state.value = '';
       filterPanel.hidden = false;
       modeButtons.forEach(button => {
-        button.setAttribute('aria-pressed', String(button.dataset.lensMode === mode));
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.lensMode === mode)
+        );
       });
       filterGroups.forEach(group => {
         group.hidden = group.dataset.lensFilterGroup !== mode;
@@ -681,7 +746,10 @@
     };
 
     modeButtons.forEach(button => {
-      button.addEventListener('click', () => openMode(button.dataset.lensMode || ''));
+      button.addEventListener(
+        'click',
+        () => openMode(button.dataset.lensMode || '')
+      );
     });
 
     filterButtons.forEach(button => {
@@ -705,36 +773,76 @@
       applyFilter();
     });
 
-    finder.addEventListener('click', event => {
-      const button = event.target.closest('[data-lens-select]');
-      if (!button) return;
+    const selectFromRow = row => {
+      const lens = lenses.find(item => item.id === row.dataset.lensId);
+      if (lens) selectLens(lens, false);
+    };
 
-      const lens = lenses.find(item => item.id === button.dataset.lensSelect);
-      if (!lens) return;
-
-      state.selectedLensId = lens.id;
-      rows.forEach(row => {
-        row.classList.toggle('is-selected', row.dataset.lensId === lens.id);
+    rows.forEach(row => {
+      row.addEventListener('click', () => selectFromRow(row));
+      row.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        selectFromRow(row);
       });
-
-      const compatible = bodies
-        .filter(body => String(body.mount) === String(lens.mount))
-        .sort((a, b) => Number(b.resolution || 0) - Number(a.resolution || 0));
-
-      selectedLensName.textContent = lens.name || '';
-      bodyGrid.innerHTML = compatible.length
-        ? compatible.map((body, index) => `
-            <div class="gear-v7-body-choice ${index === 0 ? 'is-primary' : ''}">
-              ${index === 0 ? '<span class="gear-v7-recommend-badge">RECOMMENDED</span>' : ''}
-              ${renderBodyCard(body)}
-            </div>`).join('')
-        : '<div class="gear-v2-product-empty">対応する登録ボディがありません。</div>';
-
-      bodyStage.hidden = false;
-      bodyStage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
     applyFilter();
+    if (lenses[0]) selectLens(lenses[0], false);
+  };
+
+  const initExamples = (scope, section) => {
+    const carousel = scope.querySelector('[data-example-carousel]');
+    if (!carousel) return;
+
+    const items = Array.isArray(section.items) ? section.items : [];
+    const windowEl = carousel.querySelector('[data-example-window]');
+    const prev = carousel.querySelector('[data-example-prev]');
+    const next = carousel.querySelector('[data-example-next]');
+    let index = 0;
+
+    const visibleCount = () =>
+      window.matchMedia('(max-width: 760px)').matches ? 1 : 3;
+
+    const render = () => {
+      const count = Math.min(visibleCount(), items.length);
+      const visible = Array.from({ length: count }, (_, offset) =>
+        items[(index + offset) % items.length]
+      );
+
+      windowEl.innerHTML = visible.map(item => `
+        <figure class="gear-v7-example-card">
+          <div class="gear-v7-example-image">
+            ${image(item.image, item.caption || item.equipment || '機材作例')}
+          </div>
+          <figcaption>
+            <strong>${escapeHtml(item.equipment || '')}</strong>
+            ${item.caption ? `<span>${escapeHtml(item.caption)}</span>` : ''}
+          </figcaption>
+        </figure>`).join('');
+
+      const needsNav = items.length > count;
+      prev.hidden = !needsNav;
+      next.hidden = !needsNav;
+    };
+
+    prev?.addEventListener('click', () => {
+      index = (index - 1 + items.length) % items.length;
+      render();
+    });
+
+    next?.addEventListener('click', () => {
+      index = (index + 1) % items.length;
+      render();
+    });
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(render, 100);
+    });
+
+    render();
   };
 
   const renderPage = data => {
@@ -762,6 +870,7 @@
 
     initFocalViewer(root, data.focalExperience || {});
     initFinder(root, data.gearFinder || {});
+    initExamples(root, data.examples || {});
   };
 
   const init = async () => {

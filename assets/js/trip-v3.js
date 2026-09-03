@@ -128,8 +128,8 @@
       }
     ].filter(group => group.companies.length);
 
-    const rentalDetails = rentalGroups.map((group, index) => `
-      <details class="trip-v4-rental-details" ${index === 0 ? 'open' : ''}>
+    const rentalDetails = rentalGroups.map(group => `
+      <details class="trip-v4-rental-details">
         <summary>
           <span>${esc(group.title)}</span>
           <b aria-hidden="true">＋</b>
@@ -510,24 +510,38 @@
         );
 
     const card = (obj, index) => `
-      <article class="trip-v3-wear-card">
-        <span class="trip-v3-kicker">
-          ${esc(
-            obj.eyebrow ||
-            (
-              index === 0
-                ? 'SUNNY DAY'
-                : 'CLOUDY / FOGGY'
-            )
-          )}
-        </span>
-        <h3>${esc(obj.title || '')}</h3>
-        <p>${esc(obj.lead || '')}</p>
-        <ul class="trip-v3-wear-list">
-          ${(Array.isArray(obj.items) ? obj.items : [])
-            .map(item => `<li>${esc(item)}</li>`)
-            .join('')}
-        </ul>
+      <article class="trip-v3-wear-card trip-v9-wear-card">
+        <div class="trip-v9-wear-copy">
+          <span class="trip-v3-kicker">
+            ${esc(
+              obj.eyebrow ||
+              (
+                index === 0
+                  ? 'SUNNY DAY'
+                  : 'CLOUDY / FOGGY'
+              )
+            )}
+          </span>
+          <h3>${esc(obj.title || '')}</h3>
+          <p>${esc(obj.lead || '')}</p>
+          <ul class="trip-v3-wear-list">
+            ${(Array.isArray(obj.items) ? obj.items : [])
+              .map(item => `<li>${esc(item)}</li>`)
+              .join('')}
+          </ul>
+        </div>
+        <div class="trip-v9-wear-image">
+          ${obj.image
+            ? `<img
+                src="${esc(obj.image)}"
+                alt="${esc(obj.title || '服装イメージ')}"
+                loading="lazy"
+                decoding="async">`
+            : `<div class="trip-v9-wear-placeholder" aria-hidden="true">
+                <span>WEAR IMAGE</span>
+                <small>CMSから画像を設定</small>
+              </div>`}
+        </div>
       </article>`;
 
     return `
