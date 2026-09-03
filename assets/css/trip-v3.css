@@ -1196,3 +1196,387 @@
     opacity: .38;
   }
 }
+
+
+/* =========================================
+   PHOTO GUIDE / TRIP ACCESS v4
+========================================= */
+
+.trip-v4-access-example {
+  margin-bottom: 24px;
+  padding: 17px 20px;
+  border-left: 4px solid var(--v3-teal);
+  border-radius: 0 8px 8px 0;
+  background: #eef5f3;
+}
+
+.trip-v4-access-example strong {
+  display: block;
+  color: var(--v3-navy);
+  font-size: 14px;
+}
+
+.trip-v4-access-example p {
+  margin: 6px 0 0;
+  color: #607781;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+.trip-v4-access-step {
+  overflow: hidden;
+  border: 1px solid var(--v3-line);
+  border-radius: 12px;
+  background: #fff;
+}
+
+.trip-v4-access-step + .trip-v4-access-step {
+  margin-top: 20px;
+}
+
+.trip-v4-step-head {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+  padding: 20px 22px;
+  background: linear-gradient(90deg, #f4f8f8, #fff);
+}
+
+.trip-v4-step-head > span {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 84px;
+  min-height: 38px;
+  padding: 0 15px;
+  border-radius: 7px;
+  color: #fff;
+  background: var(--v3-navy);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .04em;
+}
+
+.trip-v4-step-head h3 {
+  margin: 0;
+  color: var(--v3-navy);
+  font-size: 25px;
+  line-height: 1.25;
+}
+
+.trip-v4-step-head p {
+  margin: 5px 0 0;
+  color: #6d808a;
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.trip-v4-origin-flow {
+  display: grid;
+  grid-template-columns:
+    minmax(150px, .8fr)
+    44px
+    minmax(180px, 1fr)
+    auto
+    minmax(180px, 1fr);
+  gap: 8px;
+  align-items: center;
+  margin: 0 22px 14px;
+  padding: 14px 16px;
+  border-radius: 9px;
+  background: #f7faf9;
+  text-align: center;
+}
+
+.trip-v4-origin-flow strong,
+.trip-v4-origin-flow b {
+  display: grid;
+  place-items: center;
+  min-height: 50px;
+  padding: 8px 12px;
+  border-radius: 7px;
+  color: var(--v3-navy);
+  background: #fff;
+  font-size: 13px;
+  font-style: normal;
+}
+
+.trip-v4-origin-flow > span {
+  color: #77939d;
+  font-size: 24px;
+}
+
+.trip-v4-origin-flow em {
+  color: #74858e;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.trip-v4-access-step > .trip-v3-airport-note {
+  margin: 0 22px 15px;
+}
+
+.trip-v4-access-step > .trip-v3-flight-grid {
+  padding: 0 22px 22px;
+}
+
+.trip-v4-access-step-second .trip-v4-step-head {
+  grid-template-columns: auto minmax(0, 1fr) auto;
+  border-bottom: 1px solid var(--v3-line);
+}
+
+.trip-v4-options-title {
+  color: var(--v3-navy);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.trip-v4-access-options {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  padding: 18px;
+  background: #f7f9f9;
+}
+
+.trip-v4-access-option {
+  min-width: 0;
+  padding: 20px;
+  border: 1px solid var(--v3-line);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.trip-v4-access-option.is-rental {
+  border-color: #b8d8c7;
+}
+
+.trip-v4-access-option.is-public {
+  border-color: #b8cede;
+}
+
+.trip-v4-option-title {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.trip-v4-option-title > span {
+  display: grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  color: #fff;
+  background: var(--v3-teal);
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.trip-v4-access-option.is-public
+.trip-v4-option-title > span {
+  background: #2d6688;
+}
+
+.trip-v4-option-title h3 {
+  margin: 1px 0 0;
+  color: var(--v3-navy);
+  font-size: 20px;
+}
+
+.trip-v4-option-title p {
+  margin: 5px 0 0;
+  color: #6e8088;
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.trip-v4-route-flow {
+  display: grid;
+  grid-template-columns:
+    1fr 30px 1fr 30px 1fr;
+  gap: 5px;
+  align-items: center;
+  margin: 17px 0;
+  padding: 12px;
+  border-radius: 8px;
+  background: #f5f8f8;
+}
+
+.trip-v4-route-flow span {
+  color: #35586b;
+  font-size: 10px;
+  font-weight: 900;
+  text-align: center;
+}
+
+.trip-v4-route-flow b {
+  color: #719099;
+  font-size: 18px;
+  text-align: center;
+}
+
+.trip-v4-rental-groups {
+  display: grid;
+  gap: 8px;
+}
+
+.trip-v4-rental-details {
+  border: 1px solid var(--v3-line);
+  border-radius: 8px;
+  background: #fff;
+}
+
+.trip-v4-rental-details summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 44px;
+  padding: 0 14px;
+  color: #2e6667;
+  background: #eef5f3;
+  border-radius: 7px;
+  font-size: 11px;
+  font-weight: 900;
+  cursor: pointer;
+  list-style: none;
+}
+
+.trip-v4-rental-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.trip-v4-rental-details summary b {
+  font-size: 16px;
+  transition: transform .2s ease;
+}
+
+.trip-v4-rental-details[open] summary b {
+  transform: rotate(45deg);
+}
+
+.trip-v4-rental-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 7px;
+  padding: 10px;
+}
+
+.trip-v4-rental-links a {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 39px;
+  padding: 0 11px;
+  border: 1px solid var(--v3-line);
+  border-radius: 6px;
+  color: #375f6d;
+  background: #fff;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.trip-v4-drive-point {
+  margin-top: 12px;
+}
+
+.trip-v4-public-copy {
+  margin-top: 12px;
+  padding: 18px;
+  border-radius: 8px;
+  background: #eef4f8;
+}
+
+.trip-v4-public-copy h4 {
+  margin: 4px 0 0;
+  color: var(--v3-navy);
+  font-size: 16px;
+}
+
+.trip-v4-public-copy p {
+  margin: 9px 0 0;
+  color: #59717d;
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+@media (max-width: 1000px) {
+  .trip-v4-access-options {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-v4-access-step-second .trip-v4-step-head {
+    grid-template-columns: auto 1fr;
+  }
+
+  .trip-v4-options-title {
+    grid-column: 1 / -1;
+    padding-left: 100px;
+  }
+}
+
+@media (max-width: 760px) {
+  .trip-v4-step-head,
+  .trip-v4-access-step-second .trip-v4-step-head {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .trip-v4-step-head > span {
+    width: fit-content;
+  }
+
+  .trip-v4-step-head h3 {
+    font-size: 21px;
+  }
+
+  .trip-v4-options-title {
+    grid-column: auto;
+    padding-left: 0;
+  }
+
+  .trip-v4-origin-flow {
+    grid-template-columns: 1fr;
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .trip-v4-origin-flow > span {
+    transform: rotate(90deg);
+    font-size: 19px;
+  }
+
+  .trip-v4-origin-flow em {
+    padding: 3px 0;
+  }
+
+  .trip-v4-access-step > .trip-v3-airport-note {
+    margin-left: 15px;
+    margin-right: 15px;
+  }
+
+  .trip-v4-access-step > .trip-v3-flight-grid {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+
+  .trip-v4-access-options {
+    padding: 12px;
+  }
+
+  .trip-v4-access-option {
+    padding: 16px;
+  }
+
+  .trip-v4-rental-links {
+    grid-template-columns: 1fr;
+  }
+
+  .trip-v4-route-flow {
+    grid-template-columns:
+      1fr 22px 1fr 22px 1fr;
+  }
+}
