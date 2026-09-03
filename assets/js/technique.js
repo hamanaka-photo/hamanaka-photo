@@ -136,15 +136,134 @@
       </div>
     </section>`;
 
+  const youtubeId = value => {
+    const raw = safeUrl(value);
+    if (!raw) return '';
+
+    try {
+      const url = new URL(raw, location.href);
+      const host = url.hostname.replace(/^www\./, '');
+
+      if (host === 'youtu.be') {
+        return url.pathname.split('/').filter(Boolean)[0] || '';
+      }
+
+      if (
+        host === 'youtube.com' ||
+        host === 'm.youtube.com' ||
+        host === 'music.youtube.com'
+      ) {
+        if (url.pathname === '/watch') {
+          return url.searchParams.get('v') || '';
+        }
+
+        const parts = url.pathname.split('/').filter(Boolean);
+        if (['embed', 'shorts', 'live'].includes(parts[0])) {
+          return parts[1] || '';
+        }
+      }
+    } catch {
+      return '';
+    }
+
+    return '';
+  };
+
+  const renderVideo = section => {
+    const id = youtubeId(section.youtubeUrl);
+
+    return `
+      <section class="tech-v2-section is-soft tech-v3-video" id="tech-video">
+        <div class="container">
+          ${heading(section)}
+          <div class="tech-v3-video-frame">
+            ${id ? `
+              <iframe
+                src="https://www.youtube-nocookie.com/embed/${esc(id)}"
+                title="${esc(section.title || '撮影方法の解説動画')}"
+                loading="lazy"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen></iframe>` : `
+              <div class="tech-v3-video-placeholder">
+                <span>05 / MOVIE</span>
+                <b>撮影方法の解説動画</b>
+                <i aria-hidden="true">▶</i>
+                <p>CMSからYouTube URLを設定すると、ここに動画が表示されます。</p>
+              </div>`}
+          </div>
+          ${section.caption ? `
+            <p class="tech-v3-video-caption">${esc(section.caption)}</p>` : ''}
+        </div>
+      </section>`;
+  };
+
   const renderGallery = section => `
-    <section class="tech-v2-section" id="tech-gallery">
+    <section class="tech-v2-section tech-v3-gallery-section" id="tech-gallery">
       <div class="container">
         ${heading(section)}
-        <div class="tech-v2-gallery">
-          ${(section.items || []).map(item => `<figure><div>${image(item.image, item.caption || '作例')}</div>${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}</figure>`).join('')}
-        </div>
+        ${(section.items || []).length ? `
+          <div class="tech-v3-gallery-carousel" data-tech-gallery-carousel>
+            <button type="button" data-tech-gallery-prev aria-label="前の作例">←</button>
+            <div class="tech-v3-gallery-window" data-tech-gallery-window></div>
+            <button type="button" data-tech-gallery-next aria-label="次の作例">→</button>
+          </div>` : `
+          <div class="tech-v3-gallery-empty">
+            <span>06 / GALLERY</span>
+            <strong>作例を準備中です。</strong>
+          </div>`}
       </div>
     </section>`;
+
+  const initGallery = (scope, section) => {
+    const carousel = scope.querySelector('[data-tech-gallery-carousel]');
+    if (!carousel) return;
+
+    const items = Array.isArray(section.items) ? section.items : [];
+    const windowEl = carousel.querySelector('[data-tech-gallery-window]');
+    const prev = carousel.querySelector('[data-tech-gallery-prev]');
+    const next = carousel.querySelector('[data-tech-gallery-next]');
+    let index = 0;
+
+    const visibleCount = () =>
+      window.matchMedia('(max-width: 760px)').matches ? 1 : 3;
+
+    const draw = () => {
+      const count = Math.min(visibleCount(), items.length);
+      const visible = Array.from({length: count}, (_, offset) =>
+        items[(index + offset) % items.length]
+      );
+
+      windowEl.innerHTML = visible.map(item => `
+        <figure>
+          <div>${image(item.image, item.caption || '作例')}</div>
+          ${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}
+        </figure>
+      `).join('');
+
+      const showNav = items.length > count;
+      prev.hidden = !showNav;
+      next.hidden = !showNav;
+    };
+
+    prev.addEventListener('click', () => {
+      index = (index - 1 + items.length) % items.length;
+      draw();
+    });
+
+    next.addEventListener('click', () => {
+      index = (index + 1) % items.length;
+      draw();
+    });
+
+    let timer = 0;
+    window.addEventListener('resize', () => {
+      clearTimeout(timer);
+      timer = window.setTimeout(draw, 100);
+    });
+
+    draw();
+  };
 
   const renderNext = section => `
     <section class="tech-v2-next">
@@ -157,7 +276,8 @@
   const renderPage = data => {
     document.body.classList.add('technique-page', 'tech-v2-page');
     document.title = 'ラッコの撮り方｜HAMANAKA PHOTO GUIDE';
-    root.innerHTML = `${renderHero(data)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${renderGallery(data.gallery || {})}${renderNext(data.next || {})}`;
+    root.innerHTML = `${renderHero(data)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${renderVideo(data.video || {})}${renderGallery(data.gallery || {})}${renderNext(data.next || {})}`;
+    initGallery(root, data.gallery || {});
     root.querySelectorAll('a[href^="#tech-"]').forEach(link => link.addEventListener('click', event => {
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;
