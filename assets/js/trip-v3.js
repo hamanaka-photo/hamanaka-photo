@@ -443,6 +443,17 @@
           <div><p>03 / CLIMATE</p><h2>浜中町の気候を知る</h2></div>
           <span>年間の気温差と降水量を把握して、撮影時期と装備を考えます。直近1週間は最新予報を表示します。</span>
         </div>
+        ${(cfg.climate.features || []).length ? `
+          <div class="trip-v8-climate-features">
+            ${(cfg.climate.features || []).map(card => `
+              <article class="trip-v8-climate-feature">
+                <span>${esc(card.season || '')}</span>
+                <h3>${esc(card.title || '')}</h3>
+                <div>
+                  ${(card.items || []).map(item => `<b>${esc(item)}</b>`).join('')}
+                </div>
+              </article>`).join('')}
+          </div>` : ''}
         <div class="trip-v3-climate-grid">
           <article class="trip-v3-climate-card">
             <div class="trip-v3-card-heading">

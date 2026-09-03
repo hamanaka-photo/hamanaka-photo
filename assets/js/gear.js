@@ -253,63 +253,130 @@
   };
 
   const renderFinder = section => {
-    const modes = Array.isArray(section.modes) ? section.modes : [];
-    const firstMode = modes[0]?.id || 'manufacturer';
+    const lenses = Array.isArray(section.lenses) ? section.lenses : [];
+    const focalOptions = Array.isArray(section.focalOptions)
+      ? section.focalOptions
+      : [400, 500];
 
     return `
-      <section class="gear-v2-section gear-v2-finder" id="gear-finder" data-gear-finder data-mode="${escapeHtml(firstMode)}">
+      <section class="gear-v2-section gear-v7-finder" id="gear-finder" data-gear-finder>
         <div class="container">
           <div class="gear-v2-heading">
             <div>
-              <p>${escapeHtml(section.eyebrow || '02 / GEAR FINDER')}</p>
-              <h2>${escapeHtml(section.title || '')}</h2>
+              <p>${escapeHtml(section.eyebrow || '02 / LENS & BODY')}</p>
+              <h2>${escapeHtml(section.title || 'レンズを選ぶ。ボディを選ぶ。')}</h2>
             </div>
             <span>${escapeHtml(section.lead || '')}</span>
           </div>
 
-          <div class="gear-v2-mode-tabs" role="tablist" aria-label="機材の選び方">
-            ${modes.map((mode, index) => `
-              <button
-                type="button"
-                role="tab"
-                data-finder-mode="${escapeHtml(mode.id)}"
-                aria-selected="${index === 0 ? 'true' : 'false'}">
-                ${escapeHtml(mode.label || '')}
-              </button>`).join('')}
+          <div class="gear-v7-step-heading">
+            <span>STEP 1 / LENS</span>
+            <div>
+              <h3>まず、レンズを選ぶ</h3>
+              <p>すべてのレンズを比較しながら、必要に応じて条件で絞り込めます。</p>
+            </div>
           </div>
 
-          <div class="gear-v2-finder-grid">
-            <aside class="gear-v2-filter-panel">
-              <div class="gear-v2-filter-head">
-                <span>CONDITION</span>
-                <strong>条件を選ぶ</strong>
+          <div class="gear-v7-filter-shell">
+            <div class="gear-v7-filter-modes" aria-label="レンズの絞り込み方法">
+              <button type="button" data-lens-mode="manufacturer">メーカーで選ぶ</button>
+              <button type="button" data-lens-mode="focal">焦点距離で選ぶ</button>
+              <button type="button" class="is-reset" data-lens-reset>すべて表示</button>
+            </div>
+
+            <div class="gear-v7-filter-panels" data-lens-filter-panel hidden>
+              <div data-lens-filter-group="manufacturer" hidden>
+                <span>メーカー</span>
+                <div>
+                  ${(section.manufacturers || []).map(value => `
+                    <button type="button" data-lens-filter="manufacturer" data-filter-value="${escapeHtml(value)}">
+                      ${escapeHtml(value)}
+                    </button>`).join('')}
+                </div>
               </div>
-              <div data-finder-filters></div>
-            </aside>
-
-            <div class="gear-v2-product-column" data-finder-lens-column>
-              <div class="gear-v2-column-label">LENS</div>
-              <div data-finder-lens></div>
-            </div>
-
-            <div class="gear-v2-multiply" data-finder-multiply aria-hidden="true">×</div>
-
-            <div class="gear-v2-product-column" data-finder-body-column>
-              <div class="gear-v2-column-label">CAMERA BODY</div>
-              <div data-finder-body></div>
-            </div>
-
-            <div class="gear-v2-integrated-column" data-finder-integrated hidden>
-              <div class="gear-v2-column-label">INTEGRATED CAMERA</div>
-              <div data-finder-integrated-card></div>
+              <div data-lens-filter-group="focal" hidden>
+                <span>望遠端</span>
+                <div>
+                  ${focalOptions.map(value => `
+                    <button type="button" data-lens-filter="focal" data-filter-value="${escapeHtml(value)}">
+                      ${escapeHtml(value)}mm以上
+                    </button>`).join('')}
+                </div>
+              </div>
             </div>
           </div>
 
-          <div class="gear-v2-pair-nav">
-            <button type="button" data-pair-prev aria-label="前の組み合わせ">←</button>
-            <span data-pair-count>候補 0 / 0</span>
-            <button type="button" data-pair-next aria-label="次の組み合わせ">→</button>
+          <div class="gear-v7-table-headline">
+            <strong>登録レンズ一覧</strong>
+            <span data-lens-result-count>${lenses.length}本を表示</span>
           </div>
+
+          <div class="gear-v7-lens-table-wrap">
+            <table class="gear-v7-lens-table">
+              <thead>
+                <tr>
+                  <th>レンズ</th>
+                  <th>焦点距離</th>
+                  <th>開放F値</th>
+                  <th>大きさ・重さ</th>
+                  <th>AF</th>
+                  <th>手ぶれ補正</th>
+                  <th>マウント</th>
+                  <th>選択</th>
+                </tr>
+              </thead>
+              <tbody>
+                ${lenses.map(lens => `
+                  <tr
+                    data-lens-row
+                    data-lens-id="${escapeHtml(lens.id)}"
+                    data-manufacturer="${escapeHtml(lens.manufacturer)}"
+                    data-max-focal="${escapeHtml(lens.maxFocal)}">
+                    <td class="gear-v7-lens-name">
+                      <span>${escapeHtml(lens.manufacturer || '')}</span>
+                      <strong>${escapeHtml(lens.name || '')}</strong>
+                    </td>
+                    <td>${escapeHtml(lens.minFocal)}–${escapeHtml(lens.maxFocal)}mm</td>
+                    <td>${escapeHtml(lens.aperture || '')}</td>
+                    <td>
+                      <span>${escapeHtml(lens.dimensions || '')}</span>
+                      <small>${escapeHtml(lens.weight || '')}</small>
+                    </td>
+                    <td>${escapeHtml(lens.autofocus || 'AF対応')}</td>
+                    <td>${escapeHtml(lens.stabilizationLabel || ((lens.features || []).includes('stabilization') ? 'あり' : 'なし'))}</td>
+                    <td><b>${escapeHtml(lens.mount || '')}</b></td>
+                    <td>
+                      <button type="button" data-lens-select="${escapeHtml(lens.id)}">
+                        このレンズを選ぶ
+                      </button>
+                    </td>
+                  </tr>`).join('')}
+              </tbody>
+            </table>
+          </div>
+
+          <div class="gear-v7-body-stage" data-body-stage hidden>
+            <div class="gear-v7-step-heading">
+              <span>STEP 2 / BODY</span>
+              <div>
+                <h3>選んだレンズに合うボディ</h3>
+                <p>マウントが一致する、登録済みのボディ候補を表示します。</p>
+              </div>
+            </div>
+            <div class="gear-v7-selected-lens">
+              <span>SELECTED LENS</span>
+              <strong data-selected-lens-name></strong>
+            </div>
+            <div class="gear-v7-body-grid" data-body-grid></div>
+          </div>
+
+          ${(section.integratedCameras || []).length ? `
+            <details class="gear-v7-integrated-alternative">
+              <summary>レンズ交換不要の一体型カメラも見る</summary>
+              <div class="gear-v7-integrated-grid">
+                ${(section.integratedCameras || []).map(camera => renderIntegratedCard(camera)).join('')}
+              </div>
+            </details>` : ''}
 
           <p class="gear-v2-note">${escapeHtml(section.disclaimer || '')}</p>
         </div>
@@ -452,6 +519,40 @@
       </section>`;
   };
 
+  const renderExamples = section => {
+    const items = Array.isArray(section.items) ? section.items : [];
+
+    return `
+      <section class="gear-v2-section gear-v7-examples" id="gear-examples">
+        <div class="container">
+          <div class="gear-v2-heading">
+            <div>
+              <p>${escapeHtml(section.eyebrow || '05 / EXAMPLES')}</p>
+              <h2>${escapeHtml(section.title || '機材で見る、作例ギャラリー。')}</h2>
+            </div>
+            <span>${escapeHtml(section.lead || '')}</span>
+          </div>
+
+          ${items.length ? `
+            <div class="gear-v7-example-grid">
+              ${items.map(item => `
+                <figure class="gear-v7-example-card">
+                  <div class="gear-v7-example-image">${image(item.image, item.caption || item.equipment || '機材作例')}</div>
+                  <figcaption>
+                    <strong>${escapeHtml(item.equipment || '')}</strong>
+                    ${item.caption ? `<span>${escapeHtml(item.caption)}</span>` : ''}
+                  </figcaption>
+                </figure>`).join('')}
+            </div>` : `
+            <div class="gear-v7-example-empty">
+              <span>PHOTO EXAMPLES</span>
+              <strong>作例を準備中です。</strong>
+              <p>使用機材が分かる写真を順次掲載します。</p>
+            </div>`}
+        </div>
+      </section>`;
+  };
+
   const renderNext = section => {
     const url = safeUrl(section.url);
 
@@ -526,253 +627,114 @@
 
     const lenses = Array.isArray(section.lenses) ? section.lenses : [];
     const bodies = Array.isArray(section.bodies) ? section.bodies : [];
-    const integrated = Array.isArray(section.integratedCameras)
-      ? section.integratedCameras
-      : [];
-    const modes = Array.isArray(section.modes) ? section.modes : [];
-
-    const filters = finder.querySelector('[data-finder-filters]');
-    const lensBox = finder.querySelector('[data-finder-lens]');
-    const bodyBox = finder.querySelector('[data-finder-body]');
-    const integratedBox = finder.querySelector('[data-finder-integrated-card]');
-    const lensColumn = finder.querySelector('[data-finder-lens-column]');
-    const bodyColumn = finder.querySelector('[data-finder-body-column]');
-    const multiply = finder.querySelector('[data-finder-multiply]');
-    const integratedColumn = finder.querySelector('[data-finder-integrated]');
-    const count = finder.querySelector('[data-pair-count]');
-    const prev = finder.querySelector('[data-pair-prev]');
-    const next = finder.querySelector('[data-pair-next]');
-    const modeButtons = [...finder.querySelectorAll('[data-finder-mode]')];
+    const rows = [...finder.querySelectorAll('[data-lens-row]')];
+    const modeButtons = [...finder.querySelectorAll('[data-lens-mode]')];
+    const filterButtons = [...finder.querySelectorAll('[data-lens-filter]')];
+    const filterPanel = finder.querySelector('[data-lens-filter-panel]');
+    const filterGroups = [...finder.querySelectorAll('[data-lens-filter-group]')];
+    const reset = finder.querySelector('[data-lens-reset]');
+    const resultCount = finder.querySelector('[data-lens-result-count]');
+    const bodyStage = finder.querySelector('[data-body-stage]');
+    const bodyGrid = finder.querySelector('[data-body-grid]');
+    const selectedLensName = finder.querySelector('[data-selected-lens-name]');
 
     const state = {
-      mode: modes[0]?.id || 'manufacturer',
-      manufacturer: section.manufacturers?.[0] || '',
-      focal: Number(section.focalOptions?.[0] || 400),
-      resolution: Number(section.resolutionOptions?.[0] || 24),
-      functions: [],
-      candidateIndex: 0
+      mode: '',
+      value: '',
+      selectedLensId: ''
     };
 
-    const allCandidates = () => {
-      const candidates = [];
-
-      lenses.forEach(lens => {
-        bodies.forEach(body => {
-          if (String(lens.mount) === String(body.mount)) {
-            candidates.push({
-              type: 'pair',
-              manufacturer: body.manufacturer,
-              minFocal: Number(lens.minFocal || 0),
-              maxFocal: Number(lens.maxFocal || 0),
-              resolution: Number(body.resolution || 0),
-              features: [...new Set([
-                ...(lens.features || []),
-                ...(body.features || [])
-              ])],
-              lens,
-              body
-            });
-          }
-        });
-      });
-
-      integrated.forEach(camera => {
-        candidates.push({
-          type: 'integrated',
-          manufacturer: camera.manufacturer,
-          minFocal: Number(camera.minFocal || 0),
-          maxFocal: Number(camera.maxFocal || 0),
-          resolution: Number(camera.resolution || 0),
-          features: [...new Set(camera.features || [])],
-          camera
-        });
-      });
-
-      return candidates;
-    };
-
-    const filteredCandidates = () =>
-      allCandidates().filter(candidate => {
-        if (state.mode === 'manufacturer') {
-          return candidate.manufacturer === state.manufacturer;
-        }
-
-        if (state.mode === 'focal') {
-          return candidate.maxFocal >= state.focal;
-        }
-
-        if (state.mode === 'resolution') {
-          return candidate.resolution >= state.resolution;
-        }
-
-        if (state.mode === 'function' && state.functions.length) {
-          const features = new Set(candidate.features || []);
-          return state.functions.every(feature => features.has(feature));
-        }
-
-        return true;
-      });
-
-    const radioList = (name, values, current, formatter = value => String(value)) => `
-      <div class="gear-v2-filter-options">
-        ${values.map(value => `
-          <label>
-            <input
-              type="radio"
-              name="${escapeHtml(name)}"
-              value="${escapeHtml(value)}"
-              ${String(value) === String(current) ? 'checked' : ''}>
-            <span>${escapeHtml(formatter(value))}</span>
-          </label>`).join('')}
-      </div>`;
-
-    const renderFilters = () => {
+    const visibleFor = lens => {
+      if (!state.mode || !state.value) return true;
       if (state.mode === 'manufacturer') {
-        filters.innerHTML = `
-          <p>使いたいカメラメーカーを選択</p>
-          ${radioList(
-            'gear-manufacturer',
-            section.manufacturers || [],
-            state.manufacturer
-          )}`;
-      } else if (state.mode === 'focal') {
-        filters.innerHTML = `
-          <p>必要な望遠端を選択</p>
-          ${radioList(
-            'gear-focal',
-            section.focalOptions || [],
-            state.focal,
-            value => `${value}mm以上`
-          )}`;
-      } else if (state.mode === 'resolution') {
-        filters.innerHTML = `
-          <p>ボディまたは一体型カメラの解像度を選択</p>
-          ${radioList(
-            'gear-resolution',
-            section.resolutionOptions || [],
-            state.resolution,
-            value => `${value}MP以上`
-          )}`;
-      } else {
-        filters.innerHTML = `
-          <p>ほしい機能を複数選択できます</p>
-          <div class="gear-v2-filter-options gear-v2-filter-checks">
-            ${(section.featureOptions || []).map(option => `
-              <label>
-                <input
-                  type="checkbox"
-                  value="${escapeHtml(option.id)}"
-                  ${state.functions.includes(option.id) ? 'checked' : ''}>
-                <span>${escapeHtml(option.label || '')}</span>
-              </label>`).join('')}
-          </div>`;
+        return String(lens.manufacturer) === state.value;
       }
-    };
-
-    const showPairLayout = () => {
-      lensColumn.hidden = false;
-      bodyColumn.hidden = false;
-      multiply.hidden = false;
-      integratedColumn.hidden = true;
-    };
-
-    const showIntegratedLayout = () => {
-      lensColumn.hidden = true;
-      bodyColumn.hidden = true;
-      multiply.hidden = true;
-      integratedColumn.hidden = false;
-    };
-
-    const renderCandidate = () => {
-      const candidates = filteredCandidates();
-
-      if (!candidates.length) {
-        state.candidateIndex = 0;
-        showPairLayout();
-        lensBox.innerHTML = renderLensCard(null);
-        bodyBox.innerHTML = renderBodyCard(null);
-        count.textContent = '候補 0 / 0';
-        prev.disabled = true;
-        next.disabled = true;
-        return;
+      if (state.mode === 'focal') {
+        return Number(lens.maxFocal || 0) >= Number(state.value || 0);
       }
-
-      state.candidateIndex = Math.max(
-        0,
-        Math.min(state.candidateIndex, candidates.length - 1)
-      );
-
-      const candidate = candidates[state.candidateIndex];
-
-      if (candidate.type === 'integrated') {
-        showIntegratedLayout();
-        integratedBox.innerHTML = renderIntegratedCard(candidate.camera);
-      } else {
-        showPairLayout();
-        lensBox.innerHTML = renderLensCard(candidate.lens);
-        bodyBox.innerHTML = renderBodyCard(candidate.body);
-      }
-
-      count.textContent =
-        `候補 ${state.candidateIndex + 1} / ${candidates.length}`;
-      prev.disabled = candidates.length <= 1;
-      next.disabled = candidates.length <= 1;
+      return true;
     };
 
-    const resetCandidate = () => {
-      state.candidateIndex = 0;
-      renderCandidate();
+    const applyFilter = () => {
+      let count = 0;
+      rows.forEach(row => {
+        const lens = lenses.find(item => item.id === row.dataset.lensId);
+        const visible = lens ? visibleFor(lens) : false;
+        row.hidden = !visible;
+        if (visible) count += 1;
+      });
+      resultCount.textContent = `${count}本を表示`;
+    };
+
+    const openMode = mode => {
+      state.mode = mode;
+      state.value = '';
+      filterPanel.hidden = false;
+      modeButtons.forEach(button => {
+        button.setAttribute('aria-pressed', String(button.dataset.lensMode === mode));
+      });
+      filterGroups.forEach(group => {
+        group.hidden = group.dataset.lensFilterGroup !== mode;
+      });
+      filterButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      applyFilter();
     };
 
     modeButtons.forEach(button => {
+      button.addEventListener('click', () => openMode(button.dataset.lensMode || ''));
+    });
+
+    filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        state.mode = button.dataset.finderMode || 'manufacturer';
-        finder.dataset.mode = state.mode;
-        modeButtons.forEach(item => {
-          item.setAttribute('aria-selected', String(item === button));
+        state.mode = button.dataset.lensFilter || state.mode;
+        state.value = button.dataset.filterValue || '';
+        filterButtons.forEach(item => {
+          item.setAttribute('aria-pressed', String(item === button));
         });
-        renderFilters();
-        resetCandidate();
+        applyFilter();
       });
     });
 
-    filters.addEventListener('change', event => {
-      const input = event.target;
-      if (!(input instanceof HTMLInputElement)) return;
-
-      if (state.mode === 'manufacturer') {
-        state.manufacturer = input.value;
-      } else if (state.mode === 'focal') {
-        state.focal = Number(input.value);
-      } else if (state.mode === 'resolution') {
-        state.resolution = Number(input.value);
-      } else {
-        state.functions = [
-          ...filters.querySelectorAll('input[type="checkbox"]:checked')
-        ].map(item => item.value);
-      }
-
-      resetCandidate();
+    reset?.addEventListener('click', () => {
+      state.mode = '';
+      state.value = '';
+      modeButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      filterButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      filterGroups.forEach(group => { group.hidden = true; });
+      filterPanel.hidden = true;
+      applyFilter();
     });
 
-    prev.addEventListener('click', () => {
-      const candidates = filteredCandidates();
-      if (!candidates.length) return;
-      state.candidateIndex =
-        (state.candidateIndex - 1 + candidates.length) % candidates.length;
-      renderCandidate();
+    finder.addEventListener('click', event => {
+      const button = event.target.closest('[data-lens-select]');
+      if (!button) return;
+
+      const lens = lenses.find(item => item.id === button.dataset.lensSelect);
+      if (!lens) return;
+
+      state.selectedLensId = lens.id;
+      rows.forEach(row => {
+        row.classList.toggle('is-selected', row.dataset.lensId === lens.id);
+      });
+
+      const compatible = bodies
+        .filter(body => String(body.mount) === String(lens.mount))
+        .sort((a, b) => Number(b.resolution || 0) - Number(a.resolution || 0));
+
+      selectedLensName.textContent = lens.name || '';
+      bodyGrid.innerHTML = compatible.length
+        ? compatible.map((body, index) => `
+            <div class="gear-v7-body-choice ${index === 0 ? 'is-primary' : ''}">
+              ${index === 0 ? '<span class="gear-v7-recommend-badge">RECOMMENDED</span>' : ''}
+              ${renderBodyCard(body)}
+            </div>`).join('')
+        : '<div class="gear-v2-product-empty">対応する登録ボディがありません。</div>';
+
+      bodyStage.hidden = false;
+      bodyStage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
-    next.addEventListener('click', () => {
-      const candidates = filteredCandidates();
-      if (!candidates.length) return;
-      state.candidateIndex =
-        (state.candidateIndex + 1) % candidates.length;
-      renderCandidate();
-    });
-
-    renderFilters();
-    renderCandidate();
+    applyFilter();
   };
 
   const renderPage = data => {
@@ -795,6 +757,7 @@
       ${renderFinder(data.gearFinder || {})}
       ${renderAccessories(data.accessories || {})}
       ${renderRental(data.rental || {})}
+      ${renderExamples(data.examples || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});

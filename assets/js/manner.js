@@ -101,14 +101,12 @@
       <div class="container manner-v1-message-grid">
         ${(items || []).map(item => {
           const url = safeUrl(item.url);
-          const pdfUrl = safeUrl(item.pdfUrl);
           return `
             <article class="manner-v1-message-card is-${esc(item.type || 'plain')}">
               <div class="manner-v1-message-copy">
                 <h2>${esc(item.title || '')}</h2>
                 <p>${esc(item.text || '')}</p>
                 ${url ? `<a href="${esc(url)}" target="_blank" rel="noopener noreferrer">${esc(item.buttonLabel || '詳しく見る')} ↗</a>` : ''}
-                ${pdfUrl ? `<a class="manner-v1-secondary-link" href="${esc(pdfUrl)}" target="_blank" rel="noopener noreferrer">${esc(item.pdfLabel || 'PDFを見る')} ↗</a>` : ''}
               </div>
               ${item.image ? `<div class="manner-v1-message-image">${image(item.image, item.title || '')}</div>` : ''}
             </article>`;
