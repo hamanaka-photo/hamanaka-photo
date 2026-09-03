@@ -41,6 +41,8 @@
     "eyebrow": "ACCESS",
     "title": "浜中町への行き方",
     "lead": "出発地や季節に合わせて、無理のない移動計画を。所要時間や運航状況は利用前に最新情報をご確認ください。",
+    "exampleTitle": "東京方面からの代表的なアクセス例",
+    "exampleNote": "ここでは、羽田空港から浜中町へ向かう場合を例に紹介します。出発地によって利用する空港や交通手段は異なります。",
     "route": [
       {
         "title": "羽田空港",
@@ -67,7 +69,7 @@
     },
     "rental": {
       "title": "レンタカーで行く",
-      "text": "自由に撮影工程を組むことができ、機材も積んで移動ができる、レンタカーが便利です。クリックすると釧路空港周辺の営業所を確認できます。",
+      "text": "空港から撮影スポットを自由に巡りたい方にはレンタカーが便利です。利用する空港に合わせて営業所を確認してください。",
       "companiesTitle": "釧路空港周辺のレンタカー営業所",
       "companies": [
         {
@@ -89,6 +91,29 @@
         {
           "name": "タイムズカー",
           "url": "https://rental.timescar.jp/hokkaido/shop/0112/"
+        }
+      ],
+      "nakashibetsuCompaniesTitle": "中標津空港周辺のレンタカー営業所",
+      "nakashibetsuCompanies": [
+        {
+          "name": "トヨタレンタカー 中標津空港店",
+          "url": "https://rent.toyota.co.jp/shop/?airport=0005"
+        },
+        {
+          "name": "ニッポンレンタカー 中標津空港前",
+          "url": "https://store.nipponrentacar.co.jp/b/nrs/info/810676/"
+        },
+        {
+          "name": "オリックスレンタカー 中標津空港",
+          "url": "https://car.orix.co.jp/search_airports/?airports_pk=60"
+        },
+        {
+          "name": "日産レンタカー 中標津空港店",
+          "url": "https://nissan-rentacar.com/"
+        },
+        {
+          "name": "タイムズカー 中標津空港前店",
+          "url": "https://rental.timescar.jp/hokkaido/shop/0123/"
         }
       ]
     },
@@ -143,6 +168,45 @@
   "clothing": {
     "eyebrow": "WHAT TO WEAR",
     "title": "何を着ていく？",
+    "sectionTitle": "服装と必需品を準備する",
+    "sectionLead": "晴天だけでなく、海霧や風を想定した装備を。撮影機材の保護用品も忘れずに。",
+    "conditionCards": [
+      {
+        "eyebrow": "SUNNY DAY",
+        "title": "晴れた日の服装",
+        "lead": "日差しと風、朝夕の気温差に対応できる重ね着を基本に。",
+        "items": [
+          "帽子",
+          "脱ぎ着しやすい上着",
+          "歩きやすく汚れてもよい靴",
+          "日焼け対策",
+          "飲み物"
+        ]
+      },
+      {
+        "eyebrow": "CLOUDY / FOGGY",
+        "title": "曇り・霧の日の服装",
+        "lead": "海沿いは体感温度が下がりやすいため、防風と濡れ対策を重視。",
+        "items": [
+          "風を通しにくい上着",
+          "速乾性のあるインナー",
+          "防水または撥水性のある靴",
+          "薄手の手袋や予備の防寒具",
+          "タオル・レンズクロス"
+        ]
+      }
+    ],
+    "essentialsTitle": "その他の必需品",
+    "essentials": [
+      "カメラ・レンズ",
+      "予備バッテリー",
+      "SDカード",
+      "レンズクロス",
+      "雨・霧対策のカメラカバー",
+      "虫除け",
+      "モバイルバッテリー",
+      "ごみ袋・保護袋"
+    ],
     "seasons": [
       {
         "label": "春・夏・秋",

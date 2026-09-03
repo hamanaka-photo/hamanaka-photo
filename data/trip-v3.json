@@ -1,5 +1,5 @@
 {
-  "updated": "2026-08-30",
+  "updated": "2026-09-03",
   "navigation": [
     {
       "number": "01",
@@ -35,6 +35,19 @@
     ],
     "flightUpdatedLabel": "2026年夏ダイヤの目安",
     "airportNote": "浜中町に近い空港は釧路空港と中標津空港です。",
+    "step1Label": "STEP 1",
+    "step1Title": "飛行機で道東へ",
+    "step1Lead": "羽田空港から、釧路空港または中標津空港へ。",
+    "step2Label": "STEP 2",
+    "step2Title": "空港から浜中町へ",
+    "step2Lead": "空港到着後は、レンタカーまたは公共交通機関を組み合わせて浜中町へ向かいます。",
+    "optionsTitle": "どちらの方法で浜中町へ？",
+    "rentalOptionLabel": "A",
+    "rentalOptionTitle": "飛行機＋レンタカー",
+    "rentalOptionLead": "自由度の高い移動で、複数の撮影スポットを効率よく巡りたい方へ。",
+    "publicOptionLabel": "B",
+    "publicOptionTitle": "飛行機＋公共交通機関",
+    "publicOptionLead": "バス・JR等を組み合わせて、車を運転せずに浜中町へ向かう方へ。",
     "flights": [
       {
         "code": "HND → KUH",
