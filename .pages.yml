@@ -2023,6 +2023,19 @@ content:
         - name: lead
           label: 説明
           type: text
+        - name: image
+          label: 服装イメージ
+          type: image
+          description: 公開ページのカード右半分に表示します。
+          options:
+            media: trip_images
+            path: wear
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
         - name: items
           label: 服装・持ち物
           type: string
