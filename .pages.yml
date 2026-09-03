@@ -1651,7 +1651,7 @@ content:
       type: string
       description: Google Mapsでこのスポットを開くURLを入力します。未入力の場合は「Google Mapで開く」リンクを表示しません。
   - name: trip_settings
-    label: 準備｜HERO・01・02・04・NEXT
+    label: 準備｜ページ基本情報・宿泊・服装
     type: file
     path: data/trip.json
     format: json
@@ -1683,10 +1683,77 @@ content:
           - png
           - webp
           rename: false
+      - name: primaryLabel
+        label: 構造保護｜左ボタン表示
+        type: string
+        hidden: true
+      - name: primaryUrl
+        label: 構造保護｜左ボタンリンク先
+        type: string
+        hidden: true
+      - name: secondaryLabel
+        label: 構造保護｜右ボタン表示
+        type: string
+        hidden: true
+      - name: secondaryUrl
+        label: 構造保護｜右ボタンリンク先
+        type: string
+        hidden: true
+    - name: stepsTitle
+      label: 構造保護｜5 STEP見出し
+      type: string
+      hidden: true
+    - name: steps
+      label: 構造保護｜5 STEP
+      type: object
+      list:
+        max: 5
+        collapsible:
+          collapsed: true
+          summary: '{number} {title}'
+      fields:
+      - name: number
+        label: STEP番号
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+        required: true
+      - name: image
+        label: 画像
+        type: image
+        options:
+          media: trip_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: anchor
+        label: 移動先ID
+        type: select
+        options:
+          values:
+          - name: access
+            label: アクセス
+          - name: stay
+            label: 宿泊
+          - name: weather
+            label: 天気
+          - name: clothing
+            label: 服装
+          - name: checklist
+            label: 出発前チェック
+      hidden: true
     - name: access
       label: 01 行き方｜浜中町への行き方
       type: object
       fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
       - name: title
         label: セクション見出し
         type: string
@@ -1702,10 +1769,68 @@ content:
         label: 羽田発の注釈
         type: text
         description: 羽田発を例にしていることや、出発地によりルートが異なることを記載します。
+      - name: route
+        label: 構造保護｜移動ルート
+        type: object
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 地点名
+          type: string
+        - name: sub
+          label: 補足
+          type: string
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        hidden: true
+      - name: routeNotes
+        label: 構造保護｜ルート間の説明
+        type: string
+        list: true
+        hidden: true
+      - name: flight
+        label: 構造保護｜飛行機で行く
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: buttonLabel
+          label: ボタン表示
+          type: string
+        - name: url
+          label: Google検索URL
+          type: string
+          description: 初期値は「羽田から釧路」のGoogle検索です。
+        hidden: true
       - name: rental
         label: 01 行き方｜レンタカー会社
         type: object
         fields:
+        - name: title
+          label: 構造保護｜見出し
+          type: string
+          hidden: true
+        - name: text
+          label: 構造保護｜説明
+          type: text
+          hidden: true
         - name: companiesTitle
           label: 展開後の見出し
           type: string
@@ -1762,10 +1887,22 @@ content:
         - name: text
           label: 説明
           type: text
+      - name: tipsButtonLabel
+        label: 構造保護｜詳細リンク表示
+        type: string
+        hidden: true
     - name: noCar
       label: 01 行き方｜公共交通機関
       type: object
       fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
       - name: text
         label: 公共交通の補足説明
         type: text
@@ -1806,10 +1943,61 @@ content:
         label: 宿泊情報URL
         type: string
         description: 浜中町観光協会の宿泊情報ページ等を指定します。
+    - name: weather
+      label: 構造保護｜天気
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 天気カード
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: リンク先
+        type: string
+      hidden: true
     - name: clothing
       label: 04 服装・必需品｜服装と必需品を準備する
       type: object
       fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
       - name: sectionTitle
         label: 公開ページのセクション見出し
         type: string
@@ -1847,10 +2035,53 @@ content:
         label: その他の必需品
         type: string
         list: true
+      - name: seasons
+        label: 構造保護｜季節タブ
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - name: label
+          label: タブ名
+          type: string
+        - name: note
+          label: 補足
+          type: string
+        - name: items
+          label: 服装・持ち物
+          type: string
+          list: true
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        hidden: true
+      - name: buttonLabel
+        label: 構造保護｜ボタン表示
+        type: string
+        hidden: true
     - name: checklist
       label: 05 プラン作成｜SUMMARYチェックリスト
       type: object
       fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
       - name: categories
         label: チェック項目グループ
         type: object
@@ -1902,6 +2133,10 @@ content:
     operations:
       delete: false
     fields:
+    - name: updated
+      label: 構造保護｜更新日
+      type: string
+      hidden: true
     - name: navigation
       label: ページ内ナビ｜01〜05
       type: object
@@ -1910,6 +2145,7 @@ content:
         collapsible:
           collapsed: true
           summary: '{number} {label}'
+        min: 5
       fields:
       - name: number
         label: 番号
@@ -1978,10 +2214,11 @@ content:
         label: STEP 1｜航空便
         type: object
         list:
-          max: 4
+          max: 2
           collapsible:
             collapsed: true
             summary: '{title}'
+          min: 2
         fields:
         - name: code
           label: 空港コード表示
@@ -2063,6 +2300,43 @@ content:
       - name: fallbackUrl
         label: 予報取得失敗時のリンク
         type: string
+    - name: wear
+      label: 構造保護｜服装フォールバック
+      type: object
+      hidden: true
+      fields:
+      - name: sunny
+        label: 晴天
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: lead
+          label: 説明
+          type: text
+        - name: items
+          label: 項目
+          type: string
+          list: true
+      - name: foggy
+        label: 曇り・霧
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: lead
+          label: 説明
+          type: text
+        - name: items
+          label: 項目
+          type: string
+          list: true
+      - name: essentials
+        label: 必需品
+        type: string
+        list: true
     - name: seasonChecklist
       label: 05 プラン作成｜季節別追加チェック
       type: object
