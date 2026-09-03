@@ -2951,7 +2951,7 @@ content:
           - webp
           rename: false
   - name: technique_settings
-    label: テクニック｜ラッコを、もっと美しく撮る。
+    label: テクニック｜撮影前に予習 ラッコの撮り方
     type: file
     path: data/technique.json
     format: json
@@ -2959,7 +2959,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜ラッコを、もっと美しく撮る。
+      label: HERO｜撮影前に予習 ラッコの撮り方
       type: object
       fields:
       - name: eyebrow
@@ -2968,26 +2968,22 @@ content:
       - name: title
         label: タイトル
         type: text
-        required: true
       - name: lead
-        label: 説明文
+        label: 説明
         type: text
       - name: image
         label: ヒーロー画像
         type: image
         options:
           media: technique_images
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          path: hero
+          extensions: [jpg, jpeg, png, webp]
           rename: false
     - name: sectionNav
-      label: ページ内ナビ｜01〜06
+      label: ページ内ナビ｜時間・場所・ズーム・設定・作例
       type: object
       list:
-        max: 6
+        max: 5
         collapsible:
           collapsed: true
           summary: '{label}'
@@ -2995,313 +2991,157 @@ content:
       - name: id
         label: セクションID
         type: select
-        required: true
         options:
           values:
-          - name: time-place
-            label: 時間と場所
-          - name: find
-            label: ラッコの見つけ方
-          - name: settings
-            label: 基本設定
-          - name: scenes
-            label: シーン別
-          - name: faq
-            label: Q&A
-          - name: gallery
-            label: 作例
+          - {name: time, label: 時間}
+          - {name: place, label: 場所}
+          - {name: zoom, label: ズーム}
+          - {name: settings, label: 設定}
+          - {name: gallery, label: 作例}
       - name: label
         label: 表示名
         type: string
-      - name: icon
-        label: アイコン文字
+      - name: sub
+        label: 英字表示
         type: string
-    - name: timePlace
-      label: 01｜時間と場所の選び方
+    - name: time
+      label: 01｜時間｜日が高い時間を狙おう
       type: object
       fields:
-      - name: eyebrow
-        label: 番号
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-      - name: spot
-        label: 撮影スポット
-        type: object
-        fields:
-        - name: eyebrow
-          label: 小見出し
-          type: string
-        - name: title
-          label: スポット名
-          type: string
-        - name: text
-          label: 説明
-          type: text
-        - name: image
-          label: 画像
-          type: image
-          options:
-            media: technique_images
-            path: time-place
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: buttonLabel
-          label: ボタン表示
-          type: string
-        - name: url
-          label: リンク先
-          type: string
-      - name: times
-        label: おすすめ時間帯
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - {name: recommendationTitle, label: 目安の小見出し, type: string}
+      - {name: recommendationText, label: 撮影時間の目安, type: string}
+      - name: comparisons
+        label: 時間帯の比較
         type: object
         list:
-          max: 4
+          max: 2
           collapsible:
             collapsed: true
-            summary: '{title} {time}'
+            summary: '{title}'
         fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: time
-          label: 時間
-          type: string
-        - name: text
-          label: 説明
-          type: text
+        - {name: label, label: 英字ラベル, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
         - name: image
-          label: 作例画像
+          label: 比較画像
           type: image
           options:
             media: technique_images
-            path: time-place
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            path: time
+            extensions: [jpg, jpeg, png, webp]
             rename: false
+        - {name: caption, label: 画像下の補足, type: text}
       - name: sun
         label: 日の出・日の入り
         type: object
         fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
-        - name: buttonLabel
-          label: ボタン表示
-          type: string
-        - name: url
-          label: リンク先
-          type: string
-    - name: find
-      label: 02｜ラッコの見つけ方
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+        - {name: buttonLabel, label: ボタン表示, type: string}
+        - {name: url, label: リンク先, type: string}
+    - name: place
+      label: 02｜場所｜灯台へ向かう遊歩道の左側から
       type: object
       fields:
-      - name: eyebrow
-        label: 番号
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: items
+        label: 探し方のポイント
         type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
+        list: true
       - name: image
-        label: メイン画像
+        label: 場所の画像
         type: image
         options:
           media: technique_images
-          path: find
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          path: place
+          extensions: [jpg, jpeg, png, webp]
           rename: false
-      - name: tips
-        label: 見つけ方のポイント
-        type: object
-        list:
-          max: 6
-          collapsible:
-            collapsed: true
-            summary: '{title}'
-        fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
-      - name: behavior
-        label: 行動を知る
-        type: object
-        fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
-        - name: image
-          label: 画像
-          type: image
-          options:
-            media: technique_images
-            path: find
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-    - name: settings
-      label: 03｜撮影の基本設定
+      - {name: imageCaption, label: 画像キャプション, type: text}
+      - {name: fallbackTitle, label: 見つからないときの見出し, type: string}
+      - {name: fallbackText, label: 見つからないときの説明, type: text}
+    - name: zoom
+      label: 03｜コツ｜慌てず慎重にズーム
       type: object
       fields:
-      - name: eyebrow
-        label: 番号
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-      - name: items
-        label: 設定項目
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: steps
+        label: 3ステップ
         type: object
         list:
-          max: 8
+          max: 3
           collapsible:
             collapsed: true
-            summary: '{label} / {value}'
+            summary: '{number} {title}'
         fields:
-        - name: label
-          label: 項目名
-          type: string
-        - name: value
-          label: 目安
-          type: string
-        - name: text
-          label: 説明
-          type: text
-      - name: blurTips
-        label: ブレを防ぐコツ
+        - {name: number, label: 番号, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+      - {name: tipTitle, label: ポイント見出し, type: string}
+      - {name: tipText, label: ポイント説明, type: text}
+      - name: image
+        label: ズーム説明画像
+        type: image
+        options:
+          media: technique_images
+          path: zoom
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+    - name: settings
+      label: 04｜設定｜ブレない設定を探そう
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - {name: tipTitle, label: 重要ポイント, type: string}
+      - {name: tipText, label: 重要ポイント説明, type: text}
+      - name: comparisons
+        label: シャッター速度比較
         type: object
+        list:
+          max: 2
+          collapsible:
+            collapsed: true
+            summary: '{shutter} {title}'
         fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: items
-          label: ポイント
-          type: string
-          list: true
+        - {name: shutter, label: シャッター速度, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
         - name: image
-          label: 画像
+          label: 比較画像
           type: image
           options:
             media: technique_images
             path: settings
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            extensions: [jpg, jpeg, png, webp]
             rename: false
-    - name: scenes
-      label: 04｜シーン別の撮り方
-      type: object
-      fields:
-      - name: eyebrow
-        label: 番号
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
+      - {name: detailTitle, label: 詳細設定の見出し, type: string}
       - name: items
-        label: シーン
+        label: 詳細設定
         type: object
         list:
           max: 8
           collapsible:
             collapsed: true
-            summary: '{title}'
+            summary: '{label} {value}'
         fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
-        - name: image
-          label: 作例画像
-          type: image
-          options:
-            media: technique_images
-            path: scenes
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-    - name: faq
-      label: 05｜よくある悩みQ&A
-      type: object
-      fields:
-      - name: eyebrow
-        label: 番号
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-      - name: items
-        label: 質問と回答
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{question}'
-        fields:
-        - name: question
-          label: 質問
-          type: string
-        - name: answer
-          label: 回答
-          type: text
+        - {name: label, label: 項目, type: string}
+        - {name: value, label: 目安, type: string}
+        - {name: text, label: 説明, type: text}
     - name: gallery
-      label: 06｜作例ギャラリー
+      label: 05｜作例ギャラリー
       type: object
       fields:
-      - name: eyebrow
-        label: 番号
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
       - name: items
         label: 作例
         type: object
@@ -3318,28 +3158,16 @@ content:
           options:
             media: technique_images
             path: gallery
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            extensions: [jpg, jpeg, png, webp]
             rename: false
-        - name: caption
-          label: キャプション
-          type: string
+        - {name: caption, label: キャプション, type: string}
     - name: next
-      label: NEXT｜テクニックを学んだら、実際に撮りに行こう！
+      label: NEXT｜ルールも確認する
       type: object
       fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: text
-        label: 説明
-        type: text
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
       - name: links
         label: 関連ページ
         type: object
@@ -3349,14 +3177,11 @@ content:
             collapsed: true
             summary: '{label}'
         fields:
-        - name: label
-          label: 表示名
-          type: string
-        - name: url
-          label: リンク先
-          type: string
+        - {name: label, label: 表示名, type: string}
+        - {name: sub, label: 英字ラベル, type: string}
+        - {name: url, label: リンク先, type: string}
   - name: manner_settings
-    label: ルール｜美しい自然を、未来へつなぐために。
+    label: ルール｜浜中町での撮影の心得
     type: file
     path: data/manner.json
     format: json
@@ -3364,192 +3189,97 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜美しい自然を、未来へつなぐために。
+      label: HERO｜浜中町での撮影の心得
       type: object
       fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: タイトル
-        type: text
-      - name: lead
-        label: 説明文
-        type: text
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: タイトル, type: text}
+      - {name: lead, label: 説明, type: text}
       - name: image
         label: ヒーロー画像
         type: image
         options:
           media: manner_images
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          path: hero
+          extensions: [jpg, jpeg, png, webp]
           rename: false
-    - name: intro
-      label: 浜中町での撮影の心得
+    - name: opening
+      label: 野生動物との出会いは一期一会
       type: object
       fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-    - name: rules
-      label: 6つのラッコ鑑賞ルール
-      type: object
-      list:
-        max: 8
-        collapsible:
-          collapsed: true
-          summary: '{number} {title}'
-      fields:
-      - name: number
-        label: 番号
-        type: string
-      - name: icon
-        label: アイコン
-        type: select
-        options:
-          values:
-          - name: boat
-            label: 船
-          - name: food
-            label: 餌
-          - name: sound
-            label: 音
-          - name: water
-            label: 水面・水中
-          - name: drone
-            label: ドローン
-          - name: path
-            label: 遊歩道
-      - name: title
-        label: 見出し
-        type: text
-      - name: text
-        label: 説明
-        type: text
-      - name: image
-        label: 補助画像
-        type: image
-        options:
-          media: manner_images
-          path: rules
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
-          rename: false
-    - name: photographerManner
-      label: 撮影者としてのマナー
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
+    - name: officialRules
+      label: 01｜浜中町「ラッコ鑑賞時のルール」
       type: object
       fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: items
-        label: マナー項目
-        type: string
-        list: true
-      - name: visuals
-        label: 補助画像
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: rules
+        label: 5つの公式ルール
         type: object
         list:
-          max: 3
+          max: 5
           collapsible:
             collapsed: true
-            summary: '{caption}'
+            summary: '{number} {title}'
         fields:
-        - name: image
-          label: 画像
-          type: image
+        - {name: number, label: 番号, type: string}
+        - name: icon
+          label: アイコン
+          type: select
           options:
-            media: manner_images
-            path: manner
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: caption
-          label: キャプション
-          type: string
-    - name: messages
-      label: メッセージ・公式案内｜3ブロック
+            values:
+            - {name: boat, label: 船}
+            - {name: food, label: 餌}
+            - {name: sound, label: 音}
+            - {name: water, label: 水面・水中}
+            - {name: drone, label: ドローン}
+        - {name: title, label: ルール, type: text}
+        - {name: text, label: 説明, type: text}
+      - {name: buttonLabel, label: 公式サイトボタン, type: string}
+      - {name: url, label: 公式サイトURL, type: string}
+    - name: safety
+      label: 02｜町内で安全に撮影するために
       type: object
-      list:
-        max: 5
-        collapsible:
-          collapsed: true
-          summary: '{title}'
       fields:
-      - name: type
-        label: 表示タイプ
-        type: select
-        options:
-          values:
-          - name: quiet
-            label: 通常
-          - name: future
-            label: 自然保全
-          - name: official
-            label: 公式案内
-      - name: title
-        label: 見出し
-        type: string
-      - name: text
-        label: 説明
-        type: text
-      - name: image
-        label: 画像
-        type: image
-        options:
-          media: manner_images
-          path: messages
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
-          rename: false
-      - name: buttonLabel
-        label: ボタン表示
-        type: string
-      - name: url
-        label: リンク先
-        type: string
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: items
+        label: 安全・撮影マナー
+        type: object
+        list:
+          max: 8
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+    - name: message
+      label: マナーを守って、思い出に残る旅へ。
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
     - name: next
-      label: NEXT｜マナーを守って、思い出に残る撮影旅を。
+      label: PHOTO FIELD GUIDE｜関連ページ
       type: object
       fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: 見出し
-        type: text
-      - name: text
-        label: 説明
-        type: text
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
       - name: image
         label: 背景画像
         type: image
         options:
           media: manner_images
           path: next
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          extensions: [jpg, jpeg, png, webp]
           rename: false
       - name: links
         label: 関連ページ
@@ -3560,15 +3290,9 @@ content:
             collapsed: true
             summary: '{label}'
         fields:
-        - name: label
-          label: 表示名
-          type: string
-        - name: sub
-          label: 英字ラベル
-          type: string
-        - name: url
-          label: リンク先
-          type: string
+        - {name: label, label: 表示名, type: string}
+        - {name: sub, label: 英字ラベル, type: string}
+        - {name: url, label: リンク先, type: string}
   - name: guide_articles
     label: PHOTO GUIDE｜目次カード
     type: file
