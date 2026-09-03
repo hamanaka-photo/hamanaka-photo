@@ -2980,10 +2980,10 @@ content:
           extensions: [jpg, jpeg, png, webp]
           rename: false
     - name: sectionNav
-      label: ページ内ナビ｜時間・場所・ズーム・設定・作例
+      label: ページ内ナビ｜時間・場所・ズーム・設定・動画・作例
       type: object
       list:
-        max: 5
+        max: 6
         collapsible:
           collapsed: true
           summary: '{label}'
@@ -2997,6 +2997,7 @@ content:
           - {name: place, label: 場所}
           - {name: zoom, label: ズーム}
           - {name: settings, label: 設定}
+          - {name: video, label: 解説動画}
           - {name: gallery, label: 作例}
       - name: label
         label: 表示名
@@ -3135,8 +3136,22 @@ content:
         - {name: label, label: 項目, type: string}
         - {name: value, label: 目安, type: string}
         - {name: text, label: 説明, type: text}
+    - name: video
+      label: 05｜解説動画｜YouTube
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: youtubeUrl
+        label: YouTube URL
+        type: string
+        description: youtu.be、youtube.com/watch、YouTube ShortsのURLに対応します。未設定でも公開ページの動画フレームは表示されます。
+      - name: caption
+        label: 動画下の補足
+        type: text
     - name: gallery
-      label: 05｜作例ギャラリー
+      label: 06｜作例ギャラリー
       type: object
       fields:
       - {name: eyebrow, label: 英字・番号, type: string}
