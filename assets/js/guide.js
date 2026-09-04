@@ -85,7 +85,7 @@
       if (indexLead && settings.indexLead) indexLead.textContent = settings.indexLead;
 
       const published = articles
-        .filter(item => item.published !== false)
+        .filter(item => item && item.id !== 'introduction' && item.published !== false)
         .sort((a, b) => Number(a.order || 0) - Number(b.order || 0));
 
       const cards = published.map(articleCard);
