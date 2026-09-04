@@ -7,7 +7,7 @@
     "title": "フォトマップ",
     "cardTitle": "撮影スポットを探す",
     "summary": "「どこで何が撮れるか」を、地図や写真、周辺情報とあわせて案内します。",
-    "cover": "assets/images/01MAP.webp",
+    "cover": "assets/images/map.webp",
     "icon": "MAP",
     "blocks": [
       {
@@ -48,7 +48,7 @@
     "title": "撮影旅行の準備",
     "cardTitle": "旅の準備をする",
     "summary": "アクセス、現地での移動、季節、服装、宿泊、持ち物など、浜中町を訪れる前に確認したい情報をまとめます。",
-    "cover": "assets/images/02PREPARATION.webp",
+    "cover": "assets/images/trip.webp",
     "icon": "TRIP",
     "blocks": [
       {
@@ -258,7 +258,7 @@
     "title": "カメラ・レンズ",
     "cardTitle": "撮影機材を考える",
     "summary": "焦点距離、手ブレ補正、AFなど、ラッコや風景を撮影するときの機材選びのポイントを紹介します。",
-    "cover": "assets/images/03GEAR.webp",
+    "cover": "assets/images/gear.webp",
     "icon": "GEAR",
     "blocks": [
       {
@@ -281,7 +281,7 @@
     "title": "ラッコ撮影テクニック",
     "cardTitle": "ラッコを撮る",
     "summary": "見つけ方、構図、シャッタースピード、連写、AF、露出など、撮影を楽しむためのヒントをまとめます。",
-    "cover": "assets/images/04TECHNIQUE.webp",
+    "cover": "assets/images/tecnique.webp",
     "icon": "TECH",
     "blocks": [
       {
@@ -316,7 +316,7 @@
     "title": "撮影マナー",
     "cardTitle": "自然と地域を守って撮る",
     "summary": "野生動物と地域の環境を守りながら、気持ちよく撮影を楽しむための基本的なルールをまとめます。",
-    "cover": "assets/images/05RULES.webp",
+    "cover": "assets/images/rule.webp",
     "icon": "MANNER",
     "blocks": [
       {
