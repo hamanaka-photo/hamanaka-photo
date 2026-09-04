@@ -69,6 +69,13 @@
     }
   };
 
+  const spotButtonSelectors = [
+    '.field-guide-spot-button',
+    '.gear-v2-field-spot',
+    '.tech-v1-field-spot',
+    '.manner-v1-field-spot'
+  ].join(',');
+
   const createSequenceNav = () => {
     if (root.querySelector('.field-guide-sequence')) return;
 
@@ -121,6 +128,10 @@
 
     if (nav) {
       nav.classList.add('field-guide-unified-nav');
+
+      nav.querySelectorAll(spotButtonSelectors).forEach(button => {
+        button.remove();
+      });
 
       if (!hero.contains(nav)) {
         hero.insertBefore(nav, hero.firstChild);
