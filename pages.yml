@@ -988,6 +988,122 @@ content:
                 label: ダウンロードボタン表示
                 type: string
 
+  - name: project_settings
+    label: PHOTO PROJECT｜写真活動
+    type: file
+    path: data/project.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: seo
+      label: SEO・ブラウザ表示
+      type: object
+      fields:
+      - name: title
+        label: ページタイトル
+        type: string
+        description: ブラウザのタブに表示するタイトルです。
+      - name: description
+        label: ページ説明
+        type: text
+        description: 検索結果などで使用されるページ説明です。
+    - name: hero
+      label: HERO｜ページ上部
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: タイトル
+        type: text
+        required: true
+        description: 改行を入れると公開ページにも反映されます。
+      - name: lead
+        label: 説明文
+        type: text
+    - name: emptyMessage
+      label: カードが0件のときの表示
+      type: text
+    - name: cards
+      label: PROJECTカード
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: id
+        label: カードID
+        type: string
+        required: true
+        pattern:
+          regex: ^[a-z0-9][a-z0-9-]*$
+          message: 半角英小文字・数字・ハイフンで入力してください。
+        description: URLの #contest などに使います。公開後は原則変更しません。
+      - name: published
+        label: 公開する
+        type: boolean
+        required: true
+      - name: order
+        label: 表示順
+        type: number
+        required: true
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+        description: 例 PHOTO CONTEST
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: text
+        label: 説明
+        type: text
+      - name: status
+        label: ステータス表示
+        type: string
+        description: 例 COMING SOON、募集中、開催レポート公開中
+      - name: statusTone
+        label: ステータス色
+        type: select
+        options:
+          values:
+          - name: coming-soon
+            label: 予告・準備中（ベージュ）
+          - name: open
+            label: 募集中・開催中（グリーン）
+          - name: report
+            label: 公開・レポート（ブルー）
+          - name: archive
+            label: 終了・過去企画（グレー）
+          - name: neutral
+            label: 標準（グレー）
+      - name: image
+        label: カード画像（任意）
+        type: image
+        description: 未設定なら現在と同じテキストカードになります。16:9程度を推奨します。
+        options:
+          media: images
+          path: 04_project
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - name: imageAlt
+        label: 画像の代替テキスト
+        type: string
+      - name: url
+        label: リンク先（任意）
+        type: string
+        description: 未設定ならボタンを表示しません。相対URL・https URLに対応します。
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+        description: 例 詳しく見る、募集要項を見る、開催レポートを見る
+      - name: external
+        label: 外部サイトとして開く
+        type: boolean
+
   - name: news
     label: お知らせ
     type: file
