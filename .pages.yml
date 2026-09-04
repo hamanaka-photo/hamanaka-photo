@@ -1,1059 +1,549 @@
 media:
-  - name: images
-    label: 画像
-    input: assets/images
-    output: assets/images
-    extensions: [jpg, jpeg, png, webp]
-    rename: false
-
-  - name: gallery_images
-    label: ギャラリー画像
-    input: assets/images/02_gallery
-    output: assets/images/02_gallery
-    extensions: [jpg, jpeg, png, webp]
-    rename: false
-
-  - name: documents
-    label: 配布ファイル
-    input: downloads
-    output: downloads
-    categories: [document]
-    extensions: [pdf, zip]
-    rename: false
-
+- name: images
+  label: 画像
+  input: assets/images
+  output: assets/images
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: trip_images
+  label: 準備編画像
+  input: assets/images/03_guide/trip
+  output: assets/images/03_guide/trip
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: gear_images
+  label: 機材編画像
+  input: assets/images/03_guide/gear
+  output: assets/images/03_guide/gear
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: technique_images
+  label: テクニック編画像
+  input: assets/images/03_guide/technique
+  output: assets/images/03_guide/technique
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: manner_images
+  label: ルール編画像
+  input: assets/images/03_guide/manner
+  output: assets/images/03_guide/manner
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photo_map_images
+  label: PHOTO MAP画像
+  input: assets/images/03_guide/photo-map
+  output: assets/images/03_guide/photo-map
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: gallery_images
+  label: ギャラリー画像
+  input: assets/images/02_gallery
+  output: assets/images/02_gallery
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_ohstubo_images
+  label: 大坪 俊裕 画像
+  input: assets/images/99_photographers/ohstubo
+  output: assets/images/99_photographers/ohstubo
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_sonehara_images
+  label: 曽根原 麻由 画像
+  input: assets/images/99_photographers/sonehara
+  output: assets/images/99_photographers/sonehara
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_hamanaka_images
+  label: 浜中 太郎 画像
+  input: assets/images/99_photographers/hamanaka
+  output: assets/images/99_photographers/hamanaka
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_kataoka_images
+  label: 片岡 義廣 画像
+  input: assets/images/99_photographers/kataoka
+  output: assets/images/99_photographers/kataoka
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_moriyama_images
+  label: 森山 雅友 画像
+  input: assets/images/99_photographers/moriyama
+  output: assets/images/99_photographers/moriyama
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: photographer_raccobayashi_images
+  label: らっこばやし 画像
+  input: assets/images/99_photographers/raccobayashi
+  output: assets/images/99_photographers/raccobayashi
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
+- name: documents
+  label: 配布ファイル
+  input: downloads
+  output: downloads
+  categories:
+  - document
+  extensions:
+  - pdf
+  - zip
+  rename: false
 components:
   guide_richtext:
     type: object
     label: 本文
     fields:
-      - name: body
-        label: 本文
-        type: rich-text
-        required: true
-        options:
-          format: html
-          media: images
-          switcher: true
-          rename: false
-
+    - name: body
+      label: 本文
+      type: rich-text
+      required: true
+      options:
+        format: html
+        media: images
+        switcher: true
+        rename: false
   guide_styled_text:
     type: object
     label: 装飾テキスト
     fields:
-      - name: body
-        label: 本文
-        type: rich-text
-        required: true
-        options:
-          format: html
-          media: images
-          switcher: true
-          rename: false
-
-      - name: font
-        label: フォント
-        type: select
-        options:
-          values:
-            - name: sans
-              label: 標準ゴシック
-            - name: serif
-              label: 明朝
-
-      - name: size
-        label: 文字サイズ
-        type: select
-        options:
-          values:
-            - name: small
-              label: 小
-            - name: normal
-              label: 標準
-            - name: large
-              label: 大
-            - name: xlarge
-              label: 特大
-
-      - name: color
-        label: 文字色
-        type: select
-        options:
-          values:
-            - name: default
-              label: 標準
-            - name: navy
-              label: ネイビー
-            - name: blue
-              label: ブルー
-            - name: green
-              label: グリーン
-            - name: gray
-              label: グレー
-            - name: white
-              label: 白
-
-      - name: weight
-        label: 文字の太さ
-        type: select
-        options:
-          values:
-            - name: normal
-              label: 標準
-            - name: bold
-              label: 太字
-
-      - name: align
-        label: 文字揃え
-        type: select
-        options:
-          values:
-            - name: left
-              label: 左
-            - name: center
-              label: 中央
-            - name: right
-              label: 右
-
-      - name: background
-        label: 背景
-        type: select
-        options:
-          values:
-            - name: none
-              label: なし
-            - name: blue-soft
-              label: 薄いブルー
-            - name: green-soft
-              label: 薄いグリーン
-            - name: beige
-              label: 薄いベージュ
-            - name: navy
-              label: ネイビー
-
-      - name: spacing
-        label: 余白
-        type: select
-        options:
-          values:
-            - name: compact
-              label: 狭い
-            - name: normal
-              label: 標準
-            - name: wide
-              label: 広い
-
+    - name: body
+      label: 本文
+      type: rich-text
+      required: true
+      options:
+        format: html
+        media: images
+        switcher: true
+        rename: false
+    - name: font
+      label: フォント
+      type: select
+      options:
+        values:
+        - name: sans
+          label: 標準ゴシック
+        - name: serif
+          label: 明朝
+    - name: size
+      label: 文字サイズ
+      type: select
+      options:
+        values:
+        - name: small
+          label: 小
+        - name: normal
+          label: 標準
+        - name: large
+          label: 大
+        - name: xlarge
+          label: 特大
+    - name: color
+      label: 文字色
+      type: select
+      options:
+        values:
+        - name: default
+          label: 標準
+        - name: navy
+          label: ネイビー
+        - name: blue
+          label: ブルー
+        - name: green
+          label: グリーン
+        - name: gray
+          label: グレー
+        - name: white
+          label: 白
+    - name: weight
+      label: 文字の太さ
+      type: select
+      options:
+        values:
+        - name: normal
+          label: 標準
+        - name: bold
+          label: 太字
+    - name: align
+      label: 文字揃え
+      type: select
+      options:
+        values:
+        - name: left
+          label: 左
+        - name: center
+          label: 中央
+        - name: right
+          label: 右
+    - name: background
+      label: 背景
+      type: select
+      options:
+        values:
+        - name: none
+          label: なし
+        - name: blue-soft
+          label: 薄いブルー
+        - name: green-soft
+          label: 薄いグリーン
+        - name: beige
+          label: 薄いベージュ
+        - name: navy
+          label: ネイビー
+    - name: spacing
+      label: 余白
+      type: select
+      options:
+        values:
+        - name: compact
+          label: 狭い
+        - name: normal
+          label: 標準
+        - name: wide
+          label: 広い
   guide_image:
     type: object
     label: 画像
     fields:
+    - name: image
+      label: 画像
+      type: image
+      required: true
+      options:
+        media: images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: alt
+      label: 代替テキスト
+      type: string
+      description: 画像の内容を短く説明します。装飾目的だけの画像なら空欄でも構いません。
+    - name: caption
+      label: キャプション
+      type: text
+  guide_gallery:
+    type: object
+    label: 画像ギャラリー
+    fields:
+    - name: title
+      label: 見出し
+      type: string
+    - name: columns
+      label: PCでの列数
+      type: select
+      options:
+        values:
+        - name: '2'
+          label: 2列
+        - name: '3'
+          label: 3列
+        - name: '4'
+          label: 4列
+    - name: items
+      label: 画像
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{caption}'
+      fields:
       - name: image
         label: 画像
         type: image
         required: true
         options:
           media: images
-          extensions: [jpg, jpeg, png, webp]
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
           rename: false
       - name: alt
         label: 代替テキスト
         type: string
-        description: 画像の内容を短く説明します。装飾目的だけの画像なら空欄でも構いません。
       - name: caption
         label: キャプション
-        type: text
-
-  guide_gallery:
-    type: object
-    label: 画像ギャラリー
-    fields:
-      - name: title
-        label: 見出し
         type: string
-      - name: columns
-        label: PCでの列数
-        type: select
-        options:
-          values:
-            - name: "2"
-              label: 2列
-            - name: "3"
-              label: 3列
-            - name: "4"
-              label: 4列
-      - name: items
-        label: 画像
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{caption}"
-        fields:
-          - name: image
-            label: 画像
-            type: image
-            required: true
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-          - name: alt
-            label: 代替テキスト
-            type: string
-          - name: caption
-            label: キャプション
-            type: string
-
   guide_map:
     type: object
     label: Googleマップ
     fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: url
-        label: Googleマップ埋め込みURL
-        type: string
-        required: true
-        description: Googleマップの「共有」→「地図を埋め込む」で表示されるiframeのsrc属性だけを入力します。
-      - name: caption
-        label: 補足説明
-        type: text
-      - name: size
-        label: 地図の高さ
-        type: select
-        options:
-          values:
-            - name: standard
-              label: 標準
-            - name: large
-              label: 大きめ
-      - name: openUrl
-        label: Googleマップで開くURL
-        type: string
-        description: 任意。通常のGoogleマップ共有URLを入力すると「Googleマップで開く」ボタンを表示します。
-
+    - name: title
+      label: 見出し
+      type: string
+    - name: url
+      label: Googleマップ埋め込みURL
+      type: string
+      required: true
+      description: Googleマップの「共有」→「地図を埋め込む」で表示されるiframeのsrc属性だけを入力します。
+    - name: caption
+      label: 補足説明
+      type: text
+    - name: size
+      label: 地図の高さ
+      type: select
+      options:
+        values:
+        - name: standard
+          label: 標準
+        - name: large
+          label: 大きめ
+    - name: openUrl
+      label: Googleマップで開くURL
+      type: string
+      description: 任意。通常のGoogleマップ共有URLを入力すると「Googleマップで開く」ボタンを表示します。
   guide_basic_info:
     type: object
     label: 基本情報
     fields:
-      - name: title
-        label: 見出し
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: 基本情報
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: 項目名
         type: string
-      - name: items
-        label: 基本情報
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{label}"
-        fields:
-          - name: label
-            label: 項目名
-            type: string
-            required: true
-          - name: value
-            label: 内容
-            type: text
-            required: true
-
+        required: true
+      - name: value
+        label: 内容
+        type: text
+        required: true
   guide_note:
     type: object
     label: 注意・ポイント
     fields:
-      - name: tone
-        label: 表示タイプ
-        type: select
-        required: true
-        options:
-          values:
-            - name: info
-              label: ポイント
-            - name: important
-              label: 重要
-            - name: caution
-              label: 注意
-      - name: title
-        label: 見出し
-        type: string
-      - name: text
-        label: 内容
-        type: text
-        required: true
-
+    - name: tone
+      label: 表示タイプ
+      type: select
+      required: true
+      options:
+        values:
+        - name: info
+          label: ポイント
+        - name: important
+          label: 重要
+        - name: caution
+          label: 注意
+    - name: title
+      label: 見出し
+      type: string
+    - name: text
+      label: 内容
+      type: text
+      required: true
   guide_checklist:
     type: object
     label: チェックリスト
     fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: items
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: 項目
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{text}'
+      fields:
+      - name: text
         label: 項目
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{text}"
-        fields:
-          - name: text
-            label: 項目
-            type: string
-            required: true
-
+        type: string
+        required: true
   guide_table:
     type: object
     label: 表・比較表
     fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: caption
-        label: 表の説明
-        type: string
-      - name: headers
-        label: 列見出し
+    - name: title
+      label: 見出し
+      type: string
+    - name: caption
+      label: 表の説明
+      type: string
+    - name: headers
+      label: 列見出し
+      type: string
+      list: true
+    - name: rows
+      label: 行
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: 行 {index}
+      fields:
+      - name: cells
+        label: セル
         type: string
         list: true
-      - name: rows
-        label: 行
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "行 {index}"
-        fields:
-          - name: cells
-            label: セル
-            type: string
-            list: true
-      - name: note
-        label: 注記
-        type: text
-
+    - name: note
+      label: 注記
+      type: text
   guide_faq:
     type: object
     label: FAQ
     fields:
-      - name: title
-        label: 見出し
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: 質問と回答
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{question}'
+      fields:
+      - name: question
+        label: 質問
         type: string
-      - name: items
-        label: 質問と回答
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{question}"
-        fields:
-          - name: question
-            label: 質問
-            type: string
-            required: true
-          - name: answer
-            label: 回答
-            type: rich-text
-            required: true
-            options:
-              format: html
-              media: images
-              switcher: true
-              rename: false
-
+        required: true
+      - name: answer
+        label: 回答
+        type: rich-text
+        required: true
+        options:
+          format: html
+          media: images
+          switcher: true
+          rename: false
   guide_links:
     type: object
     label: リンク・ボタン
     fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: items
-        label: リンク
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{label}"
-        fields:
-          - name: label
-            label: 表示名
-            type: string
-            required: true
-          - name: url
-            label: URL
-            type: string
-            required: true
-          - name: external
-            label: 外部サイトとして開く
-            type: boolean
-
-  guide_download:
-    type: object
-    label: ダウンロード
-    fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: text
-        label: 説明
-        type: text
-      - name: items
-        label: ダウンロードファイル
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{label}"
-        fields:
-          - name: label
-            label: 表示名
-            type: string
-            required: true
-          - name: file
-            label: ファイル
-            type: file
-            required: true
-            options:
-              media: documents
-              extensions: [pdf, zip]
-              rename: false
-          - name: description
-            label: 補足
-            type: string
-
-  guide_cards:
-    type: object
-    label: カード一覧
-    fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: items
-        label: カード
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: title
-            label: タイトル
-            type: string
-            required: true
-          - name: text
-            label: 説明
-            type: text
-          - name: image
-            label: 画像
-            type: image
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-          - name: url
-            label: リンク先
-            type: string
-
-  guide_cta:
-    type: object
-    label: CTA・大きな誘導
-    fields:
-      - name: eyebrow
-        label: 小見出し
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-        required: true
-      - name: text
-        label: 説明
-        type: text
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: リンク
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
       - name: label
-        label: ボタン表示
+        label: 表示名
         type: string
         required: true
       - name: url
-        label: リンク先
+        label: URL
         type: string
         required: true
       - name: external
         label: 外部サイトとして開く
         type: boolean
-      - name: style
-        label: 表示スタイル
-        type: select
-        options:
-          values:
-            - name: blue
-              label: 青
-            - name: green
-              label: 緑
-            - name: light
-              label: 明るい背景
-
-  guide_media_text:
+  guide_download:
     type: object
-    label: 画像＋文章
+    label: ダウンロード
     fields:
-      - name: image
-        label: 画像
-        type: image
-        required: true
-        options:
-          media: images
-          extensions: [jpg, jpeg, png, webp]
-          rename: false
-      - name: alt
-        label: 代替テキスト
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: body
-        label: 本文
-        type: rich-text
-        options:
-          format: html
-          media: images
-          switcher: true
-          rename: false
-      - name: imagePosition
-        label: 画像位置
-        type: select
-        options:
-          values:
-            - name: left
-              label: 左
-            - name: right
-              label: 右
-
-  guide_related:
-    type: object
-    label: 関連記事
-    fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: items
-        label: 関連記事
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: articleId
-            label: 記事ID
-            type: string
-            required: true
-            description: 例 technique
-          - name: title
-            label: 表示タイトル
-            type: string
-            required: true
-          - name: text
-            label: 説明
-            type: text
-          - name: image
-            label: 画像
-            type: image
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-
-  guide_quote:
-    type: object
-    label: 引用・コメント
-    fields:
-      - name: text
-        label: 引用・コメント本文
-        type: text
-        required: true
-      - name: author
-        label: 発言者・撮影者
-        type: string
-      - name: source
-        label: 出典・補足
-        type: string
-
-  guide_divider:
-    type: object
-    label: 区切り
-    fields:
-      - name: style
-        label: 区切り方
-        type: select
-        options:
-          values:
-            - name: line
-              label: 線
-            - name: space
-              label: 余白
-            - name: dots
-              label: ドット
-
-content:
-  - name: selections
-    label: フォトセレクション
-    type: file
-    path: data/selections.json
-    format: json
-    list: true
-    operations:
-      delete: false
-    fields:
-      - name: id
-        label: セレクションID
-        type: string
-        required: true
-        description: 半角英数字とハイフンで入力します。例 tokyo-camera-club-2026
-
-      - name: status
-        label: 公開状態
-        type: select
-        required: true
-        options:
-          values:
-            - name: current
-              label: CURRENT 現在のセレクション
-            - name: past
-              label: PAST 過去のセレクション
-
-      - name: year
-        label: 年
-        type: string
-        required: true
-
-      - name: title
-        label: セレクションタイトル
-        type: string
-        required: true
-
-      - name: shortTitle
-        label: HOME表示用タイトル
-        type: string
-        required: true
-
-      - name: description
-        label: 紹介文
-        type: text
-
-      - name: cover
-        label: カバー画像
-        type: image
-        required: true
-        options:
-          media: images
-          extensions: [jpg, jpeg, png, webp]
-          rename: false
-
-      - name: works
-        label: 掲載作品
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: "{title}"
-        fields:
-          - name: id
-            label: 作品番号
-            type: number
-            required: true
-
-          - name: title
-            label: 作品タイトル
-            type: string
-            required: true
-
-          - name: thumbnail
-            label: サムネイル画像
-            type: image
-            required: true
-            description: 一覧表示用。長辺1000px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/thumbs に保存します。
-            options:
-              media: gallery_images
-              path: tokyo_camera_club_2026/thumbs
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-
-          - name: image
-            label: フル画像（モーダル用）
-            type: image
-            required: true
-            description: 拡大表示用。長辺2200px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/full に保存します。
-            options:
-              media: gallery_images
-              path: tokyo_camera_club_2026/full
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-
-          - name: location
-            label: 撮影地
-            type: string
-
-          - name: season
-            label: 撮影時期
-            type: string
-
-          - name: camera
-            label: カメラ
-            type: string
-
-          - name: lens
-            label: レンズ
-            type: string
-
-          - name: settings
-            label: 撮影設定
-            type: string
-
-          - name: author
-            label: 撮影者
-            type: select
-            required: true
-            options:
-              values:
-                - name: "大坪　俊裕"
-                  label: "大坪 俊裕"
-                - name: "曽根原　麻由"
-                  label: "曽根原 麻由"
-                - name: "浜中　太郎"
-                  label: "浜中 太郎"
-                - name: "片岡　義廣"
-                  label: "片岡 義廣"
-                - name: "森山　雅友"
-                  label: "森山 雅友"
-                - name: "らっこばやし"
-                  label: "らっこばやし"
-
-          - name: comment
-            label: 作品コメント
-            type: text
-
-  - name: photographers
-    label: 撮影者
-    type: file
-    path: data/photographers.json
-    format: json
-    list: true
-    operations:
-      delete: false
-    fields:
-      - name: name
-        label: 氏名
-        type: string
-        required: true
-
-      - name: nameEn
-        label: 英字表記
-        type: string
-
-      - name: photo
-        label: 顔写真
-        type: image
-        options:
-          media: images
-          extensions: [jpg, jpeg, png, webp]
-          rename: false
-
-      - name: works
-        label: Took photos
-        type: string
-
-      - name: profile
-        label: プロフィール
-        type: text
-
-      - name: socialLinks
-        label: SNS・関連リンク
-        type: object
-        description: Instagram、X、Webサイトなどを最大3件まで登録できます。
-        list:
-          max: 3
-          collapsible:
-            collapsed: true
-            summary: "{platform} / {account}"
-        fields:
-          - name: platform
-            label: 種類
-            type: select
-            required: true
-            options:
-              values:
-                - name: instagram
-                  label: Instagram
-                - name: x
-                  label: X
-                - name: facebook
-                  label: Facebook
-                - name: website
-                  label: Webサイト
-                - name: other
-                  label: その他
-
-          - name: account
-            label: 表示名・アカウント名
-            type: string
-            required: true
-            description: 例 @hamanaka_photo、公式Instagram、個人Webサイト
-
-          - name: image
-            label: QRコード・画像
-            type: image
-            required: true
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-
-          - name: url
-            label: リンク先URL
-            type: string
-            required: true
-            description: QRコードや画像をクリックしたときに開くURLを入力します。
-
-  - name: photo_guide
-    label: PHOTO GUIDE
-    type: group
-    items:
-      - name: guide_articles
-        label: フォトガイド記事
-        type: file
-        path: data/guide-articles.json
-        format: json
-        list: true
-        operations:
-          delete: false
-        fields:
-          - name: id
-            label: 記事ID
-            type: string
-            required: true
-            pattern:
-              regex: "^[a-z0-9-]+$"
-              message: 半角英小文字・数字・ハイフンのみで入力してください。
-            description: URLに使用します。公開後は原則変更しません。
-
-          - name: published
-            label: 公開する
-            type: boolean
-            required: true
-
-          - name: order
-            label: 表示順
-            type: number
-            required: true
-
-          - name: eyebrow
-            label: 英字見出し
-            type: string
-            required: true
-            description: 例 01 / PHOTO MAP
-
-          - name: title
-            label: 記事タイトル
-            type: string
-            required: true
-
-          - name: cardTitle
-            label: 目次カードのタイトル
-            type: string
-            required: true
-
-          - name: summary
-            label: 概要
-            type: text
-            required: true
-
-          - name: cover
-            label: カバー画像
-            type: image
-            options:
-              media: images
-              extensions: [jpg, jpeg, png, webp]
-              rename: false
-
-          - name: icon
-            label: 画像がない場合の文字アイコン
-            type: string
-
-          - name: blocks
-            label: 記事本文
-            type: block
-            list:
-              collapsible:
-                collapsed: true
-            blockKey: type
-            blocks:
-              - name: richtext
-                component: guide_richtext
-              - name: styled_text
-                component: guide_styled_text
-              - name: image
-                component: guide_image
-              - name: gallery
-                component: guide_gallery
-              - name: map
-                component: guide_map
-              - name: basic_info
-                component: guide_basic_info
-              - name: note
-                component: guide_note
-              - name: checklist
-                component: guide_checklist
-              - name: table
-                component: guide_table
-              - name: faq
-                component: guide_faq
-              - name: links
-                component: guide_links
-              - name: download
-                component: guide_download
-              - name: cards
-                component: guide_cards
-              - name: cta
-                component: guide_cta
-              - name: media_text
-                component: guide_media_text
-              - name: related
-                component: guide_related
-              - name: quote
-                component: guide_quote
-              - name: divider
-                component: guide_divider
-
-      - name: guide_settings
-        label: フォトガイド設定・PDF
-        type: file
-        path: data/guide-settings.json
-        format: json
-        operations:
-          delete: false
-        fields:
-          - name: pageTitle
-            label: PHOTO GUIDEページタイトル
-            type: string
-            required: true
-
-          - name: pageLead
-            label: ページ上部の説明
-            type: text
-            required: true
-
-          - name: indexLead
-            label: 目次の説明
-            type: text
-
-          - name: guidebook
-            label: フォトガイドブック
-            type: object
-            fields:
-              - name: enabled
-                label: PDFダウンロードを公開する
-                type: boolean
-
-              - name: eyebrow
-                label: 英字見出し
-                type: string
-
-              - name: title
-                label: ガイドブック名
-                type: string
-
-              - name: cardTitle
-                label: 目次カードのタイトル
-                type: string
-
-              - name: summary
-                label: 説明
-                type: text
-
-              - name: cover
-                label: 表紙画像
-                type: image
-                options:
-                  media: images
-                  extensions: [jpg, jpeg, png, webp]
-                  rename: false
-
-              - name: pdf
-                label: PDFファイル
-                type: file
-                options:
-                  media: documents
-                  extensions: [pdf]
-                  rename: false
-
-              - name: buttonLabel
-                label: ダウンロードボタン表示
-                type: string
-
-  - name: project_settings
-    label: PHOTO PROJECT｜写真活動
-    type: file
-    path: data/project.json
-    format: json
-    operations:
-      delete: false
-    fields:
-    - name: seo
-      label: SEO・ブラウザ表示
-      type: object
-      fields:
-      - name: title
-        label: ページタイトル
-        type: string
-        description: ブラウザのタブに表示するタイトルです。
-      - name: description
-        label: ページ説明
-        type: text
-        description: 検索結果などで使用されるページ説明です。
-    - name: hero
-      label: HERO｜ページ上部
-      type: object
-      fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: タイトル
-        type: text
-        required: true
-        description: 改行を入れると公開ページにも反映されます。
-      - name: lead
-        label: 説明文
-        type: text
-    - name: emptyMessage
-      label: カードが0件のときの表示
+    - name: title
+      label: 見出し
+      type: string
+    - name: text
+      label: 説明
       type: text
-    - name: cards
-      label: PROJECTカード
+    - name: items
+      label: ダウンロードファイル
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: label
+        label: 表示名
+        type: string
+        required: true
+      - name: file
+        label: ファイル
+        type: file
+        required: true
+        options:
+          media: documents
+          extensions:
+          - pdf
+          - zip
+          rename: false
+      - name: description
+        label: 補足
+        type: string
+  guide_cards:
+    type: object
+    label: カード一覧
+    fields:
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: カード
       type: object
       list:
         collapsible:
           collapsed: true
           summary: '{title}'
       fields:
-      - name: id
-        label: カードID
-        type: string
-        required: true
-        pattern:
-          regex: ^[a-z0-9][a-z0-9-]*$
-          message: 半角英小文字・数字・ハイフンで入力してください。
-        description: URLの #contest などに使います。公開後は原則変更しません。
-      - name: published
-        label: 公開する
-        type: boolean
-        required: true
-      - name: order
-        label: 表示順
-        type: number
-        required: true
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-        description: 例 PHOTO CONTEST
       - name: title
         label: タイトル
         type: string
@@ -1061,86 +551,3069 @@ content:
       - name: text
         label: 説明
         type: text
-      - name: status
-        label: ステータス表示
-        type: string
-        description: 例 COMING SOON、募集中、開催レポート公開中
-      - name: statusTone
-        label: ステータス色
-        type: select
-        options:
-          values:
-          - name: coming-soon
-            label: 予告・準備中（ベージュ）
-          - name: open
-            label: 募集中・開催中（グリーン）
-          - name: report
-            label: 公開・レポート（ブルー）
-          - name: archive
-            label: 終了・過去企画（グレー）
-          - name: neutral
-            label: 標準（グレー）
       - name: image
-        label: カード画像（任意）
+        label: 画像
         type: image
-        description: 未設定なら現在と同じテキストカードになります。16:9程度を推奨します。
         options:
           media: images
-          path: 04_project
-          extensions: [jpg, jpeg, png, webp]
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
           rename: false
-      - name: imageAlt
-        label: 画像の代替テキスト
-        type: string
       - name: url
-        label: リンク先（任意）
+        label: リンク先
         type: string
-        description: 未設定ならボタンを表示しません。相対URL・https URLに対応します。
+  guide_cta:
+    type: object
+    label: CTA・大きな誘導
+    fields:
+    - name: eyebrow
+      label: 小見出し
+      type: string
+    - name: title
+      label: 見出し
+      type: string
+      required: true
+    - name: text
+      label: 説明
+      type: text
+    - name: label
+      label: ボタン表示
+      type: string
+      required: true
+    - name: url
+      label: リンク先
+      type: string
+      required: true
+    - name: external
+      label: 外部サイトとして開く
+      type: boolean
+    - name: style
+      label: 表示スタイル
+      type: select
+      options:
+        values:
+        - name: blue
+          label: 青
+        - name: green
+          label: 緑
+        - name: light
+          label: 明るい背景
+  guide_media_text:
+    type: object
+    label: 画像＋文章
+    fields:
+    - name: image
+      label: 画像
+      type: image
+      required: true
+      options:
+        media: images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: alt
+      label: 代替テキスト
+      type: string
+    - name: title
+      label: 見出し
+      type: string
+    - name: body
+      label: 本文
+      type: rich-text
+      options:
+        format: html
+        media: images
+        switcher: true
+        rename: false
+    - name: imagePosition
+      label: 画像位置
+      type: select
+      options:
+        values:
+        - name: left
+          label: 左
+        - name: right
+          label: 右
+  guide_related:
+    type: object
+    label: 関連記事
+    fields:
+    - name: title
+      label: 見出し
+      type: string
+    - name: items
+      label: 関連記事
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: articleId
+        label: 記事ID
+        type: string
+        required: true
+        description: 例 technique
+      - name: title
+        label: 表示タイトル
+        type: string
+        required: true
+      - name: text
+        label: 説明
+        type: text
+      - name: image
+        label: 画像
+        type: image
+        options:
+          media: images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+  guide_quote:
+    type: object
+    label: 引用・コメント
+    fields:
+    - name: text
+      label: 引用・コメント本文
+      type: text
+      required: true
+    - name: author
+      label: 発言者・撮影者
+      type: string
+    - name: source
+      label: 出典・補足
+      type: string
+  guide_divider:
+    type: object
+    label: 区切り
+    fields:
+    - name: style
+      label: 区切り方
+      type: select
+      options:
+        values:
+        - name: line
+          label: 線
+        - name: space
+          label: 余白
+        - name: dots
+          label: ドット
+content:
+- name: selections
+  label: フォトセレクション
+  type: file
+  path: data/selections.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: id
+    label: セレクションID
+    type: string
+    required: true
+    description: 半角英数字とハイフンで入力します。例 tokyo-camera-club-2026
+  - name: status
+    label: 公開状態
+    type: select
+    required: true
+    options:
+      values:
+      - name: current
+        label: CURRENT 現在のセレクション
+      - name: past
+        label: PAST 過去のセレクション
+  - name: year
+    label: 年
+    type: string
+    required: true
+  - name: title
+    label: セレクションタイトル
+    type: string
+    required: true
+  - name: shortTitle
+    label: HOME表示用タイトル
+    type: string
+    required: true
+  - name: description
+    label: 紹介文
+    type: text
+  - name: cover
+    label: カバー画像
+    type: image
+    required: true
+    options:
+      media: images
+      extensions:
+      - jpg
+      - jpeg
+      - png
+      - webp
+      rename: false
+  - name: works
+    label: 掲載作品
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: id
+      label: 作品番号
+      type: number
+      required: true
+    - name: title
+      label: 作品タイトル
+      type: string
+      required: true
+    - name: thumbnail
+      label: サムネイル画像
+      type: image
+      required: true
+      description: 一覧表示用。長辺1000px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/thumbs に保存します。
+      options:
+        media: gallery_images
+        path: tokyo_camera_club_2026/thumbs
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: image
+      label: フル画像（モーダル用）
+      type: image
+      required: true
+      description: 拡大表示用。長辺2200px前後のWebPを推奨します。東京カメラ部2026は tokyo_camera_club_2026/full に保存します。
+      options:
+        media: gallery_images
+        path: tokyo_camera_club_2026/full
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: location
+      label: 撮影地
+      type: string
+    - name: season
+      label: 撮影時期
+      type: string
+    - name: camera
+      label: カメラ
+      type: string
+    - name: lens
+      label: レンズ
+      type: string
+    - name: settings
+      label: 撮影設定
+      type: string
+    - name: author
+      label: 撮影者
+      type: select
+      required: true
+      options:
+        values:
+        - name: 大坪　俊裕
+          label: 大坪 俊裕
+        - name: 曽根原　麻由
+          label: 曽根原 麻由
+        - name: 浜中　太郎
+          label: 浜中 太郎
+        - name: 片岡　義廣
+          label: 片岡 義廣
+        - name: 森山　雅友
+          label: 森山 雅友
+        - name: らっこばやし
+          label: らっこばやし
+    - name: comment
+      label: 作品コメント
+      type: text
+- name: photographers
+  label: 撮影者
+  type: group
+  items:
+  - name: photographer_ohstubo
+    label: 大坪 俊裕
+    type: file
+    path: data/photographers/ohstubo.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_ohstubo_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_ohstubo_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+  - name: photographer_sonehara
+    label: 曽根原 麻由
+    type: file
+    path: data/photographers/sonehara.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_sonehara_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_sonehara_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+  - name: photographer_hamanaka
+    label: 浜中 太郎
+    type: file
+    path: data/photographers/hamanaka.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_hamanaka_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_hamanaka_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+  - name: photographer_kataoka
+    label: 片岡 義廣
+    type: file
+    path: data/photographers/kataoka.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_kataoka_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_kataoka_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+  - name: photographer_moriyama
+    label: 森山 雅友
+    type: file
+    path: data/photographers/moriyama.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_moriyama_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_moriyama_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+  - name: photographer_raccobayashi
+    label: らっこばやし
+    type: file
+    path: data/photographers/raccobayashi.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: name
+      label: 氏名
+      type: string
+      required: true
+      readonly: true
+    - name: nameEn
+      label: 英字表記
+      type: string
+    - name: photo
+      label: 顔写真
+      type: image
+      required: true
+      description: profile.webp（800×800px前後）を推奨します。
+      options:
+        media: photographer_raccobayashi_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: profile
+      label: プロフィール
+      type: text
+    - name: socialLinks
+      label: SNS・関連リンク
+      type: object
+      description: 最大3件。画像は link01.webp、link02.webp、link03.webp の命名を推奨します。
+      list:
+        max: 3
+        collapsible:
+          collapsed: true
+          summary: '{platform} / {account}'
+      fields:
+      - name: platform
+        label: 種類
+        type: select
+        required: true
+        options:
+          values:
+          - name: instagram
+            label: Instagram
+          - name: x
+            label: X
+          - name: facebook
+            label: Facebook
+          - name: website
+            label: Webサイト
+          - name: other
+            label: その他
+      - name: account
+        label: 表示名・アカウント名
+        type: string
+        required: true
+      - name: image
+        label: QRコード・画像
+        type: image
+        required: true
+        options:
+          media: photographer_raccobayashi_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: url
+        label: リンク先URL
+        type: string
+        required: true
+- name: photo_guide
+  label: PHOTO GUIDE｜公開ページ編集
+  type: group
+  items:
+  - name: photo_map_settings
+    label: SPOT｜MAPから探す
+    type: file
+    path: data/photo-map.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: hero
+      label: HERO｜MAPから探す
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: タイトル
+        type: string
+        required: true
+      - name: lead
+        label: 説明文
+        type: text
+      - name: image
+        label: ヒーロー画像
+        type: image
+        options:
+          media: photo_map_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+    - name: map
+      label: MAP｜地図画像
+      type: object
+      fields:
+      - name: image
+        label: 地図画像
+        type: image
+        description: ピンを重ねる浜中町の地図画像を登録します。
+        options:
+          media: photo_map_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: alt
+        label: 地図画像の代替テキスト
+        type: string
+    - name: subjects
+      label: FILTER｜被写体で探す
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      description: 「被写体で探す」と「被写体別一覧」で使用する表示名・説明を設定します。
+      fields:
+      - name: id
+        label: 被写体ID
+        type: select
+        required: true
+        options:
+          values:
+          - name: otter
+            label: ラッコ
+          - name: crane
+            label: タンチョウ
+          - name: wild-birds
+            label: 野鳥
+          - name: ezo-deer
+            label: エゾシカ
+          - name: flowers
+            label: 花・湿原
+          - name: coast
+            label: 海・岬
+          - name: pasture
+            label: 牧草地・酪農景観
+          - name: sunset
+            label: 夕景
+          - name: sunrise
+            label: 朝景
+          - name: stars
+            label: 星空
+      - name: label
+        label: 表示名
+        type: string
+        required: true
+      - name: icon
+        label: アイコン文字
+        type: string
+        description: 任意。1〜2文字程度の記号を推奨します。
+      - name: description
+        label: 説明
+        type: string
+        description: 被写体別一覧の見出し下に表示します。
+    - name: coursesTitle
+      label: MODEL COURSE｜見出し
+      type: string
+    - name: courses
+      label: MODEL COURSE｜モデルコース
+      type: object
+      list:
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: コース名
+        type: string
+        required: true
+      - name: summary
+        label: コース概要
+        type: text
+      - name: duration
+        label: 所要時間
+        type: string
+        description: 例 約4時間
+      - name: image
+        label: コース画像
+        type: image
+        options:
+          media: photo_map_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: stops
+        label: コース内の地点・時刻
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{time} / {name}'
+        fields:
+        - name: time
+          label: 時刻
+          type: string
+          required: true
+          description: 例 09:00
+        - name: name
+          label: 地点名
+          type: string
+          required: true
+        - name: text
+          label: 地点の説明
+          type: text
+        - name: image
+          label: 地点画像（任意）
+          type: image
+          description: 任意項目です。画像を登録しない場合は、公開ページでも画像枠を表示しません。
+          options:
+            media: photo_map_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: url
+          label: 地点のリンク先
+          type: string
+    - name: manner
+      label: PHOTO MANNER｜撮影マナー
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 説明
+        type: text
       - name: buttonLabel
         label: ボタン表示
         type: string
-        description: 例 詳しく見る、募集要項を見る、開催レポートを見る
-      - name: external
-        label: 外部サイトとして開く
-        type: boolean
-
-  - name: news
-    label: お知らせ
+      - name: url
+        label: リンク先
+        type: string
+  - name: photo_spots
+    label: SPOT｜撮影スポット
     type: file
-    path: data/news.json
+    path: data/photo-spots.json
+    format: json
+    list: true
+    operations:
+      delete: true
+    fields:
+    - name: id
+      label: スポットID
+      type: string
+      required: true
+      pattern:
+        regex: ^[a-z0-9-]+$
+        message: 半角英小文字・数字・ハイフンで入力してください。
+    - name: published
+      label: 公開する
+      type: boolean
+      required: true
+    - name: order
+      label: 表示順
+      type: number
+      required: true
+    - name: name
+      label: スポット名
+      type: string
+      required: true
+    - name: area
+      label: エリア名
+      type: string
+      required: true
+      description: 例 霧多布、琵琶瀬、火散布、茶内
+    - name: description
+      label: 紹介文
+      type: text
+    - name: image
+      label: スポット画像
+      type: image
+      options:
+        media: photo_map_images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: markerType
+      label: MAPピンの種類
+      type: select
+      required: true
+      options:
+        values:
+        - name: coast
+          label: 海岸
+        - name: wetland
+          label: 湿原
+        - name: wildlife
+          label: 野生動物
+        - name: observatory
+          label: 展望
+    - name: subjects
+      label: この場所で狙える被写体・撮影テーマ
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{id} / {note}'
+      description: 「被写体で探す」の絞り込み対象になります。複数登録できます。
+      fields:
+      - name: id
+        label: 被写体・撮影テーマ
+        type: select
+        required: true
+        options:
+          values:
+          - name: otter
+            label: ラッコ
+          - name: crane
+            label: タンチョウ
+          - name: wild-birds
+            label: 野鳥
+          - name: ezo-deer
+            label: エゾシカ
+          - name: flowers
+            label: 花・湿原
+          - name: coast
+            label: 海・岬
+          - name: pasture
+            label: 牧草地・酪農景観
+          - name: sunset
+            label: 夕景
+          - name: sunrise
+            label: 朝景
+          - name: stars
+            label: 星空
+      - name: note
+        label: この場所での補足
+        type: string
+        description: 例 岬・灯台・海岸風景、朝に野鳥を狙いやすい等
+    - name: features
+      label: 条件
+      type: select
+      options:
+        multiple: true
+        values:
+        - name: beginner
+          label: 初心者向け
+        - name: parking
+          label: 駐車場あり
+    - name: bestSeason
+      label: おすすめ時期
+      type: string
+    - name: bestTime
+      label: おすすめ時間
+      type: string
+    - name: access
+      label: アクセス
+      type: string
+    - name: position
+      label: MAP位置（x,y）
+      type: string
+      description: 座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=63 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71
+      pattern:
+        regex: ^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$
+        message: 1〜100の範囲で x,y の形式で入力してください。座標は100×100グリッドのセル番号です。例 63,71
+    - name: x
+      label: 旧MAP横位置
+      type: number
+      hidden: true
+    - name: y
+      label: 旧MAP縦位置
+      type: number
+      hidden: true
+    - name: detailUrl
+      label: Google Map URL
+      type: string
+      description: Google Mapsでこのスポットを開くURLを入力します。未入力の場合は「Google Mapで開く」リンクを表示しません。
+  - name: trip_settings
+    label: 準備｜HERO・01・02・04・NEXT
+    type: file
+    path: data/trip.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: hero
+      label: HERO｜浜中町へ、撮りに行こう。
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: タイトル
+        type: text
+        required: true
+      - name: lead
+        label: 説明文
+        type: text
+      - name: image
+        label: ヒーロー画像
+        type: image
+        options:
+          media: trip_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: primaryLabel
+        label: 構造保護｜左ボタン表示
+        type: string
+        hidden: true
+      - name: primaryUrl
+        label: 構造保護｜左ボタンリンク先
+        type: string
+        hidden: true
+      - name: secondaryLabel
+        label: 構造保護｜右ボタン表示
+        type: string
+        hidden: true
+      - name: secondaryUrl
+        label: 構造保護｜右ボタンリンク先
+        type: string
+        hidden: true
+    - name: stepsTitle
+      label: 構造保護｜5 STEP見出し
+      type: string
+      hidden: true
+    - name: steps
+      label: 構造保護｜5 STEP
+      type: object
+      list:
+        max: 5
+        collapsible:
+          collapsed: true
+          summary: '{number} {title}'
+      fields:
+      - name: number
+        label: STEP番号
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+        required: true
+      - name: image
+        label: 画像
+        type: image
+        options:
+          media: trip_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: anchor
+        label: 移動先ID
+        type: select
+        options:
+          values:
+          - name: access
+            label: アクセス
+          - name: stay
+            label: 宿泊
+          - name: weather
+            label: 天気
+          - name: clothing
+            label: 服装
+          - name: checklist
+            label: 出発前チェック
+      hidden: true
+    - name: access
+      label: 01 行き方｜浜中町への行き方
+      type: object
+      fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: セクション見出し
+        type: string
+      - name: lead
+        label: セクション説明
+        type: string
+        description: デスクトップでは見出し横に1行で表示します。
+      - name: exampleTitle
+        label: 代表アクセス例の小見出し
+        type: string
+        description: 例「東京方面からの代表的なアクセス例」
+      - name: exampleNote
+        label: 羽田発の注釈
+        type: text
+        description: 羽田発を例にしていることや、出発地によりルートが異なることを記載します。
+      - name: route
+        label: 構造保護｜移動ルート
+        type: object
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 地点名
+          type: string
+        - name: sub
+          label: 補足
+          type: string
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        hidden: true
+      - name: routeNotes
+        label: 構造保護｜ルート間の説明
+        type: string
+        list: true
+        hidden: true
+      - name: flight
+        label: 構造保護｜飛行機で行く
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: buttonLabel
+          label: ボタン表示
+          type: string
+        - name: url
+          label: Google検索URL
+          type: string
+          description: 初期値は「羽田から釧路」のGoogle検索です。
+        hidden: true
+      - name: rental
+        label: 01 行き方｜レンタカー会社
+        type: object
+        fields:
+        - name: title
+          label: 構造保護｜見出し
+          type: string
+          hidden: true
+        - name: text
+          label: 構造保護｜説明
+          type: text
+          hidden: true
+        - name: companiesTitle
+          label: 展開後の見出し
+          type: string
+        - name: companies
+          label: 釧路空港周辺のレンタカー営業所
+          type: object
+          list:
+            collapsible:
+              collapsed: true
+              summary: '{name}'
+          fields:
+          - name: name
+            label: 会社・営業所名
+            type: string
+            required: true
+          - name: url
+            label: 公式サイトURL
+            type: string
+            required: true
+        - name: nakashibetsuCompaniesTitle
+          label: 中標津側の展開見出し
+          type: string
+        - name: nakashibetsuCompanies
+          label: 中標津空港周辺のレンタカー営業所
+          type: object
+          list:
+            collapsible:
+              collapsed: true
+              summary: '{name}'
+          fields:
+          - name: name
+            label: 会社・営業所名
+            type: string
+            required: true
+          - name: url
+            label: 公式サイトURL
+            type: string
+            required: true
+      - name: driveTipsTitle
+        label: 車で撮影する人へ｜見出し
+        type: string
+      - name: driveTips
+        label: 車で撮影する人へ｜ポイント
+        type: object
+        list:
+          max: 6
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 項目
+          type: string
+        - name: text
+          label: 説明
+          type: text
+      - name: tipsButtonLabel
+        label: 構造保護｜詳細リンク表示
+        type: string
+        hidden: true
+    - name: noCar
+      label: 01 行き方｜公共交通機関
+      type: object
+      fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
+      - name: text
+        label: 公共交通の補足説明
+        type: text
+      - name: buttonLabel
+        label: リンクボタン表示
+        type: string
+      - name: url
+        label: 公共交通リンク先
+        type: string
+    - name: stay
+      label: 02 宿泊先｜浜中町に泊まろう
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 説明
+        type: text
+      - name: image
+        label: 背景画像
+        type: image
+        options:
+          media: trip_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: 宿泊情報URL
+        type: string
+        description: 浜中町観光協会の宿泊情報ページ等を指定します。
+    - name: weather
+      label: 構造保護｜天気
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: items
+        label: 天気カード
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: リンク先
+        type: string
+      hidden: true
+    - name: clothing
+      label: 04 服装・必需品｜服装と必需品を準備する
+      type: object
+      fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
+      - name: sectionTitle
+        label: 公開ページのセクション見出し
+        type: string
+        description: 例「服装と必需品を準備する」
+      - name: sectionLead
+        label: 公開ページのセクション説明
+        type: text
+      - name: conditionCards
+        label: 天候別の服装カード
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: eyebrow
+          label: 英字小見出し
+          type: string
+        - name: title
+          label: カード見出し
+          type: string
+          required: true
+        - name: lead
+          label: 説明
+          type: text
+        - name: image
+          label: 服装イメージ
+          type: image
+          description: 公開ページのカード右半分に表示します。
+          options:
+            media: trip_images
+            path: wear
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: items
+          label: 服装・持ち物
+          type: string
+          list: true
+      - name: essentialsTitle
+        label: 必需品の見出し
+        type: string
+      - name: essentials
+        label: その他の必需品
+        type: string
+        list: true
+      - name: seasons
+        label: 構造保護｜季節タブ
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - name: label
+          label: タブ名
+          type: string
+        - name: note
+          label: 補足
+          type: string
+        - name: items
+          label: 服装・持ち物
+          type: string
+          list: true
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: trip_images
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        hidden: true
+      - name: buttonLabel
+        label: 構造保護｜ボタン表示
+        type: string
+        hidden: true
+    - name: checklist
+      label: 05 プラン作成｜SUMMARYチェックリスト
+      type: object
+      fields:
+      - name: eyebrow
+        label: 構造保護｜英字見出し
+        type: string
+        hidden: true
+      - name: title
+        label: 構造保護｜見出し
+        type: string
+        hidden: true
+      - name: categories
+        label: チェック項目グループ
+        type: object
+        list:
+          max: 6
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: グループ名
+          type: string
+        - name: items
+          label: 項目
+          type: string
+          list: true
+    - name: ready
+      label: NEXT｜準備ができたら、撮りたい景色を探そう。
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: image
+        label: 背景画像
+        type: image
+        options:
+          media: trip_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: リンク先
+        type: string
+  - name: trip_v3_settings
+    label: 準備｜01行き方・03気候・05プラン
+    type: file
+    path: data/trip-v3.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: updated
+      label: 構造保護｜更新日
+      type: string
+      hidden: true
+    - name: navigation
+      label: ページ内ナビ｜01〜05
+      type: object
+      list:
+        max: 5
+        collapsible:
+          collapsed: true
+          summary: '{number} {label}'
+        min: 5
+      fields:
+      - name: number
+        label: 番号
+        type: string
+      - name: label
+        label: 表示名
+        type: string
+      - name: anchor
+        label: 移動先ID
+        type: string
+        readonly: true
+    - name: access
+      label: 01 行き方｜STEP・航空便・公共交通
+      type: object
+      fields:
+      - name: route
+        label: アクセス概要
+        type: string
+        list: true
+      - name: flightUpdatedLabel
+        label: 航空便データの基準時期
+        type: string
+      - name: airportNote
+        label: 空港についての注釈
+        type: text
+      - name: step1Label
+        label: STEP 1 ラベル
+        type: string
+      - name: step1Title
+        label: STEP 1 見出し
+        type: string
+      - name: step1Lead
+        label: STEP 1 説明
+        type: text
+      - name: step2Label
+        label: STEP 2 ラベル
+        type: string
+      - name: step2Title
+        label: STEP 2 見出し
+        type: string
+      - name: step2Lead
+        label: STEP 2 説明
+        type: text
+      - name: optionsTitle
+        label: 移動方法の選択見出し
+        type: string
+      - name: rentalOptionLabel
+        label: レンタカー側ラベル
+        type: string
+      - name: rentalOptionTitle
+        label: レンタカー側見出し
+        type: string
+      - name: rentalOptionLead
+        label: レンタカー側説明
+        type: text
+      - name: publicOptionLabel
+        label: 公共交通側ラベル
+        type: string
+      - name: publicOptionTitle
+        label: 公共交通側見出し
+        type: string
+      - name: publicOptionLead
+        label: 公共交通側説明
+        type: text
+      - name: flights
+        label: STEP 1｜航空便
+        type: object
+        list:
+          max: 2
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+          min: 2
+        fields:
+        - name: code
+          label: 空港コード表示
+          type: string
+        - name: title
+          label: 路線名
+          type: string
+        - name: flights
+          label: 便数
+          type: string
+        - name: airlines
+          label: 航空会社
+          type: string
+        - name: duration
+          label: フライト時間
+          type: string
+        - name: note
+          label: 注記
+          type: text
+        - name: searchLabel
+          label: 検索ボタン表示
+          type: string
+        - name: searchUrl
+          label: 検索リンク先
+          type: string
+      - name: publicTransportUrl
+        label: 公共交通リンク先
+        type: string
+      - name: publicTransportLabel
+        label: 公共交通ボタン表示
+        type: string
+    - name: lodgings
+      label: 02 宿泊先｜プラン作成の宿泊候補
+      type: string
+      list: true
+    - name: climate
+      label: 03 気候｜月別平年値グラフ
+      type: object
+      fields:
+      - name: station
+        label: 観測地点
+        type: string
+      - name: period
+        label: 統計期間
+        type: string
+      - name: sourceUrl
+        label: 気象庁データURL
+        type: string
+      - name: features
+        label: 気候の特徴カード
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: season
+          label: 英字ラベル
+          type: string
+        - name: title
+          label: 見出し
+          type: string
+          required: true
+        - name: items
+          label: 特徴
+          type: string
+          list: true
+      - name: months
+        label: 月
+        type: string
+        list: true
+      - name: average
+        label: 平均気温 ℃
+        type: number
+        list: true
+      - name: high
+        label: 最高気温 ℃
+        type: number
+        list: true
+      - name: low
+        label: 最低気温 ℃
+        type: number
+        list: true
+      - name: precipitation
+        label: 降水量 mm
+        type: number
+        list: true
+    - name: forecast
+      label: 03 気候｜1週間天気予報
+      type: object
+      fields:
+      - name: latitude
+        label: 取得地点の緯度
+        type: number
+      - name: longitude
+        label: 取得地点の経度
+        type: number
+      - name: fallbackUrl
+        label: 予報取得失敗時のリンク
+        type: string
+    - name: wear
+      label: 構造保護｜服装フォールバック
+      type: object
+      hidden: true
+      fields:
+      - name: sunny
+        label: 晴天
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: lead
+          label: 説明
+          type: text
+        - name: items
+          label: 項目
+          type: string
+          list: true
+      - name: foggy
+        label: 曇り・霧
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: lead
+          label: 説明
+          type: text
+        - name: items
+          label: 項目
+          type: string
+          list: true
+      - name: essentials
+        label: 必需品
+        type: string
+        list: true
+    - name: seasonChecklist
+      label: 05 プラン作成｜季節別追加チェック
+      type: object
+      fields:
+      - name: 冬
+        label: 冬
+        type: string
+        list: true
+      - name: 春
+        label: 春
+        type: string
+        list: true
+      - name: 夏
+        label: 夏
+        type: string
+        list: true
+      - name: 秋
+        label: 秋
+        type: string
+        list: true
+  - name: gear_settings
+    label: 機材｜撮影機材を選ぼう
+    type: file
+    path: data/gear.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: hero
+      label: HERO｜ラッコと出会うための、撮影機材を選ぼう。
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: タイトル
+        type: text
+        required: true
+      - name: lead
+        label: 説明文
+        type: text
+      - name: image
+        label: ヒーロー画像
+        type: image
+        options:
+          media: gear_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+    - name: introPoints
+      label: HERO下｜機材選びの3ポイント
+      type: object
+      fields:
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: points
+        label: 3つのカード
+        type: object
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: '{number} {text}'
+        fields:
+        - name: number
+          label: 番号
+          type: string
+        - name: text
+          label: 内容
+          type: string
+          required: true
+    - name: focalExperience
+      label: 01｜焦点距離で、見え方はこんなに変わる。
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: note
+        label: 注記
+        type: text
+      - name: defaultFocal
+        label: 初期表示の焦点距離
+        type: number
+        description: 24 / 50 / 100 / 200 / 300 / 400 / 500 / 600 / 800 のいずれかを推奨します。
+      - name: samples
+        label: 焦点距離別作例
+        type: object
+        list:
+          max: 9
+          collapsible:
+            collapsed: true
+            summary: '{focal}mm / {label}'
+        fields:
+        - name: focal
+          label: 焦点距離 mm
+          type: number
+          required: true
+        - name: label
+          label: 短い説明
+          type: string
+        - name: description
+          label: 詳細説明
+          type: text
+        - name: image
+          label: 作例画像
+          type: image
+          options:
+            media: gear_images
+            path: focal
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+    - name: gearFinder
+      label: 02｜レンズを選ぶ → ボディを選ぶ
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: modes
+        label: 選び方
+        type: object
+        list:
+          max: 2
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - name: id
+          label: ID
+          type: select
+          required: true
+          options:
+            values:
+            - name: manufacturer
+              label: メーカー
+            - name: focal
+              label: 焦点距離
+        - name: label
+          label: 表示名
+          type: string
+          required: true
+      - name: manufacturers
+        label: メーカー選択肢
+        type: string
+        list: true
+      - name: focalOptions
+        label: 焦点距離選択肢 mm
+        type: number
+        list: true
+      - name: resolutionOptions
+        label: 解像度選択肢 MP
+        type: number
+        list: true
+        hidden: true
+      - name: featureOptions
+        label: 機能選択肢
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - name: id
+          label: 機能ID
+          type: string
+          required: true
+          description: animal-af / high-speed-burst / stabilization / weather-sealed など。
+        - name: label
+          label: 表示名
+          type: string
+          required: true
+        - name: target
+          label: 主な対象
+          type: select
+          options:
+            values:
+            - name: body
+              label: ボディ
+            - name: lens
+              label: レンズ
+            - name: pair
+              label: 組み合わせ全体
+        hidden: true
+      - name: lenses
+        label: レンズ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{manufacturer} / {name}'
+        fields:
+        - name: id
+          label: レンズID
+          type: string
+          required: true
+        - name: manufacturer
+          label: メーカー
+          type: string
+          required: true
+        - name: name
+          label: 製品名
+          type: string
+          required: true
+        - name: mount
+          label: マウント
+          type: string
+          required: true
+          description: RF / E / Z など。ボディ側と同じ文字列なら組み合わせ候補になります。
+        - name: image
+          label: 製品画像
+          type: image
+          options:
+            media: gear_images
+            path: products/lens
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: minFocal
+          label: 最短焦点距離 mm
+          type: number
+          required: true
+        - name: maxFocal
+          label: 最長焦点距離 mm
+          type: number
+          required: true
+        - name: aperture
+          label: 開放F値
+          type: string
+        - name: weight
+          label: 重量
+          type: string
+        - name: dimensions
+          label: 大きさ
+          type: string
+          description: 例 最大径 φ93.8 × 長さ 207.6mm
+        - name: autofocus
+          label: AF
+          type: string
+          description: 例 Nano USM / DDSSM / STM
+        - name: stabilizationLabel
+          label: 手ぶれ補正
+          type: string
+          description: 例 レンズ内IS / レンズ内OSS / レンズシフト方式VR
+        - name: summary
+          label: 性能概要
+          type: text
+        - name: features
+          label: 機能ID
+          type: string
+          list: true
+      - name: bodies
+        label: カメラボディ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{manufacturer} / {name}'
+        fields:
+        - name: id
+          label: ボディID
+          type: string
+          required: true
+        - name: manufacturer
+          label: メーカー
+          type: string
+          required: true
+        - name: name
+          label: 製品名
+          type: string
+          required: true
+        - name: mount
+          label: マウント
+          type: string
+          required: true
+          description: RF / E / Z など。レンズ側と同じ文字列なら組み合わせ候補になります。
+        - name: image
+          label: 製品画像
+          type: image
+          options:
+            media: gear_images
+            path: products/body
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: resolution
+          label: 解像度 MP
+          type: number
+          required: true
+        - name: resolutionLabel
+          label: 解像度表示
+          type: string
+        - name: burst
+          label: 連写性能表示
+          type: string
+        - name: summary
+          label: 性能概要
+          type: text
+        - name: features
+          label: 機能ID
+          type: string
+          list: true
+      - name: integratedCameras
+        label: 一体型カメラ
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{manufacturer} / {name}'
+        description: COOLPIXのようなレンズ一体型カメラを登録します。レンズとボディの組み合わせ候補と同じ検索条件で表示されます。
+        fields:
+        - name: id
+          label: カメラID
+          type: string
+          required: true
+        - name: manufacturer
+          label: メーカー
+          type: string
+          required: true
+        - name: name
+          label: 製品名
+          type: string
+          required: true
+        - name: image
+          label: 製品画像
+          type: image
+          options:
+            media: gear_images
+            path: products/integrated
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: minFocal
+          label: 最短焦点距離 mm相当
+          type: number
+          required: true
+        - name: maxFocal
+          label: 最長焦点距離 mm相当
+          type: number
+          required: true
+        - name: focalLabel
+          label: 焦点距離表示
+          type: string
+          description: 例 24〜3000mm相当
+        - name: aperture
+          label: 開放F値
+          type: string
+        - name: resolution
+          label: 解像度 MP
+          type: number
+          required: true
+        - name: resolutionLabel
+          label: 解像度表示
+          type: string
+        - name: weight
+          label: 重量
+          type: string
+        - name: burst
+          label: 連写性能表示
+          type: string
+        - name: summary
+          label: 性能概要
+          type: text
+        - name: features
+          label: 機能ID
+          type: string
+          list: true
+      - name: disclaimer
+        label: 製品情報の注記
+        type: text
+    - name: accessories
+      label: 03｜あると便利なアクセサリー
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: items
+        label: アクセサリー
+        type: object
+        list:
+          max: 8
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 名称
+          type: string
+          required: true
+        - name: text
+          label: 説明
+          type: text
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: gear_images
+            path: accessories
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+    - name: rental
+      label: 04｜レンタルという選択肢も！
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: reasonTitle
+        label: 理由見出し
+        type: string
+      - name: reasons
+        label: レンタルを検討する理由
+        type: string
+        list: true
+      - name: serviceLabel
+        label: サービス紹介の注記
+        type: string
+      - name: serviceName
+        label: サービス名
+        type: string
+      - name: serviceText
+        label: サービス説明
+        type: text
+      - name: image
+        label: GOOPASSロゴ画像
+        type: image
+        description: GOOPASSロゴを登録します。透過PNGまたは余白の少ないWebPを推奨します。
+        options:
+          media: gear_images
+          path: rental
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: visualImage
+        label: 右側のレンタル機材イメージ
+        type: image
+        description: 右側に1枚で表示する横長画像です。16:9〜2:1程度、横1400〜1800px前後を推奨します。
+        options:
+          media: gear_images
+          path: rental
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: 公式サイトURL
+        type: string
+      - name: note
+        label: 注記
+        type: text
+    - name: examples
+      label: 05｜機材作例ギャラリー
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: items
+        label: 作例
+        type: object
+        list:
+          max: 12
+          collapsible:
+            collapsed: true
+            summary: '{equipment} / {caption}'
+        fields:
+        - name: image
+          label: 作例画像
+          type: image
+          required: true
+          options:
+            media: gear_images
+            path: examples
+            extensions:
+            - jpg
+            - jpeg
+            - png
+            - webp
+            rename: false
+        - name: equipment
+          label: 使用機材
+          type: string
+          required: true
+          description: 例 EOS R5 Mark II ＋ RF200-800mm F6.3-9 IS USM
+        - name: caption
+          label: キャプション
+          type: string
+    - name: next
+      label: NEXT｜機材を選んだら、撮り方を学ぼう。
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: text
+        label: 説明
+        type: text
+      - name: buttonLabel
+        label: ボタン表示
+        type: string
+      - name: url
+        label: リンク先
+        type: string
+      - name: image
+        label: 背景画像
+        type: image
+        options:
+          media: gear_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+  - name: technique_settings
+    label: テクニック｜撮影前に予習 ラッコの撮り方
+    type: file
+    path: data/technique.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: hero
+      label: HERO｜撮影前に予習 ラッコの撮り方
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: タイトル
+        type: text
+      - name: lead
+        label: 説明
+        type: text
+      - name: image
+        label: ヒーロー画像
+        type: image
+        options:
+          media: technique_images
+          path: hero
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+    - name: sectionNav
+      label: ページ内ナビ｜時間・場所・ズーム・設定・動画・作例
+      type: object
+      list:
+        max: 6
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - name: id
+        label: セクションID
+        type: select
+        options:
+          values:
+          - {name: time, label: 時間}
+          - {name: place, label: 場所}
+          - {name: zoom, label: ズーム}
+          - {name: settings, label: 設定}
+          - {name: video, label: 解説動画}
+          - {name: gallery, label: 作例}
+      - name: label
+        label: 表示名
+        type: string
+      - name: sub
+        label: 英字表示
+        type: string
+    - name: time
+      label: 01｜時間｜日が高い時間を狙おう
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - {name: recommendationTitle, label: 目安の小見出し, type: string}
+      - {name: recommendationText, label: 撮影時間の目安, type: string}
+      - name: comparisons
+        label: 時間帯の比較
+        type: object
+        list:
+          max: 2
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - {name: label, label: 英字ラベル, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+        - name: image
+          label: 比較画像
+          type: image
+          options:
+            media: technique_images
+            path: time
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - {name: caption, label: 画像下の補足, type: text}
+      - name: sun
+        label: 日の出・日の入り
+        type: object
+        fields:
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+        - {name: buttonLabel, label: ボタン表示, type: string}
+        - {name: url, label: リンク先, type: string}
+    - name: place
+      label: 02｜場所｜灯台へ向かう遊歩道の左側から
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: items
+        label: 探し方のポイント
+        type: string
+        list: true
+      - name: image
+        label: 場所の画像
+        type: image
+        options:
+          media: technique_images
+          path: place
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - {name: imageCaption, label: 画像キャプション, type: text}
+      - {name: fallbackTitle, label: 見つからないときの見出し, type: string}
+      - {name: fallbackText, label: 見つからないときの説明, type: text}
+    - name: zoom
+      label: 03｜コツ｜慌てず慎重にズーム
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: steps
+        label: 3ステップ
+        type: object
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: '{number} {title}'
+        fields:
+        - {name: number, label: 番号, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+      - {name: tipTitle, label: ポイント見出し, type: string}
+      - {name: tipText, label: ポイント説明, type: text}
+      - name: image
+        label: ズーム説明画像
+        type: image
+        options:
+          media: technique_images
+          path: zoom
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+    - name: settings
+      label: 04｜設定｜ブレない設定を探そう
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - {name: tipTitle, label: 重要ポイント, type: string}
+      - {name: tipText, label: 重要ポイント説明, type: text}
+      - name: comparisons
+        label: シャッター速度比較
+        type: object
+        list:
+          max: 2
+          collapsible:
+            collapsed: true
+            summary: '{shutter} {title}'
+        fields:
+        - {name: shutter, label: シャッター速度, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+        - name: image
+          label: 比較画像
+          type: image
+          options:
+            media: technique_images
+            path: settings
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+      - {name: detailTitle, label: 詳細設定の見出し, type: string}
+      - name: items
+        label: 詳細設定
+        type: object
+        list:
+          max: 8
+          collapsible:
+            collapsed: true
+            summary: '{label} {value}'
+        fields:
+        - {name: label, label: 項目, type: string}
+        - {name: value, label: 目安, type: string}
+        - {name: text, label: 説明, type: text}
+    - name: video
+      label: 05｜解説動画｜YouTube
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: youtubeUrl
+        label: YouTube URL
+        type: string
+        description: youtu.be、youtube.com/watch、YouTube ShortsのURLに対応します。未設定でも公開ページの動画フレームは表示されます。
+      - name: caption
+        label: 動画下の補足
+        type: text
+    - name: gallery
+      label: 06｜作例ギャラリー
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: items
+        label: 作例
+        type: object
+        list:
+          max: 12
+          collapsible:
+            collapsed: true
+            summary: '{caption}'
+        fields:
+        - name: image
+          label: 作例画像
+          type: image
+          required: true
+          options:
+            media: technique_images
+            path: gallery
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - {name: caption, label: キャプション, type: string}
+    - name: next
+      label: NEXT｜ルールも確認する
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
+      - name: links
+        label: 関連ページ
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - {name: label, label: 表示名, type: string}
+        - {name: sub, label: 英字ラベル, type: string}
+        - {name: url, label: リンク先, type: string}
+  - name: manner_settings
+    label: ルール｜浜中町での撮影の心得
+    type: file
+    path: data/manner.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: hero
+      label: HERO｜浜中町での撮影の心得
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: タイトル, type: text}
+      - {name: lead, label: 説明, type: text}
+      - name: image
+        label: ヒーロー画像
+        type: image
+        options:
+          media: manner_images
+          path: hero
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+    - name: opening
+      label: 野生動物との出会いは一期一会
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
+    - name: officialRules
+      label: 01｜浜中町「ラッコ鑑賞時のルール」
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: rules
+        label: 5つの公式ルール
+        type: object
+        list:
+          max: 5
+          collapsible:
+            collapsed: true
+            summary: '{number} {title}'
+        fields:
+        - {name: number, label: 番号, type: string}
+        - name: icon
+          label: アイコン
+          type: select
+          options:
+            values:
+            - {name: boat, label: 船}
+            - {name: food, label: 餌}
+            - {name: sound, label: 音}
+            - {name: water, label: 水面・水中}
+            - {name: drone, label: ドローン}
+        - {name: title, label: ルール, type: text}
+        - {name: text, label: 説明, type: text}
+      - {name: buttonLabel, label: 公式サイトボタン, type: string}
+      - {name: url, label: 公式サイトURL, type: string}
+    - name: safety
+      label: 02｜町内で安全に撮影するために
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: lead, label: 説明, type: text}
+      - name: items
+        label: 安全・撮影マナー
+        type: object
+        list:
+          max: 8
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 説明, type: text}
+    - name: message
+      label: マナーを守って、思い出に残る旅へ。
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
+    - name: next
+      label: PHOTO FIELD GUIDE｜関連ページ
+      type: object
+      fields:
+      - {name: eyebrow, label: 英字見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - {name: text, label: 説明, type: text}
+      - name: image
+        label: 背景画像
+        type: image
+        options:
+          media: manner_images
+          path: next
+          extensions: [jpg, jpeg, png, webp]
+          rename: false
+      - name: links
+        label: 関連ページ
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - {name: label, label: 表示名, type: string}
+        - {name: sub, label: 英字ラベル, type: string}
+        - {name: url, label: リンク先, type: string}
+  - name: guide_articles
+    label: PHOTO GUIDE｜記事・目次カード
+    type: file
+    path: data/guide-articles.json
     format: json
     list: true
     operations:
       delete: false
     fields:
-      - name: date
-        label: 日付
-        type: date
-        required: true
-
-      - name: category
-        label: カテゴリ
-        type: select
-        options:
-          values:
-            - お知らせ
-            - 写真展
-            - フォトガイド
-            - イベント
-            - フォトコンテスト
-
+    - name: id
+      label: 記事ID
+      type: string
+      required: true
+      pattern:
+        regex: ^[a-z0-9-]+$
+        message: 半角英小文字・数字・ハイフンのみで入力してください。
+      description: URLに使用します。公開後は原則変更しません。
+    - name: published
+      label: 公開する
+      type: boolean
+      required: true
+    - name: order
+      label: 表示順
+      type: number
+      required: true
+    - name: eyebrow
+      label: 目次カードの英字見出し
+      type: string
+      required: true
+      description: 例 01 / PHOTO MAP
+    - name: title
+      label: 目次用の記事タイトル
+      type: string
+      required: true
+    - name: cardTitle
+      label: 目次カードのタイトル
+      type: string
+      required: true
+    - name: summary
+      label: 目次カードの概要
+      type: text
+      required: true
+    - name: cover
+      label: 目次カード画像
+      type: image
+      options:
+        media: images
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: icon
+      label: 画像未設定時の文字アイコン
+      type: string
+    - name: blocks
+      label: 記事本文
+      type: block
+      list:
+        collapsible:
+          collapsed: true
+      blockKey: type
+      blocks:
+      - name: richtext
+        component: guide_richtext
+      - name: styled_text
+        component: guide_styled_text
+      - name: image
+        component: guide_image
+      - name: gallery
+        component: guide_gallery
+      - name: map
+        component: guide_map
+      - name: basic_info
+        component: guide_basic_info
+      - name: note
+        component: guide_note
+      - name: checklist
+        component: guide_checklist
+      - name: table
+        component: guide_table
+      - name: faq
+        component: guide_faq
+      - name: links
+        component: guide_links
+      - name: download
+        component: guide_download
+      - name: cards
+        component: guide_cards
+      - name: cta
+        component: guide_cta
+      - name: media_text
+        component: guide_media_text
+      - name: related
+        component: guide_related
+      - name: quote
+        component: guide_quote
+      - name: divider
+        component: guide_divider
+  - name: guide_settings
+    label: PHOTO GUIDE｜目次・PDF設定
+    type: file
+    path: data/guide-settings.json
+    format: json
+    operations:
+      delete: false
+    fields:
+    - name: pageTitle
+      label: PHOTO GUIDEページタイトル
+      type: string
+      required: true
+    - name: pageLead
+      label: ページ上部の説明
+      type: text
+      required: true
+    - name: indexLead
+      label: 目次の説明
+      type: text
+    - name: guidebook
+      label: フォトガイドブック
+      type: object
+      fields:
+      - name: enabled
+        label: PDFダウンロードを公開する
+        type: boolean
+      - name: eyebrow
+        label: 英字見出し
+        type: string
       - name: title
-        label: タイトル
+        label: ガイドブック名
         type: string
-        required: true
-
-      - name: url
-        label: リンク先
+      - name: cardTitle
+        label: 目次カードのタイトル
         type: string
-
+      - name: summary
+        label: 説明
+        type: text
+      - name: cover
+        label: 表紙画像
+        type: image
+        options:
+          media: images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: pdf
+        label: PDFファイル
+        type: file
+        options:
+          media: documents
+          extensions:
+          - pdf
+          rename: false
+      - name: buttonLabel
+        label: ダウンロードボタン表示
+        type: string
+- name: project_settings
+  label: PHOTO PROJECT｜写真活動
+  type: file
+  path: data/project.json
+  format: json
+  operations:
+    delete: false
+  fields:
+  - name: seo
+    label: SEO・ブラウザ表示
+    type: object
+    fields:
+    - name: title
+      label: ページタイトル
+      type: string
+      description: ブラウザのタブに表示するタイトルです。
+    - name: description
+      label: ページ説明
+      type: text
+      description: 検索結果などで使用されるページ説明です。
+  - name: hero
+    label: HERO｜ページ上部
+    type: object
+    fields:
+    - name: eyebrow
+      label: 英字見出し
+      type: string
+    - name: title
+      label: タイトル
+      type: text
+      required: true
+      description: 改行を入れると公開ページにも反映されます。
+    - name: lead
+      label: 説明文
+      type: text
+  - name: emptyMessage
+    label: カードが0件のときの表示
+    type: text
+  - name: cards
+    label: PROJECTカード
+    type: object
+    list:
+      collapsible:
+        collapsed: true
+        summary: '{title}'
+    fields:
+    - name: id
+      label: カードID
+      type: string
+      required: true
+      pattern:
+        regex: ^[a-z0-9][a-z0-9-]*$
+        message: 半角英小文字・数字・ハイフンで入力してください。
+      description: URLの
+    - name: published
+      label: 公開する
+      type: boolean
+      required: true
+    - name: order
+      label: 表示順
+      type: number
+      required: true
+    - name: eyebrow
+      label: 英字見出し
+      type: string
+      description: 例 PHOTO CONTEST
+    - name: title
+      label: タイトル
+      type: string
+      required: true
+    - name: text
+      label: 説明
+      type: text
+    - name: status
+      label: ステータス表示
+      type: string
+      description: 例 COMING SOON、募集中、開催レポート公開中
+    - name: statusTone
+      label: ステータス色
+      type: select
+      options:
+        values:
+        - name: coming-soon
+          label: 予告・準備中（ベージュ）
+        - name: open
+          label: 募集中・開催中（グリーン）
+        - name: report
+          label: 公開・レポート（ブルー）
+        - name: archive
+          label: 終了・過去企画（グレー）
+        - name: neutral
+          label: 標準（グレー）
+    - name: image
+      label: カード画像（任意）
+      type: image
+      description: 未設定なら現在と同じテキストカードになります。16:9程度を推奨します。
+      options:
+        media: images
+        path: 04_project
+        extensions:
+        - jpg
+        - jpeg
+        - png
+        - webp
+        rename: false
+    - name: imageAlt
+      label: 画像の代替テキスト
+      type: string
+    - name: url
+      label: リンク先（任意）
+      type: string
+      description: 未設定ならボタンを表示しません。相対URL・https URLに対応します。
+    - name: buttonLabel
+      label: ボタン表示
+      type: string
+      description: 例 詳しく見る、募集要項を見る、開催レポートを見る
+    - name: external
+      label: 外部サイトとして開く
+      type: boolean
+- name: news
+  label: お知らせ
+  type: file
+  path: data/news.json
+  format: json
+  list: true
+  operations:
+    delete: false
+  fields:
+  - name: date
+    label: 日付
+    type: date
+    required: true
+  - name: category
+    label: カテゴリ
+    type: select
+    options:
+      values:
+      - お知らせ
+      - 写真展
+      - フォトガイド
+      - イベント
+      - フォトコンテスト
+  - name: title
+    label: タイトル
+    type: string
+    required: true
+  - name: url
+    label: リンク先
+    type: string
 settings:
   commit:
     templates:
-      create: "CMS: {path} を追加"
-      update: "CMS: {path} を更新"
-      delete: "CMS: {path} を削除"
+      create: 'CMS: {path} を追加'
+      update: 'CMS: {path} を更新'
+      delete: 'CMS: {path} を削除'
