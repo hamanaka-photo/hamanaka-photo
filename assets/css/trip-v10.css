@@ -16,7 +16,7 @@
   min-height: 46px;
   margin: 9px 0 15px;
   color: var(--v3-text);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -47,14 +47,14 @@
 }
 
 .trip-v9-wear-placeholder span {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .12em;
 }
 
 .trip-v9-wear-placeholder small {
   margin-top: 6px;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 @media (max-width: 1000px) {

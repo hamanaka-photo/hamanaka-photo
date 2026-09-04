@@ -57,7 +57,7 @@
 .trip-v3-nav-card small {
   display: block;
   color: var(--v3-teal);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .08em;
 }
@@ -90,7 +90,7 @@
 .trip-v3-kicker {
   margin: 0 0 6px;
   color: var(--v3-teal);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: .1em;
 }
@@ -104,7 +104,7 @@
 
 .trip-v3-heading > span {
   color: var(--v3-muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -143,7 +143,7 @@
 .trip-v3-airport-note {
   margin: 0 0 24px;
   color: #70818b;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -158,7 +158,7 @@
 .trip-v3-access-label p {
   margin: 0 0 4px;
   color: var(--v3-teal);
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: .1em;
 }
@@ -184,7 +184,7 @@
 
 .trip-v3-flight-code {
   color: #78909a;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .1em;
 }
@@ -210,7 +210,7 @@
 .trip-v3-flight-facts span {
   display: block;
   color: #81939b;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -218,7 +218,7 @@
   display: block;
   margin-top: 3px;
   color: #294b5e;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
@@ -226,7 +226,7 @@
   min-height: 34px;
   margin: 11px 0 0;
   color: #758791;
-  font-size: 9px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -242,7 +242,7 @@
   border-radius: 7px;
   color: #285f61;
   background: #fff;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -269,7 +269,7 @@
 .trip-v3-rental-main > p {
   margin: 0;
   color: var(--v3-text);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -286,7 +286,7 @@
   border-radius: 7px;
   color: #2e6667;
   background: #eef5f3;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
   list-style: none;
@@ -311,7 +311,7 @@
   border-radius: 6px;
   color: #375f6d;
   background: #fff;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -331,7 +331,7 @@
   border-radius: 999px;
   color: #173f5a;
   background: #fff;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .08em;
 }
@@ -350,7 +350,7 @@
   display: grid;
   grid-template-columns: 70px 1fr;
   gap: 8px;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.55;
 }
 
@@ -371,7 +371,7 @@
 .trip-v3-transit p {
   margin: 0;
   color: var(--v3-text);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -413,7 +413,7 @@
   max-width: 650px;
   margin: 12px 0 0;
   color: var(--v3-text);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -448,7 +448,7 @@
 
 .trip-v3-card-heading span {
   color: #7a8c94;
-  font-size: 9px;
+  font-size: 14px;
   text-align: right;
 }
 
@@ -471,7 +471,7 @@
   gap: 12px;
   margin-top: 12px;
   color: #627984;
-  font-size: 9px;
+  font-size: 12px;
 }
 
 .trip-v3-chart-legend span {
@@ -496,7 +496,7 @@
   display: inline-flex;
   margin-top: 13px;
   color: #407276;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -519,14 +519,14 @@
 
 .trip-v3-forecast-date {
   color: #6e828b;
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .trip-v3-forecast-weather {
   margin-top: 5px;
   color: var(--v3-navy);
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -534,7 +534,7 @@
   display: flex;
   gap: 9px;
   margin-top: 5px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -544,7 +544,7 @@
 .trip-v3-forecast-status {
   margin: 12px 0 0;
   color: #7b8b92;
-  font-size: 9px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -575,7 +575,7 @@
   min-height: 46px;
   margin: 9px 0 15px;
   color: var(--v3-text);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -593,7 +593,7 @@
   border-radius: 7px;
   color: #385465;
   background: var(--v3-soft);
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .trip-v3-wear-list li::before {
@@ -630,7 +630,7 @@
   padding: 9px 11px;
   border: 1px solid rgba(255,255,255,.15);
   border-radius: 7px;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.45;
 }
 
@@ -666,7 +666,7 @@
   display: block;
   margin-bottom: 7px;
   color: #294d61;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -680,7 +680,7 @@
   display: block;
   margin-bottom: 5px;
   color: #788b94;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .trip-v3-input,
@@ -693,7 +693,7 @@
   color: #2e4f60;
   background: #fff;
   font: inherit;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .trip-v3-transport {
@@ -721,7 +721,7 @@
   border-radius: 7px;
   color: #526d79;
   background: #fff;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
   cursor: pointer;
 }
@@ -754,14 +754,14 @@
 .trip-v3-summary-main span {
   display: block;
   color: #a9c3cc;
-  font-size: 8px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .trip-v3-summary-main strong {
   display: block;
   margin-top: 4px;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
@@ -779,12 +779,12 @@
 
 .trip-v3-summary-check-heading h4 {
   margin: 0;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .trip-v3-summary-check-heading span {
   color: #bdd7d4;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -802,7 +802,7 @@
 .trip-v3-check-group h5 {
   margin: 0 0 8px;
   color: #c4ded8;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 .trip-v3-check-items {
@@ -815,7 +815,7 @@
   grid-template-columns: 18px 1fr;
   gap: 8px;
   align-items: start;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
 }
@@ -877,7 +877,7 @@
 
 .trip-v3-action-heading span {
   color: #7a8b93;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .trip-v3-action-buttons {
@@ -894,7 +894,7 @@
   color: #365f6b;
   background: #fff;
   font: inherit;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
 }
@@ -909,7 +909,7 @@
   min-height: 20px;
   margin: 10px 0 0;
   color: #617984;
-  font-size: 10px;
+  font-size: 14px;
 }
 
 @media (max-width: 1000px) {
@@ -1009,7 +1009,7 @@
   display: block;
   margin-bottom: 8px;
   color: #6b8089;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: .04em;
 }
@@ -1051,7 +1051,7 @@
   color: #fff;
   background: rgba(19, 52, 72, .94);
   box-shadow: 0 6px 18px rgba(11, 36, 51, .18);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
   line-height: 1.45;
   pointer-events: none;
@@ -1073,7 +1073,7 @@
 
 .trip-v3-check-group h5 {
   margin-bottom: 6px;
-  font-size: 9px;
+  font-size: 14px;
 }
 
 .trip-v3-check-items {
@@ -1083,7 +1083,7 @@
 .trip-v3-check-item {
   grid-template-columns: 16px 1fr;
   gap: 6px;
-  font-size: 9px;
+  font-size: 14px;
   line-height: 1.4;
 }
 
@@ -1219,7 +1219,7 @@
 .trip-v4-access-example p {
   margin: 6px 0 0;
   color: #607781;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -1253,7 +1253,7 @@
   border-radius: 7px;
   color: #fff;
   background: var(--v3-navy);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: .04em;
 }
@@ -1268,7 +1268,7 @@
 .trip-v4-step-head p {
   margin: 5px 0 0;
   color: #6d808a;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -1298,7 +1298,7 @@
   border-radius: 7px;
   color: var(--v3-navy);
   background: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-style: normal;
 }
 
@@ -1309,7 +1309,7 @@
 
 .trip-v4-origin-flow em {
   color: #74858e;
-  font-size: 10px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 800;
 }
@@ -1329,7 +1329,7 @@
 
 .trip-v4-options-title {
   color: var(--v3-navy);
-  font-size: 12px;
+  font-size: 14px;
   white-space: nowrap;
 }
 
@@ -1390,7 +1390,7 @@
 .trip-v4-option-title p {
   margin: 5px 0 0;
   color: #6e8088;
-  font-size: 10px;
+  font-size: 14px;
   line-height: 1.65;
 }
 
@@ -1408,7 +1408,7 @@
 
 .trip-v4-route-flow span {
   color: #35586b;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 900;
   text-align: center;
 }
@@ -1439,7 +1439,7 @@
   color: #2e6667;
   background: #eef5f3;
   border-radius: 7px;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
   list-style: none;
@@ -1475,7 +1475,7 @@
   border-radius: 6px;
   color: #375f6d;
   background: #fff;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -1499,7 +1499,7 @@
 .trip-v4-public-copy p {
   margin: 9px 0 0;
   color: #59717d;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -1585,8 +1585,8 @@
 /* TRIP v8 / climate feature cards */
 .trip-v8-climate-features { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:18px; }
 .trip-v8-climate-feature { padding:20px; border:1px solid var(--v3-line); border-radius:10px; background:#fff; }
-.trip-v8-climate-feature > span { color:var(--v3-teal); font-size:9px; font-weight:900; letter-spacing:.1em; }
+.trip-v8-climate-feature > span { color:var(--v3-teal); font-size:14px; font-weight:900; letter-spacing:.1em; }
 .trip-v8-climate-feature h3 { margin:5px 0 13px; color:var(--v3-navy); font-size:19px; }
 .trip-v8-climate-feature div { display:flex; flex-wrap:wrap; gap:7px; }
-.trip-v8-climate-feature b { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; color:#365d68; background:#eef5f3; font-size:10px; }
+.trip-v8-climate-feature b { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; color:#365d68; background:#eef5f3; font-size:14px; }
 @media (max-width:760px) { .trip-v8-climate-features { grid-template-columns:1fr; } }

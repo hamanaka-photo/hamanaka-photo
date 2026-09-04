@@ -28,7 +28,7 @@
 .trip-plan-actions > div:first-child > p {
   margin: 0 0 5px;
   color: #467a7a;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
   letter-spacing: .1em;
 }
@@ -43,7 +43,7 @@
 .trip-planner-heading > span {
   max-width: 460px;
   color: #647985;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -129,7 +129,7 @@
   margin: 0 0 10px;
   padding: 0;
   color: #173e57;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 900;
 }
 
@@ -143,7 +143,7 @@
   display: block;
   margin-bottom: 6px;
   color: #6b808a;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -157,7 +157,7 @@
   color: #173e57;
   background: #fff;
   font: inherit;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .trip-plan-date-grid input:focus,
@@ -192,7 +192,7 @@
   border-radius: 8px;
   color: #4a6573;
   background: #fff;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -212,7 +212,7 @@
   align-items: center;
   margin-top: 9px;
   color: #2f6f6d;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -222,7 +222,7 @@
   border-radius: 8px;
   color: #607784;
   background: #f5f8f8;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -244,14 +244,14 @@
 
 .trip-plan-summary-list dt {
   color: rgba(255,255,255,.66);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
 .trip-plan-summary-list dd {
   margin: 0;
   color: #fff;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 800;
   line-height: 1.6;
 }
@@ -277,7 +277,7 @@
   display: block;
   margin-bottom: 6px;
   color: #b7ded6;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 900;
   letter-spacing: .1em;
 }
@@ -285,7 +285,7 @@
 .trip-plan-season-note p {
   margin: 0;
   color: #fff;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -305,7 +305,7 @@
   border: 1px solid rgba(255,255,255,.3);
   border-radius: 7px;
   color: #fff;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -341,7 +341,7 @@
 .trip-plan-progress span {
   display: block;
   color: #758891;
-  font-size: 9px;
+  font-size: 14px;
   font-weight: 800;
 }
 
@@ -361,7 +361,7 @@
 .trip-plan-check-card h4 {
   margin: 0 0 12px;
   color: #173e57;
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .trip-plan-check-items {
@@ -375,7 +375,7 @@
   gap: 8px;
   align-items: start;
   color: #536c78;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.5;
   cursor: pointer;
 }
@@ -428,7 +428,7 @@
 .trip-plan-actions > div:first-child > span {
   display: block;
   color: #647985;
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.6;
 }
 
@@ -447,7 +447,7 @@
   color: #173e57;
   background: #fff;
   font: inherit;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 900;
   cursor: pointer;
 }
@@ -468,7 +468,7 @@
   min-height: 1.5em;
   margin: -6px 0 0;
   color: #397b70;
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 800;
 }
 

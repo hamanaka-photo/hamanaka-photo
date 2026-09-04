@@ -183,7 +183,7 @@ a[aria-current="page"]::after {
 
 .field-guide-sequence-card > span {
   color: var(--fgu-teal);
-  font-size: 6px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .08em;
 }
@@ -191,7 +191,7 @@ a[aria-current="page"]::after {
 .field-guide-sequence-card > small {
   margin-top: 4px;
   color: var(--fgu-muted);
-  font-size: 6px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .07em;
 }
@@ -199,7 +199,7 @@ a[aria-current="page"]::after {
 .field-guide-sequence-card > b {
   margin-top: 1px;
   color: var(--fgu-navy);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.3;
 }
 
@@ -267,6 +267,6 @@ a[aria-current="page"]::after {
   }
 
   .field-guide-sequence-card > b {
-    font-size: 11px;
+    font-size: 14px;
   }
 }

@@ -70,7 +70,7 @@
 .guide-menu-eyebrow {
   margin: 0 0 8px;
   color: var(--green);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .14em;
 }
@@ -85,7 +85,7 @@
 .guide-menu-copy > p:not(.guide-menu-eyebrow) {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -94,7 +94,7 @@
   margin-top: auto;
   padding-top: 24px;
   color: var(--blue);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
   transition: transform .2s ease;
 }
@@ -126,7 +126,7 @@
   border-radius: 999px;
   color: #fff;
   background: var(--navy);
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .08em;
 }
@@ -147,7 +147,7 @@
   align-items: center;
   margin-bottom: 34px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 .breadcrumb a:hover {
@@ -178,7 +178,7 @@
   max-width: 660px;
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 1.95;
 }
 
@@ -221,7 +221,7 @@
 
 .guide-richtext {
   color: var(--ink);
-  font-size: 15px;
+  font-size: 16px;
   line-height: 2;
 }
 
@@ -282,7 +282,7 @@
 .guide-gallery-item figcaption {
   margin-top: 10px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -343,7 +343,7 @@
 .guide-map-caption {
   margin: 10px 0 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -380,13 +380,13 @@
 .guide-basic-info-row dt {
   background: #f5f8fa;
   color: var(--navy);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 700;
 }
 
 .guide-basic-info-row dd {
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -417,7 +417,7 @@
 .guide-note p {
   margin: 0;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -468,7 +468,7 @@
   text-align: left;
   color: var(--muted);
   background: #f8fafb;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .guide-table-block th,
@@ -478,7 +478,7 @@
   border-bottom: 1px solid var(--line);
   text-align: left;
   vertical-align: top;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -500,7 +500,7 @@
 .guide-table-note {
   margin: 10px 0 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* FAQ */
@@ -548,7 +548,7 @@
 .guide-faq-answer {
   padding: 0 20px 18px;
   color: var(--muted);
-  font-size: 13px;
+  font-size: 14px;
 }
 
 /* LINKS */
@@ -616,7 +616,7 @@
 .guide-download-copy small {
   margin-top: 3px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 /* CARDS */
@@ -653,7 +653,7 @@
 .guide-info-card-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -661,7 +661,7 @@
   display: inline-block;
   margin-top: 14px;
   color: var(--blue);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -693,7 +693,7 @@
 
 .guide-cta-eyebrow {
   margin: 0 0 6px;
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: .14em;
   opacity: .75;
@@ -708,7 +708,7 @@
 .guide-cta p {
   margin: 0;
   opacity: .86;
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -775,7 +775,7 @@
 .guide-related-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -783,7 +783,7 @@
   display: inline-block;
   margin-top: 10px;
   color: var(--blue);
-  font-size: 10px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -813,7 +813,7 @@
   gap: 8px 14px;
   margin-top: 16px;
   color: var(--muted);
-  font-size: 11px;
+  font-size: 14px;
 }
 
 /* DIVIDER */
@@ -897,7 +897,7 @@
 }
 
 .guide-styled-size-small {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.9;
 }
 
@@ -1058,13 +1058,13 @@
 
 .guide-nav-link small {
   color: var(--muted);
-  font-size: 9px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
 }
 
 .guide-nav-link span {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 700;
 }
 
@@ -1223,7 +1223,7 @@
 .guide-map-placeholder-text {
   margin: 0 0 6px;
   color: var(--muted);
-  font-size: 12px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
