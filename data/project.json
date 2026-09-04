@@ -1,0 +1,59 @@
+{
+  "seo": {
+    "title": "PHOTO PROJECT｜HAMANAKA PHOTO",
+    "description": "浜中町のフォトコンテスト、撮影会、カメラ活動などを紹介するHAMANAKA PHOTO PROJECT。"
+  },
+  "hero": {
+    "eyebrow": "PHOTO PROJECT",
+    "title": "写真で浜中町を、\nもっと面白く。",
+    "lead": "写真展の後もサイトを一過性にしないための受け皿です。企画が決まるまでは予告ページとして公開し、決定後に内容を追加できます。"
+  },
+  "emptyMessage": "現在公開中の写真活動はありません。次の企画を準備中です。",
+  "cards": [
+    {
+      "id": "contest",
+      "published": true,
+      "order": 1,
+      "eyebrow": "PHOTO CONTEST",
+      "title": "フォトコンテスト",
+      "text": "募集要項、応募方法、入賞作品、過去開催のアーカイブを掲載できるスペースです。",
+      "status": "COMING SOON",
+      "statusTone": "coming-soon",
+      "image": "",
+      "imageAlt": "",
+      "url": "",
+      "buttonLabel": "詳しく見る",
+      "external": false
+    },
+    {
+      "id": "photo-walk",
+      "published": true,
+      "order": 2,
+      "eyebrow": "PHOTO WALK",
+      "title": "撮影会・イベント",
+      "text": "町内撮影会、写真講座、展示イベントなどの告知と開催レポートを掲載できます。",
+      "status": "COMING SOON",
+      "statusTone": "coming-soon",
+      "image": "",
+      "imageAlt": "",
+      "url": "",
+      "buttonLabel": "詳しく見る",
+      "external": false
+    },
+    {
+      "id": "camera-activity",
+      "published": true,
+      "order": 3,
+      "eyebrow": "CAMERA ACTIVITY",
+      "title": "浜中町のカメラ活動",
+      "text": "独自のカメラ活動、SNS企画、写真を活用したタウンプロモーションの記録を蓄積できます。",
+      "status": "COMING SOON",
+      "statusTone": "coming-soon",
+      "image": "",
+      "imageAlt": "",
+      "url": "",
+      "buttonLabel": "詳しく見る",
+      "external": false
+    }
+  ]
+}
