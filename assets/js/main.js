@@ -97,7 +97,7 @@
         .site-nav-guide-trigger::after {
           content: "⌄";
           margin-left: 6px;
-          font-size: 10px;
+          font-size: 12px;
           opacity: .72;
         }
 
@@ -155,14 +155,14 @@
           border: 1px solid rgba(255,255,255,.24);
           border-radius: 50%;
           color: #b8ded5;
-          font-size: 9px;
+          font-size: 12px;
           font-weight: 900;
         }
 
         .site-nav-guide-dropdown small {
           display: block;
           color: #9ebbc4;
-          font-size: 7px;
+          font-size: 12px;
           font-weight: 900;
           letter-spacing: .08em;
         }
@@ -170,7 +170,7 @@
         .site-nav-guide-dropdown b {
           display: block;
           margin-top: 2px;
-          font-size: 11px;
+          font-size: 14px;
         }
 
         @media (max-width: 820px) {
