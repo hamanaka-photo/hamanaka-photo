@@ -1,0 +1,213 @@
+  - name: introduction_settings
+    label: INTRODUCTION｜浜中町を知る
+    type: file
+    path: data/introduction.json
+    format: json
+    operations:
+      delete: false
+    fields:
+      - name: seo
+        label: SEO・ブラウザ表示
+        type: object
+        fields:
+          - name: title
+            label: ページタイトル
+            type: string
+          - name: description
+            label: ページ説明
+            type: text
+
+      - name: hero
+        label: HERO｜ページ上部
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: タイトル
+            type: string
+            required: true
+          - name: lead
+            label: 説明文
+            type: text
+          - name: image
+            label: メイン画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: imageAlt
+            label: 画像の代替テキスト
+            type: string
+
+      - name: why
+        label: WHY HAMANAKA｜なぜ浜中町なのか
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+            required: true
+          - name: body
+            label: 本文
+            type: text
+            required: true
+            description: 段落を分ける場合は1行空けて入力します。
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: imageAlt
+            label: 画像の代替テキスト
+            type: string
+
+      - name: subjects
+        label: PHOTO SUBJECTS｜浜中町で撮れるもの
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+            required: true
+          - name: lead
+            label: 説明文
+            type: text
+          - name: items
+            label: 撮影テーマ
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: string
+                required: true
+              - name: text
+                label: 説明
+                type: text
+              - name: image
+                label: 画像
+                type: image
+                options:
+                  media: images
+                  extensions: [jpg, jpeg, png, webp]
+                  rename: false
+              - name: imageAlt
+                label: 画像の代替テキスト
+                type: string
+
+      - name: perspective
+        label: THROUGH THE LENS｜写真だから見える浜中町
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+            required: true
+          - name: body
+            label: 本文
+            type: text
+            required: true
+            description: 段落を分ける場合は1行空けて入力します。
+          - name: image
+            label: 画像
+            type: image
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: imageAlt
+            label: 画像の代替テキスト
+            type: string
+
+      - name: promotion
+        label: TOWN PROMOTION｜写真の取り組み
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+            required: true
+          - name: lead
+            label: 説明文
+            type: text
+          - name: cycle
+            label: 写真から生まれる循環
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{label}"
+            fields:
+              - name: label
+                label: 項目名
+                type: string
+                required: true
+              - name: text
+                label: 補足
+                type: string
+          - name: body
+            label: 取り組み説明
+            type: text
+
+      - name: closing
+        label: START HERE｜次のページへの入口
+        type: object
+        fields:
+          - name: eyebrow
+            label: 英字見出し
+            type: string
+          - name: title
+            label: 見出し
+            type: string
+            required: true
+          - name: lead
+            label: 説明文
+            type: text
+          - name: links
+            label: 誘導カード
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{title}"
+            fields:
+              - name: eyebrow
+                label: 英字見出し
+                type: string
+              - name: title
+                label: タイトル
+                type: string
+                required: true
+              - name: text
+                label: 説明
+                type: text
+              - name: label
+                label: ボタン表示
+                type: string
+              - name: url
+                label: リンク先
+                type: string
+                required: true
