@@ -89,8 +89,6 @@
   color: #fff !important;
 }
 
-/* PHOTO MAP used a sticky white field-guide bar.
-   Force it into the same hero treatment as the other four articles. */
 .field-guide-unified-page .field-guide-nav {
   position: relative !important;
   top: auto !important;
@@ -112,14 +110,6 @@ a[aria-current="page"]::after {
   background: #fff !important;
 }
 
-.field-guide-unified-page
-.field-guide-nav
-.field-guide-spot-button {
-  border-color: rgba(255,255,255,.52) !important;
-  color: var(--fgu-deep) !important;
-  background: #fff !important;
-}
-
 .field-guide-unified-nav a {
   color: #fff !important;
 }
@@ -128,30 +118,56 @@ a[aria-current="page"]::after {
   opacity: 1 !important;
 }
 
+/* Remove the old right-side "find photo spots" CTA on all five guide articles. */
+.field-guide-unified-page .field-guide-spot-button,
+.field-guide-unified-page .gear-v2-field-spot,
+.field-guide-unified-page .tech-v1-field-spot,
+.field-guide-unified-page .manner-v1-field-spot {
+  display: none !important;
+}
+
+/* Use the released space for the five article jump links. */
+.field-guide-unified-page .field-guide-nav-inner,
+.field-guide-unified-page .gear-v2-field-nav-inner,
+.field-guide-unified-page .tech-v1-field-nav-inner,
+.field-guide-unified-page .manner-v1-field-nav-inner {
+  grid-template-columns: auto minmax(0, 1fr) !important;
+}
+
+.field-guide-unified-page .field-guide-links,
+.field-guide-unified-page .gear-v2-field-links,
+.field-guide-unified-page .tech-v1-field-links,
+.field-guide-unified-page .manner-v1-field-links {
+  justify-content: flex-end !important;
+  margin-left: auto;
+}
+
 .field-guide-unified-page [data-guide-article] > section:not(.field-guide-unified-hero):not(.field-guide-sequence) {
   scroll-margin-top: 84px;
 }
 
-/* Compact previous / next navigation */
+/* Compact previous / next navigation aligned to both edges. */
 .field-guide-sequence {
-  padding: 24px 0 28px;
+  padding: 20px 0 24px;
   border-top: 1px solid var(--fgu-line);
   background: var(--fgu-soft);
 }
 
 .field-guide-sequence-inner {
-  width: min(860px, calc(100% - 48px));
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 10px;
+  width: min(var(--max), calc(100% - 48px));
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 18px;
 }
 
 .field-guide-sequence-card {
   display: grid;
-  min-height: 78px;
-  padding: 12px 16px 13px;
+  width: min(100%, 220px);
+  min-height: 62px;
+  padding: 9px 12px 10px;
   border: 1px solid var(--fgu-line);
-  border-radius: 8px;
+  border-radius: 7px;
   background: #fff;
   transition:
     transform .18s ease,
@@ -162,20 +178,20 @@ a[aria-current="page"]::after {
 .field-guide-sequence-card:hover {
   transform: translateY(-1px);
   border-color: #9bb8c0;
-  box-shadow: 0 6px 16px rgba(21, 58, 91, .055);
+  box-shadow: 0 5px 13px rgba(21, 58, 91, .05);
 }
 
 .field-guide-sequence-card > span {
   color: var(--fgu-teal);
-  font-size: 7px;
+  font-size: 6px;
   font-weight: 900;
   letter-spacing: .08em;
 }
 
 .field-guide-sequence-card > small {
-  margin-top: 6px;
+  margin-top: 4px;
   color: var(--fgu-muted);
-  font-size: 7px;
+  font-size: 6px;
   font-weight: 900;
   letter-spacing: .07em;
 }
@@ -183,20 +199,18 @@ a[aria-current="page"]::after {
 .field-guide-sequence-card > b {
   margin-top: 1px;
   color: var(--fgu-navy);
-  font-size: 14px;
-  line-height: 1.35;
+  font-size: 12px;
+  line-height: 1.3;
+}
+
+.field-guide-sequence-card.is-prev {
+  margin-right: auto;
+  text-align: left;
 }
 
 .field-guide-sequence-card.is-next {
+  margin-left: auto;
   text-align: right;
-}
-
-.field-guide-sequence.is-next-only .is-next {
-  grid-column: 2;
-}
-
-.field-guide-sequence.is-prev-only .is-prev {
-  grid-column: 1;
 }
 
 @media (max-width: 760px) {
@@ -216,27 +230,43 @@ a[aria-current="page"]::after {
     font-size: 39px !important;
   }
 
+  .field-guide-unified-page .field-guide-nav-inner,
+  .field-guide-unified-page .gear-v2-field-nav-inner,
+  .field-guide-unified-page .tech-v1-field-nav-inner,
+  .field-guide-unified-page .manner-v1-field-nav-inner {
+    grid-template-columns: 1fr !important;
+  }
+
+  .field-guide-unified-page .field-guide-links,
+  .field-guide-unified-page .gear-v2-field-links,
+  .field-guide-unified-page .tech-v1-field-links,
+  .field-guide-unified-page .manner-v1-field-links {
+    justify-content: center !important;
+    margin-left: 0;
+  }
+
   .field-guide-sequence {
-    padding: 18px 0 22px;
+    padding: 16px 0 19px;
   }
 
   .field-guide-sequence-inner {
-    width: min(100% - 32px, 620px);
-    grid-template-columns: 1fr;
-    gap: 8px;
-  }
-
-  .field-guide-sequence.is-next-only .is-next,
-  .field-guide-sequence.is-prev-only .is-prev {
-    grid-column: 1;
+    width: min(100% - 32px, var(--max));
+    gap: 10px;
   }
 
   .field-guide-sequence-card {
-    min-height: 68px;
-    padding: 10px 13px;
+    width: min(46%, 190px);
+    min-height: 58px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .field-guide-sequence-card {
+    width: min(48%, 168px);
   }
 
-  .field-guide-sequence-card.is-next {
-    text-align: left;
+  .field-guide-sequence-card > b {
+    font-size: 11px;
   }
 }
