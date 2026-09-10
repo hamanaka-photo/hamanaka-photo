@@ -2277,7 +2277,8 @@ content:
         label: 気候の特徴カード
         type: object
         list:
-          max: 4
+          min: 3
+          max: 3
           collapsible:
             collapsed: true
             summary: '{title}'
@@ -2289,6 +2290,12 @@ content:
           label: 見出し
           type: string
           required: true
+        - name: months
+          label: 対象月
+          type: string
+        - name: description
+          label: 短い説明文
+          type: text
         - name: items
           label: 特徴
           type: string
