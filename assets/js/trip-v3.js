@@ -449,9 +449,11 @@
               <article class="trip-v8-climate-feature">
                 <span>${esc(card.season || '')}</span>
                 <h3>${esc(card.title || '')}</h3>
+                ${card.months ? `<p class="trip-v8-climate-months">${esc(card.months)}</p>` : ''}
                 <div>
                   ${(card.items || []).map(item => `<b>${esc(item)}</b>`).join('')}
                 </div>
+                ${card.description ? `<p class="trip-v8-climate-description">${esc(card.description)}</p>` : ''}
               </article>`).join('')}
           </div>` : ''}
         <div class="trip-v3-climate-grid">
