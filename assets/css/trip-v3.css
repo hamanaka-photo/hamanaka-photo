@@ -1029,7 +1029,7 @@
 .trip-v3-chart-hit {
   fill: transparent;
   stroke: transparent;
-  cursor: help;
+  cursor: default;
   outline: none;
 }
 
