@@ -141,12 +141,5 @@
         }
       ]
     }
-  ],
-  "manner": {
-    "eyebrow": "PHOTO MANNER",
-    "title": "撮影マナーを守って楽しみましょう",
-    "text": "自然や地域の方々への思いやりが、素晴らしい景色を未来へつなぎます。",
-    "buttonLabel": "ルールを見る",
-    "url": "guide-article.html?article=manner"
-  }
+  ]
 }
