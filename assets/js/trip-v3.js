@@ -650,7 +650,7 @@
               <span>共有内容にURLは含みません。保存データはこのブラウザ内だけに保存します。</span>
             </div>
             <div class="trip-v3-action-buttons">
-              <button type="button" class="primary" data-v3-save>この端末に保存</button>
+              <button type="button" class="primary" data-v3-save>ブラウザに一時保存</button>
               <button type="button" data-v3-share>シェア</button>
               <button type="button" data-v3-copy>コピー</button>
               <button type="button" data-v3-download>TXT保存</button>
@@ -844,7 +844,7 @@
 
     const markChanged = () => {
       status.textContent = state.savedAt
-        ? '保存後に変更があります。必要ならもう一度「この端末に保存」を押してください。'
+        ? '保存後に変更があります。必要ならもう一度「ブラウザに一時保存」を押してください。'
         : (canStore ? 'まだこの端末には保存していません。' : 'このブラウザではローカル保存を利用できません。');
     };
 

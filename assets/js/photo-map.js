@@ -1069,7 +1069,7 @@
           : ''
       }
 
-      <section class="photo-map-manner-cta">
+      ${settings.manner ? `      <section class="photo-map-manner-cta">
 
         <div class="container">
 
@@ -1120,7 +1120,7 @@
 
         </div>
 
-      </section>`;
+      </section>` : ''}`;
   };
 
   const initInteractions = (
