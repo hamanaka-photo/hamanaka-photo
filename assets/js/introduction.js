@@ -2,206 +2,82 @@
   const root = document.querySelector('[data-introduction-page]');
   if (!root) return;
 
-  const descriptionMeta = document.querySelector('meta[name="description"]');
-
-  const escapeHtml = (value = '') =>
-    String(value).replace(/[&<>"']/g, character => ({
-      '&': '&amp;',
-      '<': '&lt;',
-      '>': '&gt;',
-      '"': '&quot;',
-      "'": '&#039;'
-    }[character]));
-
-  const safeUrl = (value = '') => {
-    const url = String(value || '').trim();
-    if (!url) return '';
-
+  const escapeHtml = value => String(value || '').replace(/[&<>"']/g, character => ({
+    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#039;'
+  }[character]));
+  const safeUrl = value => {
     try {
-      const parsed = new URL(url, window.location.href);
-      return ['http:', 'https:'].includes(parsed.protocol) ? url : '';
-    } catch (error) {
-      return '';
-    }
+      const url = new URL(String(value || ''), window.location.href);
+      return ['http:', 'https:'].includes(url.protocol) ? String(value) : '';
+    } catch (_) { return ''; }
   };
-
+  const paragraphs = items => (Array.isArray(items) ? items : [])
+    .map(text => `<p>${escapeHtml(text)}</p>`).join('');
   const setText = (selector, value) => {
     const node = document.querySelector(selector);
-    if (node && value !== undefined && value !== null && String(value).trim() !== '') {
-      node.textContent = String(value);
-    }
+    if (node && value) node.textContent = value;
+  };
+  const image = (item, className = '') => {
+    const src = safeUrl(item?.image);
+    return src ? `<img class="${className}" src="${escapeHtml(src)}" alt="${escapeHtml(item.alt || item.title || '')}" loading="lazy" decoding="async">` : '';
   };
 
-  const setImage = (selector, image, alt = '') => {
-    const node = document.querySelector(selector);
-    const src = safeUrl(image);
-    if (!node || !src) return;
-    node.src = src;
-    node.alt = alt || '';
+  const renderTrip = trip => {
+    if (!trip) return;
+    setText('#trip-title', trip.title);
+    const lead = document.querySelector('[data-intro-trip-lead]');
+    if (lead && trip.lead) lead.innerHTML = `<div class="intro-copy"><h3>${escapeHtml(trip.lead.title)}</h3><div class="intro-body">${paragraphs(trip.lead.paragraphs)}</div></div><figure class="intro-image">${image(trip.lead)}</figure>`;
+    const points = document.querySelector('[data-intro-trip-points]');
+    if (points && Array.isArray(trip.points)) points.innerHTML = trip.points.map(point => `<article class="intro-trip-point">${image(point)}<div><h3>${escapeHtml(point.title)}</h3>${paragraphs(point.paragraphs)}</div></article>`).join('');
   };
 
-  const setRichText = (selector, html) => {
-    const node = document.querySelector(selector);
-    if (!node || !html) return;
-    node.innerHTML = String(html);
+  const renderLiving = living => {
+    const section = document.querySelector('[data-intro-living]');
+    if (!section || !living) return;
+    section.querySelector('h2').textContent = living.title || '';
+    section.querySelector('.intro-body').innerHTML = paragraphs(living.paragraphs);
+    const figure = section.querySelector('figure');
+    if (figure) figure.innerHTML = image(living);
   };
 
-  const subjectEyebrows = ['WILDLIFE', 'COAST', 'WETLAND', 'LIFE', 'SEASON'];
-
-  const renderSubjects = block => {
+  const renderSubjects = subjects => {
     const grid = document.querySelector('[data-intro-subjects]');
-    const items = Array.isArray(block?.items) ? block.items : [];
-    if (!grid || !items.length) return;
-
-    grid.innerHTML = items.map((item, index) => {
-      const image = safeUrl(item.image);
-      const eyebrow = subjectEyebrows[index] || `SUBJECT ${String(index + 1).padStart(2, '0')}`;
-      return `
-        <article class="intro-subject-card">
-          ${image ? `<img src="${escapeHtml(image)}" alt="${escapeHtml(item.title || '')}" loading="lazy" decoding="async">` : ''}
-          <div>
-            <p class="eyebrow">${escapeHtml(eyebrow)}</p>
-            <h3>${escapeHtml(item.title || '')}</h3>
-            ${item.text ? `<p>${escapeHtml(item.text)}</p>` : ''}
-          </div>
-        </article>`;
-    }).join('');
+    if (!grid || !Array.isArray(subjects)) return;
+    grid.innerHTML = subjects.map(item => `<article class="intro-subject-card">${image(item)}<div><p class="eyebrow">${escapeHtml(item.eyebrow)}</p><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p></div></article>`).join('');
   };
 
-  const renderCycle = block => {
-    const grid = document.querySelector('[data-intro-cycle]');
-    const items = Array.isArray(block?.items) ? block.items : [];
-    if (!grid || !items.length) return;
-
-    grid.innerHTML = items.map(item => {
-      const parts = String(item.text || '').split('｜');
-      const label = parts.shift() || '';
-      const text = parts.join('｜');
-      return `
-        <div class="intro-cycle-item">
-          <strong>${escapeHtml(label)}</strong>
-          <span>${escapeHtml(text)}</span>
-        </div>`;
-    }).join('');
-  };
-
-  const linkMeta = url => {
-    if (/gallery\.html/i.test(url)) return { eyebrow: 'GALLERY', label: 'GALLERYを見る' };
-    if (/guide\.html/i.test(url)) return { eyebrow: 'PHOTO GUIDE', label: 'PHOTO GUIDEを見る' };
-    if (/project\.html/i.test(url)) return { eyebrow: 'PROJECT', label: 'PROJECTを見る' };
-    return { eyebrow: 'LINK', label: '詳しく見る' };
-  };
-
-  const renderLinks = block => {
+  const linkMeta = url => /gallery\.html/i.test(url) ? ['GALLERY', 'GALLERYを見る'] : /guide\.html/i.test(url) ? ['PHOTO GUIDE', 'PHOTO GUIDEを見る'] : ['PROJECT', 'PROJECTを見る'];
+  const renderLinks = links => {
     const grid = document.querySelector('[data-intro-links]');
-    const items = Array.isArray(block?.items) ? block.items : [];
-    if (!grid || !items.length) return;
-
-    grid.innerHTML = items.map(item => {
+    if (!grid || !Array.isArray(links)) return;
+    grid.innerHTML = links.map(item => {
       const url = safeUrl(item.url);
       if (!url) return '';
-      const meta = linkMeta(url);
-      return `
-        <a class="intro-link-card" href="${escapeHtml(url)}">
-          <p class="eyebrow">${escapeHtml(meta.eyebrow)}</p>
-          <h3>${escapeHtml(item.title || '')}</h3>
-          ${item.text ? `<p>${escapeHtml(item.text)}</p>` : ''}
-          <span>${escapeHtml(meta.label)} →</span>
-        </a>`;
+      const [eyebrow, label] = linkMeta(url);
+      return `<a class="intro-link-card" href="${escapeHtml(url)}"><p class="eyebrow">${eyebrow}</p><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p><span>${label} →</span></a>`;
     }).join('');
-  };
-
-  const applyPromotion = block => {
-    if (!block?.body) return;
-
-    const parser = document.createElement('div');
-    parser.innerHTML = block.body;
-
-    const heading = parser.querySelector('h1, h2, h3');
-    const paragraphs = [...parser.querySelectorAll('p')];
-
-    if (heading) setText('[data-intro-promotion-title]', heading.textContent.trim());
-    if (paragraphs[0]) setText('[data-intro-promotion-lead]', paragraphs[0].textContent.trim());
-    if (paragraphs.length > 1) {
-      setText(
-        '[data-intro-promotion-body]',
-        paragraphs.slice(1).map(node => node.textContent.trim()).filter(Boolean).join('\n\n')
-      );
-    }
   };
 
   const applyArticle = article => {
-    if (!article) return;
-
+    const page = article?.introduction;
+    if (!page) return;
     document.title = '浜中町を知る｜HAMANAKA PHOTO';
-    if (descriptionMeta && article.summary) {
-      descriptionMeta.setAttribute('content', article.summary);
-    }
-
+    const description = document.querySelector('meta[name="description"]');
+    if (description && article.summary) description.setAttribute('content', article.summary);
     setText('[data-intro-hero-eyebrow]', article.eyebrow || 'INTRODUCTION');
     setText('[data-intro-hero-title]', article.title);
-    setText('[data-intro-hero-lead]', article.summary);
-    setImage('[data-intro-hero-image]', article.cover, article.title || '浜中町の風景');
-
-    const blocks = Array.isArray(article.blocks) ? article.blocks : [];
-    const mediaBlocks = blocks.filter(block => block?.type === 'media_text');
-    const cardBlocks = blocks.filter(block => block?.type === 'cards');
-    const promotionBlock = blocks.find(block => block?.type === 'styled_text');
-    const cycleBlock = blocks.find(block => block?.type === 'checklist');
-
-    const why = mediaBlocks[0];
-    if (why) {
-      setText('[data-intro-why-title]', why.title);
-      setRichText('[data-intro-why-body]', why.body);
-      setImage('[data-intro-why-image]', why.image, why.alt || why.title || '浜中町の風景');
-    }
-
-    const subjects = cardBlocks[0];
-    if (subjects) {
-      setText('[data-intro-subjects-title]', subjects.title);
-      renderSubjects(subjects);
-    }
-
-    const perspective = mediaBlocks[1];
-    if (perspective) {
-      setText('[data-intro-perspective-title]', perspective.title);
-      setRichText('[data-intro-perspective-body]', perspective.body);
-      setImage(
-        '[data-intro-perspective-image]',
-        perspective.image,
-        perspective.alt || perspective.title || '浜中町の風景'
-      );
-    }
-
-    applyPromotion(promotionBlock);
-    renderCycle(cycleBlock);
-
-    const closing = cardBlocks[1];
-    if (closing) {
-      setText('[data-intro-closing-title]', closing.title);
-      renderLinks(closing);
-    }
+    const heroLead = document.querySelector('[data-intro-hero-lead]');
+    if (heroLead) heroLead.innerHTML = paragraphs(page.heroLead);
+    const heroImage = document.querySelector('[data-intro-hero-image]');
+    if (heroImage && safeUrl(article.cover)) { heroImage.src = article.cover; heroImage.alt = article.title || ''; }
+    renderTrip(page.trip);
+    renderLiving(page.living);
+    renderSubjects(page.subjects);
+    renderLinks(page.links);
   };
 
-  const loadIntroduction = async () => {
-    try {
-      const response = await fetch('data/guide-articles.json', { cache: 'no-cache' });
-      if (!response.ok) throw new Error(`guide-articles.json: ${response.status}`);
-
-      const articles = await response.json();
-      if (!Array.isArray(articles)) throw new Error('guide-articles.json の形式が正しくありません。');
-
-      const introduction = articles.find(item => item && item.id === 'introduction');
-      if (!introduction) throw new Error('INTRODUCTIONデータが見つかりません。');
-
-      applyArticle(introduction);
-      root.classList.add('is-introduction-loaded');
-    } catch (error) {
-      // データが読めない場合も introduction.html 内の初期表示を残します。
-      console.error('INTRODUCTION data could not be loaded.', error);
-      root.classList.add('is-introduction-fallback');
-    }
-  };
-
-  loadIntroduction();
+  fetch('data/guide-articles.json', { cache: 'no-cache' })
+    .then(response => response.ok ? response.json() : Promise.reject(new Error(response.status)))
+    .then(articles => applyArticle(Array.isArray(articles) ? articles.find(item => item?.id === 'introduction') : null))
+    .catch(() => root.classList.add('is-introduction-fallback'));
 })();
