@@ -88,6 +88,29 @@
       ? spot.features.map(String)
       : [];
 
+  const markerTypes = spot => {
+    const types =
+      Array.isArray(spot.markerTypes)
+        ? spot.markerTypes
+        : spot.markerType
+          ? [spot.markerType]
+          : [];
+
+    return [...new Set(
+      types
+        .map(String)
+        .filter(type =>
+          Object.prototype.hasOwnProperty.call(
+            MARKERS,
+            type
+          )
+        )
+    )];
+  };
+
+  const primaryMarkerType = spot =>
+    markerTypes(spot)[0] || 'coast';
+
   const gridCoordinateToPercent = value => {
     const number = Number(value);
 
@@ -104,6 +127,43 @@
   };
 
   const getSpotPosition = spot => {
+    const overrideX =
+      Number(spot.positionOverride?.x);
+
+    const overrideY =
+      Number(spot.positionOverride?.y);
+
+    if (
+      Number.isFinite(overrideX) &&
+      Number.isFinite(overrideY)
+    ) {
+      return {
+        x: overrideX,
+        y: overrideY
+      };
+    }
+
+    const lat = Number(spot.lat);
+    const lng = Number(spot.lng);
+
+    if (
+      Number.isFinite(lat) &&
+      Number.isFinite(lng)
+    ) {
+      return {
+        x: Math.round((
+          60 +
+          164.55920145 * (lng - 145.1700181) +
+          110.77104343 * (lat - 43.0768315)
+        ) * 10) / 10,
+        y: Math.round((
+          61 -
+          6.88187091 * (lng - 145.1700181) -
+          327.50472 * (lat - 43.0768315)
+        ) * 10) / 10
+      };
+    }
+
     const raw =
       String(spot.position || '')
         .trim()
@@ -185,13 +245,7 @@
       : placeholderVisual(spot.name);
 
   const markerClass = spot => {
-    const type =
-      Object.prototype.hasOwnProperty.call(
-        MARKERS,
-        spot.markerType
-      )
-        ? spot.markerType
-        : 'coast';
+    const type = primaryMarkerType(spot);
 
     return `photo-map-marker-${type}`;
   };
@@ -219,6 +273,7 @@
         data-map-y="${escapeHtml(position.y)}"
         data-map-pin="${escapeHtml(spot.id)}"
         data-map-area="${escapeHtml(spot.area || '')}"
+        data-map-types="${escapeHtml(markerTypes(spot).join(','))}"
         data-map-subjects="${escapeHtml(subjectIds(spot).join(','))}"
         data-map-features="${escapeHtml(featureIds(spot).join(','))}"
         aria-label="${escapeHtml(spot.name)}を選択">
@@ -315,6 +370,32 @@
       : '';
   };
 
+  const renderCautions = spot => {
+    const cautions =
+      Array.isArray(spot.cautions)
+        ? spot.cautions
+            .map(String)
+            .map(item => item.trim())
+            .filter(Boolean)
+        : [];
+
+    if (!cautions.length) {
+      return '';
+    }
+
+    return `
+      <div class="photo-spot-cautions">
+        <strong>注意事項・マナー</strong>
+        <ul>
+          ${cautions
+            .map(item =>
+              `<li>${escapeHtml(item)}</li>`
+            )
+            .join('')}
+        </ul>
+      </div>`;
+  };
+
   const renderSelectedSpot = (
     spot,
     subjectMap
@@ -332,6 +413,8 @@
 
     const detailUrl =
       safeUrl(spot.detailUrl);
+
+    const type = primaryMarkerType(spot);
 
     return `
       <article class="photo-map-selected-card">
@@ -354,7 +437,7 @@
             <span
               class="photo-spot-type ${markerClass(spot)}">
               ${escapeHtml(
-                MARKERS[spot.markerType]?.label ||
+                MARKERS[type]?.label ||
                 'スポット'
               )}
             </span>
@@ -376,14 +459,16 @@
               spot.bestSeason
             )}
             ${renderMeta(
-              'おすすめ時間',
-              spot.bestTime
+              '駐車場',
+              spot.parking
             )}
             ${renderMeta(
-              'アクセス',
-              spot.access
+              'トイレ',
+              spot.toilet
             )}
           </div>
+
+          ${renderCautions(spot)}
 
           ${
             detailUrl
@@ -442,14 +527,16 @@
               spot.bestSeason
             )}
             ${renderMeta(
-              '時間',
-              spot.bestTime
+              '駐車場',
+              spot.parking
             )}
             ${renderMeta(
-              'アクセス',
-              spot.access
+              'トイレ',
+              spot.toilet
             )}
           </div>
+
+          ${renderCautions(spot)}
 
           ${
             detailUrl
@@ -704,9 +791,32 @@
           .filter(Boolean)
       )];
 
+    const types =
+      Object.entries(MARKERS)
+        .filter(([id]) =>
+          spots.some(spot =>
+            markerTypes(spot).includes(id)
+          )
+        )
+        .map(([id, marker]) => ({
+          id,
+          label: marker.label,
+          icon: '●'
+        }));
+
+    const usedFeatures =
+      new Set(spots.flatMap(featureIds));
+
+    const features =
+      FEATURE_FILTERS.filter(feature =>
+        usedFeatures.has(feature.id)
+      );
+
     return {
       subjects,
-      areas
+      areas,
+      types,
+      features
     };
   };
 
@@ -787,6 +897,12 @@
                     type="button"
                     data-search-mode="feature">
                     条件で探す
+                  </button>
+
+                  <button
+                    type="button"
+                    data-search-mode="type">
+                    種類で探す
                   </button>
 
                 </div>
@@ -1197,6 +1313,16 @@
             .includes(activeMapFilter);
         }
 
+        if (mapMode === 'type') {
+          return String(
+            element.dataset.mapTypes ||
+            ''
+          )
+            .split(',')
+            .filter(Boolean)
+            .includes(activeMapFilter);
+        }
+
         return String(
           element.dataset.mapSubjects ||
           ''
@@ -1221,6 +1347,11 @@
 
         if (mapMode === 'feature') {
           return featureIds(spot)
+            .includes(activeMapFilter);
+        }
+
+        if (mapMode === 'type') {
+          return markerTypes(spot)
             .includes(activeMapFilter);
         }
 
@@ -1322,7 +1453,10 @@
             }));
       } else if (mapMode === 'feature') {
         filters =
-          FEATURE_FILTERS;
+          mapFilterData.features;
+      } else if (mapMode === 'type') {
+        filters =
+          mapFilterData.types;
       } else {
         filters =
           mapFilterData.subjects
@@ -1369,7 +1503,7 @@
 
     const setMapMode = mode => {
       mapMode =
-        ['subject', 'area', 'feature']
+        ['subject', 'area', 'feature', 'type']
           .includes(mode)
           ? mode
           : 'subject';

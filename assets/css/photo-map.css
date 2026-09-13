@@ -609,6 +609,29 @@
   font-weight: 700;
 }
 
+.photo-spot-cautions {
+  margin-top: 15px;
+  padding: 13px 15px;
+  border-radius: 10px;
+  background: #f4f8fa;
+  color: var(--navy);
+}
+
+.photo-spot-cautions > strong {
+  display: block;
+  font-size: 13px;
+}
+
+.photo-spot-cautions ul {
+  margin: 7px 0 0;
+  padding-left: 1.25em;
+}
+
+.photo-spot-cautions li {
+  font-size: 12px;
+  line-height: 1.65;
+}
+
 .photo-map-empty {
   margin: 0;
   padding: 30px;
@@ -2089,4 +2112,3 @@
     font-size: 12px;
   }
 }
-

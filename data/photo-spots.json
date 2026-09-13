@@ -1,171 +1,192 @@
 [
   {
-    "id": "kiritappu-cape",
-    "published": true,
-    "order": 1,
-    "name": "霧多布岬",
-    "area": "霧多布",
-    "description": "断崖と灯台、広がる太平洋が魅力の絶景スポット。",
-    "markerType": "coast",
-    "subjects": [
-      {
-        "id": "coast",
-        "note": "岬・灯台・海岸風景"
-      },
-      {
-        "id": "sunset",
-        "note": "夕景"
-      }
-    ],
-    "features": [
-      "beginner",
-      "parking"
-    ],
-    "bestSeason": "5〜10月",
-    "bestTime": "夕方",
-    "access": "車で約40分",
-    "position": "60,61",
-    "x": 60,
-    "y": 72,
-    "detailUrl": "https://maps.app.goo.gl/SgEYqvbxA687csa96"
+    "id": "SPOT-013", "published": true, "order": 1, "name": "霧多布岬", "area": "霧多布エリア",
+    "description": "浜中町を代表する景勝地。高さ約40mの岬から太平洋を見渡せ、赤い灯台がシンボルです。朝日は特に印象的で、海上では野生のラッコが見られることもあります。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "岬／太平洋／灯台／海岸景観"}, {"id": "sunrise", "note": "朝日は特に印象的"}, {"id": "otter", "note": "野生のラッコが見られることもあります"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "近隣あり",
+    "cautions": ["夏でも防風・防寒対策", "夏は虫よけ推奨", "ラッコ観察はマナー厳守", "混雑時は霧多布岬展望台側の駐車場も利用可"],
+    "lat": 43.076831, "lng": 145.170018
   },
   {
-    "id": "azechi-cape",
-    "published": true,
-    "order": 2,
-    "name": "アゼチの岬",
-    "area": "霧多布",
-    "description": "なだらかな岬と朝日のコントラストが美しい場所。",
-    "markerType": "coast",
-    "subjects": [
-      {
-        "id": "coast",
-        "note": "岬・海岸風景"
-      },
-      {
-        "id": "sunrise",
-        "note": "朝景"
-      }
-    ],
-    "features": [
-      "beginner",
-      "parking"
-    ],
-    "bestSeason": "4〜9月",
-    "bestTime": "朝",
-    "access": "車で約35分",
-    "position": "52,64",
-    "x": 69,
-    "y": 61
+    "id": "SPOT-014", "published": true, "order": 2, "name": "アゼチの岬展望台", "area": "霧多布エリア",
+    "description": "霧多布の町並みと海を見渡せる岬の展望スポット。正面の小島や海岸線を望め、夕景の撮影場所としても知られています。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "海／岬／昆布漁"}, {"id": "sunset", "note": "夕景"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "あり",
+    "cautions": ["昆布漁の操業日は天候で変動", "トイレは季節により閉鎖の場合あり"],
+    "lat": 43.068576, "lng": 145.12696
   },
   {
-    "id": "biwase-observatory",
-    "published": true,
-    "order": 3,
-    "name": "琵琶瀬展望台",
-    "area": "琵琶瀬",
-    "description": "湿原を一望できる展望台。夕景もおすすめ。",
-    "markerType": "observatory",
-    "subjects": [
-      {
-        "id": "flowers",
-        "note": "湿原景観"
-      },
-      {
-        "id": "sunset",
-        "note": "夕景"
-      }
-    ],
-    "features": [
-      "beginner",
-      "parking"
-    ],
-    "bestSeason": "5〜10月",
-    "bestTime": "夕方",
-    "access": "車で約30分",
-    "position": "40,72",
-    "x": 59,
-    "y": 51
+    "id": "SPOT-009", "published": true, "order": 3, "name": "琵琶瀬展望台", "area": "霧多布エリア",
+    "description": "霧多布湿原を高台から一望できる展望台。湿原の中央を蛇行する琵琶瀬川と、太平洋まで続く広い景色を見渡せます。",
+    "markerTypes": ["observatory", "wetland"],
+    "subjects": [{"id": "flowers", "note": "湿原／河川"}, {"id": "coast", "note": "太平洋"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "あり",
+    "cautions": ["周辺のエゾシカに注意", "道路への飛び出しに注意"],
+    "lat": 43.045353, "lng": 145.069671
   },
   {
-    "id": "hichirippu-marsh",
-    "published": true,
-    "order": 4,
-    "name": "火散布沼",
-    "area": "火散布",
-    "description": "渡り鳥の宝庫。タンチョウとの出会いも。",
-    "markerType": "wildlife",
-    "subjects": [
-      {
-        "id": "crane",
-        "note": "タンチョウなど"
-      },
-      {
-        "id": "wild-birds",
-        "note": "野鳥"
-      }
-    ],
-    "features": [
-      "parking"
-    ],
-    "bestSeason": "3〜11月",
-    "bestTime": "朝",
-    "access": "車で約25分",
-    "position": "26,72",
-    "x": 24,
-    "y": 26
+    "id": "SPOT-006", "published": true, "order": 4, "name": "涙岬展望台", "area": "散布エリア",
+    "description": "太平洋に面した断崖と海岸景観を望む岬。断崖の地形と海、波がつくる荒々しい景色が見どころです。",
+    "markerTypes": ["observatory"],
+    "subjects": [{"id": "coast", "note": "断崖／海／岬／遊歩道"}],
+    "features": ["parking"], "bestSeason": "夏", "parking": "あり", "toilet": "なし",
+    "cautions": ["強風、足元に注意", "遊歩道内から撮影"],
+    "lat": 42.9938884, "lng": 145.009307
   },
   {
-    "id": "chanai",
-    "published": true,
-    "order": 5,
-    "name": "茶内周辺",
-    "area": "茶内",
-    "description": "牧草地と海、野生動物など多彩な被写体に出会える。",
-    "markerType": "wetland",
-    "subjects": [
-      {
-        "id": "pasture",
-        "note": "牧草地・酪農景観"
-      },
-      {
-        "id": "wild-birds",
-        "note": "野鳥など"
-      }
-    ],
-    "features": [
-      "parking"
-    ],
-    "bestSeason": "4〜10月",
-    "bestTime": "昼〜夕方",
-    "access": "車で約15分",
-    "position": "29,45",
-    "x": 28,
-    "y": 46
+    "id": "SPOT-011", "published": true, "order": 5, "name": "琵琶瀬木道", "area": "霧多布エリア",
+    "description": "霧多布湿原の中へ伸びる木道。湿原を歩きながら季節の草花や野鳥を近くで見ることができ、夏は花の景色が広がります。",
+    "markerTypes": ["wetland"],
+    "subjects": [{"id": "flowers", "note": "湿原／花"}, {"id": "wild-birds", "note": "野鳥"}],
+    "features": ["parking"], "bestSeason": "夏、秋", "parking": "あり", "toilet": "なし",
+    "cautions": ["木道から外れない", "三脚使用時は通行に配慮"],
+    "lat": 43.064962, "lng": 145.084151
   },
   {
-    "id": "kiritappu-wetland",
-    "published": true,
-    "order": 6,
-    "name": "霧多布湿原",
-    "area": "霧多布",
-    "description": "湿原の景観や野鳥などを楽しめるスポット。",
-    "markerType": "wetland",
-    "subjects": [
-      {
-        "id": "flowers",
-        "note": "湿原・季節の花"
-      },
-      {
-        "id": "wild-birds",
-        "note": "野鳥"
-      }
-    ],
-    "features": [
-      "beginner"
-    ],
-    "position": "40,59",
-    "x": 46,
-    "y": 33
+    "id": "SPOT-008", "published": true, "order": 6, "name": "奥琵琶瀬野鳥公園", "area": "霧多布エリア",
+    "description": "霧多布湿原の奥琵琶瀬地区にある野鳥観察スポット。野鳥観察小屋も用意されています。湿原や水辺の景色とともに、さまざまな野鳥を観察できます。",
+    "markerTypes": ["wildlife", "wetland"],
+    "subjects": [{"id": "wild-birds", "note": "野鳥／野生動物"}, {"id": "flowers", "note": "湿原"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "なし",
+    "cautions": ["木道から外れない", "木道入口の鹿柵を外して入場。外したら元に戻す"],
+    "lat": 43.0553125, "lng": 145.0723071
+  },
+  {
+    "id": "SPOT-003", "published": true, "order": 7, "name": "北太平洋シーサイドライン海岸", "area": "酪農地帯・海沿い",
+    "description": "浜中町の海岸線を走る北太平洋シーサイドライン。海、岬、湿原、丘陵など、移動しながら景色が次々と変わるドライブルートです。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "海岸線／丘陵／太平洋"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "近隣候補あり", "toilet": "通過点にあり",
+    "cautions": ["安全に停車できる場所から撮影", "濃霧、カーブに注意", "エゾシカの飛び出し注意"],
+    "lat": 43.1538145, "lng": 145.2385944
+  },
+  {
+    "id": "SPOT-021", "published": true, "order": 8, "name": "なぎさのドライブウェイ", "area": "霧多布エリア",
+    "description": "霧多布近くの砂浜を走れることで知られる場所。海と砂浜が近く、開放感のある海岸風景を楽しめます。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "海岸／砂浜／ドライブ景観"}],
+    "features": [], "bestSeason": "通年", "parking": "なし", "toilet": "なし",
+    "cautions": ["潮位、路面、高波に注意", "砂浜の状態が悪い時は無理に進入しない", "貝殻によるタイヤのパンクに注意"],
+    "lat": 43.1002017, "lng": 145.1097088,
+    "detailUrl": "https://www.google.com/maps/place/%E3%81%AA%E3%81%8E%E3%81%95%E3%81%AE%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A6%E3%82%A7%E3%82%A4/"
+  },
+  {
+    "id": "SPOT-002", "published": true, "order": 9, "name": "羨古丹駐車公園", "area": "酪農地帯・海沿い",
+    "description": "北太平洋シーサイドライン沿いにある駐車公園。羨古丹の海岸と起伏のある海岸線、太平洋を見渡せます。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "太平洋／海岸線"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり（同地点）", "toilet": "なし",
+    "cautions": ["トイレや売店はない"],
+    "lat": 43.1496004, "lng": 145.1760919
+  },
+  {
+    "id": "SPOT-005", "published": true, "order": 10, "name": "火散布橋", "area": "散布エリア",
+    "description": "火散布の港と火散布沼を見渡せる橋。夏の昆布漁の時期には、漁を終えて港へ戻る船が見られることがあり、夕景も楽しめます。",
+    "markerTypes": ["coast"],
+    "subjects": [{"id": "coast", "note": "漁港／火散布沼／昆布漁"}, {"id": "sunset", "note": "夕景"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり（近隣）", "toilet": "なし",
+    "cautions": ["昆布漁の出漁日、時間は変動（https://www.instagram.com/chirippuseinenbu/ にて告知あり）", "橋や道路で通行の妨げにならない"],
+    "lat": 43.0312095, "lng": 145.0247668
+  },
+  {
+    "id": "SPOT-018", "published": true, "order": 11, "name": "恵茶人沼", "area": "酪農地帯・海沿い",
+    "description": "浜中町東部にある湖沼と湿地。静かな水辺と草地が広がり、季節によって野鳥の姿が見られることもあります。",
+    "markerTypes": ["wetland"],
+    "subjects": [{"id": "flowers", "note": "湖沼／湿原景観"}, {"id": "wild-birds", "note": "野鳥"}],
+    "features": [], "bestSeason": "通年", "parking": "なし", "toilet": "なし",
+    "cautions": ["放牧地などの私有地に入らない"],
+    "lat": 43.16071, "lng": 145.25167
+  },
+  {
+    "id": "SPOT-020", "published": true, "order": 12, "name": "藻散布沼", "area": "散布エリア",
+    "description": "火散布沼の南側にある湖沼。周囲の湿地や水辺の景色が広がり、季節によって水鳥が見られることもあります。",
+    "markerTypes": ["wetland"],
+    "subjects": [{"id": "flowers", "note": "湖沼／湿原"}, {"id": "wild-birds", "note": "野鳥"}],
+    "features": [], "bestSeason": "通年", "parking": "なし", "toilet": "なし",
+    "cautions": ["漁業作業の妨げにならない"],
+    "lat": 43.0189, "lng": 145.0125, "detailUrl": "https://maps.app.goo.gl/2vCvFeUk16zSHmhi9"
+  },
+  {
+    "id": "SPOT-019", "published": true, "order": 13, "name": "霧多布岬展望台", "area": "霧多布エリア",
+    "description": "霧多布岬と周辺の海岸線を高台から見渡せる展望台。岬全体の形や太平洋を少し離れた場所から眺められます。",
+    "markerTypes": ["observatory"],
+    "subjects": [{"id": "coast", "note": "展望／海岸線／霧多布岬"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "あり（霧多布岬展望台）",
+    "cautions": ["トイレは季節により閉鎖の場合あり"],
+    "lat": 43.0827188, "lng": 145.1609571, "detailUrl": "https://maps.app.goo.gl/KbhTyeeCTLsoEd4o9"
+  },
+  {
+    "id": "SPOT-017", "published": true, "order": 14, "name": "霧多布湿原センター", "area": "霧多布エリア",
+    "description": "霧多布湿原の自然や見どころを紹介するネイチャーセンター。館内の展望スペースから湿原を見渡せ、撮影前の情報収集にも便利です。",
+    "markerTypes": ["observatory"],
+    "subjects": [{"id": "flowers", "note": "湿原／展望／自然情報"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり", "toilet": "あり",
+    "cautions": ["開館時間、休館日はサイトやSNSで事前確認"],
+    "lat": 43.086206, "lng": 145.060107
+  },
+  {
+    "id": "SPOT-007", "published": true, "order": 15, "name": "立岩展望台", "area": "散布エリア",
+    "description": "涙岬の近くにある、海から立ち上がる岩が印象的な景勝地。断崖と波、立岩がつくる太平洋岸らしい景色を楽しめます。",
+    "markerTypes": ["observatory"],
+    "subjects": [{"id": "coast", "note": "海／断崖／波"}],
+    "features": ["parking"], "bestSeason": "夏", "parking": "あり", "toilet": "なし",
+    "cautions": ["遊歩道から撮影"],
+    "lat": 42.995763, "lng": 145.0126378
+  },
+  {
+    "id": "SPOT-010", "published": true, "order": 16, "name": "花・すすきの群生地", "area": "霧多布エリア",
+    "description": "霧多布湿原で季節の花やすすきが広がる場所。時期によって湿原の色や草花の表情が大きく変わります。",
+    "markerTypes": ["wetland"],
+    "subjects": [{"id": "flowers", "note": "花／すすき／湿原景観"}],
+    "features": ["parking"], "bestSeason": "", "parking": "あり", "toilet": "なし",
+    "cautions": ["群生地に入らない", "花を摘まない", "決められた場所から撮影"],
+    "lat": 43.071367, "lng": 145.087571
+  },
+  {
+    "id": "SPOT-004", "published": true, "order": 17, "name": "ポロト沼", "area": "酪農地帯・海沿い",
+    "description": "浜中町東部にある小さな湖沼。周囲の湿地や草地とあわせて静かな水辺の景色が広がり、水鳥が見られることもあります。",
+    "markerTypes": ["wetland"],
+    "subjects": [{"id": "flowers", "note": "湖沼／湿原"}, {"id": "wild-birds", "note": "水鳥"}],
+    "features": [], "bestSeason": "夏、秋、冬", "parking": "なし", "toilet": "なし",
+    "cautions": ["私有地に入らない", "野鳥に近づきすぎない"],
+    "lat": 43.1466789, "lng": 145.144391
+  },
+  {
+    "id": "SPOT-001", "published": true, "order": 18, "name": "茶内酪農展望台", "area": "酪農地帯・海沿い",
+    "description": "浜中町らしい酪農地帯を広く見渡せる展望スポット。牧草地と広い空が広がり、夕景や星空の撮影にも向いています。",
+    "markerTypes": ["observatory"],
+    "subjects": [{"id": "pasture", "note": "酪農風景"}, {"id": "sunset", "note": "夕景"}, {"id": "stars", "note": "星空"}],
+    "features": ["parking"], "bestSeason": "夏", "parking": "あり", "toilet": "あり",
+    "cautions": ["農地、私有地に入らない", "立入可能な場所から撮影"],
+    "lat": 43.1530997, "lng": 145.0528315
+  },
+  {
+    "id": "SPOT-012", "published": true, "order": 19, "name": "ラッコ撮影ポイント", "area": "霧多布エリア",
+    "description": "霧多布岬周辺では、野生のラッコが見られることがあります。岬の高台から海面を探すため、双眼鏡や望遠レンズがあると観察しやすくなります。",
+    "markerTypes": ["wildlife"],
+    "subjects": [{"id": "otter", "note": "ラッコ"}, {"id": "coast", "note": "海"}, {"id": "wild-birds", "note": "海鳥"}],
+    "features": ["parking"], "bestSeason": "通年", "parking": "あり（霧多布岬）", "toilet": "あり（霧多布岬展望台）",
+    "cautions": ["浜中町のラッコ鑑賞ルールを守る", "ドローン禁止", "遊歩道の外に出ない"],
+    "lat": 43.078215, "lng": 145.164802
+  },
+  {
+    "id": "SPOT-015", "published": true, "order": 20, "name": "やちぼうず木道", "area": "霧多布エリア",
+    "description": "霧多布湿原センター近くの木道。ヤチボウズや季節の草花、野鳥など、湿原の景色を近くで楽しめます。",
+    "markerTypes": ["wetland", "wildlife"],
+    "subjects": [{"id": "flowers", "note": "湿原／やちぼうず"}, {"id": "wild-birds", "note": "野鳥"}],
+    "features": ["parking"], "bestSeason": "夏、秋、冬", "parking": "あり（霧多布湿原センター）", "toilet": "あり",
+    "cautions": ["木道から外れない"],
+    "lat": 43.085073, "lng": 145.061246
+  },
+  {
+    "id": "SPOT-016", "published": true, "order": 21, "name": "MGロード", "area": "霧多布エリア",
+    "description": "霧多布湿原を約2kmにわたって縦断する道路。道路の両側に湿原が広がり、季節の草花やエゾシカなどの野生動物に出会うこともあります。",
+    "markerTypes": ["wetland", "wildlife"],
+    "subjects": [{"id": "flowers", "note": "湿原"}, {"id": "ezo-deer", "note": "鹿"}],
+    "features": [], "bestSeason": "夏、秋", "parking": "なし", "toilet": "なし",
+    "cautions": ["鹿の飛び出しに注意"],
+    "lat": 43.082901, "lng": 145.07899
   }
 ]
