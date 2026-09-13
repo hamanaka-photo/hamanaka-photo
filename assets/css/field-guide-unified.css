@@ -261,6 +261,22 @@ a[aria-current="page"]::after {
   }
 }
 
+/* Keep the PHOTO MAP visible near the first mobile viewport. */
+@media (max-width: 760px) {
+  .field-guide-unified-page
+  .field-guide-unified-hero.photo-map-hero {
+    min-height: 360px !important;
+  }
+
+  .field-guide-unified-page
+  .field-guide-unified-hero
+  .photo-map-hero-inner {
+    min-height: 280px !important;
+    padding-top: 30px !important;
+    padding-bottom: 30px !important;
+  }
+}
+
 @media (max-width: 480px) {
   .field-guide-sequence-card {
     width: min(48%, 168px);
