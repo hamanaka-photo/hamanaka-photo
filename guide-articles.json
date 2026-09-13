@@ -1,0 +1,386 @@
+[
+  {
+    "id": "introduction",
+    "published": false,
+    "order": 0,
+    "eyebrow": "INTRODUCTION",
+    "title": "なぜ、浜中町を撮るのか。",
+    "cardTitle": "INTRODUCTION｜浜中町を知る",
+    "summary": "北海道東部、太平洋に面した浜中町。海から湿原、牧草地まで、町全体に自然が広がっています。",
+    "cover": "assets/images/01_home/01_HOME.webp",
+    "icon": "INTRO",
+    "introduction": {
+      "heroLead": ["北海道東部、太平洋に面した浜中町。", "海から湿原、牧草地まで、町全体に自然が広がっています。", "カメラを持って、ゆっくり町をめぐってみてください。"],
+      "trip": {
+        "title": "浜中町で撮る、4つの楽しさ。",
+        "lead": { "title": "町をめぐるだけで、景色が変わる。", "paragraphs": ["太平洋に突き出す岬、霧多布湿原、広い牧草地、漁港や昆布干場。", "車を少し走らせるだけで、景色が変わります。道の先に海が見えたり、空が大きく開けたり、牧草地の向こうに生きものを見つけたり。", "町をめぐっている時間そのものが、撮影の時間になります。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/01.webp", "alt": "浜中町の岬と海の風景" },
+        "points": [
+          { "title": "頑張りすぎなくても、いい景色に出会える。", "paragraphs": ["絶景を見るために、必ずしも山に登ったり、長い距離を歩いたりする必要はありません。", "車で町をめぐりながら、岬や湿原、海、牧草地へ。少し車を停めて景色を眺めたり、気になった場所でカメラを構えたり。休みながら、自分のペースで写真を楽しめます。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/02.webp", "alt": "浜中町の海辺の風景" },
+          { "title": "思いがけない出会いがある。", "paragraphs": ["浜中町の海には、野生のラッコが暮らしています。湿原ではタンチョウや野鳥。町を走っていると、エゾシカやキタキツネに出会うこともあります。", "海を撮るつもりで出かけた日に、途中で生きものに出会う。そんな予定外の一枚も、浜中町で撮る楽しさです。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/04.webp", "alt": "浜中町の野生動物" }
+        ]
+      },
+      "living": { "title": "暮らすように旅して、撮る。", "paragraphs": ["朝の海を撮って、町でひと休みして、午後は湿原へ。夕方になったら、また海へ行ってみる。", "天気が変われば予定を変えて、その日の光や風に合わせて撮る。", "何日か滞在しながら町をめぐっていると、少しずつお気に入りの場所が増えていきます。", "急いでたくさんの場所を回るより、のんびり過ごしながら写真を撮る。浜中町には、そんな旅の仕方がよく似合います。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/08.webp", "alt": "浜中町の海の風景" },
+      "subjects": [
+        { "eyebrow": "WILDLIFE", "title": "野生動物", "text": "野生のラッコをはじめ、タンチョウ、エゾシカ、キタキツネ、さまざまな野鳥。町の中をめぐるだけでも、生きものとの出会いがあります。", "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/04.webp" },
+        { "eyebrow": "COAST", "title": "海と岬", "text": "太平洋、霧多布岬、断崖、灯台、波。晴れた日、霧の日、朝夕の光で、同じ場所でも景色は大きく変わります。", "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/01.webp" },
+        { "eyebrow": "WETLAND", "title": "湿原と花", "text": "霧多布湿原を彩る季節の花、霧、空、野鳥。広い景色にも、足元の小さな風景にも被写体があります。", "image": "assets/images/01_home/01_HOME.webp" },
+        { "eyebrow": "LIFE", "title": "暮らしと産業", "text": "酪農、昆布漁、港、牧草地。町の日常にも、カメラを向けたくなる風景があります。", "image": "assets/images/01_home/04_PROJECT.webp" }
+      ],
+      "links": [
+        { "title": "写真を見る", "text": "浜中町で撮影された作品から、町の景色や生きものを見てみる。", "url": "gallery.html" },
+        { "title": "撮りに行く", "text": "撮影場所、旅行準備、機材、撮影方法やルールを確認する。", "url": "guide.html" },
+        { "title": "写真の取り組みを見る", "text": "写真展、撮影会、フォトコンテストなど、浜中町で行われている写真の取り組みを見る。", "url": "project.html" }
+      ]
+    }
+  },
+  {
+    "id": "photo-map",
+    "published": true,
+    "order": 1,
+    "eyebrow": "01 / PHOTO MAP",
+    "title": "フォトマップ",
+    "cardTitle": "撮影スポットを探す",
+    "summary": "「どこで何が撮れるか」を、地図や写真、周辺情報とあわせて案内します。",
+    "cover": "assets/images/map.webp",
+    "icon": "MAP",
+    "blocks": [
+      {
+        "type": "richtext",
+        "body": "<h2>浜中町の撮影スポットを探す</h2><p>「どこで何が撮れるか」を地図と写真で分かりやすく案内するためのページです。撮影地点、駐車・立入情報、季節など、現地で役立つ情報を整理して掲載できます。</p>"
+      },
+      {
+        "type": "cards",
+        "title": "主なエリア",
+        "items": [
+          {
+            "title": "霧多布岬周辺",
+            "text": "海・野生動物など。詳細情報を入力します。"
+          },
+          {
+            "title": "霧多布湿原周辺",
+            "text": "湿原・花・野鳥など。詳細情報を入力します。"
+          },
+          {
+            "title": "浜中町の風景",
+            "text": "酪農・海岸・朝夕景など。詳細情報を入力します。"
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "tone": "info",
+        "title": "掲載情報について",
+        "text": "撮影地点や駐車、立入に関する情報は、実際の運用状況を確認しながら更新してください。"
+      }
+    ]
+  },
+  {
+    "id": "trip",
+    "published": true,
+    "order": 2,
+    "eyebrow": "02 / PREPARATION",
+    "title": "撮影旅行の準備",
+    "cardTitle": "旅の準備をする",
+    "summary": "アクセス、現地での移動、季節、服装、宿泊、持ち物など、浜中町を訪れる前に確認したい情報をまとめます。",
+    "cover": "assets/images/trip.webp",
+    "icon": "TRIP",
+    "blocks": [
+      {
+        "type": "richtext",
+        "body": "<h2>浜中町へ来る前に</h2><p>撮影旅行の前に確認しておきたい情報を一か所にまとめるページです。旅程づくりから現地での撮影準備まで、必要な情報を順番に追加できます。</p>"
+      },
+      {
+        "type": "checklist",
+        "title": "事前に確認したいこと",
+        "items": [
+          {
+            "text": "浜中町へのアクセス"
+          },
+          {
+            "text": "現地での移動方法"
+          },
+          {
+            "text": "季節ごとの気温・服装"
+          },
+          {
+            "text": "宿泊・食事情報へのリンク"
+          },
+          {
+            "text": "撮影に必要な持ち物"
+          }
+        ]
+      },
+      {
+        "type": "richtext",
+        "body": "<p>本文はこちら</p>"
+      },
+      {
+        "type": "styled_text",
+        "body": "<p>装飾テキストはこちら</p>",
+        "font": "serif",
+        "size": "xlarge",
+        "color": "navy",
+        "weight": "bold",
+        "align": "center",
+        "background": "blue-soft",
+        "spacing": "compact"
+      },
+      {
+        "type": "gallery",
+        "title": "画像ギャラリー",
+        "columns": "3",
+        "items": [
+          {
+            "image": "assets/images/20250703-1450-432 mm-1-200 秒 (f - 8.0)-3.jpg",
+            "caption": "キャプション1"
+          },
+          {
+            "image": "assets/images/20250720-1842-268 mm-1-125 秒 (f - 8.0).jpg",
+            "caption": "キャプション2"
+          },
+          {
+            "image": "assets/images/20250720-1839-570 mm-1-125 秒 (f - 8.0).jpg",
+            "caption": "キャプション3"
+          },
+          {
+            "image": "assets/images/20250608-1536-800 mm-1-1000 秒 (f - 9.0).jpg",
+            "caption": "キャプション4"
+          }
+        ]
+      },
+      {
+        "type": "map",
+        "title": "Googleマップ",
+        "url": "https://www.google.com/maps/d/u/0/embed?mid=17cRFMC4vh6wYBfq5p3xiBvENDqWqmcc&ehbc=2E312F",
+        "caption": "補足説明",
+        "size": "large",
+        "openUrl": "https://www.google.com/maps/d/u/0/edit?hl=ja&mid=17cRFMC4vh6wYBfq5p3xiBvENDqWqmcc&ll=43.07396912911458%2C145.1153370111078&z=15"
+      },
+      {
+        "type": "basic_info",
+        "title": "基本情報",
+        "items": [
+          {
+            "label": "項目名",
+            "value": "内容hogehoge"
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "tone": "info",
+        "title": "ポイント１",
+        "text": "内容ほげほげ"
+      },
+      {
+        "type": "note",
+        "tone": "important",
+        "title": "重要なみだし",
+        "text": "重要な内容"
+      },
+      {
+        "type": "note",
+        "tone": "caution",
+        "title": "注意涙し",
+        "text": "注意な内容"
+      },
+      {
+        "type": "checklist",
+        "title": "チェックリストの見出し",
+        "items": [
+          {
+            "text": "チェックリスト１"
+          },
+          {
+            "text": "チェックリスト２"
+          }
+        ]
+      },
+      {
+        "type": "table",
+        "title": "表の見出し",
+        "caption": "説明",
+        "headers": [
+          "列見出し1",
+          "列見出し２"
+        ],
+        "rows": [
+          {
+            "cells": [
+              "行見出し１",
+              "行見出し２"
+            ]
+          }
+        ],
+        "note": "注記注記注記注記注記注記注記注記注記注記"
+      },
+      {
+        "type": "faq",
+        "title": "FAQ1",
+        "items": [
+          {
+            "question": "質問質問質問質問",
+            "answer": "<p>質問質問</p>"
+          }
+        ]
+      },
+      {
+        "type": "links",
+        "title": "見出し",
+        "items": [
+          {
+            "label": "浜中町役場",
+            "url": "https://www.townhamanaka.jp/",
+            "external": false
+          }
+        ]
+      },
+      {
+        "type": "cards",
+        "title": "カード一覧",
+        "items": [
+          {
+            "title": "カード1",
+            "text": "setumeisetumeisetumeisetumeisetumeisetumei",
+            "url": "https://www.townhamanaka.jp/"
+          }
+        ]
+      },
+      {
+        "type": "cta",
+        "eyebrow": "CTA大きな誘導",
+        "title": "みだし",
+        "text": "説明",
+        "label": "ボタン表示",
+        "url": "https://www.townhamanaka.jp/",
+        "external": true,
+        "style": "blue"
+      },
+      {
+        "type": "media_text",
+        "image": "assets/images/20250608-1536-800 mm-1-1000 秒 (f - 9.0)-1.jpg",
+        "title": "見出し見出し",
+        "body": "<p>本文本文本文本文本文本文本文本文本文本文本文本文</p>"
+      },
+      {
+        "type": "related",
+        "title": "関連記事",
+        "items": [
+          {
+            "articleId": "project",
+            "title": "プロジェクト"
+          }
+        ]
+      },
+      {
+        "type": "quote",
+        "text": "引用引用引用引用引用引用引用引用引用引用",
+        "author": "わたし",
+        "source": "出展補足出展補足出展補足出展補足出展補足出展補足出展補足出展補足出展補足"
+      },
+      {
+        "type": "divider",
+        "style": "line"
+      }
+    ]
+  },
+  {
+    "id": "gear",
+    "published": true,
+    "order": 3,
+    "eyebrow": "03 / GEAR",
+    "title": "カメラ・レンズ",
+    "cardTitle": "撮影機材を考える",
+    "summary": "焦点距離、手ブレ補正、AFなど、ラッコや風景を撮影するときの機材選びのポイントを紹介します。",
+    "cover": "assets/images/gear.webp",
+    "icon": "GEAR",
+    "blocks": [
+      {
+        "type": "richtext",
+        "body": "<h2>撮影に向く機材を知る</h2><p>特定メーカーに偏りすぎない形で、「どの程度の焦点距離があると撮りやすいか」「手ブレ補正や動物検出AFがどう役立つか」など、選び方を中心に整理できます。</p>"
+      },
+      {
+        "type": "note",
+        "tone": "info",
+        "title": "更新しやすい情報設計",
+        "text": "製品名を掲載する場合は、更新負担を抑えるため「おすすめ機種」だけでなく「必要な性能・焦点距離」を主軸にする構成も有効です。"
+      }
+    ]
+  },
+  {
+    "id": "technique",
+    "published": true,
+    "order": 4,
+    "eyebrow": "04 / TECHNIQUE",
+    "title": "ラッコ撮影テクニック",
+    "cardTitle": "ラッコを撮る",
+    "summary": "見つけ方、構図、シャッタースピード、連写、AF、露出など、撮影を楽しむためのヒントをまとめます。",
+    "cover": "assets/images/tecnique.webp",
+    "icon": "TECH",
+    "blocks": [
+      {
+        "type": "richtext",
+        "body": "<h2>ラッコをきれいに撮るために</h2><p>見つけ方、構図、シャッタースピード、連写、AF、露出、波の表現などを、初心者にも分かりやすい形で整理するページです。</p>"
+      },
+      {
+        "type": "checklist",
+        "title": "撮影時の基本ポイント",
+        "items": [
+          {
+            "text": "まず肉眼で行動を観察する"
+          },
+          {
+            "text": "望遠側でも余白を残して構図をつくる"
+          },
+          {
+            "text": "被写体の動きに合わせてシャッタースピードを調整する"
+          },
+          {
+            "text": "撮影に夢中になりすぎず周囲の安全を確認する"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "manner",
+    "published": true,
+    "order": 5,
+    "eyebrow": "05 / MANNER・RULES",
+    "title": "撮影マナー",
+    "cardTitle": "自然と地域を守って撮る",
+    "summary": "野生動物と地域の環境を守りながら、気持ちよく撮影を楽しむための基本的なルールをまとめます。",
+    "cover": "assets/images/rule.webp",
+    "icon": "MANNER",
+    "blocks": [
+      {
+        "type": "richtext",
+        "body": "<h2>撮影を楽しむために</h2><p>野生動物と地域の環境を守りながら撮影を楽しむためのルールを、分かりやすく掲載するページです。</p>"
+      },
+      {
+        "type": "checklist",
+        "title": "基本的な撮影マナー",
+        "items": [
+          {
+            "text": "野生動物へ近づきすぎない・追わない"
+          },
+          {
+            "text": "立入禁止区域や私有地へ入らない"
+          },
+          {
+            "text": "道路・駐車場で通行を妨げない"
+          },
+          {
+            "text": "ごみを残さない"
+          }
+        ]
+      },
+      {
+        "type": "note",
+        "tone": "important",
+        "title": "内容は随時更新してください",
+        "text": "撮影マナーや現地ルールは、実際の運用状況に合わせて確認・更新してください。"
+      }
+    ]
+  }
+]
