@@ -6,111 +6,32 @@
     "eyebrow": "INTRODUCTION",
     "title": "なぜ、浜中町を撮るのか。",
     "cardTitle": "INTRODUCTION｜浜中町を知る",
-    "summary": "北海道東部、太平洋に面した浜中町。海と湿原、野生動物と人の暮らしが近い距離にあり、季節や時間、天候によってまったく違う表情に出会えます。",
+    "summary": "北海道東部、太平洋に面した浜中町。海から湿原、牧草地まで、町全体に自然が広がっています。",
     "cover": "assets/images/01_home/01_HOME.webp",
     "icon": "INTRO",
-    "blocks": [
-      {
-        "type": "media_text",
-        "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/03.webp",
-        "alt": "浜中町の海で暮らす野生のラッコ",
-        "title": "ここでしか出会えない景色が、すぐそばにある。",
-        "body": "<p>浜中町には、太平洋に突き出す岬、霧多布湿原、広い牧草地、漁港や昆布干場など、海・湿原・暮らしの風景が近い距離にあります。</p><p>そして、その海には野生のラッコが暮らしています。ラッコをきっかけに浜中町を知り、町を歩くうちに、季節や時間、天候によって変わる多様な被写体に出会える。それが浜中町で写真を撮る面白さです。</p>",
-        "imagePosition": "right"
-      },
-      {
-        "type": "cards",
-        "title": "浜中町で、何を撮る？",
-        "items": [
-          {
-            "title": "野生動物",
-            "text": "野生のラッコをはじめ、タンチョウ、エゾシカ、キタキツネ、さまざまな野鳥。人の暮らしのすぐそばに、豊かな野生があります。",
-            "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/04.webp"
-          },
-          {
-            "title": "海と岬",
-            "text": "太平洋、霧多布岬、切り立つ断崖、灯台、波。光や霧によって、同じ場所でも異なる表情を見せます。",
-            "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/01.webp"
-          },
-          {
-            "title": "湿原と花",
-            "text": "霧多布湿原を彩る季節の花、朝夕の光、霧、空、野鳥。広い風景にも、小さな足元にも被写体があります。",
-            "image": "assets/images/01_home/01_HOME.webp"
-          },
-          {
-            "title": "暮らしと産業",
-            "text": "酪農、昆布漁、港、牧草地。観光地だけではない日常の風景にも、浜中町らしさが息づいています。",
-            "image": "assets/images/01_home/04_PROJECT.webp"
-          },
-          {
-            "title": "季節と天候",
-            "text": "春の芽吹き、夏の花と霧、秋の光、雪に包まれる冬。天候や季節の変化そのものが、写真の表情を変えていきます。",
-            "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/08.webp"
-          }
+    "introduction": {
+      "heroLead": ["北海道東部、太平洋に面した浜中町。", "海から湿原、牧草地まで、町全体に自然が広がっています。", "カメラを持って、ゆっくり町をめぐってみてください。"],
+      "trip": {
+        "title": "浜中町で撮る、4つの楽しさ。",
+        "lead": { "title": "町をめぐるだけで、景色が変わる。", "paragraphs": ["太平洋に突き出す岬、霧多布湿原、広い牧草地、漁港や昆布干場。", "車を少し走らせるだけで、景色が変わります。道の先に海が見えたり、空が大きく開けたり、牧草地の向こうに生きものを見つけたり。", "町をめぐっている時間そのものが、撮影の時間になります。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/01.webp", "alt": "浜中町の岬と海の風景" },
+        "points": [
+          { "title": "頑張りすぎなくても、いい景色に出会える。", "paragraphs": ["絶景を見るために、必ずしも山に登ったり、長い距離を歩いたりする必要はありません。", "車で町をめぐりながら、岬や湿原、海、牧草地へ。少し車を停めて景色を眺めたり、気になった場所でカメラを構えたり。休みながら、自分のペースで写真を楽しめます。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/02.webp", "alt": "浜中町の海辺の風景" },
+          { "title": "思いがけない出会いがある。", "paragraphs": ["浜中町の海には、野生のラッコが暮らしています。湿原ではタンチョウや野鳥。町を走っていると、エゾシカやキタキツネに出会うこともあります。", "海を撮るつもりで出かけた日に、途中で生きものに出会う。そんな予定外の一枚も、浜中町で撮る楽しさです。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/04.webp", "alt": "浜中町の野生動物" }
         ]
       },
-      {
-        "type": "media_text",
-        "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/02.webp",
-        "alt": "浜中町の岬の風景",
-        "title": "写真だから、見えてくる浜中町。",
-        "body": "<p>同じ岬でも、晴れた日と霧の日ではまったく違う。いつもの牧草地も、光や季節が変われば新しい景色になる。野生動物の一瞬の表情や、暮らしの中にある何気ない風景も、写真に残すことで浜中町らしさとして見えてきます。</p><p>HAMANAKA PHOTOが届けたいのは、名所の一覧だけではありません。写真をきっかけに町を見る視点が増え、それぞれの人が自分だけの浜中町を見つけていくことです。</p>",
-        "imagePosition": "left"
-      },
-      {
-        "type": "styled_text",
-        "body": "<h2>写真で、町をもっと面白く。</h2><p>HAMANAKA PHOTOは、写真を見せるだけのサイトではありません。写真を入口に浜中町を知り、訪れ、撮影し、その魅力を誰かに伝える。そんな循環を育てるためのフォトポータルです。</p><p>写真展、フォトギャラリー、フォトガイド、撮影イベント、フォトコンテスト、SNSでの発信など。さまざまな取り組みを一つの場所に蓄積し、写真を通した浜中町のタウンプロモーションを続けていきます。</p>",
-        "font": "sans",
-        "size": "normal",
-        "color": "white",
-        "weight": "normal",
-        "align": "left",
-        "background": "navy",
-        "spacing": "wide"
-      },
-      {
-        "type": "checklist",
-        "title": "写真から生まれる循環",
-        "items": [
-          {
-            "text": "見る｜写真に出会う"
-          },
-          {
-            "text": "知る｜浜中町を知る"
-          },
-          {
-            "text": "訪れる｜現地へ行く"
-          },
-          {
-            "text": "撮る｜自分の視点で残す"
-          },
-          {
-            "text": "伝える｜魅力を次の人へ"
-          }
-        ]
-      },
-      {
-        "type": "cards",
-        "title": "あなたは、どこから浜中町に出会いますか。",
-        "items": [
-          {
-            "title": "写真から出会う",
-            "text": "浜中町で撮影された作品から、町の景色や生きものに出会う。",
-            "url": "gallery.html"
-          },
-          {
-            "title": "実際に撮りに行く",
-            "text": "撮影場所、旅行準備、機材、撮影方法やルールを確認する。",
-            "url": "guide.html"
-          },
-          {
-            "title": "写真の取り組みを知る",
-            "text": "写真を軸に浜中町を盛り上げる活動や、その実績を知る。",
-            "url": "project.html"
-          }
-        ]
-      }
-    ]
+      "living": { "title": "暮らすように旅して、撮る。", "paragraphs": ["朝の海を撮って、町でひと休みして、午後は湿原へ。夕方になったら、また海へ行ってみる。", "天気が変われば予定を変えて、その日の光や風に合わせて撮る。", "何日か滞在しながら町をめぐっていると、少しずつお気に入りの場所が増えていきます。", "急いでたくさんの場所を回るより、のんびり過ごしながら写真を撮る。浜中町には、そんな旅の仕方がよく似合います。"], "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/08.webp", "alt": "浜中町の海の風景" },
+      "subjects": [
+        { "eyebrow": "WILDLIFE", "title": "野生動物", "text": "野生のラッコをはじめ、タンチョウ、エゾシカ、キタキツネ、さまざまな野鳥。町の中をめぐるだけでも、生きものとの出会いがあります。", "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/04.webp" },
+        { "eyebrow": "COAST", "title": "海と岬", "text": "太平洋、霧多布岬、断崖、灯台、波。晴れた日、霧の日、朝夕の光で、同じ場所でも景色は大きく変わります。", "image": "assets/images/02_gallery/tokyo_camera_club_2026/thumbs/01.webp" },
+        { "eyebrow": "WETLAND", "title": "湿原と花", "text": "霧多布湿原を彩る季節の花、霧、空、野鳥。広い景色にも、足元の小さな風景にも被写体があります。", "image": "assets/images/01_home/01_HOME.webp" },
+        { "eyebrow": "LIFE", "title": "暮らしと産業", "text": "酪農、昆布漁、港、牧草地。町の日常にも、カメラを向けたくなる風景があります。", "image": "assets/images/01_home/04_PROJECT.webp" }
+      ],
+      "links": [
+        { "title": "写真を見る", "text": "浜中町で撮影された作品から、町の景色や生きものを見てみる。", "url": "gallery.html" },
+        { "title": "撮りに行く", "text": "撮影場所、旅行準備、機材、撮影方法やルールを確認する。", "url": "guide.html" },
+        { "title": "写真の取り組みを見る", "text": "写真展、撮影会、フォトコンテストなど、浜中町で行われている写真の取り組みを見る。", "url": "project.html" }
+      ]
+    }
   },
   {
     "id": "photo-map",
