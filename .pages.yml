@@ -3484,7 +3484,7 @@ content:
         label: ダウンロードボタン表示
         type: string
 - name: about_settings
-  label: ABOUT｜このサイトについて
+  label: ABOUT｜運営・権利・利用条件・問い合わせ
   type: file
   path: data/about.json
   format: json
@@ -3498,7 +3498,7 @@ content:
     - {name: title, label: ページタイトル, type: string}
     - {name: description, label: ページ説明, type: text}
   - name: hero
-    label: HERO｜ページ上部
+    label: HERO｜このサイトについて
     type: object
     fields:
     - {name: eyebrow, label: 英字見出し, type: string}
@@ -3511,8 +3511,8 @@ content:
         media: images
         extensions: [jpg, jpeg, png, webp]
         rename: false
-  - name: intro
-    label: WHAT IS HAMANAKA PHOTO?｜サイトの役割
+  - name: overview
+    label: ABOUT｜サイト概要
     type: object
     fields:
     - {name: eyebrow, label: 英字見出し, type: string}
@@ -3521,88 +3521,84 @@ content:
       label: 本文
       type: text
       list: true
-  - name: flow
-    label: PHOTO JOURNEY｜見る・知る・訪れる・撮る・伝える
+  - name: operator
+    label: OPERATION｜運営・制作体制
     type: object
     fields:
     - {name: eyebrow, label: 英字見出し, type: string}
     - {name: title, label: 見出し, type: string}
     - {name: lead, label: 説明, type: text}
-    - name: items
-      label: 5つのステップ
-      type: object
-      list:
-        max: 5
-        collapsible:
-          collapsed: true
-          summary: '{number} {title}'
-      fields:
-      - {name: number, label: 番号, type: string}
-      - {name: title, label: ステップ名, type: string}
-      - {name: text, label: 説明, type: text}
-  - name: contents
-    label: CONTENTS｜主要コンテンツ
+    - {name: primaryTitle, label: 運営見出し, type: string}
+    - {name: primaryText, label: 運営主体, type: text}
+    - {name: collaborationTitle, label: 制作協力見出し, type: string}
+    - {name: collaborationText, label: 制作協力, type: text}
+  - name: rights
+    label: COPYRIGHT｜写真・コンテンツ利用条件
     type: object
     fields:
     - {name: eyebrow, label: 英字見出し, type: string}
     - {name: title, label: 見出し, type: string}
+    - {name: lead, label: 説明, type: text}
+    - {name: noticeTitle, label: 重要表示の見出し, type: string}
+    - {name: noticeText, label: 重要表示の本文, type: text}
     - name: items
-      label: コンテンツカード
-      type: object
-      list:
-        max: 6
-        collapsible:
-          collapsed: true
-          summary: '{eyebrow} / {title}'
-      fields:
-      - {name: eyebrow, label: 英字見出し, type: string}
-      - {name: title, label: タイトル, type: string}
-      - {name: text, label: 説明, type: text}
-      - name: image
-        label: 画像
-        type: image
-        options:
-          media: images
-          extensions: [jpg, jpeg, png, webp]
-          rename: false
-      - {name: buttonLabel, label: リンク表示, type: string}
-      - {name: url, label: リンク先, type: string}
-  - name: message
-    label: OUR APPROACH｜写真・自然・地域への考え方
-    type: object
-    fields:
-    - {name: eyebrow, label: 英字見出し, type: string}
-    - {name: title, label: 見出し, type: text}
-    - {name: text, label: 説明, type: text}
-    - name: image
-      label: 背景画像（任意）
-      type: image
-      options:
-        media: images
-        extensions: [jpg, jpeg, png, webp]
-        rename: false
-    - {name: buttonLabel, label: ボタン表示, type: string}
-    - {name: url, label: リンク先, type: string}
-  - name: information
-    label: INFORMATION｜運営・利用案内
-    type: object
-    fields:
-    - {name: eyebrow, label: 英字見出し, type: string}
-    - {name: title, label: 見出し, type: string}
-    - name: items
-      label: 案内カード
+      label: 利用条件
       type: object
       list:
         max: 8
         collapsible:
           collapsed: true
-          summary: '{eyebrow} / {title}'
+          summary: '{title}'
       fields:
-      - {name: eyebrow, label: 英字ラベル, type: string}
-      - {name: title, label: タイトル, type: string}
-      - {name: text, label: 説明, type: text}
-      - {name: linkLabel, label: リンク表示, type: string}
-      - {name: url, label: リンク先, type: string}
+      - {name: title, label: 項目名, type: string}
+      - {name: text, label: 内容, type: text}
+  - name: terms
+    label: SITE POLICY｜利用上の案内・免責
+    type: object
+    fields:
+    - {name: eyebrow, label: 英字見出し, type: string}
+    - {name: title, label: 見出し, type: string}
+    - name: items
+      label: 案内項目
+      type: object
+      list:
+        max: 8
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - {name: title, label: 項目名, type: string}
+      - {name: text, label: 内容, type: text}
+  - name: contact
+    label: CONTACT｜お問い合わせ
+    type: object
+    fields:
+    - {name: eyebrow, label: 英字見出し, type: string}
+    - {name: title, label: 見出し, type: string}
+    - {name: lead, label: 説明, type: text}
+    - {name: organization, label: 組織名, type: string}
+    - {name: section, label: 担当部署, type: string}
+    - {name: phone, label: 電話番号, type: string}
+    - {name: phoneNote, label: 電話番号の補足, type: string}
+    - {name: email, label: メールアドレス, type: string}
+    - {name: note, label: お問い合わせ時の案内, type: text}
+  - name: links
+    label: RELATED LINKS｜関連ページ
+    type: object
+    fields:
+    - {name: eyebrow, label: 英字見出し, type: string}
+    - {name: title, label: 見出し, type: string}
+    - name: items
+      label: リンク
+      type: object
+      list:
+        max: 8
+        collapsible:
+          collapsed: true
+          summary: '{label}'
+      fields:
+      - {name: label, label: 表示名, type: string}
+      - {name: url, label: URL, type: string}
       - {name: external, label: 外部サイトとして開く, type: boolean}
 - name: project_settings
   label: PHOTO PROJECT｜写真活動
