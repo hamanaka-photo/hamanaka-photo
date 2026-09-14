@@ -465,6 +465,7 @@
 
 .trip-v3-climate-card,
 .trip-v3-forecast-card {
+  min-width: 0;
   padding: 22px;
   border: 1px solid var(--v3-line);
   border-radius: 10px;

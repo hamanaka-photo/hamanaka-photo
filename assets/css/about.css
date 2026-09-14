@@ -20,3 +20,14 @@
     grid-column: auto;
   }
 }
+
+/* Rights cards: 3 columns on desktop, 2 on tablet, 1 on mobile. */
+.about-policy-card-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); align-items: stretch; }
+.about-policy-card { display: flex; min-height: 100%; flex-direction: column; }
+.about-policy-card-grid > :last-child:nth-child(odd) { grid-column: auto; }
+@media (max-width: 1000px) and (min-width: 621px) { .about-policy-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 620px) { .about-policy-card-grid { grid-template-columns: 1fr; } }
+
+/* SITE POLICY cards: two by two on tablet and desktop, one column on mobile. */
+[data-about-terms-items] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+@media (max-width: 620px) { [data-about-terms-items] { grid-template-columns: 1fr; } }

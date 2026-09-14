@@ -1497,6 +1497,8 @@
   stroke-linecap: round;
   stroke-linejoin: round;
 }
+.gear-v6-rental-icon-image { display: block; width: 48px; height: 48px; object-fit: contain; }
+.gear-v6-rental-reason > p { max-width: 170px; margin: 7px auto 0; color: rgba(255,255,255,.76); font-size: 12px; line-height: 1.55; }
 
 .gear-v6-rental-reason > strong {
   display: block;
@@ -2139,3 +2141,18 @@
     height: 38px;
   }
 }
+
+body.is-gallery-modal-open { overflow: hidden; }
+.gear-v7-example-image { display: block; width: 100%; padding: 0; border: 0; background: #eef2f2; cursor: zoom-in; }
+.gear-example-modal[hidden] { display: none; }
+.gear-example-modal { position: fixed; inset: 0; z-index: 1000; display: grid; place-items: center; padding: 28px 72px; background: rgba(5, 24, 38, .9); }
+.gear-example-modal-dialog { position: relative; display: grid; grid-template-columns: 48px minmax(0, 1fr) 48px; gap: 18px; align-items: center; width: min(1120px, 100%); max-height: calc(100vh - 56px); }
+.gear-example-modal-dialog figure { min-width: 0; margin: 0; }
+.gear-example-modal-dialog figure img { display: block; width: 100%; max-height: calc(100vh - 180px); object-fit: contain; }
+.gear-example-modal-dialog figcaption { display: grid; gap: 5px; padding: 14px 16px; color: #fff; text-align: center; }
+.gear-example-modal-dialog figcaption strong { font-size: 15px; }
+.gear-example-modal-dialog figcaption span { color: rgba(255,255,255,.78); font-size: 14px; }
+.gear-example-modal-close,.gear-example-modal-nav { display: grid; place-items: center; border: 1px solid rgba(255,255,255,.55); color: #fff; background: rgba(10,49,73,.72); cursor: pointer; }
+.gear-example-modal-close { position: absolute; top: 0; right: 0; z-index: 2; width: 44px; height: 44px; border-radius: 50%; font-size: 28px; transform: translate(45%, -45%); }
+.gear-example-modal-nav { width: 48px; height: 48px; border-radius: 50%; font-size: 20px; }
+@media (max-width: 620px) { .gear-example-modal { padding: 62px 12px 20px; } .gear-example-modal-dialog { grid-template-columns: 42px minmax(0, 1fr) 42px; gap: 6px; } .gear-example-modal-dialog figure img { max-height: calc(100vh - 190px); } .gear-example-modal-nav { width: 42px; height: 42px; } .gear-example-modal-close { top: -46px; right: 12px; transform: none; } }

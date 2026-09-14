@@ -1685,6 +1685,12 @@ summary:focus-visible {
   font-weight: 700;
   letter-spacing: .04em;
 }
+.project-card.is-coming-soon { min-height: 330px; background: linear-gradient(145deg, #fff 0%, #f3f7f9 100%); }
+.project-card.is-coming-soon .project-card-body { align-items: center; justify-content: center; text-align: center; }
+.project-card.is-coming-soon h2 { margin: 0; color: var(--navy); font-size: clamp(22px, 2.1vw, 30px); letter-spacing: .08em; }
+.project-card.is-coming-soon .project-card-text { margin-top: 18px; font-size: 14px; }
+.project-card.is-coming-soon .project-card-footer { margin-top: 24px; padding-top: 0; order: -1; }
+.project-card.is-coming-soon .status { color: var(--blue); font-size: clamp(24px, 3vw, 36px); font-weight: 800; letter-spacing: .14em; }
 
 .project-card .status-open {
   color: var(--green);
