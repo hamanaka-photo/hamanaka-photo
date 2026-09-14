@@ -2,7 +2,7 @@
   const articleId = new URLSearchParams(location.search).get('article');
 
   const sequence = [
-    { id: 'photo-map', number: '01', sub: 'SPOT', label: '撮影スポット', url: 'guide-article.html?article=photo-map' },
+    { id: 'photo-map', number: '01', sub: 'スポット', label: '撮影スポット', url: 'guide-article.html?article=photo-map' },
     { id: 'trip', number: '02', sub: 'PREPARATION', label: '準備', url: 'guide-article.html?article=trip' },
     { id: 'gear', number: '03', sub: 'GEAR', label: '機材', url: 'guide-article.html?article=gear' },
     { id: 'technique', number: '04', sub: 'TECHNIQUE', label: 'テクニック', url: 'guide-article.html?article=technique' },
@@ -153,24 +153,6 @@
     target.click();
   };
 
-  const setTechniqueVideoComingSoon = () => {
-    if (articleId !== 'technique') return;
-    const frame = root.querySelector('#tech-video .tech-v3-video-frame');
-    if (!frame || frame.dataset.comingSoon === 'true') return;
-    frame.dataset.comingSoon = 'true';
-    frame.innerHTML = `
-      <div class="tech-video-coming-soon">
-        <div>
-          <small>05 / MOVIE</small>
-          <strong>撮影方法の動画は準備中です。</strong>
-          <p>より分かりやすく撮影方法を紹介できるよう、現在動画コンテンツを準備しています。公開までしばらくお待ちください。</p>
-        </div>
-      </div>`;
-
-    const navItem = root.querySelector('.tech-v2-section-nav a[href="#tech-video"] b');
-    if (navItem) navItem.textContent = '動画（準備中）';
-  };
-
   const createSequenceNav = () => {
     if (root.querySelector('.field-guide-sequence')) return;
     const currentIndex = sequence.findIndex(item => item.id === articleId);
@@ -214,7 +196,6 @@
     }
 
     setGearDefaultTo300();
-    setTechniqueVideoComingSoon();
     createSequenceNav();
   };
 
