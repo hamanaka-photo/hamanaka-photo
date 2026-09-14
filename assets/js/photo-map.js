@@ -554,25 +554,28 @@
       </article>`;
   };
 
-  const renderCourseStop = stop => {
-    const url =
-      safeUrl(stop.url);
+  const renderCourseStop = (spot, index) => {
+    const detailUrl =
+      safeUrl(spot.detailUrl);
+
+    const orderLabel =
+      `SPOT ${String(index + 1).padStart(2, '0')}`;
 
     return `
       <li class="photo-map-course-stop">
 
-        <div class="photo-map-course-time">
-          ${escapeHtml(stop.time || '')}
+        <div class="photo-map-course-order">
+          ${escapeHtml(orderLabel)}
         </div>
 
         <div class="photo-map-course-stop-body">
 
           ${
-            stop.image
+            spot.image
               ? `<div class="photo-map-course-stop-image">
                   <img
-                    src="${escapeHtml(stop.image)}"
-                    alt=""
+                    src="${escapeHtml(spot.image)}"
+                    alt="${escapeHtml(spot.name || '')}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low">
@@ -582,23 +585,34 @@
 
           <div class="photo-map-course-stop-copy">
 
+            ${
+              spot.area
+                ? `<p class="photo-map-course-stop-area">
+                    ${escapeHtml(spot.area)}
+                  </p>`
+                : ''
+            }
+
             <h4>
-              ${escapeHtml(stop.name || '')}
+              ${escapeHtml(spot.name || '')}
             </h4>
 
             ${
-              stop.text
+              spot.description
                 ? `<p>
-                    ${escapeHtml(stop.text)
+                    ${escapeHtml(spot.description)
                       .replace(/\r?\n/g, '<br>')}
                   </p>`
                 : ''
             }
 
             ${
-              url
-                ? `<a href="${escapeHtml(url)}">
-                    この地点を見る →
+              detailUrl
+                ? `<a
+                    href="${escapeHtml(detailUrl)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Google Mapで開く →
                   </a>`
                 : ''
             }
@@ -610,11 +624,37 @@
       </li>`;
   };
 
-  const renderCourse = course => {
-    const stops =
-      Array.isArray(course.stops)
-        ? course.stops
+  const resolveCourseSpots = (
+    course,
+    spotMap
+  ) => {
+    const spotIds =
+      Array.isArray(course.spotIds)
+        ? course.spotIds
         : [];
+
+    return spotIds
+      .map(id => {
+        const key = String(id);
+        const spot = spotMap.get(key);
+
+        if (!spot) {
+          console.warn(
+            `Unknown photo spot id: ${key}`
+          );
+        }
+
+        return spot;
+      })
+      .filter(Boolean);
+  };
+
+  const renderCourse = (
+    course,
+    spotMap
+  ) => {
+    const courseSpots =
+      resolveCourseSpots(course, spotMap);
 
     return `
       <details class="photo-map-course">
@@ -678,7 +718,7 @@
         <div class="photo-map-course-expanded">
 
           <div class="photo-map-course-expanded-head">
-            <p>COURSE SCHEDULE</p>
+            <p>COURSE ROUTE</p>
             <h4>
               ${escapeHtml(course.title || '')}
             </h4>
@@ -694,12 +734,12 @@
           </div>
 
           ${
-            stops.length
+            courseSpots.length
               ? `<ol class="photo-map-course-timeline">
-                  ${stops.map(renderCourseStop).join('')}
+                  ${courseSpots.map(renderCourseStop).join('')}
                 </ol>`
               : `<p class="photo-map-course-no-stops">
-                  CMSから地点と時刻を登録してください。
+                  登録されたスポットがありません。
                 </p>`
           }
 
@@ -1082,6 +1122,13 @@
         ? settings.courses
         : [];
 
+    const spotMap = new Map(
+      spots.map(spot => [
+        String(spot.id),
+        spot
+      ])
+    );
+
     const heroImage =
       String(hero.image || '').trim();
 
@@ -1168,16 +1215,25 @@
 
                   <span>
                     コースをクリックすると、
-                    時刻と各地点の情報を確認できます。
+                    スポットの順番と各地点の情報を確認できます。
                   </span>
 
                 </div>
 
                 <div class="photo-map-course-grid">
                   ${courses
-                    .map(renderCourse)
+                    .map(course =>
+                      renderCourse(course, spotMap)
+                    )
                     .join('')}
                 </div>
+
+                <p class="photo-map-courses-note">
+                  ${escapeHtml(
+                    settings.coursesNote ||
+                    '天候や霧、季節、野生動物の状況によって、撮影できる景色は変わります。順番や滞在時間は、その日の様子に合わせて調整してください。'
+                  )}
+                </p>
 
               </div>
 
