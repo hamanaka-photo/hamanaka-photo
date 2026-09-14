@@ -59,6 +59,16 @@ media:
   - png
   - webp
   rename: false
+- name: photo_spot_images
+  label: 撮影スポット画像
+  input: assets/images/03_guide/photo-spots
+  output: assets/images/03_guide/photo-spots
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
 - name: gallery_images
   label: ギャラリー画像
   input: assets/images/02_gallery
@@ -1316,7 +1326,7 @@ content:
   type: group
   items:
   - name: photo_map_settings
-    label: スポット｜フォトスポットから探す
+    label: SPOT｜撮影スポットを探す
     type: file
     path: data/photo-map.json
     format: json
@@ -1324,7 +1334,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜フォトスポットから探す
+      label: HERO｜撮影スポットを探す
       type: object
       fields:
       - name: eyebrow
@@ -1417,6 +1427,9 @@ content:
     - name: coursesTitle
       label: MODEL COURSE｜見出し
       type: string
+    - name: coursesNote
+      label: MODEL COURSE｜共通注記
+      type: text
     - name: courses
       label: MODEL COURSE｜モデルコース
       type: object
@@ -1440,52 +1453,11 @@ content:
         label: 所要時間
         type: string
         description: 例 約4時間
-      - name: image
-        label: コース画像
-        type: image
-        options:
-          media: photo_map_images
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
-          rename: false
-      - name: stops
-        label: コース内の地点・時刻
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{time} / {name}'
-        fields:
-        - name: time
-          label: 時刻
-          type: string
-          required: true
-          description: 例 09:00
-        - name: name
-          label: 地点名
-          type: string
-          required: true
-        - name: text
-          label: 地点の説明
-          type: text
-        - name: image
-          label: 地点画像（任意）
-          type: image
-          description: 任意項目です。画像を登録しない場合は、公開ページでも画像枠を表示しません。
-          options:
-            media: photo_map_images
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: url
-          label: 地点のリンク先
-          type: string
+      - name: spotIds
+        label: コース内のスポットID（表示順）
+        type: string
+        list: true
+        description: photo-spots.jsonに登録済みのスポットIDを、巡る順に指定します。
     - name: manner
       label: PHOTO MANNER｜撮影マナー
       type: object
@@ -1519,8 +1491,8 @@ content:
       type: string
       required: true
       pattern:
-        regex: ^[a-z0-9-]+$
-        message: 半角英小文字・数字・ハイフンで入力してください。
+        regex: ^SPOT-[0-9]{3}$
+        message: SPOT-013のように、SPOT-と3桁の数字で入力してください。
     - name: published
       label: 公開する
       type: boolean
@@ -1541,22 +1513,39 @@ content:
     - name: description
       label: 紹介文
       type: text
-    - name: image
-      label: スポット画像
-      type: image
-      options:
-        media: photo_map_images
-        extensions:
-        - jpg
-        - jpeg
-        - png
-        - webp
-        rename: false
-    - name: markerType
-      label: MAPピンの種類
+    - name: images
+      label: スポット写真
+      type: object
+      description: 一番上の写真が撮影スポット一覧の代表写真として表示されます。並び順は詳細画面のギャラリー順にも使われます。
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{alt}'
+      fields:
+      - name: src
+        label: 写真
+        type: image
+        required: true
+        options:
+          media: photo_spot_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: alt
+        label: 代替テキスト
+        type: string
+      - name: caption
+        label: キャプション
+        type: string
+    - name: markerTypes
+      label: MAPピンの種類（複数選択可）
       type: select
       required: true
       options:
+        multiple: true
         values:
         - name: coast
           label: 海岸
@@ -1618,27 +1607,35 @@ content:
     - name: bestSeason
       label: おすすめ時期
       type: string
-    - name: bestTime
-      label: おすすめ時間
+    - name: parking
+      label: 駐車場
       type: string
-    - name: access
-      label: アクセス
+    - name: toilet
+      label: トイレ
       type: string
-    - name: position
-      label: MAP位置（x,y）
+    - name: cautions
+      label: 注意事項・マナー
       type: string
-      description: 座標選択ツール https://hamanaka-photo.github.io/hamanaka-photo/map-coordinate-picker.html?v=63 で位置を選び、「座標をコピー」を押した後、この欄へ Ctrl+V してください。座標は100×100グリッドのセル番号です。例 63,71
-      pattern:
-        regex: ^(100|[1-9][0-9]?),(100|[1-9][0-9]?)$
-        message: 1〜100の範囲で x,y の形式で入力してください。座標は100×100グリッドのセル番号です。例 63,71
-    - name: x
-      label: 旧MAP横位置
+      list: true
+    - name: lat
+      label: 緯度
       type: number
-      hidden: true
-    - name: y
-      label: 旧MAP縦位置
+      required: true
+    - name: lng
+      label: 経度
       type: number
-      hidden: true
+      required: true
+    - name: positionOverride
+      label: イラストMAP位置の手動補正
+      type: object
+      description: 自動計算した位置を補正するときだけ入力します。
+      fields:
+      - name: x
+        label: 横位置
+        type: number
+      - name: y
+        label: 縦位置
+        type: number
     - name: detailUrl
       label: Google Map URL
       type: string
