@@ -108,6 +108,16 @@
   line-height: 1.8;
 }
 
+.trip-v3-heading .trip-v4-access-subtitle {
+  max-width: 680px;
+  margin: 10px 0 0;
+  color: var(--v3-text);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
 /* access */
 .trip-v3-route {
   display: grid;
@@ -415,6 +425,17 @@
   color: var(--v3-text);
   font-size: 14px;
   line-height: 1.85;
+}
+
+.trip-v4-stay-categories {
+  display: grid;
+  gap: 20px;
+}
+
+.trip-v4-stay-category +
+.trip-v4-stay-category {
+  padding-top: 20px;
+  border-top: 1px solid var(--v3-line);
 }
 
 /* climate */
@@ -1387,6 +1408,19 @@
   font-size: 20px;
 }
 
+.trip-v4-recommended {
+  display: inline-flex;
+  align-items: center;
+  min-height: 23px;
+  margin-bottom: 5px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  color: #fff;
+  background: var(--v3-teal);
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .trip-v4-option-title p {
   margin: 5px 0 0;
   color: #6e8088;
@@ -1583,7 +1617,7 @@
 
 
 /* TRIP v8 / climate feature cards */
-.trip-v8-climate-features { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-bottom:18px; }
+.trip-v8-climate-features { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:20px; margin-top:18px; }
 .trip-v8-climate-feature { min-width:0; padding:24px; border:1px solid var(--v3-line); border-radius:10px; background:#fff; }
 .trip-v8-climate-feature > span { color:var(--v3-teal); font-size:14px; font-weight:900; letter-spacing:.1em; }
 .trip-v8-climate-feature h3 { margin:5px 0 4px; color:var(--v3-navy); font-size:19px; }
