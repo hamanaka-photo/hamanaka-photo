@@ -750,7 +750,7 @@
 
   const renderFieldNav = activeId => {
     const links = [
-      ['photo-map', 'SPOT', '撮影スポット'],
+      ['photo-map', 'スポット', '撮影スポット'],
       ['trip', '準備', '旅行準備'],
       ['gear', '機材', 'カメラ・レンズ'],
       ['technique', 'テクニック', '撮影テクニック'],
@@ -1177,7 +1177,7 @@
           <h1>
             ${escapeHtml(
               hero.title ||
-              'MAPから探す'
+              'フォトスポットから探す'
             )}
           </h1>
 
