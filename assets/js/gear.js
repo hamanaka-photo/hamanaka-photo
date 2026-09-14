@@ -48,7 +48,7 @@
           <small>PHOTO FIELD GUIDE</small>
         </a>
         <div class="gear-v2-field-links">
-          <a href="guide-article.html?article=photo-map">SPOT</a>
+          <a href="guide-article.html?article=photo-map">スポット</a>
           <a href="guide-article.html?article=trip">準備</a>
           <a href="guide-article.html?article=gear" aria-current="page">機材</a>
           <a href="guide-article.html?article=technique">テクニック</a>
@@ -420,7 +420,12 @@
       </section>`;
   };
 
-  const rentalReasonIcon = index => {
+  const rentalReasonIcon = (reason, index) => {
+    const iconImage = safeUrl(reason?.iconImage || reason?.image);
+    if (iconImage) {
+      return `<img class="gear-v6-rental-icon-image" src="${escapeHtml(iconImage)}" alt="${escapeHtml(reason.iconAlt || '')}" loading="lazy" decoding="async">`;
+    }
+
     if (index === 0) {
       return `<span class="gear-v6-rental-yen" aria-hidden="true">¥</span>`;
     }
@@ -463,14 +468,18 @@
               </div>
 
               <div class="gear-v6-rental-reasons">
-                ${reasons.slice(0, 3).map((reason, index) => `
+                ${reasons.slice(0, 3).map((reasonValue, index) => {
+                  const reason = typeof reasonValue === 'string' ? { title: reasonValue } : (reasonValue || {});
+                  return `
                   <article class="gear-v6-rental-reason">
                     <div class="gear-v6-rental-reason-circle">
-                      ${rentalReasonIcon(index)}
+                      ${rentalReasonIcon(reason, index)}
                       <b>0${index + 1}</b>
                     </div>
-                    <strong>${escapeHtml(reason)}</strong>
-                  </article>`).join('')}
+                    <strong>${escapeHtml(reason.title || '')}</strong>
+                    ${reason.text ? `<p>${escapeHtml(reason.text)}</p>` : ''}
+                  </article>`;
+                }).join('')}
               </div>
             </section>
 
@@ -565,6 +574,15 @@
               <strong>作例を準備中です。</strong>
               <p>使用機材が分かる写真を順次掲載します。</p>
             </div>`}
+          ${items.length ? `
+            <div class="gear-example-modal" data-example-modal hidden aria-hidden="true">
+              <div class="gear-example-modal-dialog" role="dialog" aria-modal="true" aria-label="機材作例の拡大表示">
+                <button type="button" class="gear-example-modal-close" data-example-modal-close aria-label="拡大表示を閉じる">×</button>
+                <button type="button" class="gear-example-modal-nav is-prev" data-example-modal-prev aria-label="前の画像">←</button>
+                <figure><img data-example-modal-image src="" alt=""><figcaption><strong data-example-modal-equipment></strong><span data-example-modal-caption></span></figcaption></figure>
+                <button type="button" class="gear-example-modal-nav is-next" data-example-modal-next aria-label="次の画像">→</button>
+              </div>
+            </div>` : ''}
         </div>
       </section>`;
   };
@@ -810,16 +828,19 @@
         items[(index + offset) % items.length]
       );
 
-      windowEl.innerHTML = visible.map(item => `
+      windowEl.innerHTML = visible.map(item => {
+        const itemIndex = items.indexOf(item);
+        return `
         <figure class="gear-v7-example-card">
-          <div class="gear-v7-example-image">
+          <button type="button" class="gear-v7-example-image" data-example-open="${itemIndex}" aria-label="${escapeHtml(item.caption || item.equipment || '作例')}を拡大表示">
             ${image(item.image, item.caption || item.equipment || '機材作例')}
-          </div>
+          </button>
           <figcaption>
             <strong>${escapeHtml(item.equipment || '')}</strong>
             ${item.caption ? `<span>${escapeHtml(item.caption)}</span>` : ''}
           </figcaption>
-        </figure>`).join('');
+        </figure>`;
+      }).join('');
 
       const needsNav = items.length > count;
       prev.hidden = !needsNav;
@@ -840,6 +861,61 @@
     window.addEventListener('resize', () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(render, 100);
+    });
+
+    const modal = scope.querySelector('[data-example-modal]');
+    const modalImage = modal?.querySelector('[data-example-modal-image]');
+    const modalEquipment = modal?.querySelector('[data-example-modal-equipment]');
+    const modalCaption = modal?.querySelector('[data-example-modal-caption]');
+    const closeButton = modal?.querySelector('[data-example-modal-close]');
+    let modalIndex = 0;
+    let returnFocus = null;
+
+    const drawModal = () => {
+      const item = items[modalIndex];
+      if (!item || !modalImage) return;
+      modalImage.src = item.image || '';
+      modalImage.alt = item.caption || item.equipment || '機材作例';
+      modalEquipment.textContent = item.equipment || '';
+      modalEquipment.hidden = !item.equipment;
+      modalCaption.textContent = item.caption || '';
+      modalCaption.hidden = !item.caption;
+    };
+    const openModal = selectedIndex => {
+      if (!modal || !items[selectedIndex]) return;
+      modalIndex = selectedIndex;
+      returnFocus = document.activeElement;
+      drawModal();
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-gallery-modal-open');
+      closeButton?.focus();
+    };
+    const closeModal = () => {
+      if (!modal || modal.hidden) return;
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-gallery-modal-open');
+      returnFocus?.focus?.();
+    };
+    const moveModal = step => {
+      modalIndex = (modalIndex + step + items.length) % items.length;
+      drawModal();
+    };
+
+    windowEl.addEventListener('click', event => {
+      const trigger = event.target.closest('[data-example-open]');
+      if (trigger) openModal(Number(trigger.dataset.exampleOpen));
+    });
+    closeButton?.addEventListener('click', closeModal);
+    modal?.querySelector('[data-example-modal-prev]')?.addEventListener('click', () => moveModal(-1));
+    modal?.querySelector('[data-example-modal-next]')?.addEventListener('click', () => moveModal(1));
+    modal?.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => {
+      if (!modal || modal.hidden) return;
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'ArrowLeft') moveModal(-1);
+      if (event.key === 'ArrowRight') moveModal(1);
     });
 
     render();
