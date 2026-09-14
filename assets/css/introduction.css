@@ -36,6 +36,13 @@
 .intro-trip-point h3 { font-size: clamp(24px, 2.7vw, 32px); }
 .intro-trip-point p { margin: 0 0 1em; color: var(--muted); line-height: 1.9; }
 .intro-trip-point p:last-child { margin-bottom: 0; }
+.intro-trip-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; }
+.intro-trip-card { display: flex; min-width: 0; min-height: 100%; flex-direction: column; overflow: hidden; border: 1px solid var(--line); border-radius: 20px; background: #fff; box-shadow: 0 10px 30px rgba(22,55,82,.06); }
+.intro-trip-card figure { margin: 0; overflow: hidden; background: #e9eef1; aspect-ratio: 16 / 9; }
+.intro-trip-card figure img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.intro-trip-card > div { display: flex; flex: 1; flex-direction: column; padding: 30px; }
+.intro-trip-card h3 { margin: 0 0 18px; font-family: "Noto Serif CJK JP", "Yu Mincho", serif; font-size: clamp(24px, 2.7vw, 32px); font-weight: 500; line-height: 1.45; letter-spacing: .02em; }
+.intro-trip-card .intro-body { margin-top: 0; }
 .intro-living { padding: 110px 0; color: #fff; background: var(--navy); }
 .intro-living-inner { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.75fr); gap: 76px; align-items: center; }
 .intro-living .eyebrow { color: #b5d8e8; }
@@ -59,3 +66,4 @@
 .intro-link-card span { margin-top: auto; padding-top: 28px; color: var(--navy); font-size: 14px; font-weight: 700; }
 @media (max-width: 900px) { .intro-hero { min-height: 560px; } .intro-section { padding: 78px 0; } .intro-trip-lead, .intro-living-inner { grid-template-columns: 1fr; gap: 38px; } .intro-trip-lead .intro-image { min-height: 360px; } .intro-living { padding: 82px 0; } .intro-living figure { min-height: 400px; } .intro-subject-grid { grid-template-columns: repeat(2, 1fr); } .intro-link-grid { grid-template-columns: 1fr 1fr; } .intro-link-card:last-child { grid-column: 1 / -1; min-height: 240px; } }
 @media (max-width: 620px) { .intro-hero { min-height: 520px; } .intro-hero-inner { padding: 90px 0 62px; } .intro-hero-lead { font-size: 15px; } .intro-section { padding: 66px 0; } .intro-drive { padding-top: 66px; } .intro-trip { padding-top: 78px; } .intro-section-head { margin-bottom: 30px; } .intro-trip-points, .intro-subject-grid, .intro-link-grid { grid-template-columns: 1fr; } .intro-trip-points { margin-top: 42px; gap: 20px; } .intro-trip-point > div { padding: 25px; } .intro-trip-lead .intro-image { min-height: 280px; } .intro-living figure { min-height: 330px; } .intro-link-card, .intro-link-card:last-child { grid-column: auto; min-height: 230px; } .intro-closing { padding-bottom: 78px; } }
+@media (max-width: 620px) { .intro-trip-cards { grid-template-columns: 1fr; gap: 20px; } .intro-trip-card > div { padding: 25px; } }
