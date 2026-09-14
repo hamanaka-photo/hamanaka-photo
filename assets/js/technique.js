@@ -20,7 +20,7 @@
       <div class="container tech-v1-field-nav-inner">
         <a class="tech-v1-field-brand" href="guide.html">HAMANAKA<small>PHOTO FIELD GUIDE</small></a>
         <div class="tech-v1-field-links">
-          <a href="guide-article.html?article=photo-map">SPOT</a>
+          <a href="guide-article.html?article=photo-map">スポット</a>
           <a href="guide-article.html?article=trip">準備</a>
           <a href="guide-article.html?article=gear">機材</a>
           <a href="guide-article.html?article=technique" aria-current="page">テクニック</a>
@@ -37,7 +37,7 @@
       ${section.lead ? `<span>${esc(section.lead)}</span>` : ''}
     </header>`;
 
-  const renderHero = data => `
+  const renderHero = (data, videoEnabled) => `
     <section class="tech-v2-hero" ${data.hero?.image ? `style="--tech-v2-hero:url('${esc(data.hero.image)}')"` : ''}>
       ${fieldNav()}
       <div class="tech-v2-hero-shade"></div>
@@ -47,9 +47,9 @@
         <span>${nl2br(data.hero?.lead || '')}</span>
       </div>
     </section>
-    <nav class="tech-v2-section-nav" aria-label="テクニック編ページ内ナビゲーション">
+    <nav class="tech-v2-section-nav" data-video-enabled="${videoEnabled}" aria-label="テクニック編ページ内ナビゲーション">
       <div class="container">
-        ${(data.sectionNav || []).map(item => `<a href="#tech-${esc(item.id)}"><small>${esc(item.sub || '')}</small><b>${esc(item.label || '')}</b></a>`).join('')}
+        ${(data.sectionNav || []).filter(item => videoEnabled || item.id !== 'video').map(item => `<a href="#tech-${esc(item.id)}"><small>${esc(item.sub || '')}</small><b>${esc(item.label || '')}</b></a>`).join('')}
       </div>
     </nav>`;
 
@@ -198,10 +198,10 @@
       </section>`;
   };
 
-  const renderGallery = section => `
+  const renderGallery = (section, number) => `
     <section class="tech-v2-section tech-v3-gallery-section" id="tech-gallery">
       <div class="container">
-        ${heading(section)}
+        ${heading({ ...section, eyebrow: `${number} / GALLERY` })}
         ${(section.items || []).length ? `
           <div class="tech-v3-gallery-carousel" data-tech-gallery-carousel>
             <button type="button" data-tech-gallery-prev aria-label="前の作例">←</button>
@@ -209,9 +209,18 @@
             <button type="button" data-tech-gallery-next aria-label="次の作例">→</button>
           </div>` : `
           <div class="tech-v3-gallery-empty">
-            <span>06 / GALLERY</span>
+            <span>${number} / GALLERY</span>
             <strong>作例を準備中です。</strong>
           </div>`}
+        ${(section.items || []).length ? `
+          <div class="tech-gallery-modal" data-tech-gallery-modal hidden aria-hidden="true">
+            <div class="tech-gallery-modal-dialog" role="dialog" aria-modal="true" aria-label="テクニック作例の拡大表示">
+              <button type="button" class="tech-gallery-modal-close" data-tech-gallery-modal-close aria-label="拡大表示を閉じる">×</button>
+              <button type="button" class="tech-gallery-modal-nav" data-tech-gallery-modal-prev aria-label="前の画像">←</button>
+              <figure><img data-tech-gallery-modal-image src="" alt=""><figcaption data-tech-gallery-modal-caption></figcaption></figure>
+              <button type="button" class="tech-gallery-modal-nav" data-tech-gallery-modal-next aria-label="次の画像">→</button>
+            </div>
+          </div>` : ''}
       </div>
     </section>`;
 
@@ -234,12 +243,14 @@
         items[(index + offset) % items.length]
       );
 
-      windowEl.innerHTML = visible.map(item => `
-        <figure>
-          <div>${image(item.image, item.caption || '作例')}</div>
-          ${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}
-        </figure>
-      `).join('');
+      windowEl.innerHTML = visible.map(item => {
+        const itemIndex = items.indexOf(item);
+        return `
+          <figure>
+            <button type="button" class="tech-v3-gallery-image-button" data-tech-gallery-open="${itemIndex}" aria-label="${esc(item.caption || '作例')}を拡大表示">${image(item.image, item.caption || '作例')}</button>
+            ${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}
+          </figure>`;
+      }).join('');
 
       const showNav = items.length > count;
       prev.hidden = !showNav;
@@ -262,6 +273,56 @@
       timer = window.setTimeout(draw, 100);
     });
 
+    const modal = scope.querySelector('[data-tech-gallery-modal]');
+    const modalImage = modal?.querySelector('[data-tech-gallery-modal-image]');
+    const modalCaption = modal?.querySelector('[data-tech-gallery-modal-caption]');
+    const closeButton = modal?.querySelector('[data-tech-gallery-modal-close]');
+    let modalIndex = 0;
+    let returnFocus = null;
+    const drawModal = () => {
+      const item = items[modalIndex];
+      if (!item || !modalImage) return;
+      modalImage.src = item.image || '';
+      modalImage.alt = item.caption || 'テクニック作例';
+      modalCaption.textContent = item.caption || '';
+      modalCaption.hidden = !item.caption;
+    };
+    const openModal = selectedIndex => {
+      if (!modal || !items[selectedIndex]) return;
+      modalIndex = selectedIndex;
+      returnFocus = document.activeElement;
+      drawModal();
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-gallery-modal-open');
+      closeButton?.focus();
+    };
+    const closeModal = () => {
+      if (!modal || modal.hidden) return;
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-gallery-modal-open');
+      returnFocus?.focus?.();
+    };
+    const moveModal = step => {
+      modalIndex = (modalIndex + step + items.length) % items.length;
+      drawModal();
+    };
+    windowEl.addEventListener('click', event => {
+      const trigger = event.target.closest('[data-tech-gallery-open]');
+      if (trigger) openModal(Number(trigger.dataset.techGalleryOpen));
+    });
+    closeButton?.addEventListener('click', closeModal);
+    modal?.querySelector('[data-tech-gallery-modal-prev]')?.addEventListener('click', () => moveModal(-1));
+    modal?.querySelector('[data-tech-gallery-modal-next]')?.addEventListener('click', () => moveModal(1));
+    modal?.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => {
+      if (!modal || modal.hidden) return;
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'ArrowLeft') moveModal(-1);
+      if (event.key === 'ArrowRight') moveModal(1);
+    });
+
     draw();
   };
 
@@ -274,9 +335,11 @@
     </section>`;
 
   const renderPage = data => {
+    const videoEnabled = data.video?.enabled !== false;
+    const galleryNumber = videoEnabled ? '06' : '05';
     document.body.classList.add('technique-page', 'tech-v2-page');
     document.title = 'ラッコの撮り方｜HAMANAKA PHOTO GUIDE';
-    root.innerHTML = `${renderHero(data)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${renderVideo(data.video || {})}${renderGallery(data.gallery || {})}${renderNext(data.next || {})}`;
+    root.innerHTML = `${renderHero(data, videoEnabled)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${videoEnabled ? renderVideo(data.video || {}) : ''}${renderGallery(data.gallery || {}, galleryNumber)}${renderNext(data.next || {})}`;
     initGallery(root, data.gallery || {});
     root.querySelectorAll('a[href^="#tech-"]').forEach(link => link.addEventListener('click', event => {
       const target = document.querySelector(link.getAttribute('href'));

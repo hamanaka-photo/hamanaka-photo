@@ -38,7 +38,7 @@
       <div class="container manner-v1-field-nav-inner">
         <a class="manner-v1-field-brand" href="guide.html">HAMANAKA<small>PHOTO FIELD GUIDE</small></a>
         <div class="manner-v1-field-links">
-          <a href="guide-article.html?article=photo-map">SPOT</a>
+          <a href="guide-article.html?article=photo-map">スポット</a>
           <a href="guide-article.html?article=trip">準備</a>
           <a href="guide-article.html?article=gear">機材</a>
           <a href="guide-article.html?article=technique">テクニック</a>

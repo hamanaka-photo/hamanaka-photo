@@ -45,8 +45,9 @@
     const image = safeUrl(item.image);
     const external = Boolean(item.external) && /^https?:\/\//i.test(url);
     const target = external ? ' target="_blank" rel="noopener"' : '';
+    const isComingSoon = String(item.status || '').trim().toUpperCase() === 'COMING SOON';
 
-    const visual = image
+    const visual = image && !isComingSoon
       ? `
         <div class="project-card-visual">
           <img src="${escapeHtml(image)}" alt="${escapeHtml(item.imageAlt || '')}" loading="lazy" decoding="async">
@@ -57,7 +58,7 @@
       ? `<div class="status${toneClass(item.statusTone)}">${escapeHtml(item.status)}</div>`
       : '';
 
-    const action = url
+    const action = url && !isComingSoon
       ? `<div class="project-card-action"><a class="btn btn-outline" href="${escapeHtml(url)}"${target}>${escapeHtml(item.buttonLabel || '詳しく見る')} →</a></div>`
       : '';
 
@@ -66,12 +67,12 @@
       : '';
 
     return `
-      <article class="project-card${image ? ' has-image' : ''}"${id ? ` id="${escapeHtml(id)}"` : ''}>
+      <article class="project-card${image && !isComingSoon ? ' has-image' : ''}${isComingSoon ? ' is-coming-soon' : ''}"${id ? ` id="${escapeHtml(id)}"` : ''}>
         ${visual}
         <div class="project-card-body">
-          ${item.eyebrow ? `<p class="eyebrow">${escapeHtml(item.eyebrow)}</p>` : ''}
+          ${item.eyebrow && !isComingSoon ? `<p class="eyebrow">${escapeHtml(item.eyebrow)}</p>` : ''}
           <h2>${escapeHtml(item.title || '')}</h2>
-          ${item.text ? `<p class="project-card-text">${escapeHtml(item.text)}</p>` : ''}
+          ${(isComingSoon ? item.comingSoonText || '詳細は後日公開します。' : item.text) ? `<p class="project-card-text">${escapeHtml(isComingSoon ? item.comingSoonText || '詳細は後日公開します。' : item.text)}</p>` : ''}
           ${footer}
         </div>
       </article>`;
