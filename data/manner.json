@@ -17,7 +17,7 @@
     "rules": [
       {
         "number": "01",
-        "iconImage": "assets/images/03_guide/manner/icons/boat.png",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (3).png",
         "iconAlt": "船舶・カヌー等でラッコに近づかないことを示すアイコン",
         "icon": "boat",
         "title": "船舶・カヌー等でラッコに近づかない",
@@ -25,7 +25,7 @@
       },
       {
         "number": "02",
-        "iconImage": "assets/images/03_guide/manner/icons/food.png",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (1).png",
         "iconAlt": "えさを与えないことを示すアイコン",
         "icon": "food",
         "title": "えさを与えない",
@@ -33,7 +33,7 @@
       },
       {
         "number": "03",
-        "iconImage": "assets/images/03_guide/manner/icons/sound.png",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (2).png",
         "iconAlt": "大声や騒音を出さないことを示すアイコン",
         "icon": "sound",
         "title": "大声や騒音を出さない",
@@ -41,7 +41,7 @@
       },
       {
         "number": "04",
-        "iconImage": "assets/images/03_guide/manner/icons/water.png",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (4).png",
         "iconAlt": "水面・水中から観察や撮影をしないことを示すアイコン",
         "icon": "water",
         "title": "水面および水中での観察・撮影を行わない",
@@ -49,7 +49,7 @@
       },
       {
         "number": "05",
-        "iconImage": "assets/images/03_guide/manner/icons/drone.png",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (5).png",
         "iconAlt": "ドローンを飛行させないことを示すアイコン",
         "icon": "drone",
         "title": "湯沸岬・アゼチの岬周辺でドローンを飛行させない",
@@ -91,7 +91,6 @@
     "eyebrow": "PHOTO FIELD GUIDE",
     "title": "準備を整えて、浜中町の撮影旅へ。",
     "text": "ルールを確認したら、撮影スポットや撮り方、機材の情報もあわせてご覧ください。",
-    "image": "",
     "links": [
       {
         "label": "撮影スポットを探す",
