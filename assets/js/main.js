@@ -6,7 +6,7 @@
     {
       number: '01',
       label: '撮影スポット',
-      sub: 'SPOT',
+      sub: 'スポット',
       url: 'guide-article.html?article=photo-map'
     },
     {
