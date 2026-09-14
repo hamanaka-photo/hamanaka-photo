@@ -1316,7 +1316,7 @@ content:
   type: group
   items:
   - name: photo_map_settings
-    label: SPOT｜MAPから探す
+    label: スポット｜フォトスポットから探す
     type: file
     path: data/photo-map.json
     format: json
@@ -1324,7 +1324,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜MAPから探す
+      label: HERO｜フォトスポットから探す
       type: object
       fields:
       - name: eyebrow
@@ -2832,8 +2832,32 @@ content:
         type: string
       - name: reasons
         label: レンタルを検討する理由
-        type: string
-        list: true
+        type: object
+        list:
+          max: 3
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: タイトル
+          type: string
+          required: true
+        - name: text
+          label: 説明
+          type: text
+        - name: iconImage
+          label: アイコン画像
+          type: image
+          description: 正方形の画像を推奨します。未設定時は従来の簡易アイコンを表示します。
+          options:
+            media: gear_images
+            path: rental/icons
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - name: iconAlt
+          label: アイコン画像の代替テキスト
+          type: string
       - name: serviceLabel
         label: サービス紹介の注記
         type: string
@@ -3141,18 +3165,21 @@ content:
       label: 05｜解説動画｜YouTube
       type: object
       fields:
+      - name: enabled
+        label: 動画セクションを公開する
+        type: boolean
       - {name: eyebrow, label: 英字・番号, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: youtubeUrl
         label: YouTube URL
         type: string
-        description: youtu.be、youtube.com/watch、YouTube ShortsのURLに対応します。未設定でも公開ページの動画フレームは表示されます。
+        description: youtu.be、youtube.com/watch、YouTube ShortsのURLに対応します。公開設定がオンで未設定の場合は案内フレームを表示します。
       - name: caption
         label: 動画下の補足
         type: text
     - name: gallery
-      label: 06｜作例ギャラリー
+      label: 作例ギャラリー（動画ON時06／OFF時05）
       type: object
       fields:
       - {name: eyebrow, label: 英字・番号, type: string}
@@ -3266,6 +3293,7 @@ content:
             - {name: sound, label: 音}
             - {name: water, label: 水面・水中}
             - {name: drone, label: ドローン}
+            - {name: walkway, label: 遊歩道・立入禁止}
           hidden: true
         - {name: title, label: ルール, type: text}
         - {name: text, label: 説明, type: text}
@@ -3379,6 +3407,79 @@ content:
     - name: icon
       label: 画像未設定時の文字アイコン
       type: string
+    - name: introduction
+      label: INTRODUCTION｜浜中町で撮る4つの楽しさ
+      type: object
+      description: INTRODUCTION記事だけで使用します。他の記事では空欄のままにしてください。
+      fields:
+      - name: heroLead
+        label: HERO説明文
+        type: text
+        list: true
+      - name: trip
+        label: 浜中町で撮る、4つの楽しさ。
+        type: object
+        fields:
+        - name: title
+          label: セクション見出し
+          type: string
+        - name: cards
+          label: 4つの楽しさ
+          type: object
+          list:
+            max: 4
+            collapsible:
+              collapsed: true
+              summary: '{title}'
+          fields:
+          - name: title
+            label: カード見出し
+            type: string
+            required: true
+          - name: paragraphs
+            label: 本文
+            type: text
+            list: true
+          - name: image
+            label: カード画像
+            type: image
+            required: true
+            options:
+              media: images
+              extensions: [jpg, jpeg, png, webp]
+              rename: false
+          - name: alt
+            label: 画像の代替テキスト
+            type: string
+      - name: subjects
+        label: 撮影対象カード
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - {name: eyebrow, label: 英字見出し, type: string}
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 本文, type: text}
+        - name: image
+          label: 画像
+          type: image
+          options:
+            media: images
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+      - name: links
+        label: 関連リンクカード
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - {name: title, label: 見出し, type: string}
+        - {name: text, label: 本文, type: text}
+        - {name: url, label: リンク先, type: string}
     - name: blocks
       label: 記事本文
       type: block
@@ -3673,6 +3774,10 @@ content:
     - name: text
       label: 説明
       type: text
+    - name: comingSoonText
+      label: COMING SOON時の説明
+      type: text
+      description: 準備中カードでのみ表示します。通常公開時は上の説明が表示されます。
     - name: status
       label: ステータス表示
       type: string
