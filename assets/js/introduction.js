@@ -67,21 +67,14 @@
   const renderTrip = trip => {
     if (!trip) return;
     setText('#trip-title', trip.title);
-    const lead = document.querySelector('[data-intro-trip-lead]');
-    if (lead && trip.lead) {
-      lead.innerHTML = `<div class="intro-copy"><h3>${titleWithPreferredBreak(trip.lead.title)}</h3><div class="intro-body">${paragraphs(trip.lead.paragraphs)}</div></div><figure class="intro-image">${image(trip.lead)}</figure>`;
+    const cards = document.querySelector('[data-intro-trip-cards]');
+    if (cards && Array.isArray(trip.cards)) {
+      cards.innerHTML = trip.cards.slice(0, 4).map(card => `
+        <article class="intro-trip-card">
+          <figure>${image(card)}</figure>
+          <div><h3>${titleWithPreferredBreak(card.title)}</h3><div class="intro-body">${paragraphs(card.paragraphs)}</div></div>
+        </article>`).join('');
     }
-    const points = document.querySelector('[data-intro-trip-points]');
-    if (points && Array.isArray(trip.points)) points.innerHTML = trip.points.map(point => `<article class="intro-trip-point">${image(point)}<div><h3>${escapeHtml(point.title)}</h3>${paragraphs(point.paragraphs)}</div></article>`).join('');
-  };
-
-  const renderLiving = living => {
-    const section = document.querySelector('[data-intro-living]');
-    if (!section || !living) return;
-    section.querySelector('h2').textContent = living.title || '';
-    section.querySelector('.intro-body').innerHTML = paragraphs(living.paragraphs);
-    const figure = section.querySelector('figure');
-    if (figure) figure.innerHTML = image(living);
   };
 
   const renderSubjects = subjects => {
@@ -115,7 +108,6 @@
     const heroImage = document.querySelector('[data-intro-hero-image]');
     if (heroImage && safeUrl(article.cover)) { heroImage.src = article.cover; heroImage.alt = article.title || ''; }
     renderTrip(page.trip);
-    renderLiving(page.living);
     renderSubjects(page.subjects);
     renderLinks(page.links);
     applyStaticAdjustments();
