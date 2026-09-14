@@ -22,11 +22,55 @@
     return src ? `<img class="${className}" src="${escapeHtml(src)}" alt="${escapeHtml(item.alt || item.title || '')}" loading="lazy" decoding="async">` : '';
   };
 
+  const titleWithPreferredBreak = value => {
+    const text = String(value || '');
+    const index = text.indexOf('、');
+    if (index < 0) return escapeHtml(text);
+    return `${escapeHtml(text.slice(0, index + 1))}<br>${escapeHtml(text.slice(index + 1))}`;
+  };
+
+  const applyStaticAdjustments = () => {
+    const leadTitle = document.querySelector('[data-intro-trip-lead] h3');
+    if (leadTitle) leadTitle.innerHTML = titleWithPreferredBreak(leadTitle.textContent);
+
+    const closingTitle = document.querySelector('.intro-closing .intro-section-head h2');
+    if (closingTitle) closingTitle.textContent = 'さぁ、何からはじめよう。';
+
+    if (!document.getElementById('introduction-layout-adjustments')) {
+      const style = document.createElement('style');
+      style.id = 'introduction-layout-adjustments';
+      style.textContent = `
+        @media (min-width: 901px) {
+          .intro-hero h1 {
+            max-width: none;
+            white-space: nowrap;
+            font-size: clamp(42px, 5.3vw, 68px);
+          }
+          .intro-living-inner { align-items: stretch; }
+          .intro-living figure {
+            min-height: 0;
+            height: 100%;
+            align-self: stretch;
+          }
+          .intro-living figure img {
+            width: 100%;
+            height: 100%;
+            min-height: 0;
+            object-fit: cover;
+          }
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  };
+
   const renderTrip = trip => {
     if (!trip) return;
     setText('#trip-title', trip.title);
     const lead = document.querySelector('[data-intro-trip-lead]');
-    if (lead && trip.lead) lead.innerHTML = `<div class="intro-copy"><h3>${escapeHtml(trip.lead.title)}</h3><div class="intro-body">${paragraphs(trip.lead.paragraphs)}</div></div><figure class="intro-image">${image(trip.lead)}</figure>`;
+    if (lead && trip.lead) {
+      lead.innerHTML = `<div class="intro-copy"><h3>${titleWithPreferredBreak(trip.lead.title)}</h3><div class="intro-body">${paragraphs(trip.lead.paragraphs)}</div></div><figure class="intro-image">${image(trip.lead)}</figure>`;
+    }
     const points = document.querySelector('[data-intro-trip-points]');
     if (points && Array.isArray(trip.points)) points.innerHTML = trip.points.map(point => `<article class="intro-trip-point">${image(point)}<div><h3>${escapeHtml(point.title)}</h3>${paragraphs(point.paragraphs)}</div></article>`).join('');
   };
@@ -74,7 +118,10 @@
     renderLiving(page.living);
     renderSubjects(page.subjects);
     renderLinks(page.links);
+    applyStaticAdjustments();
   };
+
+  applyStaticAdjustments();
 
   fetch('data/guide-articles.json', { cache: 'no-cache' })
     .then(response => response.ok ? response.json() : Promise.reject(new Error(response.status)))
