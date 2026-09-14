@@ -1,0 +1,137 @@
+{
+  "seo": {
+    "title": "ABOUT｜HAMANAKA PHOTO",
+    "description": "HAMANAKA PHOTOについて。写真を入口に、浜中町を知り、訪れ、撮り、つながるためのフォトポータルです。"
+  },
+  "hero": {
+    "eyebrow": "ABOUT HAMANAKA PHOTO",
+    "title": "写真から、\n浜中町とつながる。",
+    "lead": "見る。知る。訪れる。撮る。伝える。\nHAMANAKA PHOTOは、写真を入口に浜中町との出会いをつなぐフォトポータルです。",
+    "image": "assets/images/01_home/01_HOME.webp"
+  },
+  "intro": {
+    "eyebrow": "WHAT IS HAMANAKA PHOTO?",
+    "title": "一枚の写真から、\n町との出会いをつくる。",
+    "paragraphs": [
+      "浜中町には、野生のラッコをはじめ、太平洋、霧多布湿原、野鳥、酪農風景、漁港など、ここでしか出会えない景色があります。",
+      "HAMANAKA PHOTOでは、それらの魅力を写真で見せるだけではなく、「どこで撮れるのか」「どうやって訪れるのか」「どんなルールを守るのか」までを一つにつなぎます。",
+      "写真を見て終わるのではなく、浜中町を知り、実際に訪れ、自分の視点で撮り、その魅力を次の誰かへ伝えていく。そんな循環を育てることを目指しています。"
+    ]
+  },
+  "flow": {
+    "eyebrow": "PHOTO JOURNEY",
+    "title": "写真から始まる、5つのステップ。",
+    "lead": "HAMANAKA PHOTOのコンテンツは、町との出会いが次の行動につながるようにつくられています。",
+    "items": [
+      {
+        "number": "01",
+        "title": "見る",
+        "text": "写真から浜中町の景色や生きものに出会う。"
+      },
+      {
+        "number": "02",
+        "title": "知る",
+        "text": "町の自然、暮らし、撮影の魅力を知る。"
+      },
+      {
+        "number": "03",
+        "title": "訪れる",
+        "text": "アクセスや準備を確認して、実際に浜中町へ。"
+      },
+      {
+        "number": "04",
+        "title": "撮る",
+        "text": "ルールを守りながら、自分の視点で景色を残す。"
+      },
+      {
+        "number": "05",
+        "title": "伝える",
+        "text": "撮った写真や体験を通して、次の人へ魅力をつなぐ。"
+      }
+    ]
+  },
+  "contents": {
+    "eyebrow": "CONTENTS",
+    "title": "HAMANAKA PHOTOでできること。",
+    "items": [
+      {
+        "eyebrow": "INTRODUCTION",
+        "title": "浜中町を知る",
+        "text": "海、湿原、野生動物、暮らし。写真を撮る人の視点から浜中町を紹介します。",
+        "image": "assets/images/01_home/01_HOME.webp",
+        "buttonLabel": "詳しく見る →",
+        "url": "introduction.html"
+      },
+      {
+        "eyebrow": "GALLERY",
+        "title": "写真を見る",
+        "text": "浜中町で撮影された作品から、季節や場所、生きものの表情に出会えます。",
+        "image": "assets/images/01_home/02_GALLERY.webp",
+        "buttonLabel": "GALLERYを見る →",
+        "url": "gallery.html"
+      },
+      {
+        "eyebrow": "PHOTO GUIDE",
+        "title": "撮りに行く",
+        "text": "撮影スポット、旅の準備、機材、撮り方、ルールまで現地撮影に必要な情報をまとめています。",
+        "image": "assets/images/01_home/03_GUIDE.webp",
+        "buttonLabel": "PHOTO GUIDEを見る →",
+        "url": "guide.html"
+      },
+      {
+        "eyebrow": "PROJECT",
+        "title": "写真の取り組みを知る",
+        "text": "写真展、撮影会、フォトコンテストなど、写真を活用した浜中町の取り組みを紹介します。",
+        "image": "assets/images/01_home/04_PROJECT.webp",
+        "buttonLabel": "PROJECTを見る →",
+        "url": "project.html"
+      }
+    ]
+  },
+  "message": {
+    "eyebrow": "OUR APPROACH",
+    "title": "自然と地域を大切にしながら、\n写真を楽しむ。",
+    "text": "美しい景色や野生動物との出会いを、これからも楽しめるように。HAMANAKA PHOTOでは、撮影する人と地域、そして自然が気持ちよく共存できる撮影を大切にしています。",
+    "image": "",
+    "buttonLabel": "撮影ルール・マナーを見る →",
+    "url": "guide-article.html?article=manner"
+  },
+  "information": {
+    "eyebrow": "INFORMATION",
+    "title": "運営・サイトについて。",
+    "items": [
+      {
+        "eyebrow": "OPERATOR",
+        "title": "運営",
+        "text": "HAMANAKA PHOTOは、北海道浜中町が運営する写真ポータルサイトです。",
+        "linkLabel": "",
+        "url": "",
+        "external": false
+      },
+      {
+        "eyebrow": "CONTACT",
+        "title": "お問い合わせ",
+        "text": "町や観光に関するお問い合わせは、浜中町公式サイトをご確認ください。",
+        "linkLabel": "浜中町公式サイト ↗",
+        "url": "https://www.townhamanaka.jp/",
+        "external": true
+      },
+      {
+        "eyebrow": "PHOTO & CONTENT",
+        "title": "写真・掲載内容について",
+        "text": "掲載写真や文章の無断転載・無断使用はお控えください。各写真の権利関係は掲載情報をご確認ください。",
+        "linkLabel": "",
+        "url": "",
+        "external": false
+      },
+      {
+        "eyebrow": "INFORMATION",
+        "title": "掲載情報について",
+        "text": "撮影地・交通・施設・ルール等は変更される場合があります。訪問前に最新の公式情報もご確認ください。",
+        "linkLabel": "",
+        "url": "",
+        "external": false
+      }
+    ]
+  }
+}

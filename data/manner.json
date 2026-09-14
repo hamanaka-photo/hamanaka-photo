@@ -17,30 +17,40 @@
     "rules": [
       {
         "number": "01",
+        "iconImage": "assets/images/03_guide/manner/icons/boat.png",
+        "iconAlt": "船舶・カヌー等でラッコに近づかないことを示すアイコン",
         "icon": "boat",
         "title": "船舶・カヌー等でラッコに近づかない",
         "text": "撮影や見学のために、船舶やカヌー等を使ってラッコへ近づかないでください。"
       },
       {
         "number": "02",
+        "iconImage": "assets/images/03_guide/manner/icons/food.png",
+        "iconAlt": "えさを与えないことを示すアイコン",
         "icon": "food",
         "title": "えさを与えない",
         "text": "野生のラッコへの餌付けは行わないでください。"
       },
       {
         "number": "03",
+        "iconImage": "assets/images/03_guide/manner/icons/sound.png",
+        "iconAlt": "大声や騒音を出さないことを示すアイコン",
         "icon": "sound",
         "title": "大声や騒音を出さない",
         "text": "大きな声や音を出さず、静かに観察・撮影してください。"
       },
       {
         "number": "04",
+        "iconImage": "assets/images/03_guide/manner/icons/water.png",
+        "iconAlt": "水面・水中から観察や撮影をしないことを示すアイコン",
         "icon": "water",
         "title": "水面および水中での観察・撮影を行わない",
         "text": "水面や水中からラッコへ近づいて観察・撮影する行為は行わないでください。"
       },
       {
         "number": "05",
+        "iconImage": "assets/images/03_guide/manner/icons/drone.png",
+        "iconAlt": "ドローンを飛行させないことを示すアイコン",
         "icon": "drone",
         "title": "湯沸岬・アゼチの岬周辺でドローンを飛行させない",
         "text": "岬周辺ではラッコ鑑賞や撮影を目的としたドローン飛行を行わないでください。"
