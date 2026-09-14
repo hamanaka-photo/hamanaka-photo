@@ -3,7 +3,7 @@
     "eyebrow": "RULES",
     "title": "浜中町での\n撮影の心得",
     "lead": "そっと見守る時間が、いちばんのシャッターチャンス。\n野生動物との距離を保ち、安全に撮影を楽しみましょう。",
-    "image": "assets/images/guide-manner.webp"
+    "image": "assets/images/rule.webp"
   },
   "opening": {
     "eyebrow": "WILDLIFE",
@@ -17,22 +17,14 @@
     "rules": [
       {
         "number": "01",
-        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (3).png",
-        "iconAlt": "船舶・カヌー等でラッコに近づかないことを示すアイコン",
-        "icon": "boat",
-        "title": "船舶・カヌー等でラッコに近づかない",
-        "text": "撮影や見学のために、船舶やカヌー等を使ってラッコへ近づかないでください。"
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (5).png",
+        "iconAlt": "岬の近くでドローンを飛ばさないことを示すアイコン",
+        "icon": "drone",
+        "title": "岬の近くでドローンを飛ばさない",
+        "text": "湯沸岬・アゼチの岬周辺では、ラッコ鑑賞や撮影を目的としたドローン飛行は行わないでください。"
       },
       {
         "number": "02",
-        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (1).png",
-        "iconAlt": "えさを与えないことを示すアイコン",
-        "icon": "food",
-        "title": "えさを与えない",
-        "text": "野生のラッコへの餌付けは行わないでください。"
-      },
-      {
-        "number": "03",
         "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (2).png",
         "iconAlt": "大声や騒音を出さないことを示すアイコン",
         "icon": "sound",
@@ -40,20 +32,28 @@
         "text": "大きな声や音を出さず、静かに観察・撮影してください。"
       },
       {
+        "number": "03",
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (3).png",
+        "iconAlt": "撮影・見学のために船でラッコへ近づかないことを示すアイコン",
+        "icon": "boat",
+        "title": "撮影・見学のために船で近づかない",
+        "text": "撮影や見学を目的として、船舶やカヌー等でラッコに近づかないでください。"
+      },
+      {
         "number": "04",
-        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (4).png",
-        "iconAlt": "水面・水中から観察や撮影をしないことを示すアイコン",
-        "icon": "water",
-        "title": "水面および水中での観察・撮影を行わない",
-        "text": "水面や水中からラッコへ近づいて観察・撮影する行為は行わないでください。"
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (1).png",
+        "iconAlt": "エサを与えないことを示すアイコン",
+        "icon": "food",
+        "title": "エサを与えない",
+        "text": "野生のラッコへの餌付けは行わないでください。"
       },
       {
         "number": "05",
-        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (5).png",
-        "iconAlt": "ドローンを飛行させないことを示すアイコン",
-        "icon": "drone",
-        "title": "湯沸岬・アゼチの岬周辺でドローンを飛行させない",
-        "text": "岬周辺ではラッコ鑑賞や撮影を目的としたドローン飛行を行わないでください。"
+        "iconImage": "assets/images/03_guide/manner/名称未設定のデザイン (4).png",
+        "iconAlt": "遊歩道以外へ立ち入らないことを示すアイコン",
+        "icon": "water",
+        "title": "遊歩道以外へ立ち入らない",
+        "text": "安全柵の外や立入禁止区域、遊歩道外へ立ち入らず、指定された場所から観察・撮影してください。"
       }
     ],
     "buttonLabel": "浜中町のラッコ鑑賞ルールを見る",
