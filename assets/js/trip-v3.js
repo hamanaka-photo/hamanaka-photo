@@ -149,19 +149,21 @@
     return `
       <section class="trip-v3-section trip-v4-access" id="trip-v3-access">
         <div class="container">
-          <div class="trip-v3-heading">
+          <div class="trip-v3-heading trip-v4-heading-stacked">
             <div>
               <p>01 / ACCESS</p>
               <h2>${esc(access.title || '浜中町へ行く')}</h2>
-              ${access.subtitle ? `
-                <p class="trip-v4-access-subtitle">
-                  ${esc(access.subtitle)}
-                </p>` : ''}
+              <p class="trip-v4-section-lead">
+                ${esc(
+                  access.subtitle ||
+                  '撮影旅行を計画するときは、まず浜中町までのアクセスを確認しておきましょう。'
+                )}
+                ${esc(
+                  access.lead ||
+                  '出発地や季節に合わせて、無理のない移動計画を。'
+                )}
+              </p>
             </div>
-            <span>${esc(
-              access.lead ||
-              '出発地や季節に合わせて、無理のない移動計画を。'
-            )}</span>
           </div>
 
           <div class="trip-v4-access-example">
@@ -360,62 +362,45 @@
 
   const renderStay = base => {
     const stay = base.stay || {};
-    const categories =
-      Array.isArray(stay.categories) &&
-      stay.categories.length
-        ? stay.categories
-        : [{
-            label: '泊まる',
-            title: stay.title || '浜中町に泊まろう',
-            text: stay.text || '',
-            buttonLabel:
-              stay.buttonLabel ||
-              '宿泊施設を見る',
-            url: stay.url || ''
-          }];
-
     return `
       <section class="trip-v3-section" id="trip-v3-stay">
         <div class="container">
-          <div class="trip-v3-heading">
+          <div class="trip-v3-heading trip-v4-heading-stacked">
             <div>
-              <p>04 / STAY & BREAK</p>
+              <p>04 / STAY</p>
               <h2>${esc(
                 stay.sectionTitle ||
-                '宿泊・食事・立ち寄り'
+                '宿泊'
               )}</h2>
+              <p class="trip-v4-section-lead">
+                ${esc(
+                  stay.sectionLead ||
+                  '撮影時間と移動距離に合わせて、町内での宿泊先を確認します。'
+                )}
+              </p>
             </div>
-            <span>${esc(
-              stay.sectionLead ||
-              '撮影時間と移動経路に合わせて、滞在先や立ち寄り先を確認します。'
-            )}</span>
           </div>
           <article class="trip-v3-stay-card">
             <div class="trip-v3-stay-visual">
               ${stay.image ? `<img src="${esc(stay.image)}" alt="浜中町での滞在" loading="lazy" decoding="async">` : ''}
             </div>
             <div class="trip-v3-stay-copy">
-              <div class="trip-v4-stay-categories">
-                ${categories.map(category => `
-                  <section class="trip-v4-stay-category">
-                    <span class="trip-v3-kicker">
-                      ${esc(category.label || '')}
-                    </span>
-                    <h3>${esc(category.title || '')}</h3>
-                    <p>${esc(category.text || '')}</p>
-                    ${safe(category.url) ? `
-                      <a
-                        class="trip-v3-button trip-v3-button-primary"
-                        href="${esc(category.url)}"
-                        target="_blank"
-                        rel="noopener noreferrer">
-                        ${esc(
-                          category.buttonLabel ||
-                          '詳しく見る'
-                        )} ↗
-                      </a>` : ''}
-                  </section>`).join('')}
-              </div>
+              <span class="trip-v3-kicker">
+                ${esc(stay.eyebrow || 'STAY')}
+              </span>
+              <h3>${esc(stay.title || '浜中町に泊まろう')}</h3>
+              <p>${esc(stay.text || '')}</p>
+              ${safe(stay.url) ? `
+                <a
+                  class="trip-v3-button trip-v3-button-primary"
+                  href="${esc(stay.url)}"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  ${esc(
+                    stay.buttonLabel ||
+                    '宿泊施設を見る'
+                  )} ↗
+                </a>` : ''}
             </div>
           </article>
         </div>
@@ -481,15 +466,18 @@
       <div class="trip-v3-chart-tooltip" data-v3-chart-tooltip hidden></div>`;
   };
 
-  const renderClimate = cfg => `
+  const renderClimate = (base, cfg) => `
     <section class="trip-v3-section" id="trip-v3-climate">
       <div class="container">
-        <div class="trip-v3-heading">
+        <div class="trip-v3-heading trip-v4-heading-stacked">
           <div>
             <p>02 / CLIMATE & CLOTHING</p>
             <h2>気候を知って、服装を決める</h2>
           </div>
-          <span>訪れる時期の気温を確認して、撮影時間帯に合わせた服装を準備しましょう。</span>
+        </div>
+        <div class="trip-v4-subsection-heading">
+          <h3>気候</h3>
+          <p>訪れる時期の気温を確認して、撮影時間帯に合わせた服装を準備しましょう。</p>
         </div>
         <div class="trip-v3-climate-grid">
           <article class="trip-v3-climate-card">
@@ -527,6 +515,7 @@
                 ${card.description ? `<p class="trip-v8-climate-description">${esc(card.description)}</p>` : ''}
               </article>`).join('')}
           </div>` : ''}
+        ${renderWear(base, cfg)}
       </div>
     </section>`;
 
@@ -595,39 +584,31 @@
       </article>`;
 
     return `
-      <section class="trip-v3-section" id="trip-v3-wear">
-        <div class="container">
-          <div class="trip-v3-heading">
-            <div>
-              <p>03 / TRAVEL ESSENTIALS</p>
-              <h2>${esc(
-                clothing.sectionTitle ||
-                '撮影旅行に持っていくもの'
-              )}</h2>
-            </div>
-            <span>${esc(
+      <div class="trip-v4-climate-subsection" id="trip-v3-wear">
+        <div class="trip-v4-subsection-heading">
+          <h3>服装</h3>
+          <p>${esc(
               clothing.sectionLead ||
               '晴天だけでなく、海霧や風を想定した装備を。撮影機材の保護用品も忘れずに。'
-            )}</span>
-          </div>
+            )}</p>
+        </div>
 
-          <div class="trip-v3-wear-grid">
-            ${cards.map(card).join('')}
-          </div>
+        <div class="trip-v3-wear-grid">
+          ${cards.map(card).join('')}
+        </div>
 
-          <div class="trip-v3-essentials">
-            <h3>${esc(
-              clothing.essentialsTitle ||
-              'その他の必需品'
-            )}</h3>
-            <div class="trip-v3-essential-grid">
-              ${essentials
-                .map(item => `<span>${esc(item)}</span>`)
-                .join('')}
-            </div>
+        <div class="trip-v3-essentials">
+          <h3>${esc(
+            clothing.essentialsTitle ||
+            'その他の必需品'
+          )}</h3>
+          <div class="trip-v3-essential-grid">
+            ${essentials
+              .map(item => `<span>${esc(item)}</span>`)
+              .join('')}
           </div>
         </div>
-      </section>`;
+      </div>`;
   };
 
   const renderPlan = (base, cfg) => {
@@ -635,9 +616,12 @@
     return `
       <section class="trip-v3-section" id="trip-v3-plan" data-v3-planner>
         <div class="container">
-          <div class="trip-v3-heading">
-            <div><p>05 / MY TRIP PLAN</p><h2>撮影旅行のプランをつくる</h2></div>
-            <span>期間、移動手段、宿泊先を入力すると、季節に合わせた準備リストまで1つにまとめます。</span>
+          <div class="trip-v3-heading trip-v4-heading-stacked">
+            <div>
+              <p>05 / MY TRIP PLAN</p>
+              <h2>撮影旅行のプランをつくる</h2>
+              <p class="trip-v4-section-lead">期間、移動手段、宿泊先を入力すると、季節に合わせた準備リストまで1つにまとめます。</p>
+            </div>
           </div>
 
           <div class="trip-v3-plan-layout">
@@ -1109,8 +1093,7 @@
       shell.innerHTML = [
         renderNav(cfg),
         renderAccess(base, cfg),
-        renderClimate(cfg),
-        renderWear(base, cfg),
+        renderClimate(base, cfg),
         renderStay(base),
         renderPlan(base, cfg)
       ].join('');

@@ -12,13 +12,8 @@
       "anchor": "trip-v3-climate"
     },
     {
-      "number": "03",
-      "label": "持ち物",
-      "anchor": "trip-v3-wear"
-    },
-    {
       "number": "04",
-      "label": "宿泊・食事",
+      "label": "宿泊",
       "anchor": "trip-v3-stay"
     },
     {

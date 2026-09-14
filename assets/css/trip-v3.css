@@ -34,7 +34,7 @@
 
 .trip-v3-nav-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 10px;
 }
 
@@ -108,7 +108,11 @@
   line-height: 1.8;
 }
 
-.trip-v3-heading .trip-v4-access-subtitle {
+.trip-v4-heading-stacked {
+  grid-template-columns: 1fr;
+}
+
+.trip-v3-heading .trip-v4-section-lead {
   max-width: 680px;
   margin: 10px 0 0;
   color: var(--v3-text);
@@ -116,6 +120,31 @@
   font-weight: 400;
   line-height: 1.8;
   letter-spacing: 0;
+}
+
+.trip-v4-subsection-heading {
+  margin-bottom: 18px;
+}
+
+.trip-v4-subsection-heading h3 {
+  margin: 0;
+  color: var(--v3-navy);
+  font-size: 25px;
+}
+
+.trip-v4-subsection-heading p {
+  max-width: 760px;
+  margin: 7px 0 0;
+  color: var(--v3-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.trip-v4-climate-subsection {
+  margin-top: 48px;
+  padding-top: 42px;
+  border-top: 1px solid var(--v3-line);
+  scroll-margin-top: 30px;
 }
 
 /* access */
@@ -425,17 +454,6 @@
   color: var(--v3-text);
   font-size: 14px;
   line-height: 1.85;
-}
-
-.trip-v4-stay-categories {
-  display: grid;
-  gap: 20px;
-}
-
-.trip-v4-stay-category +
-.trip-v4-stay-category {
-  padding-top: 20px;
-  border-top: 1px solid var(--v3-line);
 }
 
 /* climate */
@@ -962,10 +980,6 @@
 @media (max-width: 760px) {
   .trip-v3-nav-grid {
     grid-template-columns: 1fr 1fr;
-  }
-
-  .trip-v3-nav-card:last-child {
-    grid-column: 1 / -1;
   }
 
   .trip-v3-section {
