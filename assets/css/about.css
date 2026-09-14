@@ -9,3 +9,14 @@
   max-width: 900px;
   padding-top: 0;
 }
+
+/* Keep the remaining three rights cards balanced after removing one item. */
+.about-policy-card-grid > :last-child:nth-child(odd) {
+  grid-column: span 2;
+}
+
+@media (max-width: 800px) {
+  .about-policy-card-grid > :last-child:nth-child(odd) {
+    grid-column: auto;
+  }
+}

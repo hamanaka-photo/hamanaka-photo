@@ -228,6 +228,11 @@
   line-height: 1.8;
 }
 
+.gear-v2-accessories .gear-v2-heading {
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
 .gear-v2-note {
   margin: 14px 0 0;
   color: #7b8d94;
