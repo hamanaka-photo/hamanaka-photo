@@ -1,119 +1,25 @@
 (() => {
   const root = document.querySelector('[data-about-page]');
   if (!root) return;
-
-  const esc = (value = '') => String(value).replace(/[&<>"']/g, ch => ({
-    '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#039;'
-  }[ch]));
-  const nl2br = value => esc(value || '').replace(/\r?\n/g, '<br>');
-  const safeUrl = value => {
-    const raw = String(value || '').trim();
-    if (!raw || /^(javascript|data|vbscript):/i.test(raw)) return '';
-    return raw;
-  };
-  const setText = (selector, value) => {
-    const el = document.querySelector(selector);
-    if (el && value !== undefined && value !== null) el.textContent = String(value);
-  };
-  const setHtml = (selector, value) => {
-    const el = document.querySelector(selector);
-    if (el && value !== undefined && value !== null) el.innerHTML = nl2br(value);
-  };
-
-  const render = data => {
-    if (data.seo?.title) document.title = data.seo.title;
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta && data.seo?.description) meta.setAttribute('content', data.seo.description);
-
-    const hero = data.hero || {};
-    setText('[data-about-hero-eyebrow]', hero.eyebrow);
-    setHtml('[data-about-hero-title]', hero.title);
-    setHtml('[data-about-hero-lead]', hero.lead);
-    const heroImage = document.querySelector('[data-about-hero-image]');
-    if (heroImage && hero.image) heroImage.style.backgroundImage = `url("${String(hero.image).replace(/"/g, '%22')}")`;
-
-    const intro = data.intro || {};
-    setText('[data-about-intro-eyebrow]', intro.eyebrow);
-    setHtml('[data-about-intro-title]', intro.title);
-    const introCopy = document.querySelector('[data-about-intro-copy]');
-    if (introCopy && Array.isArray(intro.paragraphs)) {
-      introCopy.innerHTML = intro.paragraphs.map(p => `<p>${esc(p)}</p>`).join('');
-    }
-
-    const flow = data.flow || {};
-    setText('[data-about-flow-eyebrow]', flow.eyebrow);
-    setText('[data-about-flow-title]', flow.title);
-    setText('[data-about-flow-lead]', flow.lead);
-    const flowGrid = document.querySelector('[data-about-flow-items]');
-    if (flowGrid && Array.isArray(flow.items)) {
-      flowGrid.innerHTML = flow.items.map(item => `
-        <li><span>${esc(item.number || '')}</span><b>${esc(item.title || '')}</b><p>${esc(item.text || '')}</p></li>
-      `).join('');
-    }
-
-    const contents = data.contents || {};
-    setText('[data-about-contents-eyebrow]', contents.eyebrow);
-    setText('[data-about-contents-title]', contents.title);
-    const contentGrid = document.querySelector('[data-about-content-items]');
-    if (contentGrid && Array.isArray(contents.items)) {
-      contentGrid.innerHTML = contents.items.map(item => {
-        const url = safeUrl(item.url) || '#';
-        const image = item.image ? `<img src="${esc(item.image)}" alt="" loading="lazy" decoding="async">` : '<div class="about-content-card-placeholder"></div>';
-        return `<a class="about-content-card" href="${esc(url)}">
-          ${image}
-          <div>
-            <p class="eyebrow">${esc(item.eyebrow || '')}</p>
-            <h3>${esc(item.title || '')}</h3>
-            <p>${esc(item.text || '')}</p>
-            <span>${esc(item.buttonLabel || '詳しく見る →')}</span>
-          </div>
-        </a>`;
-      }).join('');
-    }
-
-    const message = data.message || {};
-    setText('[data-about-message-eyebrow]', message.eyebrow);
-    setHtml('[data-about-message-title]', message.title);
-    setText('[data-about-message-text]', message.text);
-    const messageSection = document.querySelector('[data-about-message]');
-    if (messageSection && message.image) {
-      messageSection.style.backgroundImage = `linear-gradient(rgba(14,54,79,.86),rgba(21,58,91,.92)),url("${String(message.image).replace(/"/g, '%22')}")`;
-      messageSection.style.backgroundSize = 'cover';
-      messageSection.style.backgroundPosition = 'center';
-    }
-    const messageLink = document.querySelector('[data-about-message-link]');
-    if (messageLink) {
-      const url = safeUrl(message.url);
-      if (url) messageLink.href = url;
-      if (message.buttonLabel) messageLink.textContent = message.buttonLabel;
-      messageLink.hidden = !url;
-    }
-
-    const info = data.information || {};
-    setText('[data-about-info-eyebrow]', info.eyebrow);
-    setText('[data-about-info-title]', info.title);
-    const infoGrid = document.querySelector('[data-about-info-items]');
-    if (infoGrid && Array.isArray(info.items)) {
-      infoGrid.innerHTML = info.items.map(item => {
-        const url = safeUrl(item.url);
-        const link = url && item.linkLabel ? `<a href="${esc(url)}" ${item.external ? 'target="_blank" rel="noopener"' : ''}>${esc(item.linkLabel)}</a>` : '';
-        return `<div class="about-info-card">
-          <small>${esc(item.eyebrow || '')}</small>
-          <h3>${esc(item.title || '')}</h3>
-          <p>${esc(item.text || '')}</p>
-          ${link}
-        </div>`;
-      }).join('');
-    }
-
+  const esc = (v='') => String(v).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const nl2br = v => esc(v||'').replace(/\r?\n/g,'<br>');
+  const safeUrl = v => { const s=String(v||'').trim(); return (!s||/^(javascript|data|vbscript):/i.test(s))?'':s; };
+  const text=(sel,v)=>{const e=document.querySelector(sel);if(e&&v!==undefined&&v!==null)e.textContent=String(v)};
+  const html=(sel,v)=>{const e=document.querySelector(sel);if(e&&v!==undefined&&v!==null)e.innerHTML=nl2br(v)};
+  const cards=(sel,items=[])=>{const e=document.querySelector(sel);if(!e||!Array.isArray(items))return;e.innerHTML=items.map(i=>`<article class="about-policy-card"><h3>${esc(i.title||'')}</h3><p>${esc(i.text||'')}</p></article>`).join('')};
+  const render=data=>{
+    if(data.seo?.title) document.title=data.seo.title;
+    const meta=document.querySelector('meta[name="description"]'); if(meta&&data.seo?.description)meta.content=data.seo.description;
+    const h=data.hero||{};text('[data-about-hero-eyebrow]',h.eyebrow);html('[data-about-hero-title]',h.title);html('[data-about-hero-lead]',h.lead);const hi=document.querySelector('[data-about-hero-image]');if(hi&&h.image)hi.style.backgroundImage=`url("${String(h.image).replace(/"/g,'%22')}")`;
+    const o=data.overview||{};text('[data-about-overview-eyebrow]',o.eyebrow);html('[data-about-overview-title]',o.title);const oc=document.querySelector('[data-about-overview-copy]');if(oc&&Array.isArray(o.paragraphs))oc.innerHTML=o.paragraphs.map(p=>`<p>${esc(p)}</p>`).join('');
+    const op=data.operator||{};text('[data-about-operator-eyebrow]',op.eyebrow);text('[data-about-operator-title]',op.title);text('[data-about-operator-lead]',op.lead);text('[data-about-operator-primary-title]',op.primaryTitle);text('[data-about-operator-primary-text]',op.primaryText);text('[data-about-operator-collab-title]',op.collaborationTitle);text('[data-about-operator-collab-text]',op.collaborationText);
+    const r=data.rights||{};text('[data-about-rights-eyebrow]',r.eyebrow);text('[data-about-rights-title]',r.title);text('[data-about-rights-lead]',r.lead);text('[data-about-rights-notice-title]',r.noticeTitle);text('[data-about-rights-notice-text]',r.noticeText);cards('[data-about-rights-items]',r.items);
+    const t=data.terms||{};text('[data-about-terms-eyebrow]',t.eyebrow);text('[data-about-terms-title]',t.title);cards('[data-about-terms-items]',t.items);
+    const c=data.contact||{};text('[data-about-contact-eyebrow]',c.eyebrow);text('[data-about-contact-title]',c.title);text('[data-about-contact-lead]',c.lead);text('[data-about-contact-organization]',c.organization);text('[data-about-contact-section]',c.section);text('[data-about-contact-phone-note]',c.phoneNote?`（${c.phoneNote}）`:'');text('[data-about-contact-note]',c.note);
+    const ph=document.querySelector('[data-about-contact-phone]');if(ph&&c.phone){ph.textContent=c.phone;ph.href=`tel:${String(c.phone).replace(/[^0-9+]/g,'')}`}
+    const em=document.querySelector('[data-about-contact-email]');if(em&&c.email){em.textContent=c.email;em.href=`mailto:${c.email}`}
+    const l=data.links||{};text('[data-about-links-eyebrow]',l.eyebrow);text('[data-about-links-title]',l.title);const lg=document.querySelector('[data-about-links-items]');if(lg&&Array.isArray(l.items))lg.innerHTML=l.items.map(i=>{const u=safeUrl(i.url);return u?`<a class="about-related-link" href="${esc(u)}" ${i.external?'target="_blank" rel="noopener"':''}><span>${esc(i.label||'リンク')}</span><span>${i.external?'↗':'→'}</span></a>`:''}).join('');
     root.classList.add('is-cms-loaded');
   };
-
-  fetch('data/about.json', { cache: 'no-cache' })
-    .then(response => {
-      if (!response.ok) throw new Error(`about.json: ${response.status}`);
-      return response.json();
-    })
-    .then(render)
-    .catch(error => console.error('ABOUT CMS data could not be loaded.', error));
+  fetch('data/about.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`about.json: ${r.status}`);return r.json()}).then(render).catch(e=>console.error('ABOUT CMS data could not be loaded.',e));
 })();
