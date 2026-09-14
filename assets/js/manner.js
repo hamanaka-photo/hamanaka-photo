@@ -29,7 +29,7 @@
 
   const renderIcon = rule => {
     const src = iconImagePath(rule);
-    const alt = rule?.title ? `${rule.title}のアイコン` : 'ルールアイコン';
+    const alt = rule?.iconAlt || (rule?.title ? `${rule.title}のアイコン` : 'ルールアイコン');
     return `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async">`;
   };
 
