@@ -12,19 +12,20 @@
       </div>
 
       <div class="footer-col">
-        <h2><a href="introduction.html">INTRODUCTION</a></h2>
+        <h2>INTRODUCTION</h2>
         <a href="introduction.html">浜中町を知る</a>
       </div>
 
       <div class="footer-col">
-        <h2><a href="gallery.html">GALLERY</a></h2>
+        <h2>GALLERY</h2>
         <a href="gallery.html">フォトギャラリー</a>
         <a href="gallery.html?selection=tokyo-camera-club-2026">東京カメラ部2026写真展</a>
         <a href="gallery.html#author">撮影者紹介</a>
       </div>
 
       <div class="footer-col">
-        <h2><a href="guide.html">PHOTO GUIDE</a></h2>
+        <h2>PHOTO GUIDE</h2>
+        <a href="guide.html">記事一覧</a>
         <a href="guide-article.html?article=photo-map">撮影スポット</a>
         <a href="guide-article.html?article=trip">撮影旅行の準備</a>
         <a href="guide-article.html?article=gear">カメラ・レンズ</a>
@@ -33,13 +34,13 @@
       </div>
 
       <div class="footer-col">
-        <h2><a href="project.html">PROJECT</a></h2>
+        <h2>PROJECT</h2>
         <a href="project.html">写真の取り組み</a>
         <a href="project.html#contest">フォトコンテスト</a>
       </div>
 
       <div class="footer-col">
-        <h2><a href="about.html">ABOUT</a></h2>
+        <h2>ABOUT</h2>
         <a href="about.html">このサイトについて</a>
         <a href="https://www.townhamanaka.jp/" target="_blank" rel="noopener">浜中町公式サイト ↗</a>
       </div>
@@ -86,7 +87,7 @@
       font-weight: 400;
     }
 
-    .site-footer .footer-col h2 a {
+    .site-footer .footer-col h2 {
       color: var(--navy);
       font-size: 14px;
       font-weight: 800;
@@ -99,7 +100,6 @@
     }
 
     .site-footer .footer-col > a:hover,
-    .site-footer .footer-col h2 a:hover,
     .site-footer .footer-brand-link:hover {
       color: var(--blue);
     }

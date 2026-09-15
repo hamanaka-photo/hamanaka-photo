@@ -24,6 +24,7 @@
 
   const titleWithPreferredBreak = value => {
     const text = String(value || '');
+    if (text === '暮らすように旅して、撮る。') return escapeHtml(text);
     const index = text.indexOf('、');
     if (index < 0) return escapeHtml(text);
     return `${escapeHtml(text.slice(0, index + 1))}<br>${escapeHtml(text.slice(index + 1))}`;
@@ -72,7 +73,7 @@
       cards.innerHTML = trip.cards.slice(0, 4).map(card => `
         <article class="intro-trip-card">
           <figure>${image(card)}</figure>
-          <div><h3>${titleWithPreferredBreak(card.title)}</h3><div class="intro-body">${paragraphs(card.paragraphs)}</div></div>
+          <div><h3${card.title === '暮らすように旅して、撮る。' ? ' class="intro-trip-title-living"' : ''}>${titleWithPreferredBreak(card.title)}</h3><div class="intro-body">${paragraphs(card.paragraphs)}</div></div>
         </article>`).join('');
     }
   };

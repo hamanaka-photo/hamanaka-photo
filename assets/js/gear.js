@@ -30,12 +30,10 @@
     </div>`;
 
   const image = (src, alt = '', cls = '') => {
-    const imageUrl = safeUrl(src);
-    if (!imageUrl) return placeholder(alt || 'IMAGE');
-
+    if (!src) return placeholder(alt || 'IMAGE');
     return `<img
-      class="${escapeHtml(cls)}"
-      src="${escapeHtml(imageUrl)}"
+      class="${cls}"
+      src="${escapeHtml(src)}"
       alt="${escapeHtml(alt)}"
       loading="lazy"
       decoding="async"
@@ -57,7 +55,7 @@
           <a href="guide-article.html?article=manner">ルール</a>
         </div>
         <a class="gear-v2-field-spot" href="guide-article.html?article=photo-map">
-          撮影スポットを探す
+          フォトスポットを探す
           <span aria-hidden="true">●</span>
         </a>
       </div>
@@ -72,21 +70,44 @@
       <div class="container gear-v2-hero-inner">
         <div class="gear-v2-hero-copy">
           <p class="gear-v2-eyebrow">${escapeHtml(hero.eyebrow || 'GEAR')}</p>
-          <h1>${nl2br(hero.title || 'ラッコ撮影の、\n機材選び。')}</h1>
+          <h1>${nl2br(hero.title || '撮影機材を選ぼう。')}</h1>
           <p class="gear-v2-hero-lead">${nl2br(hero.lead || '')}</p>
         </div>
       </div>
     </section>`;
 
+  const renderIntroPoints = section => {
+    const points = Array.isArray(section.points) ? section.points : [];
+
+    return `
+      <section class="gear-v2-intro-points" aria-labelledby="gear-intro-title">
+        <div class="container">
+          <div class="gear-v2-intro-heading">
+            <div>
+              <p>GEAR BASICS</p>
+              <h2 id="gear-intro-title">${escapeHtml(section.title || 'どんな機材が必要？')}</h2>
+            </div>
+            <span>${escapeHtml(section.lead || '')}</span>
+          </div>
+
+          <div class="gear-v2-intro-card-grid">
+            ${points.map(point => `
+              <article class="gear-v2-intro-card">
+                <span>${escapeHtml(point.number || '')}</span>
+                <strong>${escapeHtml(point.text || '')}</strong>
+              </article>`).join('')}
+          </div>
+        </div>
+      </section>`;
+  };
+
   const renderFocal = section => {
     const samples = Array.isArray(section.samples) ? section.samples : [];
-    if (!samples.length) return '';
-
     const defaultIndex = Math.max(
       0,
       samples.findIndex(item => Number(item.focal) === Number(section.defaultFocal))
     );
-    const current = samples[defaultIndex] || samples[0];
+    const current = samples[defaultIndex] || {};
 
     return `
       <section class="gear-v2-section gear-v2-focal" id="gear-focal">
@@ -102,10 +123,10 @@
           <div class="gear-v2-focal-viewer" data-focal-viewer data-index="${defaultIndex}">
             <figure class="gear-v2-focal-figure">
               <div class="gear-v2-focal-image" data-focal-image>
-                ${image(current.image, `${current.focal}mmの見え方`)}
+                ${image(current.image, `${current.focal || ''}mm 作例`)}
               </div>
               <figcaption>
-                <strong><span data-focal-number>${escapeHtml(current.focal)}</span>mm</strong>
+                <strong><span data-focal-number>${escapeHtml(current.focal || '')}</span>mm</strong>
                 <div>
                   <b data-focal-label>${escapeHtml(current.label || '')}</b>
                   <span data-focal-description>${escapeHtml(current.description || '')}</span>
@@ -134,83 +155,241 @@
             </div>
           </div>
 
-          ${section.note ? `<p class="gear-v2-note">${escapeHtml(section.note)}</p>` : ''}
+          <p class="gear-v2-note">${escapeHtml(section.note || '')}</p>
         </div>
       </section>`;
   };
 
-  const renderGearGuide = section => {
-    const styles = Array.isArray(section.styles) ? section.styles : [];
+  const productImage = (product, type) => `
+    <div class="gear-v2-product-image">
+      ${image(product?.image, product?.name || type)}
+    </div>`;
 
-    return `
-      <section class="gear-v2-section gear-choice" id="gear-choice">
-        <div class="container">
-          <div class="gear-v2-heading">
-            <div>
-              <p>${escapeHtml(section.eyebrow || '02 / CHOOSE BY STYLE')}</p>
-              <h2>${escapeHtml(section.title || '')}</h2>
-            </div>
-            <span>${escapeHtml(section.lead || '')}</span>
-          </div>
-
-          <div class="gear-choice-grid">
-            ${styles.map(style => {
-              const points = Array.isArray(style.points) ? style.points : [];
-              return `
-              <article class="gear-choice-card">
-                <span class="gear-choice-label">${escapeHtml(style.label || '')}</span>
-                <h3>${escapeHtml(style.title || '')}</h3>
-                <div class="gear-choice-visual">
-                  ${image(style.image, style.imageAlt || style.title, 'gear-choice-image')}
-                </div>
-                <div class="gear-choice-points">
-                  ${points.map((point, index) => `
-                    <section>
-                      <span>${String(index + 1).padStart(2, '0')}</span>
-                      <div>
-                        <h4>${escapeHtml(point.title || '')}</h4>
-                        <p>${escapeHtml(point.text || '')}</p>
-                      </div>
-                    </section>`).join('')}
-                </div>
-              </article>`;
-            }).join('')}
-          </div>
-        </div>
-      </section>`;
+  const featureLabels = {
+    'animal-af': '動物AF',
+    'high-speed-burst': '高速連写',
+    'stabilization': '手ブレ補正',
+    'weather-sealed': '防塵・防滴'
   };
 
-  const renderSelectionPoints = section => {
-    const items = Array.isArray(section.items) ? section.items : [];
+  const renderLensCard = lens => {
+    if (!lens) return `<div class="gear-v2-product-empty">条件に合うレンズがありません。</div>`;
 
     return `
-      <section class="gear-v2-section gear-selection" id="gear-selection">
+      <article class="gear-v2-product-card">
+        <div class="gear-v2-product-type">LENS</div>
+        ${productImage(lens, 'LENS')}
+        <div class="gear-v2-product-copy">
+          <span>${escapeHtml(lens.manufacturer || '')} / ${escapeHtml(lens.mount || '')} MOUNT</span>
+          <h3>${escapeHtml(lens.name || '')}</h3>
+          <p>${escapeHtml(lens.summary || '')}</p>
+          <dl>
+            <div><dt>焦点距離</dt><dd>${escapeHtml(lens.minFocal)}–${escapeHtml(lens.maxFocal)}mm</dd></div>
+            <div><dt>開放F値</dt><dd>${escapeHtml(lens.aperture || '')}</dd></div>
+            <div><dt>重量</dt><dd>${escapeHtml(lens.weight || '')}</dd></div>
+          </dl>
+          <div class="gear-v2-feature-tags">
+            ${(lens.features || []).map(id =>
+              featureLabels[id] ? `<span>${escapeHtml(featureLabels[id])}</span>` : ''
+            ).join('')}
+          </div>
+        </div>
+      </article>`;
+  };
+
+  const renderBodyCard = body => {
+    if (!body) return `<div class="gear-v2-product-empty">条件に合うボディがありません。</div>`;
+
+    return `
+      <article class="gear-v2-product-card">
+        <div class="gear-v2-product-type">BODY</div>
+        ${productImage(body, 'BODY')}
+        <div class="gear-v2-product-copy">
+          <span>${escapeHtml(body.manufacturer || '')} / ${escapeHtml(body.mount || '')} MOUNT</span>
+          <h3>${escapeHtml(body.name || '')}</h3>
+          <p>${escapeHtml(body.summary || '')}</p>
+          <dl>
+            <div><dt>解像度</dt><dd>${escapeHtml(body.resolutionLabel || '')}</dd></div>
+            <div><dt>連写</dt><dd>${escapeHtml(body.burst || '')}</dd></div>
+          </dl>
+          <div class="gear-v2-feature-tags">
+            ${(body.features || []).map(id =>
+              featureLabels[id] ? `<span>${escapeHtml(featureLabels[id])}</span>` : ''
+            ).join('')}
+          </div>
+        </div>
+      </article>`;
+  };
+
+  const renderIntegratedCard = camera => {
+    if (!camera) {
+      return `<div class="gear-v2-product-empty">条件に合う一体型カメラがありません。</div>`;
+    }
+
+    return `
+      <article class="gear-v2-integrated-card">
+        <div class="gear-v2-product-type">LENS + BODY / 一体型</div>
+        <div class="gear-v2-integrated-image">
+          ${image(camera.image, camera.name || '一体型カメラ')}
+        </div>
+        <div class="gear-v2-product-copy">
+          <span>${escapeHtml(camera.manufacturer || '')} / INTEGRATED CAMERA</span>
+          <h3>${escapeHtml(camera.name || '')}</h3>
+          <p>${escapeHtml(camera.summary || '')}</p>
+          <dl>
+            <div><dt>焦点距離</dt><dd>${escapeHtml(camera.focalLabel || `${camera.minFocal}–${camera.maxFocal}mm`)}</dd></div>
+            <div><dt>開放F値</dt><dd>${escapeHtml(camera.aperture || '')}</dd></div>
+            <div><dt>解像度</dt><dd>${escapeHtml(camera.resolutionLabel || '')}</dd></div>
+            <div><dt>重量</dt><dd>${escapeHtml(camera.weight || '')}</dd></div>
+            <div><dt>連写</dt><dd>${escapeHtml(camera.burst || '')}</dd></div>
+          </dl>
+          <div class="gear-v2-feature-tags">
+            ${(camera.features || []).map(id =>
+              featureLabels[id] ? `<span>${escapeHtml(featureLabels[id])}</span>` : ''
+            ).join('')}
+          </div>
+        </div>
+      </article>`;
+  };
+
+  const renderFinder = section => {
+    const lenses = Array.isArray(section.lenses) ? section.lenses : [];
+    const focalOptions = Array.isArray(section.focalOptions)
+      ? section.focalOptions
+      : [400, 500];
+    const firstLens = lenses[0] || {};
+
+    return `
+      <section class="gear-v2-section gear-v7-finder gear-v8-finder" id="gear-finder" data-gear-finder>
         <div class="container">
           <div class="gear-v2-heading">
             <div>
-              <p>${escapeHtml(section.eyebrow || '03 / SELECTION POINTS')}</p>
-              <h2>${escapeHtml(section.title || '')}</h2>
+              <p>${escapeHtml(section.eyebrow || '02 / LENS & BODY')}</p>
+              <h2>${escapeHtml(section.title || 'レンズを選ぶ。ボディを選ぶ。')}</h2>
             </div>
             <span>${escapeHtml(section.lead || '')}</span>
           </div>
 
-          <div class="gear-selection-grid">
-            ${items.map((item, index) => `
-              <article class="gear-selection-card">
-                <span>${String(index + 1).padStart(2, '0')}</span>
-                <h3>${escapeHtml(item.title || '')}</h3>
-                <p>${escapeHtml(item.text || '')}</p>
-              </article>`).join('')}
+          <div class="gear-v7-step-heading">
+            <span>STEP 1 / LENS</span>
+            <div>
+              <h3>まず、レンズを選ぶ</h3>
+              <p>条件で絞り込み、一覧の行を選ぶと対応するボディ候補を表示します。</p>
+            </div>
           </div>
 
-          ${section.tip ? `
-            <aside class="gear-selection-tip">
-              <span>${escapeHtml(section.tip.label || 'TIPS')}</span>
-              <div>
-                <h3>${escapeHtml(section.tip.title || '')}</h3>
-                <p>${escapeHtml(section.tip.text || '')}</p>
+          <div class="gear-v7-filter-shell gear-v8-filter-shell">
+            <div class="gear-v7-filter-modes" aria-label="レンズの絞り込み方法">
+              <button type="button" data-lens-mode="manufacturer">メーカーで選ぶ</button>
+              <button type="button" data-lens-mode="focal">焦点距離で選ぶ</button>
+              <button type="button" class="is-reset" data-lens-reset>すべて表示</button>
+            </div>
+
+            <div class="gear-v7-filter-panels" data-lens-filter-panel hidden>
+              <div data-lens-filter-group="manufacturer" hidden>
+                <span>メーカー</span>
+                <div>
+                  ${(section.manufacturers || []).map(value => `
+                    <button type="button" data-lens-filter="manufacturer" data-filter-value="${escapeHtml(value)}">
+                      ${escapeHtml(value)}
+                    </button>`).join('')}
+                </div>
               </div>
-            </aside>` : ''}
+              <div data-lens-filter-group="focal" hidden>
+                <span>望遠端</span>
+                <div>
+                  ${focalOptions.map(value => `
+                    <button type="button" data-lens-filter="focal" data-filter-value="${escapeHtml(value)}">
+                      ${escapeHtml(value)}mm以上
+                    </button>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="gear-v8-lens-layout">
+            <div class="gear-v7-lens-table-wrap">
+              <table class="gear-v7-lens-table gear-v8-lens-table">
+                <thead>
+                  <tr>
+                    <th>レンズ</th>
+                    <th>焦点距離</th>
+                    <th>開放F値</th>
+                    <th>大きさ・重さ</th>
+                    <th>AF</th>
+                    <th>手ぶれ補正</th>
+                    <th>マウント</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${lenses.map((lens, index) => `
+                    <tr
+                      data-lens-row
+                      data-lens-id="${escapeHtml(lens.id)}"
+                      data-manufacturer="${escapeHtml(lens.manufacturer)}"
+                      data-max-focal="${escapeHtml(lens.maxFocal)}"
+                      tabindex="0"
+                      role="button"
+                      aria-pressed="${index === 0 ? 'true' : 'false'}"
+                      class="${index === 0 ? 'is-selected' : ''}">
+                      <td class="gear-v7-lens-name">
+                        <span>${escapeHtml(lens.manufacturer || '')}</span>
+                        <strong>${escapeHtml(lens.name || '')}</strong>
+                      </td>
+                      <td>${escapeHtml(lens.minFocal)}–${escapeHtml(lens.maxFocal)}mm</td>
+                      <td>${escapeHtml(lens.aperture || '')}</td>
+                      <td>
+                        <span>${escapeHtml(lens.dimensions || '')}</span>
+                        <small>${escapeHtml(lens.weight || '')}</small>
+                      </td>
+                      <td>${escapeHtml(lens.autofocus || 'AF対応')}</td>
+                      <td>${escapeHtml(
+                        lens.stabilizationLabel ||
+                        ((lens.features || []).includes('stabilization') ? 'あり' : 'なし')
+                      )}</td>
+                      <td><b>${escapeHtml(lens.mount || '')}</b></td>
+                    </tr>`).join('')}
+                </tbody>
+              </table>
+            </div>
+
+            <aside class="gear-v8-selected-preview" data-selected-lens-preview>
+              <span>SELECTED LENS</span>
+              <div class="gear-v8-selected-image" data-selected-lens-image>
+                ${image(firstLens.image, firstLens.name || '選択レンズ')}
+              </div>
+              <div class="gear-v8-selected-copy">
+                <small data-selected-lens-maker>${escapeHtml(firstLens.manufacturer || '')}</small>
+                <h4 data-selected-lens-title>${escapeHtml(firstLens.name || '')}</h4>
+                <p data-selected-lens-summary>${escapeHtml(firstLens.summary || '')}</p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="gear-v7-body-stage" data-body-stage>
+            <div class="gear-v7-step-heading">
+              <span>STEP 2 / BODY</span>
+              <div>
+                <h3>選んだレンズに合うボディ</h3>
+                <p>選択したレンズとマウントが一致するボディ候補を表示します。</p>
+              </div>
+            </div>
+            <div class="gear-v7-selected-lens">
+              <span>SELECTED LENS</span>
+              <strong data-selected-lens-name>${escapeHtml(firstLens.name || '')}</strong>
+            </div>
+            <div class="gear-v7-body-grid" data-body-grid></div>
+          </div>
+
+          ${(section.integratedCameras || []).length ? `
+            <details class="gear-v7-integrated-alternative">
+              <summary>レンズ交換不要の一体型カメラも見る</summary>
+              <div class="gear-v7-integrated-grid">
+                ${(section.integratedCameras || []).map(camera => renderIntegratedCard(camera)).join('')}
+              </div>
+            </details>` : ''}
+
+          <p class="gear-v2-note">${escapeHtml(section.disclaimer || '')}</p>
         </div>
       </section>`;
   };
@@ -223,7 +402,7 @@
         <div class="container">
           <div class="gear-v2-heading">
             <div>
-              <p>${escapeHtml(section.eyebrow || '04 / ACCESSORIES')}</p>
+              <p>${escapeHtml(section.eyebrow || '03 / ACCESSORIES')}</p>
               <h2>${escapeHtml(section.title || '')}</h2>
             </div>
             <span>${escapeHtml(section.lead || '')}</span>
@@ -241,23 +420,195 @@
       </section>`;
   };
 
-  const renderNext = section => `
-    <section
-      class="gear-v2-next"
-      ${section.image ? `style="--gear-v2-next-image:url('${escapeHtml(section.image)}')"` : ''}>
-      <div class="gear-v2-next-shade"></div>
-      <div class="container gear-v2-next-inner">
-        <div>
-          <p>${escapeHtml(section.eyebrow || 'NEXT STEP')}</p>
-          <h2>${escapeHtml(section.title || '')}</h2>
-          <span>${escapeHtml(section.text || '')}</span>
+  const rentalReasonIcon = (reason, index) => {
+    const iconImage = safeUrl(reason?.iconImage || reason?.image);
+    if (iconImage) {
+      return `<img class="gear-v6-rental-icon-image" src="${escapeHtml(iconImage)}" alt="${escapeHtml(reason.iconAlt || '')}" loading="lazy" decoding="async">`;
+    }
+
+    if (index === 0) {
+      return `<span class="gear-v6-rental-yen" aria-hidden="true">¥</span>`;
+    }
+
+    if (index === 1) {
+      return `
+        <svg class="gear-v6-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M14 16h7l2-4h8l2 4h3a5 5 0 0 1 5 5v15H7V21a5 5 0 0 1 5-5h2Z"/>
+          <circle cx="24" cy="27" r="7"/>
+          <path d="M11 21h5"/>
+        </svg>`;
+    }
+
+    return `
+      <svg class="gear-v6-rental-svg" viewBox="0 0 48 48" aria-hidden="true">
+        <path d="M17 9h14l3 6v18l-3 6H17l-3-6V15l3-6Z"/>
+        <path d="M14 18h20M14 29h20M19 9v30M29 9v30"/>
+      </svg>`;
+  };
+
+  const renderRental = section => {
+    const url = safeUrl(section.url);
+    const reasons = Array.isArray(section.reasons) ? section.reasons : [];
+
+    return `
+      <section class="gear-v2-section gear-v6-rental" id="gear-rental">
+        <div class="container">
+          <div class="gear-v6-rental-shell">
+
+            <section class="gear-v6-rental-left" aria-labelledby="gear-rental-title">
+              <div class="gear-v6-rental-message">
+                <p>${escapeHtml(section.eyebrow || '04 / RENTAL')}</p>
+                <h2 id="gear-rental-title">
+                  ${escapeHtml(section.title || 'レンタルという選択肢も！')}
+                </h2>
+                <span class="gear-v6-rental-rule" aria-hidden="true"></span>
+                <div class="gear-v6-rental-lead">
+                  ${nl2br(section.lead || '')}
+                </div>
+              </div>
+
+              <div class="gear-v6-rental-reasons">
+                ${reasons.slice(0, 3).map((reasonValue, index) => {
+                  const reason = typeof reasonValue === 'string' ? { title: reasonValue } : (reasonValue || {});
+                  return `
+                  <article class="gear-v6-rental-reason">
+                    <div class="gear-v6-rental-reason-circle">
+                      ${rentalReasonIcon(reason, index)}
+                      <b>0${index + 1}</b>
+                    </div>
+                    <strong>${escapeHtml(reason.title || '')}</strong>
+                    ${reason.text ? `<p>${escapeHtml(reason.text)}</p>` : ''}
+                  </article>`;
+                }).join('')}
+              </div>
+            </section>
+
+            <article class="gear-v6-rental-service">
+              <div class="gear-v6-rental-service-copy">
+                <span class="gear-v6-rental-service-label">
+                  ${escapeHtml(
+                    section.serviceLabel ||
+                    '撮影機材レンタルサービスの一例'
+                  )}
+                </span>
+
+                <div class="gear-v6-rental-logo">
+                  ${section.image
+                    ? image(
+                        section.image,
+                        section.serviceName || 'GOOPASS'
+                      )
+                    : `<strong>${escapeHtml(
+                        section.serviceName || 'GOOPASS'
+                      )}</strong>`}
+                </div>
+
+                <p>${escapeHtml(section.serviceText || '')}</p>
+
+                ${url ? `
+                  <a
+                    href="${escapeHtml(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    ${escapeHtml(
+                      section.buttonLabel || 'GOOPASSで機材を探す'
+                    )}
+                    <span aria-hidden="true">↗</span>
+                  </a>` : ''}
+              </div>
+
+              <div class="gear-v6-rental-service-visual">
+                ${section.visualImage
+                  ? image(
+                      section.visualImage,
+                      'GOOPASS レンタル機材イメージ'
+                    )
+                  : `
+                    <div class="gear-v6-rental-visual-placeholder">
+                      <span>RENTAL IMAGE</span>
+                      <small>右側の横長画像を設定</small>
+                    </div>`}
+              </div>
+            </article>
+          </div>
+
+          <p class="gear-v6-rental-note">
+            ${escapeHtml(section.note || '')}
+          </p>
         </div>
-        <a href="${escapeHtml(safeUrl(section.url) || 'guide-article.html?article=technique')}">
-          ${escapeHtml(section.buttonLabel || 'テクニック編へ')}
-          <span aria-hidden="true">→</span>
-        </a>
-      </div>
-    </section>`;
+      </section>`;
+  };
+
+  const renderExamples = section => {
+    const items = Array.isArray(section.items) ? section.items : [];
+
+    return `
+      <section class="gear-v2-section gear-v7-examples gear-v8-examples" id="gear-examples">
+        <div class="container">
+          <div class="gear-v2-heading">
+            <div>
+              <p>${escapeHtml(section.eyebrow || '05 / EXAMPLES')}</p>
+              <h2>${escapeHtml(section.title || '機材で見る、作例ギャラリー。')}</h2>
+            </div>
+            <span>${escapeHtml(section.lead || '')}</span>
+          </div>
+
+          ${items.length ? `
+            <div class="gear-v8-example-carousel" data-example-carousel>
+              <button
+                type="button"
+                class="gear-v8-example-nav is-prev"
+                data-example-prev
+                aria-label="前の作例"
+                ${items.length <= 3 ? 'hidden' : ''}>←</button>
+              <div class="gear-v8-example-window" data-example-window></div>
+              <button
+                type="button"
+                class="gear-v8-example-nav is-next"
+                data-example-next
+                aria-label="次の作例"
+                ${items.length <= 3 ? 'hidden' : ''}>→</button>
+            </div>` : `
+            <div class="gear-v7-example-empty">
+              <span>PHOTO EXAMPLES</span>
+              <strong>作例を準備中です。</strong>
+              <p>使用機材が分かる写真を順次掲載します。</p>
+            </div>`}
+          ${items.length ? `
+            <div class="gear-example-modal" data-example-modal hidden aria-hidden="true">
+              <div class="gear-example-modal-dialog" role="dialog" aria-modal="true" aria-label="機材作例の拡大表示">
+                <button type="button" class="gear-example-modal-close" data-example-modal-close aria-label="拡大表示を閉じる">×</button>
+                <button type="button" class="gear-example-modal-nav is-prev" data-example-modal-prev aria-label="前の画像">←</button>
+                <figure><img data-example-modal-image src="" alt=""><figcaption><strong data-example-modal-equipment></strong><span data-example-modal-caption></span></figcaption></figure>
+                <button type="button" class="gear-example-modal-nav is-next" data-example-modal-next aria-label="次の画像">→</button>
+              </div>
+            </div>` : ''}
+        </div>
+      </section>`;
+  };
+
+  const renderNext = section => {
+    const url = safeUrl(section.url);
+
+    return `
+      <section
+        class="gear-v2-next"
+        ${section.image ? `style="--gear-v2-next-image:url('${escapeHtml(section.image)}')"` : ''}>
+        <div class="gear-v2-next-shade"></div>
+        <div class="container gear-v2-next-inner">
+          <div>
+            <p>${escapeHtml(section.eyebrow || 'NEXT STEP')}</p>
+            <h2>${escapeHtml(section.title || '')}</h2>
+            <span>${escapeHtml(section.text || '')}</span>
+          </div>
+          ${url ? `
+            <a href="${escapeHtml(url)}">
+              ${escapeHtml(section.buttonLabel || '次へ')}
+              <span aria-hidden="true">→</span>
+            </a>` : ''}
+        </div>
+      </section>`;
+  };
 
   const initFocalViewer = (scope, section) => {
     const viewer = scope.querySelector('[data-focal-viewer]');
@@ -265,25 +616,26 @@
 
     const samples = Array.isArray(section.samples) ? section.samples : [];
     const range = viewer.querySelector('[data-focal-range]');
+    const buttons = [...viewer.querySelectorAll('[data-focal-button]')];
+    const imageBox = viewer.querySelector('[data-focal-image]');
     const number = viewer.querySelector('[data-focal-number]');
     const label = viewer.querySelector('[data-focal-label]');
     const description = viewer.querySelector('[data-focal-description]');
-    const imageWrap = viewer.querySelector('[data-focal-image]');
 
-    const update = nextIndex => {
-      const index = Math.max(0, Math.min(samples.length - 1, Number(nextIndex) || 0));
-      const sample = samples[index];
+    const update = index => {
+      const safeIndex = Math.max(0, Math.min(samples.length - 1, Number(index) || 0));
+      const sample = samples[safeIndex];
       if (!sample) return;
 
-      viewer.dataset.index = String(index);
-      if (range) range.value = String(index);
-      if (number) number.textContent = sample.focal;
-      if (label) label.textContent = sample.label || '';
-      if (description) description.textContent = sample.description || '';
-      if (imageWrap) imageWrap.innerHTML = image(sample.image, `${sample.focal}mmの見え方`);
+      viewer.dataset.index = String(safeIndex);
+      range.value = String(safeIndex);
+      number.textContent = String(sample.focal || '');
+      label.textContent = sample.label || '';
+      description.textContent = sample.description || '';
+      imageBox.innerHTML = image(sample.image, `${sample.focal || ''}mm 作例`);
 
-      viewer.querySelectorAll('[data-focal-button]').forEach(button => {
-        if (Number(button.dataset.focalButton) === index) {
+      buttons.forEach((button, buttonIndex) => {
+        if (buttonIndex === safeIndex) {
           button.setAttribute('aria-current', 'true');
         } else {
           button.removeAttribute('aria-current');
@@ -291,35 +643,310 @@
       });
     };
 
-    range?.addEventListener('input', event => update(event.target.value));
-    viewer.addEventListener('click', event => {
-      const button = event.target.closest('[data-focal-button]');
-      if (button) update(button.dataset.focalButton);
+    range.addEventListener('input', () => update(range.value));
+    buttons.forEach(button => {
+      button.addEventListener('click', () => update(button.dataset.focalButton));
     });
+
+    samples.forEach(sample => {
+      if (!sample.image) return;
+      const preload = new Image();
+      preload.src = sample.image;
+    });
+  };
+
+  const initFinder = (scope, section) => {
+    const finder = scope.querySelector('[data-gear-finder]');
+    if (!finder) return;
+
+    const lenses = Array.isArray(section.lenses) ? section.lenses : [];
+    const bodies = Array.isArray(section.bodies) ? section.bodies : [];
+    const rows = [...finder.querySelectorAll('[data-lens-row]')];
+    const modeButtons = [...finder.querySelectorAll('[data-lens-mode]')];
+    const filterButtons = [...finder.querySelectorAll('[data-lens-filter]')];
+    const filterPanel = finder.querySelector('[data-lens-filter-panel]');
+    const filterGroups = [...finder.querySelectorAll('[data-lens-filter-group]')];
+    const reset = finder.querySelector('[data-lens-reset]');
+    const bodyStage = finder.querySelector('[data-body-stage]');
+    const bodyGrid = finder.querySelector('[data-body-grid]');
+    const selectedLensName = finder.querySelector('[data-selected-lens-name]');
+    const selectedImage = finder.querySelector('[data-selected-lens-image]');
+    const selectedMaker = finder.querySelector('[data-selected-lens-maker]');
+    const selectedTitle = finder.querySelector('[data-selected-lens-title]');
+    const selectedSummary = finder.querySelector('[data-selected-lens-summary]');
+
+    const state = {
+      mode: '',
+      value: '',
+      selectedLensId: lenses[0]?.id || ''
+    };
+
+    const visibleFor = lens => {
+      if (!state.mode || !state.value) return true;
+      if (state.mode === 'manufacturer') {
+        return String(lens.manufacturer) === state.value;
+      }
+      if (state.mode === 'focal') {
+        return Number(lens.maxFocal || 0) >= Number(state.value || 0);
+      }
+      return true;
+    };
+
+    const compatibleBodies = lens =>
+      bodies
+        .filter(body => String(body.mount) === String(lens.mount))
+        .sort((a, b) => Number(b.resolution || 0) - Number(a.resolution || 0));
+
+    const selectLens = (lens, scroll = false) => {
+      if (!lens) return;
+      state.selectedLensId = lens.id;
+
+      rows.forEach(row => {
+        const selected = row.dataset.lensId === lens.id;
+        row.classList.toggle('is-selected', selected);
+        row.setAttribute('aria-pressed', String(selected));
+      });
+
+      selectedLensName.textContent = lens.name || '';
+      selectedMaker.textContent = `${lens.manufacturer || ''} / ${lens.mount || ''} MOUNT`;
+      selectedTitle.textContent = lens.name || '';
+      selectedSummary.textContent = lens.summary || '';
+      selectedImage.innerHTML = image(lens.image, lens.name || '選択レンズ');
+
+      const compatible = compatibleBodies(lens);
+      bodyGrid.innerHTML = compatible.length
+        ? compatible.map((body, index) => `
+            <div class="gear-v7-body-choice ${index === 0 ? 'is-primary' : ''}">
+              ${index === 0 ? '<span class="gear-v7-recommend-badge">RECOMMENDED</span>' : ''}
+              ${renderBodyCard(body)}
+            </div>`).join('')
+        : '<div class="gear-v2-product-empty">対応する登録ボディがありません。</div>';
+
+      bodyStage.hidden = false;
+      if (scroll) {
+        bodyStage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    };
+
+    const applyFilter = () => {
+      const visibleRows = [];
+      rows.forEach(row => {
+        const lens = lenses.find(item => item.id === row.dataset.lensId);
+        const visible = lens ? visibleFor(lens) : false;
+        row.hidden = !visible;
+        if (visible && lens) visibleRows.push(lens);
+      });
+
+      const selectedStillVisible = visibleRows.some(
+        lens => lens.id === state.selectedLensId
+      );
+
+      if (!selectedStillVisible && visibleRows[0]) {
+        selectLens(visibleRows[0], false);
+      }
+    };
+
+    const openMode = mode => {
+      state.mode = mode;
+      state.value = '';
+      filterPanel.hidden = false;
+      modeButtons.forEach(button => {
+        button.setAttribute(
+          'aria-pressed',
+          String(button.dataset.lensMode === mode)
+        );
+      });
+      filterGroups.forEach(group => {
+        group.hidden = group.dataset.lensFilterGroup !== mode;
+      });
+      filterButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      applyFilter();
+    };
+
+    modeButtons.forEach(button => {
+      button.addEventListener(
+        'click',
+        () => openMode(button.dataset.lensMode || '')
+      );
+    });
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        state.mode = button.dataset.lensFilter || state.mode;
+        state.value = button.dataset.filterValue || '';
+        filterButtons.forEach(item => {
+          item.setAttribute('aria-pressed', String(item === button));
+        });
+        applyFilter();
+      });
+    });
+
+    reset?.addEventListener('click', () => {
+      state.mode = '';
+      state.value = '';
+      modeButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      filterButtons.forEach(button => button.removeAttribute('aria-pressed'));
+      filterGroups.forEach(group => { group.hidden = true; });
+      filterPanel.hidden = true;
+      applyFilter();
+    });
+
+    const selectFromRow = row => {
+      const lens = lenses.find(item => item.id === row.dataset.lensId);
+      if (lens) selectLens(lens, false);
+    };
+
+    rows.forEach(row => {
+      row.addEventListener('click', () => selectFromRow(row));
+      row.addEventListener('keydown', event => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        event.preventDefault();
+        selectFromRow(row);
+      });
+    });
+
+    applyFilter();
+    if (lenses[0]) selectLens(lenses[0], false);
+  };
+
+  const initExamples = (scope, section) => {
+    const carousel = scope.querySelector('[data-example-carousel]');
+    if (!carousel) return;
+
+    const items = Array.isArray(section.items) ? section.items : [];
+    const windowEl = carousel.querySelector('[data-example-window]');
+    const prev = carousel.querySelector('[data-example-prev]');
+    const next = carousel.querySelector('[data-example-next]');
+    let index = 0;
+
+    const visibleCount = () =>
+      window.matchMedia('(max-width: 760px)').matches ? 1 : 3;
+
+    const render = () => {
+      const count = Math.min(visibleCount(), items.length);
+      const visible = Array.from({ length: count }, (_, offset) =>
+        items[(index + offset) % items.length]
+      );
+
+      windowEl.innerHTML = visible.map(item => {
+        const itemIndex = items.indexOf(item);
+        return `
+        <figure class="gear-v7-example-card">
+          <button type="button" class="gear-v7-example-image" data-example-open="${itemIndex}" aria-label="${escapeHtml(item.caption || item.equipment || '作例')}を拡大表示">
+            ${image(item.image, item.caption || item.equipment || '機材作例')}
+          </button>
+          <figcaption>
+            <strong>${escapeHtml(item.equipment || '')}</strong>
+            ${item.caption ? `<span>${escapeHtml(item.caption)}</span>` : ''}
+          </figcaption>
+        </figure>`;
+      }).join('');
+
+      const needsNav = items.length > count;
+      prev.hidden = !needsNav;
+      next.hidden = !needsNav;
+    };
+
+    prev?.addEventListener('click', () => {
+      index = (index - 1 + items.length) % items.length;
+      render();
+    });
+
+    next?.addEventListener('click', () => {
+      index = (index + 1) % items.length;
+      render();
+    });
+
+    let resizeTimer = null;
+    window.addEventListener('resize', () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(render, 100);
+    });
+
+    const modal = scope.querySelector('[data-example-modal]');
+    const modalImage = modal?.querySelector('[data-example-modal-image]');
+    const modalEquipment = modal?.querySelector('[data-example-modal-equipment]');
+    const modalCaption = modal?.querySelector('[data-example-modal-caption]');
+    const closeButton = modal?.querySelector('[data-example-modal-close]');
+    let modalIndex = 0;
+    let returnFocus = null;
+
+    const drawModal = () => {
+      const item = items[modalIndex];
+      if (!item || !modalImage) return;
+      modalImage.src = item.image || '';
+      modalImage.alt = item.caption || item.equipment || '機材作例';
+      modalEquipment.textContent = item.equipment || '';
+      modalEquipment.hidden = !item.equipment;
+      modalCaption.textContent = item.caption || '';
+      modalCaption.hidden = !item.caption;
+    };
+    const openModal = selectedIndex => {
+      if (!modal || !items[selectedIndex]) return;
+      modalIndex = selectedIndex;
+      returnFocus = document.activeElement;
+      drawModal();
+      modal.hidden = false;
+      modal.setAttribute('aria-hidden', 'false');
+      document.body.classList.add('is-gallery-modal-open');
+      closeButton?.focus();
+    };
+    const closeModal = () => {
+      if (!modal || modal.hidden) return;
+      modal.hidden = true;
+      modal.setAttribute('aria-hidden', 'true');
+      document.body.classList.remove('is-gallery-modal-open');
+      returnFocus?.focus?.();
+    };
+    const moveModal = step => {
+      modalIndex = (modalIndex + step + items.length) % items.length;
+      drawModal();
+    };
+
+    windowEl.addEventListener('click', event => {
+      const trigger = event.target.closest('[data-example-open]');
+      if (trigger) openModal(Number(trigger.dataset.exampleOpen));
+    });
+    closeButton?.addEventListener('click', closeModal);
+    modal?.querySelector('[data-example-modal-prev]')?.addEventListener('click', () => moveModal(-1));
+    modal?.querySelector('[data-example-modal-next]')?.addEventListener('click', () => moveModal(1));
+    modal?.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => {
+      if (!modal || modal.hidden) return;
+      if (event.key === 'Escape') closeModal();
+      if (event.key === 'ArrowLeft') moveModal(-1);
+      if (event.key === 'ArrowRight') moveModal(1);
+    });
+
+    render();
   };
 
   const renderPage = data => {
     document.body.classList.add('gear-page', 'gear-v2-page');
-    document.title = 'ラッコ撮影の機材選び｜HAMANAKA PHOTO GUIDE';
+    document.title = '撮影機材を考える｜HAMANAKA PHOTO GUIDE';
 
     const hero = data.hero || {};
     document
       .querySelector('meta[name="description"]')
       ?.setAttribute(
         'content',
-        String(hero.lead || '浜中町でのラッコ撮影に向く機材の選び方を紹介します。')
+        String(hero.lead || '浜中町での撮影機材選びを紹介します。')
           .replace(/\r?\n/g, ' ')
       );
 
     root.innerHTML = `
       ${renderHero(hero)}
+      ${renderIntroPoints(data.introPoints || {})}
       ${renderFocal(data.focalExperience || {})}
-      ${renderGearGuide(data.gearGuide || {})}
-      ${renderSelectionPoints(data.selectionPoints || {})}
+      ${renderFinder(data.gearFinder || {})}
       ${renderAccessories(data.accessories || {})}
+      ${renderRental(data.rental || {})}
+      ${renderExamples(data.examples || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});
+    initFinder(root, data.gearFinder || {});
+    initExamples(root, data.examples || {});
   };
 
   const init = async () => {
