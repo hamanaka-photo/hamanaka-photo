@@ -9,16 +9,16 @@
   <meta name="description" content="HAMANAKA PHOTO GUIDEの記事ページです。">
   <meta name="theme-color" content="#153a5b">
   <title>PHOTO GUIDE｜HAMANAKA PHOTO</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <link rel="stylesheet" href="assets/css/style.css?v=2">
   <link rel="stylesheet" href="assets/css/guide-cms.css">
-  <link rel="stylesheet" href="assets/css/photo-map.css?v=4">
+  <link rel="stylesheet" href="assets/css/photo-map.css?v=3">
   <link rel="stylesheet" href="assets/css/trip.css">
-  <link rel="stylesheet" href="assets/css/trip-v3.css?v=13">
+  <link rel="stylesheet" href="assets/css/trip-v3.css?v=14">
   <link rel="stylesheet" href="assets/css/trip-v10.css?v=1">
-  <link rel="stylesheet" href="assets/css/gear.css?v=16">
+  <link rel="stylesheet" href="assets/css/gear.css?v=13">
   <link rel="stylesheet" href="assets/css/technique.css?v=3">
-  <link rel="stylesheet" href="assets/css/manner.css?v=3">
-  <link rel="stylesheet" href="assets/css/field-guide-unified.css?v=4">
+  <link rel="stylesheet" href="assets/css/manner.css?v=4">
+  <link rel="stylesheet" href="assets/css/field-guide-unified.css?v=5">
 </head>
 <body>
 <a class="skip-link" href="#main">本文へ移動</a>
@@ -95,18 +95,18 @@
 <script src="assets/js/asset-url.js?v=1"></script>
 <script src="assets/js/photo-map.js?v=3"></script>
 <script src="assets/js/trip.js"></script>
-<script src="assets/js/trip-v3.js?v=12"></script>
+<script src="assets/js/trip-v3.js?v=13"></script>
 <script>
 (() => {
   const articleId = new URLSearchParams(window.location.search).get('article');
   const script = document.createElement('script');
 
   if (articleId === 'gear') {
-    script.src = 'assets/js/gear.js?v=12';
+    script.src = 'assets/js/gear.js?v=10';
   } else if (articleId === 'technique') {
     script.src = 'assets/js/technique.js?v=4';
   } else if (articleId === 'manner') {
-    script.src = 'assets/js/manner.js?v=4';
+    script.src = 'assets/js/manner.js?v=5';
   } else {
     script.src = 'assets/js/guide-article.js';
   }
@@ -114,7 +114,7 @@
   document.body.appendChild(script);
 })();
 </script>
-<script src="assets/js/field-guide-unified.js?v=5"></script>
-<script src="assets/js/year.js"></script>
+<script src="assets/js/field-guide-unified.js?v=6"></script>
+<script src="assets/js/year.js?v=2"></script>
 </body>
 </html>
