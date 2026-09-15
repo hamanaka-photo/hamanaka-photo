@@ -43,6 +43,7 @@
 .intro-trip-card > div { display: flex; flex: 1; flex-direction: column; padding: 30px; }
 .intro-trip-card h3 { margin: 0 0 18px; font-family: "Noto Serif CJK JP", "Yu Mincho", serif; font-size: clamp(24px, 2.7vw, 32px); font-weight: 500; line-height: 1.45; letter-spacing: .02em; }
 .intro-trip-card .intro-body { margin-top: 0; }
+@media (min-width: 901px) { .intro-trip-title-living { white-space: nowrap; font-size: clamp(23px, 2.45vw, 31px) !important; } }
 .intro-living { padding: 110px 0; color: #fff; background: var(--navy); }
 .intro-living-inner { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.75fr); gap: 76px; align-items: center; }
 .intro-living .eyebrow { color: #b5d8e8; }
@@ -53,9 +54,9 @@
 .intro-subject-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 10px 30px rgba(22,55,82,.06); }
 .intro-subject-card > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .intro-subject-card > div { padding: 24px; }
-.intro-subject-card .eyebrow { margin-bottom: 7px; color: var(--blue); font-size: 14px; }
+.intro-subject-card .eyebrow { margin-bottom: 7px; color: var(--blue); font-size: 12px; }
 .intro-subject-card h3 { margin: 0 0 9px; font-size: 22px; }
-.intro-subject-card p:last-child { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
+.intro-subject-card p:last-child { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
 .intro-closing { padding-bottom: 120px; }
 .intro-link-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .intro-link-card { display: flex; min-height: 280px; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }

@@ -168,7 +168,7 @@ button {
 
   margin-top: 5px;
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 500;
 
   letter-spacing: .08em;
@@ -806,7 +806,7 @@ button {
 
   color: var(--blue);
 
-  font-size: 14px;
+  font-size: 12px;
 
   letter-spacing: .18em;
 
@@ -821,6 +821,10 @@ button {
     12px 0 0;
 
   color: var(--muted);
+}
+
+@media (min-width: 761px) {
+  .past-selection-empty { white-space: nowrap; }
 }
 
 
@@ -901,7 +905,7 @@ button {
   margin:
     0 0 6px;
 
-  font-size: 18px;
+  font-size: 17px;
 }
 
 
@@ -910,7 +914,7 @@ button {
 
   color: var(--muted);
 
-  font-size: 15px;
+  font-size: 14px;
 }
 
 
@@ -1012,7 +1016,7 @@ button {
   color:
     var(--blue);
 
-  font-size: 14px;
+  font-size: 12px;
 
   font-weight: 700;
 
@@ -1036,7 +1040,7 @@ button {
   color:
     var(--muted);
 
-  font-size: 15px;
+  font-size: 14px;
 
   line-height: 1.8;
 }
@@ -1107,7 +1111,7 @@ button {
   color:
     var(--blue);
 
-  font-size: 14px;
+  font-size: 12px;
 
   font-weight: 700;
 }
@@ -1427,7 +1431,7 @@ summary:focus-visible {
   color:
     #637285;
 
-  font-size: 15px;
+  font-size: 14px;
 
   line-height: 1.9;
 }
@@ -1486,7 +1490,7 @@ summary:focus-visible {
   color:
     var(--green);
 
-  font-size: 14px;
+  font-size: 12px;
 
   font-weight: 700;
 
@@ -1508,7 +1512,7 @@ summary:focus-visible {
   color:
     var(--muted);
 
-  font-size: 15px;
+  font-size: 14px;
 }
 
 
@@ -1605,7 +1609,7 @@ summary:focus-visible {
   color:
     var(--muted);
 
-  font-size: 15px;
+  font-size: 14px;
 }
 
 
@@ -1992,7 +1996,7 @@ summary:focus-visible {
   margin:
     0 0 12px;
 
-  font-size: 18px;
+  font-size: 14px;
 
   color:
     var(--navy);
@@ -2348,7 +2352,7 @@ summary:focus-visible {
 
   .author-info h2,
   .author-info h3 {
-    font-size: 18px;
+    font-size: 16px;
   }
 
 
@@ -2624,54 +2628,6 @@ summary:focus-visible {
 }
 
 
-/* =========================================
-   TYPOGRAPHY SAFETY NET
-   Runtime-created navigation/footer content
-========================================= */
-
-.site-nav-guide-trigger::after,
-.site-nav-guide-dropdown > a > span,
-.site-nav-guide-dropdown small,
-.site-footer .footer-brand small,
-.site-footer .footer-brand-copy {
-  font-size: 14px !important;
-}
-
-.site-nav-guide-dropdown small {
-  color: rgba(184, 222, 213, .78);
-  font-weight: 700 !important;
-  letter-spacing: .1em;
-}
-
-.site-nav-guide-dropdown > a > span {
-  color: rgba(184, 222, 213, .82);
-  font-weight: 700 !important;
-}
-
-.site-footer .footer-brand-copy {
-  font-size: 15px !important;
-}
-
-.site-footer .footer-col h2 a {
-  font-size: 18px !important;
-}
-
-@media (max-width: 820px) {
-  .menu-button {
-    align-items: center;
-    min-height: 42px;
-  }
-
-  .site-nav {
-    width: 100%;
-  }
-
-  .site-nav-guide-dropdown > a {
-    min-height: 58px;
-  }
-}
-
-
 /* Instagram / X / Webサイト等 */
 
 .author-social-platform {
@@ -2682,7 +2638,7 @@ summary:focus-visible {
   color:
     var(--blue);
 
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
 
   line-height: 1.4;
@@ -2724,7 +2680,7 @@ summary:focus-visible {
   color:
     var(--muted);
 
-  font-size: 14px;
+  font-size: 12px;
 
   line-height: 1.4;
 }

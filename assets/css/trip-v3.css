@@ -57,8 +57,8 @@
 .trip-v3-nav-card small {
   display: block;
   color: var(--v3-teal);
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 900;
   letter-spacing: .08em;
 }
 
@@ -136,7 +136,7 @@
   max-width: 760px;
   margin: 7px 0 0;
   color: var(--v3-muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -223,7 +223,7 @@
 
 .trip-v3-flight-code {
   color: #78909a;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
   letter-spacing: .1em;
 }
@@ -308,7 +308,7 @@
 .trip-v3-rental-main > p {
   margin: 0;
   color: var(--v3-text);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -370,14 +370,14 @@
   border-radius: 999px;
   color: #173f5a;
   background: #fff;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 900;
   letter-spacing: .08em;
 }
 
 .trip-v3-point h4 {
   margin: 11px 0 11px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .trip-v3-point-list {
@@ -410,7 +410,7 @@
 .trip-v3-transit p {
   margin: 0;
   color: var(--v3-text);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -452,7 +452,7 @@
   max-width: 650px;
   margin: 12px 0 0;
   color: var(--v3-text);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -495,14 +495,19 @@
 .trip-v3-climate-chart {
   width: 100%;
   min-height: 330px;
-  overflow-x: auto;
+  overflow: hidden;
 }
 
 .trip-v3-climate-chart svg {
   display: block;
   width: 100%;
-  min-width: 720px;
+  min-width: 0;
   height: 330px;
+}
+
+@media (max-width: 760px) {
+  .trip-v3-climate-chart { overflow-x: auto; }
+  .trip-v3-climate-chart svg { min-width: 720px; }
 }
 
 .trip-v3-chart-legend {
@@ -511,7 +516,7 @@
   gap: 12px;
   margin-top: 12px;
   color: #627984;
-  font-size: 14px;
+  font-size: 12px;
 }
 
 .trip-v3-chart-legend span {
@@ -559,7 +564,7 @@
 
 .trip-v3-forecast-date {
   color: #6e828b;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 800;
 }
 
@@ -615,7 +620,7 @@
   min-height: 46px;
   margin: 9px 0 15px;
   color: var(--v3-text);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -633,7 +638,7 @@
   border-radius: 7px;
   color: #385465;
   background: var(--v3-soft);
-  font-size: 15px;
+  font-size: 14px;
 }
 
 .trip-v3-wear-list li::before {
@@ -819,7 +824,7 @@
 
 .trip-v3-summary-check-heading h4 {
   margin: 0;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .trip-v3-summary-check-heading span {
@@ -842,7 +847,7 @@
 .trip-v3-check-group h5 {
   margin: 0 0 8px;
   color: #c4ded8;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .trip-v3-check-items {
@@ -885,7 +890,7 @@
   display: grid;
   place-items: center;
   color: #173e57;
-  font-size: 14px;
+  font-size: 11px;
   font-weight: 900;
 }
 
@@ -1109,7 +1114,7 @@
 
 .trip-v3-check-group h5 {
   margin-bottom: 6px;
-  font-size: 18px;
+  font-size: 14px;
 }
 
 .trip-v3-check-items {
@@ -1255,7 +1260,7 @@
 .trip-v4-access-example p {
   margin: 6px 0 0;
   color: #607781;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -1304,7 +1309,7 @@
 .trip-v4-step-head p {
   margin: 5px 0 0;
   color: #6d808a;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -1432,14 +1437,14 @@
   border-radius: 999px;
   color: #fff;
   background: var(--v3-teal);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 900;
 }
 
 .trip-v4-option-title p {
   margin: 5px 0 0;
   color: #6e8088;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.65;
 }
 
@@ -1542,13 +1547,13 @@
 .trip-v4-public-copy h4 {
   margin: 4px 0 0;
   color: var(--v3-navy);
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .trip-v4-public-copy p {
   margin: 9px 0 0;
   color: #59717d;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.75;
 }
 
@@ -1640,19 +1645,4 @@
 .trip-v8-climate-feature b { display:inline-flex; align-items:center; min-height:34px; padding:0 12px; border-radius:999px; color:#365d68; background:#eef5f3; font-size:14px; }
 .trip-v8-climate-feature .trip-v8-climate-months { margin:0 0 16px; color:var(--v3-muted); font-size:14px; line-height:1.6; }
 .trip-v8-climate-feature .trip-v8-climate-description { margin:16px 0 0; color:var(--v3-text); font-size:15px; line-height:1.85; }
-
-/* Keep generated chart labels and compact controls within the site type scale. */
-.trip-v3-climate-chart text {
-  font-size: 14px !important;
-  font-weight: 500;
-}
-
-.trip-v3-climate-chart svg > text:last-of-type {
-  transform: translateY(6px);
-}
-
-.trip-check-reset {
-  min-height: 42px;
-  padding-inline: 15px;
-}
 @media (max-width:900px) { .trip-v8-climate-features { grid-template-columns:1fr; } }

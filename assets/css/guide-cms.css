@@ -126,7 +126,7 @@
   border-radius: 999px;
   color: #fff;
   background: var(--navy);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .08em;
 }
@@ -411,13 +411,13 @@
 
 .guide-note h2 {
   margin: 0 0 8px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .guide-note p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -616,7 +616,7 @@
 .guide-download-copy small {
   margin-top: 3px;
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
 }
 
 /* CARDS */
@@ -647,13 +647,13 @@
 
 .guide-info-card-copy h3 {
   margin: 0 0 7px;
-  font-size: 18px;
+  font-size: 17px;
 }
 
 .guide-info-card-copy p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.8;
 }
 
@@ -708,7 +708,7 @@
 .guide-cta p {
   margin: 0;
   opacity: .86;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.85;
 }
 
@@ -769,13 +769,13 @@
 
 .guide-related-card h3 {
   margin: 0 0 6px;
-  font-size: 18px;
+  font-size: 15px;
 }
 
 .guide-related-card p {
   margin: 0;
   color: var(--muted);
-  font-size: 15px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -1058,7 +1058,7 @@
 
 .guide-nav-link small {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 700;
   letter-spacing: .12em;
 }
