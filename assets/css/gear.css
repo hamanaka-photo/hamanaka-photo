@@ -430,11 +430,13 @@
   background: #fff;
 }
 .gear-teleconverter-intro {
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--gear-line);
+  padding-bottom: 8px;
 }
 .gear-teleconverter-main {
   margin-top: 24px;
+}
+.gear-teleconverter-copy h3 {
+  font-size: 17px;
 }
 .gear-teleconverter-main.has-image {
   display: grid;
@@ -470,8 +472,6 @@
 }
 .gear-teleconverter-result {
   margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid var(--gear-line);
 }
 .gear-teleconverter-image {
   min-width: 0;
