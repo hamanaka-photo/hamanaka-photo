@@ -410,21 +410,12 @@
   font-size: 12px;
   line-height: 1.75;
 }
-.gear-wide-shooting {
-  margin-top: 24px;
-  padding: 24px 28px;
-  border: 1px solid #cbdedb;
-  border-radius: 10px;
-  background: #edf4f2;
-}
-.gear-wide-shooting h3,
 .gear-teleconverter h3 {
   margin: 0;
   color: var(--gear-navy);
   font-size: 20px;
   line-height: 1.5;
 }
-.gear-wide-shooting p,
 .gear-teleconverter p {
   margin: 8px 0 0;
   color: var(--gear-muted);
@@ -436,7 +427,19 @@
   padding: 30px;
   border: 1px solid var(--gear-line);
   border-radius: 10px;
+  background: #fbfcfb;
+}
+.gear-teleconverter-intro {
+  padding-bottom: 6px;
+}
+.gear-teleconverter-main {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border-radius: 8px;
   background: #fff;
+}
+.gear-teleconverter-copy h3 {
+  font-size: 17px;
 }
 .gear-teleconverter-main.has-image {
   display: grid;
@@ -452,19 +455,36 @@
   letter-spacing: .1em;
 }
 .gear-teleconverter-formula {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: baseline;
-  margin-top: 18px;
-  padding: 16px 18px;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
+  margin-top: 14px;
+  padding: 14px 16px;
   border-radius: 8px;
-  background: var(--gear-soft);
+  background: #fff;
   color: var(--gear-navy);
 }
 .gear-teleconverter-formula strong,
-.gear-teleconverter-formula b { font-size: 25px; }
-.gear-teleconverter-formula span { font-size: 18px; font-weight: 900; }
+.gear-teleconverter-formula b {
+  font-size: 18px;
+  line-height: 1.4;
+}
+.gear-teleconverter-formula span { font-size: 14px; font-weight: 900; }
+.gear-teleconverter-formula i {
+  color: var(--gear-teal);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 900;
+}
+.gear-teleconverter-result {
+  margin-top: 24px;
+  padding: 20px 22px;
+  border-radius: 8px;
+  background: var(--gear-soft);
+}
+.gear-teleconverter-result h3 {
+  font-size: 16px;
+}
 .gear-teleconverter-image {
   min-width: 0;
   margin: 0;
@@ -478,10 +498,10 @@
   height: auto;
 }
 .gear-teleconverter-cautions {
-  margin-top: 22px;
-  padding: 22px 24px;
+  margin-top: 24px;
+  padding: 20px 22px;
   border-radius: 8px;
-  background: #f7f8f5;
+  background: #f1f4f2;
 }
 .gear-teleconverter-cautions h4 {
   margin: 0;
