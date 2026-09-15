@@ -2388,7 +2388,7 @@ content:
         type: string
         list: true
   - name: gear_settings
-    label: 機材｜撮影機材を選ぼう
+    label: 機材｜ラッコ撮影の機材選び
     type: file
     path: data/gear.json
     format: json
@@ -2396,7 +2396,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜ラッコと出会うための、撮影機材を選ぼう。
+      label: HERO｜ラッコ撮影の機材選び
       type: object
       fields:
       - name: eyebrow
@@ -2414,40 +2414,10 @@ content:
         type: image
         options:
           media: gear_images
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          extensions: [jpg, jpeg, png, webp]
           rename: false
-    - name: introPoints
-      label: HERO下｜機材選びの3ポイント
-      type: object
-      fields:
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-      - name: points
-        label: 3つのカード
-        type: object
-        list:
-          max: 3
-          collapsible:
-            collapsed: true
-            summary: '{number} {text}'
-        fields:
-        - name: number
-          label: 番号
-          type: string
-        - name: text
-          label: 内容
-          type: string
-          required: true
     - name: focalExperience
-      label: 01｜焦点距離で、見え方はこんなに変わる。
+      label: 01｜焦点距離で見え方はどう変わる？
       type: object
       fields:
       - name: eyebrow
@@ -2491,14 +2461,10 @@ content:
           options:
             media: gear_images
             path: focal
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            extensions: [jpg, jpeg, png, webp]
             rename: false
-    - name: gearFinder
-      label: 02｜レンズを選ぶ → ボディを選ぶ
+    - name: gearGuide
+      label: 02｜ラッコ撮影の機材、どう選ぶ？
       type: object
       fields:
       - name: eyebrow
@@ -2510,268 +2476,42 @@ content:
       - name: lead
         label: 説明
         type: text
-      - name: modes
-        label: 選び方
+      - name: styles
+        label: 撮りたい写真別の選び方
         type: object
         list:
           max: 2
           collapsible:
             collapsed: true
-            summary: '{label}'
+            summary: '{label} / {title}'
         fields:
-        - name: id
-          label: ID
-          type: select
-          required: true
-          options:
-            values:
-            - name: manufacturer
-              label: メーカー
-            - name: focal
-              label: 焦点距離
         - name: label
-          label: 表示名
+          label: 区分
+          type: string
+        - name: title
+          label: タイトル
           type: string
           required: true
-      - name: manufacturers
-        label: メーカー選択肢
+        - name: focal
+          label: 焦点距離の目安
+          type: string
+        - name: summary
+          label: 短い補足
+          type: string
+        - name: text
+          label: 説明
+          type: text
+      - name: teleconverterTitle
+        label: テレコンバーターの見出し
         type: string
-        list: true
-      - name: focalOptions
-        label: 焦点距離選択肢 mm
-        type: number
-        list: true
-      - name: resolutionOptions
-        label: 解像度選択肢 MP
-        type: number
-        list: true
-        hidden: true
-      - name: featureOptions
-        label: 機能選択肢
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{label}'
-        fields:
-        - name: id
-          label: 機能ID
-          type: string
-          required: true
-          description: animal-af / high-speed-burst / stabilization / weather-sealed など。
-        - name: label
-          label: 表示名
-          type: string
-          required: true
-        - name: target
-          label: 主な対象
-          type: select
-          options:
-            values:
-            - name: body
-              label: ボディ
-            - name: lens
-              label: レンズ
-            - name: pair
-              label: 組み合わせ全体
-        hidden: true
-      - name: lenses
-        label: レンズ
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{manufacturer} / {name}'
-        fields:
-        - name: id
-          label: レンズID
-          type: string
-          required: true
-        - name: manufacturer
-          label: メーカー
-          type: string
-          required: true
-        - name: name
-          label: 製品名
-          type: string
-          required: true
-        - name: mount
-          label: マウント
-          type: string
-          required: true
-          description: RF / E / Z など。ボディ側と同じ文字列なら組み合わせ候補になります。
-        - name: image
-          label: 製品画像
-          type: image
-          options:
-            media: gear_images
-            path: products/lens
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: minFocal
-          label: 最短焦点距離 mm
-          type: number
-          required: true
-        - name: maxFocal
-          label: 最長焦点距離 mm
-          type: number
-          required: true
-        - name: aperture
-          label: 開放F値
-          type: string
-        - name: weight
-          label: 重量
-          type: string
-        - name: dimensions
-          label: 大きさ
-          type: string
-          description: 例 最大径 φ93.8 × 長さ 207.6mm
-        - name: autofocus
-          label: AF
-          type: string
-          description: 例 Nano USM / DDSSM / STM
-        - name: stabilizationLabel
-          label: 手ぶれ補正
-          type: string
-          description: 例 レンズ内IS / レンズ内OSS / レンズシフト方式VR
-        - name: summary
-          label: 性能概要
-          type: text
-        - name: features
-          label: 機能ID
-          type: string
-          list: true
-      - name: bodies
-        label: カメラボディ
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{manufacturer} / {name}'
-        fields:
-        - name: id
-          label: ボディID
-          type: string
-          required: true
-        - name: manufacturer
-          label: メーカー
-          type: string
-          required: true
-        - name: name
-          label: 製品名
-          type: string
-          required: true
-        - name: mount
-          label: マウント
-          type: string
-          required: true
-          description: RF / E / Z など。レンズ側と同じ文字列なら組み合わせ候補になります。
-        - name: image
-          label: 製品画像
-          type: image
-          options:
-            media: gear_images
-            path: products/body
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: resolution
-          label: 解像度 MP
-          type: number
-          required: true
-        - name: resolutionLabel
-          label: 解像度表示
-          type: string
-        - name: burst
-          label: 連写性能表示
-          type: string
-        - name: summary
-          label: 性能概要
-          type: text
-        - name: features
-          label: 機能ID
-          type: string
-          list: true
-      - name: integratedCameras
-        label: 一体型カメラ
-        type: object
-        list:
-          collapsible:
-            collapsed: true
-            summary: '{manufacturer} / {name}'
-        description: COOLPIXのようなレンズ一体型カメラを登録します。レンズとボディの組み合わせ候補と同じ検索条件で表示されます。
-        fields:
-        - name: id
-          label: カメラID
-          type: string
-          required: true
-        - name: manufacturer
-          label: メーカー
-          type: string
-          required: true
-        - name: name
-          label: 製品名
-          type: string
-          required: true
-        - name: image
-          label: 製品画像
-          type: image
-          options:
-            media: gear_images
-            path: products/integrated
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
-            rename: false
-        - name: minFocal
-          label: 最短焦点距離 mm相当
-          type: number
-          required: true
-        - name: maxFocal
-          label: 最長焦点距離 mm相当
-          type: number
-          required: true
-        - name: focalLabel
-          label: 焦点距離表示
-          type: string
-          description: 例 24〜3000mm相当
-        - name: aperture
-          label: 開放F値
-          type: string
-        - name: resolution
-          label: 解像度 MP
-          type: number
-          required: true
-        - name: resolutionLabel
-          label: 解像度表示
-          type: string
-        - name: weight
-          label: 重量
-          type: string
-        - name: burst
-          label: 連写性能表示
-          type: string
-        - name: summary
-          label: 性能概要
-          type: text
-        - name: features
-          label: 機能ID
-          type: string
-          list: true
-      - name: disclaimer
-        label: 製品情報の注記
+      - name: teleconverterNote
+        label: テレコンバーターの注意
         type: text
-    - name: accessories
-      label: 03｜あると便利なアクセサリー
+      - name: manufacturerNote
+        label: 製品仕様の注記
+        type: text
+    - name: selectionPoints
+      label: 03｜機材選びで見るポイント
       type: object
       fields:
       - name: eyebrow
@@ -2784,7 +2524,36 @@ content:
         label: 説明
         type: text
       - name: items
-        label: アクセサリー
+        label: 確認ポイント
+        type: object
+        list:
+          max: 6
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: title
+          label: 項目
+          type: string
+          required: true
+        - name: text
+          label: 説明
+          type: text
+    - name: accessories
+      label: 04｜撮影を助ける周辺機材
+      type: object
+      fields:
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: title
+        label: 見出し
+        type: string
+      - name: lead
+        label: 説明
+        type: text
+      - name: items
+        label: 周辺機材
         type: object
         list:
           max: 8
@@ -2805,14 +2574,10 @@ content:
           options:
             media: gear_images
             path: accessories
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            extensions: [jpg, jpeg, png, webp]
             rename: false
-    - name: rental
-      label: 04｜レンタルという選択肢も！
+    - name: purchaseOptions
+      label: 05｜購入前にレンタルで試す
       type: object
       fields:
       - name: eyebrow
@@ -2824,11 +2589,8 @@ content:
       - name: lead
         label: 説明
         type: text
-      - name: reasonTitle
-        label: 理由見出し
-        type: string
-      - name: reasons
-        label: レンタルを検討する理由
+      - name: points
+        label: レンタルの確認ポイント
         type: object
         list:
           max: 3
@@ -2837,72 +2599,23 @@ content:
             summary: '{title}'
         fields:
         - name: title
-          label: タイトル
+          label: 項目
           type: string
           required: true
         - name: text
           label: 説明
           type: text
-        - name: iconImage
-          label: アイコン画像
-          type: image
-          description: 正方形の画像を推奨します。未設定時は従来の簡易アイコンを表示します。
-          options:
-            media: gear_images
-            path: rental/icons
-            extensions: [jpg, jpeg, png, webp]
-            rename: false
-        - name: iconAlt
-          label: アイコン画像の代替テキスト
-          type: string
-      - name: serviceLabel
-        label: サービス紹介の注記
-        type: string
-      - name: serviceName
-        label: サービス名
-        type: string
-      - name: serviceText
-        label: サービス説明
-        type: text
-      - name: image
-        label: GOOPASSロゴ画像
-        type: image
-        description: GOOPASSロゴを登録します。透過PNGまたは余白の少ないWebPを推奨します。
-        options:
-          media: gear_images
-          path: rental
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
-          rename: false
-      - name: visualImage
-        label: 右側のレンタル機材イメージ
-        type: image
-        description: 右側に1枚で表示する横長画像です。16:9〜2:1程度、横1400〜1800px前後を推奨します。
-        options:
-          media: gear_images
-          path: rental
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
-          rename: false
-      - name: buttonLabel
-        label: ボタン表示
-        type: string
-      - name: url
-        label: 公式サイトURL
-        type: string
       - name: note
         label: 注記
         type: text
     - name: examples
-      label: 05｜機材作例ギャラリー
+      label: 作例ギャラリー（公開設定）
       type: object
       fields:
+      - name: published
+        label: ページに表示する
+        type: boolean
+        default: false
       - name: eyebrow
         label: 英字見出し
         type: string
@@ -2924,21 +2637,14 @@ content:
         - name: image
           label: 作例画像
           type: image
-          required: true
           options:
             media: gear_images
             path: examples
-            extensions:
-            - jpg
-            - jpeg
-            - png
-            - webp
+            extensions: [jpg, jpeg, png, webp]
             rename: false
         - name: equipment
           label: 使用機材
           type: string
-          required: true
-          description: 例 EOS R5 Mark II ＋ RF200-800mm F6.3-9 IS USM
         - name: caption
           label: キャプション
           type: string
@@ -2966,11 +2672,7 @@ content:
         type: image
         options:
           media: gear_images
-          extensions:
-          - jpg
-          - jpeg
-          - png
-          - webp
+          extensions: [jpg, jpeg, png, webp]
           rename: false
   - name: technique_settings
     label: テクニック｜撮影前に予習 ラッコの撮り方
