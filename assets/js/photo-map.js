@@ -31,6 +31,12 @@
     }
   ];
 
+  const FEATURED_SPOT_IDS = [
+    'SPOT-013',
+    'SPOT-009',
+    'SPOT-014'
+  ];
+
   const escapeHtml = (value = '') =>
     String(value).replace(/[&<>"']/g, char => ({
       '&': '&amp;',
@@ -111,6 +117,36 @@
   const primaryMarkerType = spot =>
     markerTypes(spot)[0] || 'coast';
 
+  const spotImages = spot => {
+    const images =
+      Array.isArray(spot.images)
+        ? spot.images
+            .map(image => ({
+              src: safeUrl(image?.src),
+              alt: String(image?.alt || ''),
+              caption: String(image?.caption || '')
+            }))
+            .filter(image => image.src)
+        : [];
+
+    if (images.length) {
+      return images;
+    }
+
+    const legacyImage = safeUrl(spot.image);
+
+    return legacyImage
+      ? [{
+          src: legacyImage,
+          alt: String(spot.name || ''),
+          caption: ''
+        }]
+      : [];
+  };
+
+  const getPrimarySpotImage = spot =>
+    spotImages(spot)[0] || null;
+
   const gridCoordinateToPercent = value => {
     const number = Number(value);
 
@@ -127,11 +163,21 @@
   };
 
   const getSpotPosition = spot => {
+    const overrideXValue =
+      spot.positionOverride?.x;
+
+    const overrideYValue =
+      spot.positionOverride?.y;
+
     const overrideX =
-      Number(spot.positionOverride?.x);
+      overrideXValue === '' || overrideXValue == null
+        ? NaN
+        : Number(overrideXValue);
 
     const overrideY =
-      Number(spot.positionOverride?.y);
+      overrideYValue === '' || overrideYValue == null
+        ? NaN
+        : Number(overrideYValue);
 
     if (
       Number.isFinite(overrideX) &&
@@ -234,15 +280,18 @@
     </div>
   `;
 
-  const renderSpotImage = spot =>
-    spot.image
+  const renderSpotImage = spot => {
+    const image = getPrimarySpotImage(spot);
+
+    return image
       ? `<img
-          src="${escapeHtml(spot.image)}"
-          alt="${escapeHtml(spot.name || '')}"
+          src="${escapeHtml(image.src)}"
+          alt="${escapeHtml(image.alt || spot.name || '')}"
           loading="lazy"
           decoding="async"
           fetchpriority="low">`
       : placeholderVisual(spot.name);
+  };
 
   const markerClass = spot => {
     const type = primaryMarkerType(spot);
@@ -470,6 +519,13 @@
 
           ${renderCautions(spot)}
 
+          <button
+            class="photo-spot-detail photo-spot-detail-button"
+            type="button"
+            data-open-spot="${escapeHtml(spot.id)}">
+            写真と詳細を見る →
+          </button>
+
           ${
             detailUrl
               ? `<a
@@ -489,51 +545,129 @@
 
   const renderListCard = (
     spot,
-    subjectMap
+    { featured = false } = {}
   ) => {
-    const detailUrl =
-      safeUrl(spot.detailUrl);
-
     return `
       <article
-        class="photo-spot-list-card"
+        class="photo-spot-list-card photo-spot-gallery-card${featured ? ' is-featured' : ''}"
         data-list-spot="${escapeHtml(spot.id)}">
 
-        <div class="photo-spot-list-visual">
-          ${renderSpotImage(spot)}
+        <button
+          class="photo-spot-gallery-button"
+          type="button"
+          data-open-spot="${escapeHtml(spot.id)}"
+          aria-label="${escapeHtml(spot.name)}の写真と詳細を見る">
+
+          <span class="photo-spot-list-visual">
+            ${renderSpotImage(spot)}
+          </span>
+
+          <span class="photo-spot-list-copy">
+            <span class="photo-spot-list-area">
+              ${escapeHtml(spot.area || '浜中町')}
+            </span>
+            <strong>${escapeHtml(spot.name)}</strong>
+            <span class="photo-spot-gallery-action">詳しく見る →</span>
+          </span>
+
+        </button>
+
+      </article>`;
+  };
+
+  const renderSpotModal = (
+    spot,
+    currentIndex,
+    subjectMap
+  ) => {
+    const images = spotImages(spot);
+    const imageIndex = images.length
+      ? Math.min(
+          images.length - 1,
+          Math.max(0, Number(currentIndex) || 0)
+        )
+      : 0;
+    const currentImage = images[imageIndex] || null;
+    const detailUrl = safeUrl(spot.detailUrl);
+    const subjects = renderSubjectBadges(spot, subjectMap);
+
+    return `
+      <div class="photo-spot-modal-layout">
+        <div class="photo-spot-modal-gallery">
+          <figure class="photo-spot-modal-figure" aria-live="polite">
+            ${
+              currentImage
+                ? `<img
+                    src="${escapeHtml(currentImage.src)}"
+                    alt="${escapeHtml(currentImage.alt || spot.name || '')}"
+                    decoding="async">`
+                : placeholderVisual(spot.name)
+            }
+            ${
+              currentImage?.caption
+                ? `<figcaption>${escapeHtml(currentImage.caption)}</figcaption>`
+                : ''
+            }
+          </figure>
+
+          ${
+            images.length > 1
+              ? `<div class="photo-spot-modal-controls">
+                  <button
+                    type="button"
+                    data-gallery-step="-1"
+                    aria-label="前の写真を見る">←</button>
+                  <div class="photo-spot-modal-thumbnails" aria-label="写真一覧">
+                    ${images.map((image, index) => `
+                      <button
+                        class="${index === imageIndex ? 'is-active' : ''}"
+                        type="button"
+                        data-gallery-index="${index}"
+                        aria-label="写真${index + 1}を表示"
+                        aria-pressed="${index === imageIndex}">
+                        <img
+                          src="${escapeHtml(image.src)}"
+                          alt=""
+                          loading="lazy"
+                          decoding="async">
+                      </button>`).join('')}
+                  </div>
+                  <button
+                    type="button"
+                    data-gallery-step="1"
+                    aria-label="次の写真を見る">→</button>
+                </div>`
+              : ''
+          }
         </div>
 
-        <div class="photo-spot-list-copy">
-
-          <p class="photo-spot-list-area">
+        <div class="photo-spot-modal-copy">
+          <p class="photo-spot-modal-area">
             ${escapeHtml(spot.area || '浜中町')}
           </p>
-
-          <h3>
-            ${escapeHtml(spot.name)}
-          </h3>
+          <h2 id="photo-spot-dialog-title">
+            ${escapeHtml(spot.name || '')}
+          </h2>
 
           ${
             spot.description
-              ? `<p>${escapeHtml(spot.description)}</p>`
+              ? `<p class="photo-spot-modal-description">${escapeHtml(spot.description)}</p>`
               : ''
           }
 
-          ${renderSubjectBadges(spot, subjectMap)}
+          ${
+            subjects
+              ? `<section class="photo-spot-modal-section">
+                  <h3>撮れるもの</h3>
+                  ${subjects}
+                </section>`
+              : ''
+          }
 
-          <div class="photo-spot-meta">
-            ${renderMeta(
-              '時期',
-              spot.bestSeason
-            )}
-            ${renderMeta(
-              '駐車場',
-              spot.parking
-            )}
-            ${renderMeta(
-              'トイレ',
-              spot.toilet
-            )}
+          <div class="photo-spot-meta photo-spot-modal-meta">
+            ${renderMeta('おすすめ時期', spot.bestSeason)}
+            ${renderMeta('駐車場', spot.parking)}
+            ${renderMeta('トイレ', spot.toilet)}
           </div>
 
           ${renderCautions(spot)}
@@ -541,6 +675,7 @@
           ${
             detailUrl
               ? `<a
+                  class="photo-spot-modal-map-link"
                   href="${escapeHtml(detailUrl)}"
                   target="_blank"
                   rel="noopener noreferrer">
@@ -548,15 +683,32 @@
                 </a>`
               : ''
           }
-
         </div>
-
-      </article>`;
+      </div>`;
   };
+
+  const renderSpotDialog = () => `
+    <dialog
+      class="photo-spot-dialog"
+      data-spot-dialog
+      aria-modal="true"
+      aria-labelledby="photo-spot-dialog-title">
+      <div class="photo-spot-dialog-panel">
+        <button
+          class="photo-spot-dialog-close"
+          type="button"
+          data-close-spot-dialog
+          aria-label="詳細を閉じる">×</button>
+        <div data-spot-modal-content></div>
+      </div>
+    </dialog>`;
 
   const renderCourseStop = (spot, index) => {
     const detailUrl =
       safeUrl(spot.detailUrl);
+
+    const primaryImage =
+      getPrimarySpotImage(spot);
 
     const orderLabel =
       `SPOT ${String(index + 1).padStart(2, '0')}`;
@@ -571,11 +723,11 @@
         <div class="photo-map-course-stop-body">
 
           ${
-            spot.image
+            primaryImage
               ? `<div class="photo-map-course-stop-image">
                   <img
-                    src="${escapeHtml(spot.image)}"
-                    alt="${escapeHtml(spot.name || '')}"
+                    src="${escapeHtml(primaryImage.src)}"
+                    alt="${escapeHtml(primaryImage.alt || spot.name || '')}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low">
@@ -656,6 +808,11 @@
     const courseSpots =
       resolveCourseSpots(course, spotMap);
 
+    const courseImage =
+      courseSpots
+        .map(getPrimarySpotImage)
+        .find(Boolean);
+
     return `
       <details class="photo-map-course">
 
@@ -663,10 +820,10 @@
 
           <div class="photo-map-course-image">
             ${
-              course.image
+              courseImage
                 ? `<img
-                    src="${escapeHtml(course.image)}"
-                    alt=""
+                    src="${escapeHtml(courseImage.src)}"
+                    alt="${escapeHtml(courseImage.alt || course.title || '')}"
                     loading="lazy"
                     decoding="async"
                     fetchpriority="low">`
@@ -891,23 +1048,24 @@
               type="button"
               role="tab"
               aria-selected="true"
-              data-map-view="map">
-              MAP
+              data-map-view="list">
+              撮影スポット
             </button>
 
             <button
               type="button"
               role="tab"
               aria-selected="false"
-              data-map-view="list">
-              一覧
+              data-map-view="map">
+              MAPから探す
             </button>
 
           </div>
 
           <div
             class="photo-map-map-panel"
-            data-map-panel="map">
+            data-map-panel="map"
+            hidden>
 
             <div class="photo-map-map-toolbar">
 
@@ -1008,17 +1166,16 @@
 
           <div
             class="photo-map-list-view"
-            data-map-panel="list"
-            hidden>
+            data-map-panel="list">
 
             <div class="photo-map-list-head">
 
               <div>
                 <p class="photo-map-control-label">
-                  一覧の見方
+                  写真から探す
                 </p>
                 <h2>
-                  スポットを一覧から探す
+                  撮影スポット一覧
                 </h2>
               </div>
 
@@ -1057,7 +1214,7 @@
 
           </div>
 
-          <div class="photo-map-legend">
+          <div class="photo-map-legend" data-map-only hidden>
 
             <h2>
               MAPの見方
@@ -1133,7 +1290,7 @@
       String(hero.image || '').trim();
 
     document.title =
-      `${hero.title || 'フォトマップ'}｜HAMANAKA PHOTO GUIDE`;
+      `${hero.title || '撮影スポットを探す'}｜HAMANAKA PHOTO GUIDE`;
 
     document
       .querySelector(
@@ -1177,7 +1334,7 @@
           <h1>
             ${escapeHtml(
               hero.title ||
-              'フォトスポットから探す'
+              '撮影スポットを探す'
             )}
           </h1>
 
@@ -1193,6 +1350,8 @@
       </section>
 
       ${renderExplorer(settings, spots)}
+
+      ${renderSpotDialog()}
 
       ${
         courses.length
@@ -1336,6 +1495,20 @@
         '[data-list-results]'
       );
 
+    const spotDialog =
+      root.querySelector(
+        '[data-spot-dialog]'
+      );
+
+    const modalContent =
+      root.querySelector(
+        '[data-spot-modal-content]'
+      );
+
+    let modalSpot = null;
+    let modalImageIndex = 0;
+    let modalTrigger = null;
+
     const findSpot =
       id =>
         spots.find(
@@ -1343,6 +1516,76 @@
             String(spot.id) ===
             String(id)
         ) || null;
+
+    const updateSpotModal = nextIndex => {
+      if (!modalSpot || !modalContent) {
+        return;
+      }
+
+      const images = spotImages(modalSpot);
+
+      if (images.length) {
+        modalImageIndex =
+          (
+            Number(nextIndex) % images.length +
+            images.length
+          ) % images.length;
+      } else {
+        modalImageIndex = 0;
+      }
+
+      modalContent.innerHTML =
+        renderSpotModal(
+          modalSpot,
+          modalImageIndex,
+          subjectMap
+        );
+    };
+
+    const openSpotModal = (
+      spotId,
+      trigger
+    ) => {
+      const spot = findSpot(spotId);
+
+      if (!spot || !spotDialog) {
+        return;
+      }
+
+      modalSpot = spot;
+      modalImageIndex = 0;
+      modalTrigger = trigger || null;
+      updateSpotModal(0);
+      document.body.classList.add(
+        'photo-map-modal-open'
+      );
+
+      if (typeof spotDialog.showModal === 'function') {
+        spotDialog.showModal();
+      } else {
+        spotDialog.setAttribute('open', '');
+      }
+
+      spotDialog
+        .querySelector('[data-close-spot-dialog]')
+        ?.focus();
+    };
+
+    const closeSpotModal = () => {
+      if (!spotDialog) {
+        return;
+      }
+
+      if (typeof spotDialog.close === 'function') {
+        spotDialog.close();
+      } else {
+        spotDialog.removeAttribute('open');
+        document.body.classList.remove(
+          'photo-map-modal-open'
+        );
+        modalTrigger?.focus();
+      }
+    };
 
     const mapElementMatches =
       element => {
@@ -1628,10 +1871,7 @@
 
                     ${items
                       .map(spot =>
-                        renderListCard(
-                          spot,
-                          subjectMap
-                        )
+                        renderListCard(spot)
                       )
                       .join('')}
 
@@ -1713,10 +1953,7 @@
 
                   ${items
                     .map(spot =>
-                      renderListCard(
-                        spot,
-                        subjectMap
-                      )
+                      renderListCard(spot)
                     )
                     .join('')}
 
@@ -1729,38 +1966,49 @@
         return;
       }
 
+      const featuredSpots =
+        FEATURED_SPOT_IDS
+          .map(id => findSpot(id))
+          .filter(Boolean);
+
+      const featuredIds =
+        new Set(
+          featuredSpots.map(spot => String(spot.id))
+        );
+
+      const regularSpots =
+        spots.filter(
+          spot => !featuredIds.has(String(spot.id))
+        );
+
       listResults.innerHTML = `
-        <section
-          class="photo-map-list-group">
+        ${
+          featuredSpots.length
+            ? `<section class="photo-map-list-group photo-map-featured-group">
+                <div class="photo-map-list-group-heading">
+                  <p>FEATURED SPOTS</p>
+                  <h3>まず見てほしい撮影スポット</h3>
+                </div>
+                <div class="photo-map-featured-grid">
+                  ${featuredSpots
+                    .map(spot => renderListCard(spot, { featured: true }))
+                    .join('')}
+                </div>
+              </section>`
+            : ''
+        }
 
-          <div
-            class="photo-map-list-group-heading">
-
-            <p>ALL SPOTS</p>
-
-            <h3>
-              すべての撮影スポット
-            </h3>
-
-            <span>
-              ${spots.length} SPOTS
-            </span>
-
+        <section class="photo-map-list-group">
+          <div class="photo-map-list-group-heading">
+            <p>MORE SPOTS</p>
+            <h3>その他の撮影スポット</h3>
+            <span>${regularSpots.length} SPOTS</span>
           </div>
-
           <div class="photo-map-list-grid">
-
-            ${spots
-              .map(spot =>
-                renderListCard(
-                  spot,
-                  subjectMap
-                )
-              )
+            ${regularSpots
+              .map(spot => renderListCard(spot))
               .join('')}
-
           </div>
-
         </section>`;
     };
 
@@ -1822,6 +2070,12 @@
             nextView;
         });
 
+      root
+        .querySelectorAll('[data-map-only]')
+        .forEach(element => {
+          element.hidden = nextView !== 'map';
+        });
+
       if (nextView === 'list') {
         renderList();
       }
@@ -1830,15 +2084,120 @@
     renderMapFilterButtons();
     renderList();
 
-    setView('map');
+    setView('list');
 
     if (selectedSpotId) {
       selectSpot(selectedSpotId);
     }
 
+    spotDialog?.addEventListener(
+      'close',
+      () => {
+        document.body.classList.remove(
+          'photo-map-modal-open'
+        );
+        modalTrigger?.focus();
+        modalSpot = null;
+      }
+    );
+
+    spotDialog?.addEventListener(
+      'click',
+      event => {
+        if (event.target === spotDialog) {
+          closeSpotModal();
+        }
+      }
+    );
+
+    spotDialog?.addEventListener(
+      'keydown',
+      event => {
+        if (!modalSpot || spotImages(modalSpot).length < 2) {
+          return;
+        }
+
+        if (event.key === 'ArrowLeft') {
+          event.preventDefault();
+          updateSpotModal(modalImageIndex - 1);
+        } else if (event.key === 'ArrowRight') {
+          event.preventDefault();
+          updateSpotModal(modalImageIndex + 1);
+        } else {
+          return;
+        }
+
+        spotDialog
+          .querySelector(
+            `[data-gallery-index="${modalImageIndex}"]`
+          )
+          ?.focus();
+      }
+    );
+
     root.addEventListener(
       'click',
       event => {
+        const closeButton =
+          event.target.closest(
+            '[data-close-spot-dialog]'
+          );
+
+        if (closeButton) {
+          closeSpotModal();
+          return;
+        }
+
+        const galleryIndexButton =
+          event.target.closest(
+            '[data-gallery-index]'
+          );
+
+        if (galleryIndexButton) {
+          updateSpotModal(
+            Number(galleryIndexButton.dataset.galleryIndex)
+          );
+          spotDialog
+            ?.querySelector(
+              `[data-gallery-index="${modalImageIndex}"]`
+            )
+            ?.focus();
+          return;
+        }
+
+        const galleryStepButton =
+          event.target.closest(
+            '[data-gallery-step]'
+          );
+
+        if (galleryStepButton) {
+          const step =
+            Number(galleryStepButton.dataset.galleryStep || 0);
+
+          updateSpotModal(
+            modalImageIndex + step
+          );
+          spotDialog
+            ?.querySelector(
+              `[data-gallery-step="${step}"]`
+            )
+            ?.focus();
+          return;
+        }
+
+        const openSpotButton =
+          event.target.closest(
+            '[data-open-spot]'
+          );
+
+        if (openSpotButton) {
+          openSpotModal(
+            openSpotButton.dataset.openSpot,
+            openSpotButton
+          );
+          return;
+        }
+
         const viewButton =
           event.target.closest(
             '[data-map-view]'

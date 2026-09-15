@@ -12,10 +12,6 @@
   }[c]));
 
   const nl2br = value => esc(value || '').replace(/\r?\n/g, '<br>');
-  const keepNaturalPhrase = value => esc(value || '').replace(
-    '可能性があります。',
-    '<span class="manner-v2-nowrap">可能性があります。</span>'
-  );
 
   const safeUrl = value => {
     const raw = String(value || '').trim();
@@ -58,7 +54,7 @@
     <header class="manner-v2-heading">
       <p>${esc(section.eyebrow || '')}</p>
       <h2>${esc(section.title || '')}</h2>
-      ${section.lead ? `<span>${keepNaturalPhrase(section.lead)}</span>` : ''}
+      ${section.lead ? `<span>${esc(section.lead)}</span>` : ''}
     </header>`;
 
   const renderHero = hero => `

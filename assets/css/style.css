@@ -823,10 +823,6 @@ button {
   color: var(--muted);
 }
 
-@media (min-width: 761px) {
-  .past-selection-empty { white-space: nowrap; }
-}
-
 
 
 /* =========================
