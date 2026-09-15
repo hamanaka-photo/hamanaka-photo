@@ -2492,24 +2492,32 @@ content:
           label: タイトル
           type: string
           required: true
-        - name: focal
-          label: 焦点距離の目安
+        - name: image
+          label: イメージイラスト
+          type: image
+          options:
+            media: gear_images
+            path: choices
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - name: imageAlt
+          label: 画像の代替テキスト
           type: string
-        - name: summary
-          label: 短い補足
-          type: string
-        - name: text
-          label: 説明
-          type: text
-      - name: teleconverterTitle
-        label: テレコンバーターの見出し
-        type: string
-      - name: teleconverterNote
-        label: テレコンバーターの注意
-        type: text
-      - name: manufacturerNote
-        label: 製品仕様の注記
-        type: text
+        - name: points
+          label: 選び方のポイント
+          type: object
+          list:
+            collapsible:
+              collapsed: true
+              summary: '{title}'
+          fields:
+          - name: title
+            label: 要点
+            type: string
+            required: true
+          - name: text
+            label: 補足
+            type: text
     - name: selectionPoints
       label: 03｜機材選びで見るポイント
       type: object
@@ -2536,6 +2544,19 @@ content:
           label: 項目
           type: string
           required: true
+        - name: text
+          label: 説明
+          type: text
+      - name: tip
+        label: TIPS｜レンタルサービス
+        type: object
+        fields:
+        - name: label
+          label: ラベル
+          type: string
+        - name: title
+          label: 見出し
+          type: string
         - name: text
           label: 説明
           type: text
@@ -2576,38 +2597,6 @@ content:
             path: accessories
             extensions: [jpg, jpeg, png, webp]
             rename: false
-    - name: purchaseOptions
-      label: 05｜購入前にレンタルで試す
-      type: object
-      fields:
-      - name: eyebrow
-        label: 英字見出し
-        type: string
-      - name: title
-        label: 見出し
-        type: string
-      - name: lead
-        label: 説明
-        type: text
-      - name: points
-        label: レンタルの確認ポイント
-        type: object
-        list:
-          max: 3
-          collapsible:
-            collapsed: true
-            summary: '{title}'
-        fields:
-        - name: title
-          label: 項目
-          type: string
-          required: true
-        - name: text
-          label: 説明
-          type: text
-      - name: note
-        label: 注記
-        type: text
     - name: examples
       label: 作例ギャラリー（公開設定）
       type: object

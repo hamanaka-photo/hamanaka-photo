@@ -154,25 +154,28 @@
           </div>
 
           <div class="gear-choice-grid">
-            ${styles.map(style => `
+            ${styles.map(style => {
+              const points = Array.isArray(style.points) ? style.points : [];
+              return `
               <article class="gear-choice-card">
                 <span class="gear-choice-label">${escapeHtml(style.label || '')}</span>
                 <h3>${escapeHtml(style.title || '')}</h3>
-                <div class="gear-choice-focal">
-                  <strong>${escapeHtml(style.focal || '')}</strong>
-                  ${style.summary ? `<span>${escapeHtml(style.summary)}</span>` : ''}
+                <div class="gear-choice-visual">
+                  ${image(style.image, style.imageAlt || style.title, 'gear-choice-image')}
                 </div>
-                <p>${escapeHtml(style.text || '')}</p>
-              </article>`).join('')}
+                <div class="gear-choice-points">
+                  ${points.map((point, index) => `
+                    <section>
+                      <span>${String(index + 1).padStart(2, '0')}</span>
+                      <div>
+                        <h4>${escapeHtml(point.title || '')}</h4>
+                        <p>${escapeHtml(point.text || '')}</p>
+                      </div>
+                    </section>`).join('')}
+                </div>
+              </article>`;
+            }).join('')}
           </div>
-
-          <aside class="gear-teleconverter-note">
-            <h3>${escapeHtml(section.teleconverterTitle || 'テレコンバーターを使う前に')}</h3>
-            <p>${escapeHtml(section.teleconverterNote || '')}</p>
-          </aside>
-
-          ${section.manufacturerNote ? `
-            <p class="gear-manufacturer-note">${escapeHtml(section.manufacturerNote)}</p>` : ''}
         </div>
       </section>`;
   };
@@ -199,6 +202,15 @@
                 <p>${escapeHtml(item.text || '')}</p>
               </article>`).join('')}
           </div>
+
+          ${section.tip ? `
+            <aside class="gear-selection-tip">
+              <span>${escapeHtml(section.tip.label || 'TIPS')}</span>
+              <div>
+                <h3>${escapeHtml(section.tip.title || '')}</h3>
+                <p>${escapeHtml(section.tip.text || '')}</p>
+              </div>
+            </aside>` : ''}
         </div>
       </section>`;
   };
@@ -225,34 +237,6 @@
                 <p>${escapeHtml(item.text || '')}</p>
               </article>`).join('')}
           </div>
-        </div>
-      </section>`;
-  };
-
-  const renderPurchaseOptions = section => {
-    const points = Array.isArray(section.points) ? section.points : [];
-
-    return `
-      <section class="gear-v2-section gear-purchase" id="gear-purchase">
-        <div class="container">
-          <div class="gear-v2-heading">
-            <div>
-              <p>${escapeHtml(section.eyebrow || '05 / OTHER OPTIONS')}</p>
-              <h2>${escapeHtml(section.title || '')}</h2>
-            </div>
-            <span>${escapeHtml(section.lead || '')}</span>
-          </div>
-
-          <div class="gear-purchase-grid">
-            ${points.map((point, index) => `
-              <article>
-                <span>${String(index + 1).padStart(2, '0')}</span>
-                <h3>${escapeHtml(point.title || '')}</h3>
-                <p>${escapeHtml(point.text || '')}</p>
-              </article>`).join('')}
-          </div>
-
-          ${section.note ? `<p class="gear-v2-note">${escapeHtml(section.note)}</p>` : ''}
         </div>
       </section>`;
   };
@@ -333,7 +317,6 @@
       ${renderGearGuide(data.gearGuide || {})}
       ${renderSelectionPoints(data.selectionPoints || {})}
       ${renderAccessories(data.accessories || {})}
-      ${renderPurchaseOptions(data.purchaseOptions || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});
