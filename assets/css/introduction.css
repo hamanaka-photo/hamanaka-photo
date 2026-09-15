@@ -43,7 +43,6 @@
 .intro-trip-card > div { display: flex; flex: 1; flex-direction: column; padding: 30px; }
 .intro-trip-card h3 { margin: 0 0 18px; font-family: "Noto Serif CJK JP", "Yu Mincho", serif; font-size: clamp(24px, 2.7vw, 32px); font-weight: 500; line-height: 1.45; letter-spacing: .02em; }
 .intro-trip-card .intro-body { margin-top: 0; }
-@media (min-width: 901px) { .intro-trip-title-living { white-space: nowrap; font-size: clamp(23px, 2.45vw, 31px) !important; } }
 .intro-living { padding: 110px 0; color: #fff; background: var(--navy); }
 .intro-living-inner { display: grid; grid-template-columns: minmax(0,1.05fr) minmax(320px,.75fr); gap: 76px; align-items: center; }
 .intro-living .eyebrow { color: #b5d8e8; }

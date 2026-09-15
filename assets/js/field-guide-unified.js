@@ -33,14 +33,6 @@
 
   const guidebookUrl = 'https://photo.hamanaka-life.com/guide.html#:~:text=%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF%E3%82%92%E6%8C%81%E3%81%A3%E3%81%A6%E3%81%84%E3%81%8F';
 
-  const updateStickyOffsets = nav => {
-    const siteHeader = document.querySelector('.site-header');
-    const headerHeight = Math.ceil(siteHeader?.getBoundingClientRect().height || 72);
-    const navHeight = Math.ceil(nav?.getBoundingClientRect().height || 76);
-    document.body.style.setProperty('--fgu-site-header-height', `${headerHeight}px`);
-    document.body.style.setProperty('--fgu-article-nav-height', `${navHeight}px`);
-  };
-
   const injectAdjustments = () => {
     if (document.getElementById('field-guide-requested-adjustments')) return;
     const style = document.createElement('style');
@@ -191,18 +183,16 @@
     injectAdjustments();
     const setting = selectors[articleId] || {};
     const hero = root.querySelector(setting.hero);
-    const nav = root.querySelector(setting.nav) || document.querySelector(`[data-field-guide-sticky="${articleId}"]`);
+    const nav = root.querySelector(setting.nav);
     if (!hero) return;
 
     hero.classList.add('field-guide-unified-hero');
 
     if (nav) {
       nav.classList.add('field-guide-unified-nav');
-      nav.dataset.fieldGuideSticky = articleId;
       nav.querySelectorAll(spotButtonSelectors).forEach(button => button.remove());
       addGuidebookLink(nav);
-      if (nav.previousElementSibling !== hero) hero.insertAdjacentElement('afterend', nav);
-      updateStickyOffsets(nav);
+      if (!hero.contains(nav)) hero.insertBefore(nav, hero.firstChild);
     }
 
     setGearDefaultTo300();
@@ -215,7 +205,4 @@
   window.setTimeout(enhance, 100);
   window.setTimeout(enhance, 350);
   window.setTimeout(enhance, 900);
-  window.addEventListener('resize', () => {
-    updateStickyOffsets(document.querySelector(`[data-field-guide-sticky="${articleId}"]`));
-  }, { passive: true });
 })();

@@ -81,14 +81,7 @@
       }
 
       if (title && settings.pageTitle) title.textContent = settings.pageTitle;
-      if (lead && settings.pageLead) {
-        const firstLine = 'フォトガイドブックの内容をWebでも使いやすく。';
-        let leadHtml = escapeHtml(settings.pageLead).replace(/\r?\n/g, '<br>');
-        if (leadHtml.includes(firstLine) && !leadHtml.includes(`${firstLine}<br>`)) {
-          leadHtml = leadHtml.replace(firstLine, `${firstLine}<br>`);
-        }
-        lead.innerHTML = leadHtml;
-      }
+      if (lead && settings.pageLead) lead.textContent = settings.pageLead;
       if (indexLead && settings.indexLead) indexLead.textContent = settings.indexLead;
 
       const published = articles

@@ -88,6 +88,11 @@
         "label": "浜中町公式サイト",
         "url": "https://www.townhamanaka.jp/",
         "external": true
+      },
+      {
+        "label": "撮影ルール・マナー",
+        "url": "guide-article.html?article=manner",
+        "external": false
       }
     ]
   }

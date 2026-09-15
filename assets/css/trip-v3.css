@@ -495,19 +495,14 @@
 .trip-v3-climate-chart {
   width: 100%;
   min-height: 330px;
-  overflow: hidden;
+  overflow-x: auto;
 }
 
 .trip-v3-climate-chart svg {
   display: block;
   width: 100%;
-  min-width: 0;
+  min-width: 720px;
   height: 330px;
-}
-
-@media (max-width: 760px) {
-  .trip-v3-climate-chart { overflow-x: auto; }
-  .trip-v3-climate-chart svg { min-width: 720px; }
 }
 
 .trip-v3-chart-legend {

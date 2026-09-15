@@ -2137,3 +2137,462 @@
     font-size: 12px;
   }
 }
+
+/* =========================================
+   PHOTO MAP v7
+   Photo-first gallery and spot dialog
+========================================= */
+
+body.photo-map-modal-open {
+  overflow: hidden;
+}
+
+.photo-map-list-view {
+  padding: 20px 0 24px;
+}
+
+.photo-map-list-results {
+  gap: 50px;
+}
+
+.photo-map-list-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.photo-map-featured-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(190px, 1fr));
+  gap: 14px;
+  min-height: 520px;
+}
+
+.photo-map-featured-grid .photo-spot-gallery-card:first-child {
+  grid-row: 1 / span 2;
+}
+
+.photo-spot-gallery-card {
+  display: block;
+  min-width: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 12px;
+  background: #e8f0f3;
+  box-shadow: 0 8px 24px rgba(22, 55, 82, .08);
+}
+
+.photo-spot-gallery-button {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  color: #fff;
+  background: transparent;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+}
+
+.photo-spot-list-visual {
+  display: block;
+  min-height: 0;
+  aspect-ratio: 4 / 3;
+  background: #e8f0f3;
+}
+
+.photo-map-featured-grid .photo-spot-list-visual {
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.photo-spot-list-visual img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform .35s ease;
+}
+
+.photo-spot-gallery-button:hover .photo-spot-list-visual img,
+.photo-spot-gallery-button:focus-visible .photo-spot-list-visual img {
+  transform: scale(1.025);
+}
+
+.photo-spot-gallery-button:focus-visible {
+  outline: 3px solid var(--blue);
+  outline-offset: -3px;
+}
+
+.photo-spot-list-copy {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  padding: 36px 16px 15px;
+  background: linear-gradient(transparent, rgba(5, 29, 45, .84));
+}
+
+.photo-spot-list-copy .photo-spot-list-area {
+  display: block;
+  margin: 0 0 3px !important;
+  color: rgba(255, 255, 255, .78) !important;
+  font-size: 11px !important;
+  font-weight: 700;
+  letter-spacing: .06em;
+}
+
+.photo-spot-list-copy > strong {
+  display: block;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.45;
+}
+
+.photo-spot-gallery-action {
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  color: rgba(255, 255, 255, .88);
+  font-size: 12px;
+  opacity: 0;
+  transition: max-height .2s ease, opacity .2s ease, margin .2s ease;
+}
+
+.photo-spot-gallery-button:hover .photo-spot-gallery-action,
+.photo-spot-gallery-button:focus-visible .photo-spot-gallery-action {
+  max-height: 24px;
+  margin-top: 5px;
+  opacity: 1;
+}
+
+.photo-spot-detail-button {
+  padding: 0;
+  border: 0;
+  background: transparent;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.photo-spot-dialog {
+  width: min(1180px, calc(100% - 48px));
+  max-width: none;
+  max-height: calc(100dvh - 40px);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 28px 80px rgba(4, 24, 37, .38);
+}
+
+.photo-spot-dialog::backdrop {
+  background: rgba(5, 25, 38, .72);
+  backdrop-filter: blur(3px);
+}
+
+.photo-spot-dialog-panel {
+  position: relative;
+}
+
+.photo-spot-dialog-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 5;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .34);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(7, 33, 49, .76);
+  font: inherit;
+  font-size: 25px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.photo-spot-dialog-close:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+.photo-spot-modal-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(320px, 2fr);
+  min-height: min(720px, calc(100dvh - 40px));
+  max-height: calc(100dvh - 40px);
+}
+
+.photo-spot-modal-gallery {
+  display: flex;
+  min-width: 0;
+  min-height: 0;
+  flex-direction: column;
+  padding: 24px;
+  background: #0d2a3d;
+}
+
+.photo-spot-modal-figure {
+  display: flex;
+  min-height: 0;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+}
+
+.photo-spot-modal-figure > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  object-fit: contain;
+}
+
+.photo-spot-modal-figure .photo-map-image-placeholder {
+  min-height: 320px;
+}
+
+.photo-spot-modal-figure figcaption {
+  margin-top: 9px;
+  color: rgba(255, 255, 255, .72);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.photo-spot-modal-controls {
+  display: grid;
+  grid-template-columns: 42px minmax(0, 1fr) 42px;
+  gap: 10px;
+  align-items: center;
+  margin-top: 14px;
+}
+
+.photo-spot-modal-controls > button {
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, .25);
+  border-radius: 50%;
+  color: #fff;
+  background: rgba(255, 255, 255, .08);
+  font: inherit;
+  cursor: pointer;
+}
+
+.photo-spot-modal-thumbnails {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding: 2px;
+}
+
+.photo-spot-modal-thumbnails button {
+  flex: 0 0 72px;
+  height: 52px;
+  padding: 0;
+  overflow: hidden;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  opacity: .64;
+  cursor: pointer;
+}
+
+.photo-spot-modal-thumbnails button.is-active {
+  border-color: #fff;
+  opacity: 1;
+}
+
+.photo-spot-modal-thumbnails img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-spot-modal-copy {
+  min-width: 0;
+  overflow-y: auto;
+  padding: 64px 38px 38px;
+}
+
+.photo-spot-modal-area {
+  margin: 0 0 7px;
+  color: var(--blue);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .08em;
+}
+
+.photo-spot-modal-copy h2 {
+  margin: 0;
+  color: var(--navy);
+  font-family: "Noto Serif CJK JP", "Yu Mincho", serif;
+  font-size: clamp(28px, 3vw, 40px);
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+.photo-spot-modal-description {
+  margin: 20px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.photo-spot-modal-section {
+  margin-top: 24px;
+}
+
+.photo-spot-modal-section h3 {
+  margin: 0;
+  color: var(--navy);
+  font-size: 14px;
+}
+
+.photo-spot-modal-meta {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 24px;
+}
+
+.photo-spot-modal-meta .photo-spot-meta-item {
+  padding: 12px;
+  border-radius: 8px;
+  background: #f4f8fa;
+}
+
+.photo-spot-modal-map-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  margin-top: 24px;
+  padding: 0 18px;
+  border-radius: 8px;
+  color: #fff;
+  background: var(--navy);
+  font-size: 14px;
+  font-weight: 700;
+}
+
+@media (max-width: 1100px) {
+  .photo-map-list-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .photo-spot-modal-layout {
+    grid-template-columns: minmax(0, 1.35fr) minmax(300px, 1fr);
+  }
+}
+
+@media (max-width: 800px) {
+  .photo-map-featured-grid {
+    min-height: 430px;
+  }
+
+  .photo-map-list-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .photo-spot-dialog {
+    width: min(100% - 24px, 680px);
+    overflow-y: auto;
+  }
+
+  .photo-spot-modal-layout {
+    grid-template-columns: 1fr;
+    max-height: none;
+  }
+
+  .photo-spot-modal-gallery {
+    min-height: 390px;
+  }
+
+  .photo-spot-modal-copy {
+    overflow: visible;
+    padding: 30px 24px 34px;
+  }
+}
+
+@media (max-width: 560px) {
+  .photo-map-list-head {
+    gap: 15px;
+  }
+
+  .photo-map-featured-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: auto;
+    min-height: 0;
+  }
+
+  .photo-map-featured-grid .photo-spot-gallery-card:first-child {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+
+  .photo-map-featured-grid .photo-spot-gallery-card:first-child .photo-spot-list-visual {
+    aspect-ratio: 16 / 10;
+  }
+
+  .photo-map-featured-grid .photo-spot-gallery-card:not(:first-child) .photo-spot-list-visual {
+    aspect-ratio: 1 / 1;
+  }
+
+  .photo-spot-list-copy {
+    padding: 28px 11px 11px;
+  }
+
+  .photo-spot-list-copy > strong {
+    font-size: 14px;
+  }
+
+  .photo-spot-gallery-action {
+    display: none;
+  }
+
+  .photo-spot-modal-gallery {
+    min-height: 300px;
+    padding: 14px;
+  }
+
+  .photo-spot-modal-figure > img,
+  .photo-spot-modal-figure .photo-map-image-placeholder {
+    min-height: 250px;
+  }
+
+  .photo-spot-modal-controls {
+    grid-template-columns: 36px minmax(0, 1fr) 36px;
+  }
+
+  .photo-spot-modal-controls > button {
+    width: 36px;
+    height: 36px;
+  }
+
+  .photo-spot-modal-thumbnails button {
+    flex-basis: 58px;
+    height: 42px;
+  }
+
+  .photo-spot-modal-copy {
+    padding: 26px 20px 30px;
+  }
+
+  .photo-spot-modal-meta {
+    grid-template-columns: 1fr;
+  }
+}

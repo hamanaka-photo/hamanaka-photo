@@ -4,9 +4,9 @@
   grid-template-columns: 1fr;
   gap: 24px;
 }
-.about-policy-intro > div:first-child { max-width: 1120px; }
+.about-policy-intro > div:first-child { max-width: 900px; }
 .about-policy-copy {
-  max-width: 1120px;
+  max-width: 900px;
   padding-top: 0;
 }
 
@@ -31,6 +31,3 @@
 /* SITE POLICY cards: two by two on tablet and desktop, one column on mobile. */
 [data-about-terms-items] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 620px) { [data-about-terms-items] { grid-template-columns: 1fr; } }
-
-.about-policy-head { max-width: 1120px; }
-.about-policy-head > p:last-child { max-width: 1080px; }

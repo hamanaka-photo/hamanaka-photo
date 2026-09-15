@@ -410,7 +410,12 @@
 
     if (!pastSelections.length) {
 
-      pastGrid.innerHTML = '<p class="section-lead past-selection-empty">過去のセレクションは、今後こちらに蓄積していきます。</p>';
+      pastGrid.innerHTML = `
+        <p class="section-lead">
+          過去のセレクションは、
+          今後こちらに蓄積していきます。
+        </p>
+      `;
 
       return;
 

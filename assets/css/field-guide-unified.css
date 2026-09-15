@@ -79,25 +79,23 @@
 }
 
 .field-guide-unified-nav {
-  position: sticky !important;
-  top: var(--fgu-site-header-height, 72px) !important;
-  z-index: 45 !important;
-  width: 100%;
-  max-width: 100vw;
+  position: relative !important;
+  top: auto !important;
+  z-index: 8 !important;
   margin: 0 !important;
   border-bottom: 1px solid rgba(255,255,255,.16) !important;
-  background: rgba(13,49,73,.97) !important;
-  backdrop-filter: blur(12px) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
   color: #fff !important;
 }
 
 .field-guide-unified-page .field-guide-nav {
-  position: sticky !important;
-  top: var(--fgu-site-header-height, 72px) !important;
-  z-index: 45 !important;
+  position: relative !important;
+  top: auto !important;
+  z-index: 8 !important;
   border-bottom: 1px solid rgba(255,255,255,.16) !important;
-  background: rgba(13,49,73,.97) !important;
-  backdrop-filter: blur(12px) !important;
+  background: transparent !important;
+  backdrop-filter: none !important;
 }
 
 .field-guide-unified-page .field-guide-nav .field-guide-brand,
@@ -144,8 +142,8 @@ a[aria-current="page"]::after {
   margin-left: auto;
 }
 
-.field-guide-unified-page [data-guide-article] [id] {
-  scroll-margin-top: calc(var(--fgu-site-header-height, 72px) + var(--fgu-article-nav-height, 76px) + 18px);
+.field-guide-unified-page [data-guide-article] > section:not(.field-guide-unified-hero):not(.field-guide-sequence) {
+  scroll-margin-top: 84px;
 }
 
 /* Compact previous / next navigation aligned to both edges. */
@@ -237,24 +235,14 @@ a[aria-current="page"]::after {
   .field-guide-unified-page .tech-v1-field-nav-inner,
   .field-guide-unified-page .manner-v1-field-nav-inner {
     grid-template-columns: 1fr !important;
-    width: 100% !important;
-    min-width: 0;
-    padding-inline: 16px;
   }
 
   .field-guide-unified-page .field-guide-links,
   .field-guide-unified-page .gear-v2-field-links,
   .field-guide-unified-page .tech-v1-field-links,
   .field-guide-unified-page .manner-v1-field-links {
-    justify-content: flex-start !important;
-    width: 100%;
-    max-width: 100%;
+    justify-content: center !important;
     margin-left: 0;
-    overflow-x: auto;
-    overflow-y: hidden;
-    overscroll-behavior-inline: contain;
-    scrollbar-width: thin;
-    -webkit-overflow-scrolling: touch;
   }
 
   .field-guide-sequence {

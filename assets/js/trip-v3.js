@@ -298,7 +298,7 @@
                     ${tips.map(t => `
                       <div>
                         <b>${esc(t.title)}</b>
-                        <span>${esc(t.text).replace(/\r?\n/g, '<br>')}</span>
+                        <span>${esc(t.text)}</span>
                       </div>`).join('')}
                   </div>
                 </aside>
@@ -390,7 +390,7 @@
                 ${esc(stay.eyebrow || 'STAY')}
               </span>
               <h3>${esc(stay.title || '浜中町に泊まろう')}</h3>
-              <p>${esc(stay.text || '').replace(/\r?\n/g, '<br>')}</p>
+              <p>${esc(stay.text || '')}</p>
               ${safe(stay.url) ? `
                 <a
                   class="trip-v3-button trip-v3-button-primary"
