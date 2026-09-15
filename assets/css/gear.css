@@ -410,21 +410,12 @@
   font-size: 12px;
   line-height: 1.75;
 }
-.gear-wide-shooting {
-  margin-top: 24px;
-  padding: 24px 28px;
-  border: 1px solid #cbdedb;
-  border-radius: 10px;
-  background: #edf4f2;
-}
-.gear-wide-shooting h3,
 .gear-teleconverter h3 {
   margin: 0;
   color: var(--gear-navy);
   font-size: 20px;
   line-height: 1.5;
 }
-.gear-wide-shooting p,
 .gear-teleconverter p {
   margin: 8px 0 0;
   color: var(--gear-muted);

@@ -2547,16 +2547,6 @@ content:
           - name: text
             label: 説明
             type: text
-      - name: wideShooting
-        label: 浜中町を幅広く撮るなら
-        type: object
-        fields:
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
       - name: teleconverter
         label: テレコンバーターとは？
         type: object

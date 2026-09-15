@@ -195,12 +195,6 @@
             }).join('')}
           </div>
 
-          ${section.wideShooting ? `
-            <aside class="gear-wide-shooting">
-              <h3>${escapeHtml(section.wideShooting.title || '')}</h3>
-              <p>${escapeHtml(section.wideShooting.text || '')}</p>
-            </aside>` : ''}
-
           ${section.teleconverter ? `
             <article class="gear-teleconverter">
               <div class="gear-teleconverter-main${safeUrl(section.teleconverter.image) ? ' has-image' : ''}">
