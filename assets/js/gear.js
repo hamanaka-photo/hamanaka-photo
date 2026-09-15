@@ -99,6 +99,16 @@
             <span>${escapeHtml(section.lead || '')}</span>
           </div>
 
+          ${section.point ? `
+            <aside class="gear-v2-focal-point">
+              <span>${escapeHtml(section.point.label || 'POINT')}</span>
+              <div>
+                <h3>${escapeHtml(section.point.title || '')}</h3>
+                <p>${escapeHtml(section.point.text || '')}</p>
+                ${section.point.note ? `<small>${escapeHtml(section.point.note)}</small>` : ''}
+              </div>
+            </aside>` : ''}
+
           <div class="gear-v2-focal-viewer" data-focal-viewer data-index="${defaultIndex}">
             <figure class="gear-v2-focal-figure">
               <div class="gear-v2-focal-image" data-focal-image>
@@ -173,9 +183,55 @@
                       </div>
                     </section>`).join('')}
                 </div>
+                ${style.example ? `
+                  <aside class="gear-choice-example">
+                    <span>${escapeHtml(style.example.label || '例えば')}</span>
+                    <div>
+                      <h4>${escapeHtml(style.example.name || '')}</h4>
+                      <p>${escapeHtml(style.example.text || '')}</p>
+                    </div>
+                  </aside>` : ''}
               </article>`;
             }).join('')}
           </div>
+
+          ${section.wideShooting ? `
+            <aside class="gear-wide-shooting">
+              <h3>${escapeHtml(section.wideShooting.title || '')}</h3>
+              <p>${escapeHtml(section.wideShooting.text || '')}</p>
+            </aside>` : ''}
+
+          ${section.teleconverter ? `
+            <article class="gear-teleconverter">
+              <div class="gear-teleconverter-main${safeUrl(section.teleconverter.image) ? ' has-image' : ''}">
+                <div class="gear-teleconverter-copy">
+                  <p class="gear-teleconverter-label">SUPPLEMENT</p>
+                  <h3>${escapeHtml(section.teleconverter.title || '')}</h3>
+                  <p>${escapeHtml(section.teleconverter.text || '')}</p>
+                  <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
+                    <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
+                    <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
+                    <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
+                  </div>
+                  <p>${escapeHtml(section.teleconverter.example || '')}</p>
+                </div>
+                ${safeUrl(section.teleconverter.image) ? `
+                  <figure class="gear-teleconverter-image">
+                    ${image(
+                      section.teleconverter.image,
+                      section.teleconverter.imageAlt || 'テレコンバーターの補足画像'
+                    )}
+                  </figure>` : ''}
+              </div>
+              ${Array.isArray(section.teleconverter.cautions) && section.teleconverter.cautions.length ? `
+                <div class="gear-teleconverter-cautions">
+                  <h4>確認しておきたいこと</h4>
+                  <ul>
+                    ${section.teleconverter.cautions.map(item => `<li>${escapeHtml(item)}</li>`).join('')}
+                  </ul>
+                </div>` : ''}
+            </article>` : ''}
+
         </div>
       </section>`;
   };
@@ -236,6 +292,39 @@
                 <h3>${escapeHtml(item.title || '')}</h3>
                 <p>${escapeHtml(item.text || '')}</p>
               </article>`).join('')}
+          </div>
+        </div>
+      </section>`;
+  };
+
+  const renderExamples = section => {
+    if (section.published !== true) return '';
+
+    const items = Array.isArray(section.items) ? section.items : [];
+    if (!items.length) return '';
+
+    return `
+      <section class="gear-v2-section gear-examples" id="gear-examples">
+        <div class="container">
+          <div class="gear-v2-heading">
+            <div>
+              <p>${escapeHtml(section.eyebrow || '05 / EXAMPLES')}</p>
+              <h2>${escapeHtml(section.title || '')}</h2>
+            </div>
+            <span>${escapeHtml(section.lead || '')}</span>
+          </div>
+
+          ${section.note ? `<p class="gear-examples-note">${escapeHtml(section.note)}</p>` : ''}
+
+          <div class="gear-example-grid">
+            ${items.map(item => `
+              <figure class="gear-example-card">
+                <div>${image(item.image, item.caption || 'ラッコ撮影の作例')}</div>
+                <figcaption>
+                  <strong>${escapeHtml(item.caption || '')}</strong>
+                  <span>${escapeHtml(item.equipment || '')}</span>
+                </figcaption>
+              </figure>`).join('')}
           </div>
         </div>
       </section>`;
@@ -317,6 +406,7 @@
       ${renderGearGuide(data.gearGuide || {})}
       ${renderSelectionPoints(data.selectionPoints || {})}
       ${renderAccessories(data.accessories || {})}
+      ${renderExamples(data.examples || {})}
       ${renderNext(data.next || {})}`;
 
     initFocalViewer(root, data.focalExperience || {});

@@ -2432,6 +2432,22 @@ content:
       - name: note
         label: 注記
         type: text
+      - name: point
+        label: POINT｜撮影距離による見え方
+        type: object
+        fields:
+        - name: label
+          label: ラベル
+          type: string
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: note
+          label: 注記
+          type: text
       - name: defaultFocal
         label: 初期表示の焦点距離
         type: number
@@ -2493,7 +2509,7 @@ content:
           type: string
           required: true
         - name: image
-          label: イメージイラスト
+          label: イメージ画像
           type: image
           options:
             media: gear_images
@@ -2518,6 +2534,66 @@ content:
           - name: text
             label: 補足
             type: text
+        - name: example
+          label: 製品の具体例
+          type: object
+          fields:
+          - name: label
+            label: ラベル
+            type: string
+          - name: name
+            label: 製品名
+            type: string
+          - name: text
+            label: 説明
+            type: text
+      - name: wideShooting
+        label: 浜中町を幅広く撮るなら
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+      - name: teleconverter
+        label: テレコンバーターとは？
+        type: object
+        fields:
+        - name: title
+          label: 見出し
+          type: string
+        - name: text
+          label: 説明
+          type: text
+        - name: image
+          label: 補足画像
+          type: image
+          options:
+            media: gear_images
+            path: teleconverter
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - name: imageAlt
+          label: 画像の代替テキスト
+          type: string
+        - name: formulaBase
+          label: 計算例｜元の焦点距離
+          type: string
+        - name: formulaFactor
+          label: 計算例｜倍率
+          type: string
+        - name: formulaResult
+          label: 計算例｜結果
+          type: string
+        - name: example
+          label: 計算例の説明
+          type: text
+        - name: cautions
+          label: 注意事項
+          type: string
+          list: true
     - name: selectionPoints
       label: 03｜機材選びで見るポイント
       type: object
@@ -2613,6 +2689,9 @@ content:
         type: string
       - name: lead
         label: 説明
+        type: text
+      - name: note
+        label: 注記
         type: text
       - name: items
         label: 作例
