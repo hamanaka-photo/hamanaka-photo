@@ -170,9 +170,8 @@
               <article class="gear-choice-card">
                 <span class="gear-choice-label">${escapeHtml(style.label || '')}</span>
                 <h3>${escapeHtml(style.title || '')}</h3>
-                <div class="gear-choice-range">
-                  <strong>${escapeHtml(style.range || '')}</strong>
-                  <span>${escapeHtml(style.rangeLabel || '')}</span>
+                <div class="gear-choice-visual">
+                  ${image(style.image, style.imageAlt || style.title, 'gear-choice-image')}
                 </div>
                 <div class="gear-choice-points">
                   ${points.map((point, index) => `
@@ -184,6 +183,14 @@
                       </div>
                     </section>`).join('')}
                 </div>
+                ${style.example ? `
+                  <aside class="gear-choice-example">
+                    <span>${escapeHtml(style.example.label || '例えば')}</span>
+                    <div>
+                      <h4>${escapeHtml(style.example.name || '')}</h4>
+                      <p>${escapeHtml(style.example.text || '')}</p>
+                    </div>
+                  </aside>` : ''}
               </article>`;
             }).join('')}
           </div>
@@ -196,16 +203,25 @@
 
           ${section.teleconverter ? `
             <article class="gear-teleconverter">
-              <div class="gear-teleconverter-copy">
-                <p class="gear-teleconverter-label">SUPPLEMENT</p>
-                <h3>${escapeHtml(section.teleconverter.title || '')}</h3>
-                <p>${escapeHtml(section.teleconverter.text || '')}</p>
-                <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
-                  <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
-                  <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
-                  <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
+              <div class="gear-teleconverter-main${safeUrl(section.teleconverter.image) ? ' has-image' : ''}">
+                <div class="gear-teleconverter-copy">
+                  <p class="gear-teleconverter-label">SUPPLEMENT</p>
+                  <h3>${escapeHtml(section.teleconverter.title || '')}</h3>
+                  <p>${escapeHtml(section.teleconverter.text || '')}</p>
+                  <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
+                    <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
+                    <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
+                    <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
+                  </div>
+                  <p>${escapeHtml(section.teleconverter.example || '')}</p>
                 </div>
-                <p>${escapeHtml(section.teleconverter.example || '')}</p>
+                ${safeUrl(section.teleconverter.image) ? `
+                  <figure class="gear-teleconverter-image">
+                    ${image(
+                      section.teleconverter.image,
+                      section.teleconverter.imageAlt || 'テレコンバーターの補足画像'
+                    )}
+                  </figure>` : ''}
               </div>
               ${Array.isArray(section.teleconverter.cautions) && section.teleconverter.cautions.length ? `
                 <div class="gear-teleconverter-cautions">
@@ -216,14 +232,6 @@
                 </div>` : ''}
             </article>` : ''}
 
-          ${section.alternative ? `
-            <aside class="gear-alternative">
-              <span>${escapeHtml(section.alternative.label || '')}</span>
-              <div>
-                <h3>${escapeHtml(section.alternative.title || '')}</h3>
-                <p>${escapeHtml(section.alternative.text || '')}</p>
-              </div>
-            </aside>` : ''}
         </div>
       </section>`;
   };

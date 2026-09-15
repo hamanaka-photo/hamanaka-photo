@@ -2508,11 +2508,16 @@ content:
           label: タイトル
           type: string
           required: true
-        - name: range
-          label: 焦点距離の目安
-          type: string
-        - name: rangeLabel
-          label: 目安の補足
+        - name: image
+          label: イメージ画像
+          type: image
+          options:
+            media: gear_images
+            path: choices
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - name: imageAlt
+          label: 画像の代替テキスト
           type: string
         - name: points
           label: 選び方のポイント
@@ -2528,6 +2533,19 @@ content:
             required: true
           - name: text
             label: 補足
+            type: text
+        - name: example
+          label: 製品の具体例
+          type: object
+          fields:
+          - name: label
+            label: ラベル
+            type: string
+          - name: name
+            label: 製品名
+            type: string
+          - name: text
+            label: 説明
             type: text
       - name: wideShooting
         label: 浜中町を幅広く撮るなら
@@ -2549,6 +2567,17 @@ content:
         - name: text
           label: 説明
           type: text
+        - name: image
+          label: 補足画像
+          type: image
+          options:
+            media: gear_images
+            path: teleconverter
+            extensions: [jpg, jpeg, png, webp]
+            rename: false
+        - name: imageAlt
+          label: 画像の代替テキスト
+          type: string
         - name: formulaBase
           label: 計算例｜元の焦点距離
           type: string
@@ -2565,19 +2594,6 @@ content:
           label: 注意事項
           type: string
           list: true
-      - name: alternative
-        label: ほかの選択肢
-        type: object
-        fields:
-        - name: label
-          label: ラベル
-          type: string
-        - name: title
-          label: 見出し
-          type: string
-        - name: text
-          label: 説明
-          type: text
     - name: selectionPoints
       label: 03｜機材選びで見るポイント
       type: object
