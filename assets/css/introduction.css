@@ -53,9 +53,9 @@
 .intro-subject-card { overflow: hidden; border: 1px solid var(--line); border-radius: 18px; background: #fff; box-shadow: 0 10px 30px rgba(22,55,82,.06); }
 .intro-subject-card > img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
 .intro-subject-card > div { padding: 24px; }
-.intro-subject-card .eyebrow { margin-bottom: 7px; color: var(--blue); font-size: 12px; }
+.intro-subject-card .eyebrow { margin-bottom: 7px; color: var(--blue); font-size: 14px; }
 .intro-subject-card h3 { margin: 0 0 9px; font-size: 22px; }
-.intro-subject-card p:last-child { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.85; }
+.intro-subject-card p:last-child { margin: 0; color: var(--muted); font-size: 15px; line-height: 1.85; }
 .intro-closing { padding-bottom: 120px; }
 .intro-link-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
 .intro-link-card { display: flex; min-height: 280px; flex-direction: column; padding: 30px; border: 1px solid var(--line); border-radius: 18px; background: #fff; transition: transform .2s, box-shadow .2s, border-color .2s; }
