@@ -429,6 +429,13 @@
   border-radius: 10px;
   background: #fff;
 }
+.gear-teleconverter-intro {
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--gear-line);
+}
+.gear-teleconverter-main {
+  margin-top: 24px;
+}
 .gear-teleconverter-main.has-image {
   display: grid;
   grid-template-columns: minmax(0,1.15fr) minmax(280px,.85fr);
@@ -443,10 +450,9 @@
   letter-spacing: .1em;
 }
 .gear-teleconverter-formula {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: baseline;
+  display: grid;
+  gap: 5px;
+  justify-items: start;
   margin-top: 18px;
   padding: 16px 18px;
   border-radius: 8px;
@@ -456,6 +462,17 @@
 .gear-teleconverter-formula strong,
 .gear-teleconverter-formula b { font-size: 25px; }
 .gear-teleconverter-formula span { font-size: 18px; font-weight: 900; }
+.gear-teleconverter-formula i {
+  color: var(--gear-teal);
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 900;
+}
+.gear-teleconverter-result {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid var(--gear-line);
+}
 .gear-teleconverter-image {
   min-width: 0;
   margin: 0;
@@ -469,7 +486,7 @@
   height: auto;
 }
 .gear-teleconverter-cautions {
-  margin-top: 22px;
+  margin-top: 24px;
   padding: 22px 24px;
   border-radius: 8px;
   background: #f7f8f5;

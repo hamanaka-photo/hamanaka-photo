@@ -2551,6 +2551,12 @@ content:
         label: テレコンバーターとは？
         type: object
         fields:
+        - name: introTitle
+          label: 導入見出し
+          type: string
+        - name: introText
+          label: 導入説明
+          type: text
         - name: title
           label: 見出し
           type: string
@@ -2568,6 +2574,9 @@ content:
         - name: imageAlt
           label: 画像の代替テキスト
           type: string
+        - name: resultTitle
+          label: 効果説明の見出し
+          type: string
         - name: formulaBase
           label: 計算例｜元の焦点距離
           type: string
@@ -2580,6 +2589,9 @@ content:
         - name: example
           label: 計算例の説明
           type: text
+        - name: cautionsTitle
+          label: 注意事項の見出し
+          type: string
         - name: cautions
           label: 注意事項
           type: string

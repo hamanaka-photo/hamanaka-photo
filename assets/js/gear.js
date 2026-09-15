@@ -197,17 +197,15 @@
 
           ${section.teleconverter ? `
             <article class="gear-teleconverter">
+              <section class="gear-teleconverter-intro">
+                <p class="gear-teleconverter-label">SUPPLEMENT</p>
+                <h3>${escapeHtml(section.teleconverter.introTitle || '')}</h3>
+                <p>${escapeHtml(section.teleconverter.introText || '')}</p>
+              </section>
               <div class="gear-teleconverter-main${safeUrl(section.teleconverter.image) ? ' has-image' : ''}">
                 <div class="gear-teleconverter-copy">
-                  <p class="gear-teleconverter-label">SUPPLEMENT</p>
                   <h3>${escapeHtml(section.teleconverter.title || '')}</h3>
                   <p>${escapeHtml(section.teleconverter.text || '')}</p>
-                  <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
-                    <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
-                    <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
-                    <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
-                  </div>
-                  <p>${escapeHtml(section.teleconverter.example || '')}</p>
                 </div>
                 ${safeUrl(section.teleconverter.image) ? `
                   <figure class="gear-teleconverter-image">
@@ -217,9 +215,19 @@
                     )}
                   </figure>` : ''}
               </div>
+              <section class="gear-teleconverter-result">
+                <h3>${escapeHtml(section.teleconverter.resultTitle || '')}</h3>
+                <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
+                  <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
+                  <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
+                  <i aria-hidden="true">↓</i>
+                  <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
+                </div>
+                <p>${escapeHtml(section.teleconverter.example || '')}</p>
+              </section>
               ${Array.isArray(section.teleconverter.cautions) && section.teleconverter.cautions.length ? `
                 <div class="gear-teleconverter-cautions">
-                  <h4>確認しておきたいこと</h4>
+                  <h4>${escapeHtml(section.teleconverter.cautionsTitle || '使う前に確認しておきたいこと')}</h4>
                   <ul>
                     ${section.teleconverter.cautions.map(item => `<li>${escapeHtml(item)}</li>`).join('')}
                   </ul>
