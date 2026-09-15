@@ -1,13 +1,31 @@
 {
   "hero": {
     "eyebrow": "GEAR",
-    "title": "ラッコ撮影の、\n機材選び。",
-    "lead": "焦点距離で見え方の違いを知り、撮りたい写真と持ち運びやすさから機材を考えます。",
+    "title": "ラッコと出会うための、\n撮影機材を選ぼう。",
+    "lead": "まずは焦点距離で見え方の違いを知り、撮影スタイルに合うレンズとボディの組み合わせを考えます。",
     "image": "assets/images/03_guide/gear/20260901-1102-.webp"
+  },
+  "introPoints": {
+    "title": "どんな機材が必要？",
+    "lead": "ラッコ撮影の機材を考えるときは、まずこの3つを基準にすると選びやすくなります。",
+    "points": [
+      {
+        "number": "01",
+        "text": "表情まで撮るなら500mm以上が理想！"
+      },
+      {
+        "number": "02",
+        "text": "高解像ボディがあると安心！"
+      },
+      {
+        "number": "03",
+        "text": "動物AFや高速連写機能があると便利！"
+      }
+    ]
   },
   "focalExperience": {
     "eyebrow": "01 / FOCAL LENGTH",
-    "title": "焦点距離で見え方はどう変わる？",
+    "title": "焦点距離で、見え方はこんなに変わる。",
     "lead": "同じ撮影位置でも、焦点距離によって写る範囲とラッコの大きさは大きく変わります。数字を動かして比べてみてください。",
     "note": "焦点距離は35mm判換算の目安です。比較画像は同じ撮影位置・同じ被写体で揃えることを推奨します。",
     "defaultFocal": 500,
@@ -68,77 +86,300 @@
       }
     ]
   },
-  "gearGuide": {
-    "eyebrow": "02 / CHOOSE BY STYLE",
-    "title": "ラッコ撮影の機材、どう選ぶ？",
-    "lead": "撮りたい写り方と、旅行中の使いやすさから機材を考えます。",
-    "styles": [
+  "gearFinder": {
+    "eyebrow": "02 / LENS & BODY",
+    "title": "レンズを選ぶ。ボディを選ぶ。",
+    "lead": "まずレンズを一覧から選びます。メーカーや焦点距離で絞り込み、選択したレンズに対応するボディ候補を確認できます。",
+    "modes": [
       {
-        "label": "A",
-        "title": "ラッコをはっきり・綺麗に撮るなら",
-        "image": "assets/images/03_guide/gear/gear-choice-telephoto.png",
-        "imageAlt": "一眼カメラと望遠ズームレンズのイラスト",
-        "points": [
-          {
-            "title": "望遠がきくレンズと、一眼レフやミラーレスカメラを使う",
-            "text": "最低でも300mm以上、表情やしぐさまで撮るなら500mm以上が目安です。"
-          },
-          {
-            "title": "トリミングできるように高画素機を使う",
-            "text": "4000万画素以上がひとつの目安です。撮影後に必要な範囲を切り出しやすくなります。"
-          }
-        ]
+        "id": "manufacturer",
+        "label": "メーカーで選ぶ"
       },
       {
-        "label": "B",
-        "title": "手軽に、でもしぐさも捉えたいなら",
-        "image": "assets/images/03_guide/gear/gear-choice-all-in-one.png",
-        "imageAlt": "超望遠ズームを搭載した一体型デジタルカメラのイラスト",
-        "points": [
-          {
-            "title": "超望遠ズームレンズを搭載した一体型デジタルカメラを選ぶ",
-            "text": "レンズ交換なしで遠くのラッコを大きく写せます。荷物をまとめやすく、撮影を手軽に始めたい人の選択肢になります。"
-          }
-        ]
-      }
-    ]
-  },
-  "selectionPoints": {
-    "eyebrow": "03 / SELECTION POINTS",
-    "title": "機材選びで見るポイント",
-    "lead": "焦点距離だけでなく、撮影中の使いやすさや撮影後の調整も考えて選びます。",
-    "items": [
-      {
-        "title": "焦点距離",
-        "text": "ラッコを画面の中でどのくらい大きく写したいかで考えます。"
-      },
-      {
-        "title": "連写",
-        "text": "動きや一瞬のしぐさを撮影できる確率を上げる機能です。"
-      },
-      {
-        "title": "手ブレ補正",
-        "text": "望遠域で目立ちやすい小さな揺れを抑え、手持ち撮影を助けます。"
-      },
-      {
-        "title": "高画素・トリミング",
-        "text": "高画素機は、撮影後に必要な範囲を切り出す余裕を作りやすくなります。"
-      },
-      {
-        "title": "重さ・取り回し",
-        "text": "長時間持てるか、車で複数スポットを巡る旅行中に持ち歩けるかも確認します。"
+        "id": "focal",
+        "label": "焦点距離で選ぶ"
       }
     ],
-    "tip": {
-      "label": "TIPS",
-      "title": "レンタルサービスを使う方法も",
-      "text": "使い勝手を確認したいときや、購入せず一時的に使いたいときは、レンタルサービスを利用する方法もあります。"
-    }
+    "manufacturers": [
+      "Canon",
+      "SONY",
+      "Nikon"
+    ],
+    "focalOptions": [
+      400,
+      500
+    ],
+    "resolutionOptions": [
+      24,
+      30,
+      40,
+      45,
+      50
+    ],
+    "featureOptions": [
+      {
+        "id": "animal-af",
+        "label": "動物AF",
+        "target": "body"
+      },
+      {
+        "id": "high-speed-burst",
+        "label": "高速連写",
+        "target": "body"
+      },
+      {
+        "id": "stabilization",
+        "label": "手ブレ補正",
+        "target": "pair"
+      },
+      {
+        "id": "weather-sealed",
+        "label": "防塵・防滴への配慮",
+        "target": "pair"
+      }
+    ],
+    "lenses": [
+      {
+        "id": "canon-rf100500",
+        "manufacturer": "Canon",
+        "name": "RF100-500mm F4.5-7.1 L IS USM",
+        "mount": "RF",
+        "image": "assets/images/03_guide/gear/canon_rf100500_f4571_l_is_usm.jpg",
+        "minFocal": 100,
+        "maxFocal": 500,
+        "aperture": "F4.5-7.1",
+        "weight": "約1,370g",
+        "dimensions": "最大径 φ93.8 × 長さ 207.6mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS",
+        "summary": "100mmから500mmまでを1本でカバーする望遠ズーム。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "canon-rf200800",
+        "manufacturer": "Canon",
+        "name": "RF200-800mm F6.3-9 IS USM",
+        "mount": "RF",
+        "image": "assets/images/03_guide/gear/canon_rf200800_f6390_is_usm.jpg",
+        "minFocal": 200,
+        "maxFocal": 800,
+        "aperture": "F6.3-9",
+        "weight": "約2,060g",
+        "dimensions": "最大径 φ102.3 × 長さ 314.1mm",
+        "autofocus": "Nano USM",
+        "stabilizationLabel": "レンズ内IS",
+        "summary": "800mmまで届く超望遠ズーム。遠距離の被写体を大きく狙いたいときの候補。",
+        "features": [
+          "stabilization"
+        ]
+      },
+      {
+        "id": "sony-fe100400",
+        "manufacturer": "SONY",
+        "name": "FE 100-400mm F4.5-5.6 GM OSS",
+        "mount": "E",
+        "image": "assets/images/03_guide/gear/sony_fe100400_f4556gm_oss.jpg",
+        "minFocal": 100,
+        "maxFocal": 400,
+        "aperture": "F4.5-5.6",
+        "weight": "約1,395g",
+        "dimensions": "最大径 φ93.9 × 長さ 205mm",
+        "autofocus": "DDSSM＋ダブルリニアモーター",
+        "stabilizationLabel": "レンズ内OSS",
+        "summary": "機動性と望遠域のバランスを取りやすい100-400mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "sony-fe200600",
+        "manufacturer": "SONY",
+        "name": "FE 200-600mm F5.6-6.3 G OSS",
+        "mount": "E",
+        "image": "assets/images/03_guide/gear/sony_fe200600_f5663_g_oss.jpg",
+        "minFocal": 200,
+        "maxFocal": 600,
+        "aperture": "F5.6-6.3",
+        "weight": "約2,115g",
+        "dimensions": "最大径 φ111.5 × 長さ 318mm",
+        "autofocus": "DDSSM",
+        "stabilizationLabel": "レンズ内OSS",
+        "summary": "ラッコや野鳥など、遠距離の被写体を狙いやすい200-600mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z100400",
+        "manufacturer": "Nikon",
+        "name": "NIKKOR Z 100-400mm f/4.5-5.6 VR S",
+        "mount": "Z",
+        "image": "assets/images/03_guide/gear/nikon_z100400_f4556_vr_s.jpg",
+        "minFocal": 100,
+        "maxFocal": 400,
+        "aperture": "F4.5-5.6",
+        "weight": "約1,435g",
+        "dimensions": "最大径 約φ98 × 長さ 222mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR",
+        "summary": "移動しながらの撮影でも扱いやすい100-400mmクラス。",
+        "features": [
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z180600",
+        "manufacturer": "Nikon",
+        "name": "NIKKOR Z 180-600mm f/5.6-6.3 VR",
+        "mount": "Z",
+        "image": "assets/images/03_guide/gear/nikon_z180600_f5663_vr.jpg",
+        "minFocal": 180,
+        "maxFocal": 600,
+        "aperture": "F5.6-6.3",
+        "weight": "約1,955g",
+        "dimensions": "最大径 約φ110 × 長さ 315.5mm",
+        "autofocus": "STM",
+        "stabilizationLabel": "レンズシフト方式VR",
+        "summary": "600mmまでの望遠域をカバーし、野生動物撮影に使いやすいズーム。",
+        "features": [
+          "stabilization"
+        ]
+      }
+    ],
+    "bodies": [
+      {
+        "id": "canon-r5m2",
+        "manufacturer": "Canon",
+        "name": "EOS R5 Mark II",
+        "mount": "RF",
+        "image": "assets/images/03_guide/gear/eos_r5_mk2.jpg",
+        "resolution": 45,
+        "resolutionLabel": "約45MP",
+        "burst": "高速連写対応",
+        "summary": "高解像と被写体検出を重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "canon-r7",
+        "manufacturer": "Canon",
+        "name": "EOS R7",
+        "mount": "RF",
+        "image": "assets/images/03_guide/gear/eos_r7.jpg",
+        "resolution": 32.5,
+        "resolutionLabel": "約32.5MP",
+        "burst": "高速連写対応",
+        "summary": "APS-Cの画角を活かして望遠撮影を楽しみたい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization"
+        ]
+      },
+      {
+        "id": "sony-a1m2",
+        "manufacturer": "SONY",
+        "name": "α1 II",
+        "mount": "E",
+        "image": "assets/images/03_guide/gear/α1_mk2.jpg",
+        "resolution": 50.1,
+        "resolutionLabel": "約50.1MP",
+        "burst": "高速連写対応",
+        "summary": "高解像と高速性能を両立したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "sony-a7rv",
+        "manufacturer": "SONY",
+        "name": "α7R V",
+        "mount": "E",
+        "image": "assets/images/03_guide/gear/α7r_v.jpg",
+        "resolution": 61,
+        "resolutionLabel": "約61MP",
+        "burst": "連写対応",
+        "summary": "高画素を活かしたトリミング耐性を重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z8",
+        "manufacturer": "Nikon",
+        "name": "Z8",
+        "mount": "Z",
+        "image": "assets/images/03_guide/gear/z8.jpg",
+        "resolution": 45.7,
+        "resolutionLabel": "約45.7MP",
+        "burst": "高速連写対応",
+        "summary": "高画素と動体撮影性能のバランスを求める場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      },
+      {
+        "id": "nikon-z6iii",
+        "manufacturer": "Nikon",
+        "name": "Z6III",
+        "mount": "Z",
+        "image": "assets/images/03_guide/gear/z6_mk3.jpg",
+        "resolution": 24.5,
+        "resolutionLabel": "約24.5MP",
+        "burst": "高速連写対応",
+        "summary": "画質・速度・扱いやすさのバランスを重視したい場合の候補。",
+        "features": [
+          "animal-af",
+          "high-speed-burst",
+          "stabilization",
+          "weather-sealed"
+        ]
+      }
+    ],
+    "integratedCameras": [
+      {
+        "id": "nikon-coolpix-p1100",
+        "manufacturer": "Nikon",
+        "name": "COOLPIX P1100",
+        "image": "assets/images/03_guide/gear/coolpix_p1000.webp",
+        "minFocal": 24,
+        "maxFocal": 3000,
+        "focalLabel": "24〜3000mm相当",
+        "aperture": "F2.8-8",
+        "resolution": 16.05,
+        "resolutionLabel": "約16.05MP",
+        "weight": "約1.41kg",
+        "burst": "連写機能あり",
+        "summary": "24〜3000mm相当をレンズ交換なしでカバーできる、高倍率ズーム一体型カメラ。",
+        "features": [
+          "stabilization"
+        ]
+      }
+    ],
+    "disclaimer": "掲載製品は機材選びを考えるための参考例です。レンズ交換式と一体型カメラを同じ条件から検索できます。仕様や販売状況は各メーカーの最新情報をご確認ください。"
   },
   "accessories": {
-    "eyebrow": "04 / ACCESSORIES",
-    "title": "撮影を助ける周辺機材",
-    "lead": "海沿いの風や霧、寒さ、長時間の観察に備えて、撮影を支える道具も準備します。",
+    "eyebrow": "03 / ACCESSORIES",
+    "title": "撮影を支えるもの。",
+    "lead": "海霧、風、寒さ、長時間の観察。浜中町の撮影環境を考えて、機材を支える小物も準備します。",
     "items": [
       {
         "title": "三脚・一脚",
@@ -164,13 +405,42 @@
         "title": "レインカバー",
         "text": "霧や小雨からカメラとレンズを守ります。",
         "image": "assets/images/03_guide/gear/lenscover.webp"
-      },
-      {
-        "title": "防寒・防風用品",
-        "text": "海沿いの風や冬の寒さに備え、手袋なども準備します。",
-        "image": ""
       }
     ]
+  },
+  "rental": {
+    "eyebrow": "04 / RENTAL",
+    "title": "レンタルという選択肢も！",
+    "lead": "超望遠レンズや高性能ボディは、購入すると大きな負担になります。旅行の前に一度使って練習してみたい場合は、レンタルサービスを活用する方法もあります。",
+    "reasonTitle": "こんなときに",
+  "reasons": [
+    {
+      "title": "いきなり購入するには高い",
+      "text": "必要な期間だけ借りることで、機材導入の費用を抑えられます。",
+      "iconImage": "",
+      "iconAlt": "費用を抑えられることを示すアイコン"
+    },
+    {
+      "title": "浜中町へ行く前に望遠レンズを練習したい",
+      "text": "旅行前に高性能な望遠機材の操作感を試せます。",
+      "iconImage": "",
+      "iconAlt": "カメラを試せることを示すアイコン"
+    },
+    {
+      "title": "自分のカメラとの組み合わせを試してみたい",
+      "text": "購入前に手持ち機材との相性や使い勝手を確認できます。",
+      "iconImage": "",
+      "iconAlt": "購入前に機材を試せることを示すアイコン"
+    }
+  ],
+    "serviceLabel": "撮影機材レンタルサービスの一例",
+    "serviceName": "GOOPASS",
+    "serviceText": "カメラや交換レンズなどの撮影機材を、短期のワンタイムプランや月額プランでレンタルできるサービスです。",
+    "image": "assets/images/03_guide/gear/goopass.webp",
+    "visualImage": "assets/images/03_guide/gear/rental.webp",
+    "buttonLabel": "GOOPASSで機材を探す",
+    "url": "https://goopass.jp/",
+    "note": "料金・取扱機材・利用条件は変更される場合があります。利用前に公式サイトで最新情報をご確認ください。"
   },
   "examples": {
     "eyebrow": "05 / EXAMPLES",
@@ -202,13 +472,12 @@
         "equipment": "EOS R5 ＋ RF200-800mm F6.3-9 IS USM",
         "caption": "テスト５"
       }
-    ],
-    "published": false
+    ]
   },
   "next": {
     "eyebrow": "NEXT STEP",
-    "title": "機材を考えたら、撮り方を確認しよう。",
-    "text": "ピント、ズーム、シャッタースピード、連写など、撮影時のヒントはテクニック編で紹介します。",
+    "title": "機材を選んだら、撮り方を学ぼう。",
+    "text": "シャッタースピード、AF、連写、構図などの撮影設定はテクニック編で紹介します。",
     "buttonLabel": "テクニック編へ",
     "url": "guide-article.html?article=technique"
   }
