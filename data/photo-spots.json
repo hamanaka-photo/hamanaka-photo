@@ -427,6 +427,14 @@
     "name": "恵茶人沼",
     "area": "酪農地帯・海沿い",
     "description": "浜中町東部にある湖沼と湿地。静かな水辺と草地が広がり、季節によって野鳥の姿が見られることもあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/esahito-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/esahito.webp"
+      }
+    ],
     "markerTypes": [
       "wetland"
     ],
