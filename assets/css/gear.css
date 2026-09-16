@@ -176,12 +176,29 @@
 
 /* 01 / Focal length */
 .gear-v2-focal { background: #fff; }
+.gear-v2-focal-intro {
+  max-width: 960px;
+  margin-bottom: 24px;
+}
+.gear-v2-focal-intro h3 {
+  margin: 0 0 10px;
+  color: var(--gear-navy);
+  font-size: 20px;
+  line-height: 1.5;
+}
+.gear-v2-focal-intro p {
+  margin: 0;
+  color: var(--gear-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
 .gear-v2-focal-point {
   display: grid;
   grid-template-columns: auto minmax(0,1fr);
   gap: 20px;
   align-items: start;
-  margin-bottom: 24px;
+  margin-top: 24px;
   padding: 22px 24px;
   border-left: 4px solid var(--gear-gold);
   border-radius: 8px;
@@ -453,37 +470,6 @@
   font-size: 11px !important;
   font-weight: 900;
   letter-spacing: .1em;
-}
-.gear-teleconverter-formula {
-  display: grid;
-  gap: 5px;
-  justify-items: start;
-  margin-top: 14px;
-  padding: 14px 16px;
-  border-radius: 8px;
-  background: #fff;
-  color: var(--gear-navy);
-}
-.gear-teleconverter-formula strong,
-.gear-teleconverter-formula b {
-  font-size: 18px;
-  line-height: 1.4;
-}
-.gear-teleconverter-formula span { font-size: 14px; font-weight: 900; }
-.gear-teleconverter-formula i {
-  color: var(--gear-teal);
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 900;
-}
-.gear-teleconverter-result {
-  margin-top: 24px;
-  padding: 20px 22px;
-  border-radius: 8px;
-  background: var(--gear-soft);
-}
-.gear-teleconverter-result h3 {
-  font-size: 16px;
 }
 .gear-teleconverter-image {
   min-width: 0;

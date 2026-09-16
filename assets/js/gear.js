@@ -99,15 +99,11 @@
             <span>${escapeHtml(section.lead || '')}</span>
           </div>
 
-          ${section.point ? `
-            <aside class="gear-v2-focal-point">
-              <span>${escapeHtml(section.point.label || 'POINT')}</span>
-              <div>
-                <h3>${escapeHtml(section.point.title || '')}</h3>
-                <p>${escapeHtml(section.point.text || '')}</p>
-                ${section.point.note ? `<small>${escapeHtml(section.point.note)}</small>` : ''}
-              </div>
-            </aside>` : ''}
+          ${section.introTitle || section.introText ? `
+            <div class="gear-v2-focal-intro">
+              ${section.introTitle ? `<h3>${escapeHtml(section.introTitle)}</h3>` : ''}
+              ${section.introText ? `<p>${escapeHtml(section.introText)}</p>` : ''}
+            </div>` : ''}
 
           <div class="gear-v2-focal-viewer" data-focal-viewer data-index="${defaultIndex}">
             <figure class="gear-v2-focal-figure">
@@ -145,6 +141,15 @@
           </div>
 
           ${section.note ? `<p class="gear-v2-note">${escapeHtml(section.note)}</p>` : ''}
+          ${section.point ? `
+            <aside class="gear-v2-focal-point">
+              <span>${escapeHtml(section.point.label || 'POINT')}</span>
+              <div>
+                <h3>${escapeHtml(section.point.title || '')}</h3>
+                <p>${escapeHtml(section.point.text || '')}</p>
+                ${section.point.note ? `<small>${escapeHtml(section.point.note)}</small>` : ''}
+              </div>
+            </aside>` : ''}
         </div>
       </section>`;
   };
@@ -206,6 +211,7 @@
                 <div class="gear-teleconverter-copy">
                   <h3>${escapeHtml(section.teleconverter.title || '')}</h3>
                   <p>${escapeHtml(section.teleconverter.text || '')}</p>
+                  <p>${escapeHtml(section.teleconverter.example || '')}</p>
                 </div>
                 ${safeUrl(section.teleconverter.image) ? `
                   <figure class="gear-teleconverter-image">
@@ -215,16 +221,6 @@
                     )}
                   </figure>` : ''}
               </div>
-              <section class="gear-teleconverter-result">
-                <h3>${escapeHtml(section.teleconverter.resultTitle || '')}</h3>
-                <div class="gear-teleconverter-formula" aria-label="焦点距離の計算例">
-                  <strong>${escapeHtml(section.teleconverter.formulaBase || '')}</strong>
-                  <span>${escapeHtml(section.teleconverter.formulaFactor || '')}</span>
-                  <i aria-hidden="true">↓</i>
-                  <b>${escapeHtml(section.teleconverter.formulaResult || '')}</b>
-                </div>
-                <p>${escapeHtml(section.teleconverter.example || '')}</p>
-              </section>
               ${Array.isArray(section.teleconverter.cautions) && section.teleconverter.cautions.length ? `
                 <div class="gear-teleconverter-cautions">
                   <h4>${escapeHtml(section.teleconverter.cautionsTitle || '使う前に確認しておきたいこと')}</h4>
