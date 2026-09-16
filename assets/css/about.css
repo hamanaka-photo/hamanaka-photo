@@ -31,3 +31,9 @@
 /* SITE POLICY cards: two by two on tablet and desktop, one column on mobile. */
 [data-about-terms-items] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 620px) { [data-about-terms-items] { grid-template-columns: 1fr; } }
+.about-related-card{min-width:0;padding:26px 28px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.about-related-card h3{margin:0;color:var(--navy);font-size:19px;line-height:1.5}
+.about-related-card p{margin:10px 0 0;color:#687b87;font-size:14px;line-height:1.8}
+.about-related-card-links{display:flex;flex-wrap:wrap;gap:10px 20px;margin-top:18px}
+.about-related-card-links a{color:var(--blue);font-size:14px;font-weight:800;line-height:1.6;overflow-wrap:anywhere}
+.about-related-card-links a:hover{text-decoration:underline}

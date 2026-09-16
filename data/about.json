@@ -85,14 +85,42 @@
     "title": "関連ページ",
     "items": [
       {
-        "label": "浜中町公式サイト",
-        "url": "https://www.townhamanaka.jp/",
-        "external": true
+        "title": "浜中町公式サイト",
+        "text": "行政情報や町からのお知らせ、観光・くらしに関する情報を確認できます。",
+        "links": [
+          {
+            "label": "浜中町公式サイト",
+            "url": "https://www.townhamanaka.jp/",
+            "external": true
+          }
+        ]
       },
       {
-        "label": "撮影ルール・マナー",
-        "url": "guide-article.html?article=manner",
-        "external": false
+        "title": "浜中町の「いま」と「魅力」を発信中",
+        "text": "浜中町地域おこし協力隊が、町の風景や暮らしをSNSで発信しています。",
+        "links": [
+          {
+            "label": "浜中町公式Instagram",
+            "url": "https://www.instagram.com/hamanaka.town.official/",
+            "external": true
+          },
+          {
+            "label": "浜中町公式Facebook",
+            "url": "https://www.facebook.com/hamanaka.town.official/",
+            "external": true
+          }
+        ]
+      },
+      {
+        "title": "浜中町での暮らしが気になる人へ",
+        "text": "移住・定住に関する情報や、浜中町での暮らしを紹介しています。",
+        "links": [
+          {
+            "label": "浜中町移住・定住サイト HAMANAKA LIFE",
+            "url": "https://www.hamanaka-life.com/",
+            "external": true
+          }
+        ]
       }
     ]
   }

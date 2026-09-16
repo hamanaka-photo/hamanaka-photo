@@ -3477,17 +3477,28 @@ content:
     - {name: eyebrow, label: 英字見出し, type: string}
     - {name: title, label: 見出し, type: string}
     - name: items
-      label: リンク
+      label: 関連ページのグループ
       type: object
       list:
         max: 8
         collapsible:
           collapsed: true
-          summary: '{label}'
+          summary: '{title}'
       fields:
-      - {name: label, label: 表示名, type: string}
-      - {name: url, label: URL, type: string}
-      - {name: external, label: 外部サイトとして開く, type: boolean}
+      - {name: title, label: タイトル, type: string}
+      - {name: text, label: 説明文, type: text}
+      - name: links
+        label: リンク
+        type: object
+        list:
+          max: 4
+          collapsible:
+            collapsed: true
+            summary: '{label}'
+        fields:
+        - {name: label, label: 表示名, type: string}
+        - {name: url, label: URL, type: string}
+        - {name: external, label: 外部サイトとして開く, type: boolean}
 - name: project_settings
   label: PHOTO PROJECT｜写真活動
   type: file
