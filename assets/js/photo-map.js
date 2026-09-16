@@ -504,7 +504,7 @@
 
           <div class="photo-spot-meta">
             ${renderMeta(
-              'おすすめ時期',
+              '撮影におすすめの時期',
               spot.bestSeason
             )}
             ${renderMeta(
