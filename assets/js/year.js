@@ -42,6 +42,9 @@
         <h2><a href="about.html">ABOUT</a></h2>
         <a href="about.html">このサイトについて</a>
         <a href="https://www.townhamanaka.jp/" target="_blank" rel="noopener">浜中町公式サイト ↗</a>
+        <a href="https://www.instagram.com/hamanaka.town.official/" target="_blank" rel="noopener">浜中町公式Instagram ↗</a>
+        <a href="https://www.facebook.com/hamanaka.town.official/" target="_blank" rel="noopener">浜中町公式Facebook ↗</a>
+        <a href="https://www.hamanaka-life.com/" target="_blank" rel="noopener">HAMANAKA LIFE ↗</a>
       </div>
     </div>
 
