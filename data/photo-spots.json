@@ -396,6 +396,12 @@
     "images": [
       {
         "src": "assets/images/03_guide/photo-spots/hichirippu.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/ポロト沼.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/ポロト沼-2.webp"
       }
     ],
     "markerTypes": [
