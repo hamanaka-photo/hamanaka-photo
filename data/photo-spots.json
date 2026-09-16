@@ -559,7 +559,7 @@
     "subjects": [
       {
         "id": "flowers",
-        "note": "やちぼうず／湿原"
+        "note": "湿原"
       }
     ],
     "features": [
@@ -581,6 +581,17 @@
     "name": "立岩展望台",
     "area": "散布エリア",
     "description": "涙岬の近くにある、海から立ち上がる岩が印象的な景勝地。断崖と波、立岩がつくる太平洋岸らしい景色を楽しめます。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/立岩.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/立岩-3.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/立岩-2.webp"
+      }
+    ],
     "markerTypes": [
       "observatory"
     ],
