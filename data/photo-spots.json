@@ -190,6 +190,17 @@
     "name": "琵琶瀬木道",
     "area": "霧多布エリア",
     "description": "霧多布湿原の中へ伸びる木道。湿原を歩きながら季節の草花や野鳥を近くで見ることができ、夏は花の景色が広がります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasemokudo-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasemokudo-3.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasemokudo-4.webp"
+      }
+    ],
     "markerTypes": [
       "wetland"
     ],
