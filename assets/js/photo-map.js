@@ -1241,7 +1241,7 @@
                 )
                 .join('')}
 
-              <div>
+              /*<div>
                 <span
                   class="photo-map-weather-icon"
                   aria-hidden="true">
@@ -1255,7 +1255,7 @@
                 <small>
                   天候・道路状況・現地ルールを確認しましょう
                 </small>
-              </div>
+              </div>*/
 
             </div>
 
