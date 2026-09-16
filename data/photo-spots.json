@@ -241,11 +241,11 @@
     "images": [
       {
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-2.webp",
-        "caption": "撮影時の焦点距離：234mm"
+        "caption": "撮影時の焦点距離：234mm（35mm換算）"
       },
       {
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-3.webp",
-        "caption": "撮影時の焦点距離：600mm"
+        "caption": "撮影時の焦点距離：600mm（35mm換算）"
       },
       {
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen.webp"
@@ -621,9 +621,9 @@
     "area": "霧多布エリア",
     "description": "霧多布湿原で季節の花やすすきが広がる場所。時期によって湿原の色や草花の表情が大きく変わります。駐車帯に車を止めて撮影できます。近くに遊歩道の入り口があり、遊歩道から寄って撮影することもできます。",
     "images": [
-      {},
       {
-        "src": "assets/images/03_guide/photo-spots/霧多布湿原-4.webp"
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原-4.webp",
+        "caption": "撮影時の焦点距離：500mm（35mm換算）"
       },
       {
         "src": "assets/images/03_guide/photo-spots/霧多布湿原.jpg"
