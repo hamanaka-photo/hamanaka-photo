@@ -3017,7 +3017,7 @@ content:
         - {name: sub, label: 英字ラベル, type: string}
         - {name: url, label: リンク先, type: string}
   - name: manner_settings
-    label: ルール｜浜中町での撮影の心得
+    label: ルール｜ラッコ撮影のルール・マナー
     type: file
     path: data/manner.json
     format: json
@@ -3025,7 +3025,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜浜中町での撮影の心得
+      label: HERO｜ラッコ撮影のルール・マナー
       type: object
       fields:
       - {name: eyebrow, label: 英字見出し, type: string}
@@ -3050,7 +3050,7 @@ content:
       label: 01｜浜中町「ラッコ鑑賞時のルール」
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・日本語見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: rules
@@ -3093,10 +3093,10 @@ content:
       - {name: buttonLabel, label: 公式サイトボタン, type: string}
       - {name: url, label: 公式サイトURL, type: string}
     - name: safety
-      label: 02｜町内で安全に撮影するために
+      label: 02｜撮影時のマナー
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・日本語見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: items
