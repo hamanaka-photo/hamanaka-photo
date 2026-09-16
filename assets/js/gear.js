@@ -99,15 +99,11 @@
             <span>${escapeHtml(section.lead || '')}</span>
           </div>
 
-          ${section.point ? `
-            <aside class="gear-v2-focal-point">
-              <span>${escapeHtml(section.point.label || 'POINT')}</span>
-              <div>
-                <h3>${escapeHtml(section.point.title || '')}</h3>
-                <p>${escapeHtml(section.point.text || '')}</p>
-                ${section.point.note ? `<small>${escapeHtml(section.point.note)}</small>` : ''}
-              </div>
-            </aside>` : ''}
+          ${section.introTitle || section.introText ? `
+            <div class="gear-v2-focal-intro">
+              ${section.introTitle ? `<h3>${escapeHtml(section.introTitle)}</h3>` : ''}
+              ${section.introText ? `<p>${escapeHtml(section.introText)}</p>` : ''}
+            </div>` : ''}
 
           <div class="gear-v2-focal-viewer" data-focal-viewer data-index="${defaultIndex}">
             <figure class="gear-v2-focal-figure">
@@ -145,6 +141,15 @@
           </div>
 
           ${section.note ? `<p class="gear-v2-note">${escapeHtml(section.note)}</p>` : ''}
+          ${section.point ? `
+            <aside class="gear-v2-focal-point">
+              <span>${escapeHtml(section.point.label || 'POINT')}</span>
+              <div>
+                <h3>${escapeHtml(section.point.title || '')}</h3>
+                <p>${escapeHtml(section.point.text || '')}</p>
+                ${section.point.note ? `<small>${escapeHtml(section.point.note)}</small>` : ''}
+              </div>
+            </aside>` : ''}
         </div>
       </section>`;
   };
