@@ -48,7 +48,8 @@
       "混雑時は霧多布岬展望台側の駐車場も利用可"
     ],
     "lat": 43.076831,
-    "lng": 145.170018
+    "lng": 145.170018,
+    "detailUrl": "https://maps.app.goo.gl/jVnsBV4oR8ukHmuC6"
   },
   {
     "id": "SPOT-014",
@@ -96,7 +97,8 @@
       "トイレは季節により閉鎖の場合あり"
     ],
     "lat": 43.068576,
-    "lng": 145.12696
+    "lng": 145.12696,
+    "detailUrl": "https://maps.app.goo.gl/Jj142kxRv2U9btcu6"
   },
   {
     "id": "SPOT-009",
@@ -145,7 +147,8 @@
       "道路への飛び出しに注意"
     ],
     "lat": 43.045353,
-    "lng": 145.069671
+    "lng": 145.069671,
+    "detailUrl": "https://maps.app.goo.gl/wma4KLbWE3aPoez9A"
   },
   {
     "id": "SPOT-006",
@@ -181,7 +184,8 @@
       "遊歩道内から撮影"
     ],
     "lat": 42.9938884,
-    "lng": 145.009307
+    "lng": 145.009307,
+    "detailUrl": "https://maps.app.goo.gl/XQfgGdTCywaSFqfF7"
   },
   {
     "id": "SPOT-011",
@@ -229,7 +233,8 @@
       "三脚使用時は通行に配慮"
     ],
     "lat": 43.064962,
-    "lng": 145.084151
+    "lng": 145.084151,
+    "detailUrl": "https://maps.app.goo.gl/xUqM5FkBCHwEjuyC6"
   },
   {
     "id": "SPOT-008",
@@ -279,7 +284,8 @@
       "木道入口の鹿柵を外して入場。外したら元に戻す"
     ],
     "lat": 43.0553125,
-    "lng": 145.0723071
+    "lng": 145.0723071,
+    "detailUrl": "https://maps.app.goo.gl/tC5ciZB7XqYcdWLh9"
   },
   {
     "id": "SPOT-003",
@@ -317,35 +323,8 @@
       "エゾシカの飛び出し注意"
     ],
     "lat": 43.1538145,
-    "lng": 145.2385944
-  },
-  {
-    "id": "SPOT-021",
-    "published": true,
-    "order": 8,
-    "name": "なぎさのドライブウェイ",
-    "area": "霧多布エリア",
-    "description": "霧多布近くの砂浜を走れることで知られる場所。海と砂浜が近く、開放感のある海岸風景を楽しめます。",
-    "markerTypes": [
-      "coast"
-    ],
-    "subjects": [
-      {
-        "id": "coast",
-        "note": "海／海岸／砂浜"
-      }
-    ],
-    "bestSeason": "通年",
-    "parking": "なし",
-    "toilet": "なし",
-    "cautions": [
-      "潮位、路面、高波に注意",
-      "砂浜の状態が悪い時は無理に進入しない",
-      "貝殻によるタイヤのパンクに注意"
-    ],
-    "lat": 43.1002017,
-    "lng": 145.1097088,
-    "detailUrl": "https://www.google.com/maps/place/%E3%81%AA%E3%81%8E%E3%81%95%E3%81%AE%E3%83%89%E3%83%A9%E3%82%A4%E3%83%96%E3%82%A6%E3%82%A7%E3%82%A4/"
+    "lng": 145.2385944,
+    "detailUrl": "https://maps.app.goo.gl/9EawED7Biiu2wqEx6"
   },
   {
     "id": "SPOT-002",
@@ -384,7 +363,8 @@
       "トイレや売店はない"
     ],
     "lat": 43.1496004,
-    "lng": 145.1760919
+    "lng": 145.1760919,
+    "detailUrl": "https://maps.app.goo.gl/K9ErHEEh8L3XgyJ48"
   },
   {
     "id": "SPOT-005",
@@ -425,7 +405,8 @@
       "車は丸山散布１丁目付近の丸山森林湖沼公園に停車し徒歩で移動"
     ],
     "lat": 43.0312095,
-    "lng": 145.0247668
+    "lng": 145.0247668,
+    "detailUrl": "https://maps.app.goo.gl/9PwbWp2yaenWHrUC8"
   },
   {
     "id": "SPOT-018",
@@ -462,7 +443,8 @@
       "放牧地などの私有地に入らない"
     ],
     "lat": 43.16071,
-    "lng": 145.25167
+    "lng": 145.25167,
+    "detailUrl": "https://maps.app.goo.gl/Fi75w1kZwjpnz2GJ9"
   },
   {
     "id": "SPOT-020",
@@ -540,7 +522,7 @@
     ],
     "lat": 43.0827188,
     "lng": 145.1609571,
-    "detailUrl": "https://maps.app.goo.gl/KbhTyeeCTLsoEd4o9"
+    "detailUrl": "https://maps.app.goo.gl/3fZ8CfR4C2qiUUYu7"
   },
   {
     "id": "SPOT-017",
@@ -579,7 +561,8 @@
       "開館時間、休館日はサイトやSNSで事前確認"
     ],
     "lat": 43.086206,
-    "lng": 145.060107
+    "lng": 145.060107,
+    "detailUrl": "https://maps.app.goo.gl/DXHTG9LnEdSygd6g7"
   },
   {
     "id": "SPOT-007",
@@ -618,7 +601,8 @@
       "遊歩道から撮影"
     ],
     "lat": 42.995763,
-    "lng": 145.0126378
+    "lng": 145.0126378,
+    "detailUrl": "https://maps.app.goo.gl/tSa4hAcQmturuWCp8"
   },
   {
     "id": "SPOT-010",
@@ -654,7 +638,8 @@
     "parking": "あり",
     "toilet": "なし",
     "lat": 43.071367,
-    "lng": 145.087571
+    "lng": 145.087571,
+    "detailUrl": "https://maps.app.goo.gl/pxFiQuuvZ69VRjAL9"
   },
   {
     "id": "SPOT-004",
@@ -679,12 +664,9 @@
     "bestSeason": "夏、秋、冬",
     "parking": "なし",
     "toilet": "なし",
-    "cautions": [
-      "私有地に入らない",
-      "野鳥に近づきすぎない"
-    ],
     "lat": 43.1466789,
-    "lng": 145.144391
+    "lng": 145.144391,
+    "detailUrl": "https://maps.app.goo.gl/kQdLcuPj8DES9orp6"
   },
   {
     "id": "SPOT-001",
@@ -732,7 +714,8 @@
       "立入可能な場所から撮影"
     ],
     "lat": 43.1530997,
-    "lng": 145.0528315
+    "lng": 145.0528315,
+    "detailUrl": "https://maps.app.goo.gl/bv33HRKTe1SVybNr7"
   },
   {
     "id": "SPOT-015",
@@ -783,7 +766,8 @@
       "木道から外れない"
     ],
     "lat": 43.085073,
-    "lng": 145.061246
+    "lng": 145.061246,
+    "detailUrl": "https://maps.app.goo.gl/BB6ay4uBnu1XNu2A6"
   },
   {
     "id": "SPOT-016",
@@ -813,6 +797,7 @@
       "鹿の飛び出しに注意"
     ],
     "lat": 43.082901,
-    "lng": 145.07899
+    "lng": 145.07899,
+    "detailUrl": "https://maps.app.goo.gl/uiMedC43mYdSPAzx7"
   }
 ]
