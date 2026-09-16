@@ -219,6 +219,8 @@ body.is-gallery-modal-open { overflow: hidden; }
 }
 .tech-v2-section-nav[data-video-enabled="false"] > .container { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 760px) { .tech-v2-section-nav[data-video-enabled="false"] > .container { grid-template-columns: repeat(5, minmax(115px, 1fr)); } }
+.tech-v2-section-nav[data-video-enabled="false"][data-gallery-enabled="false"] > .container { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 760px) { .tech-v2-section-nav[data-video-enabled="false"][data-gallery-enabled="false"] > .container { grid-template-columns: repeat(4, minmax(115px, 1fr)); } }
 
 /* TECHNIQUE v4 / content review */
 .tech-v2-heading > span { white-space: pre-line; }

@@ -48,7 +48,7 @@
       ${section.lead ? `<span>${esc(section.lead)}</span>` : ''}
     </header>`;
 
-  const renderHero = (data, videoEnabled) => `
+  const renderHero = (data, videoEnabled, galleryEnabled) => `
     <section class="tech-v2-hero" ${data.hero?.image ? `style="--tech-v2-hero:url('${esc(data.hero.image)}')"` : ''}>
       ${fieldNav()}
       <div class="tech-v2-hero-shade"></div>
@@ -58,9 +58,9 @@
         <span>${nl2br(data.hero?.lead || '')}</span>
       </div>
     </section>
-    <nav class="tech-v2-section-nav" data-video-enabled="${videoEnabled}" aria-label="テクニック編ページ内ナビゲーション">
+    <nav class="tech-v2-section-nav" data-video-enabled="${videoEnabled}" data-gallery-enabled="${galleryEnabled}" aria-label="テクニック編ページ内ナビゲーション">
       <div class="container">
-        ${(data.sectionNav || []).filter(item => videoEnabled || item.id !== 'video').map(item => `<a href="#tech-${esc(item.id)}"><small>${esc(item.sub || '')}</small><b>${esc(item.label || '')}</b></a>`).join('')}
+        ${(data.sectionNav || []).filter(item => (videoEnabled || item.id !== 'video') && (galleryEnabled || item.id !== 'gallery')).map(item => `<a href="#tech-${esc(item.id)}"><small>${esc(item.sub || '')}</small><b>${esc(item.label || '')}</b></a>`).join('')}
       </div>
     </nav>`;
 
@@ -364,11 +364,12 @@
 
   const renderPage = data => {
     const videoEnabled = data.video?.enabled !== false;
+    const galleryEnabled = data.gallery?.enabled !== false;
     const galleryNumber = videoEnabled ? '06' : '05';
     document.body.classList.add('technique-page', 'tech-v2-page');
     document.title = 'ラッコの撮り方・設定｜HAMANAKA PHOTO GUIDE';
-    root.innerHTML = `${renderHero(data, videoEnabled)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${videoEnabled ? renderVideo(data.video || {}) : ''}${renderGallery(data.gallery || {}, galleryNumber)}${renderQa(data.qa || {})}${renderNext(data.next || {})}`;
-    initGallery(root, data.gallery || {});
+    root.innerHTML = `${renderHero(data, videoEnabled, galleryEnabled)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${videoEnabled ? renderVideo(data.video || {}) : ''}${galleryEnabled ? renderGallery(data.gallery || {}, galleryNumber) : ''}${renderQa(data.qa || {})}${renderNext(data.next || {})}`;
+    if (galleryEnabled) initGallery(root, data.gallery || {});
     root.querySelectorAll('a[href^="#tech-"]').forEach(link => link.addEventListener('click', event => {
       const target = document.querySelector(link.getAttribute('href'));
       if (!target) return;

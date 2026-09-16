@@ -2952,6 +2952,9 @@ content:
       label: 作例（動画ON時06／OFF時05）
       type: object
       fields:
+      - name: enabled
+        label: 作例セクションを公開する
+        type: boolean
       - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
