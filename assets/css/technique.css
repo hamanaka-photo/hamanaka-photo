@@ -219,3 +219,25 @@ body.is-gallery-modal-open { overflow: hidden; }
 }
 .tech-v2-section-nav[data-video-enabled="false"] > .container { grid-template-columns: repeat(5, 1fr); }
 @media (max-width: 760px) { .tech-v2-section-nav[data-video-enabled="false"] > .container { grid-template-columns: repeat(5, minmax(115px, 1fr)); } }
+
+/* TECHNIQUE v4 / content review */
+.tech-v2-heading > span { white-space: pre-line; }
+.tech-v2-keypoint { align-items: flex-start; }
+.tech-v2-keypoint > span { flex: 0 0 auto; padding-top: 4px; }
+.tech-v2-keypoint-copy { display: grid; gap: 7px; }
+.tech-v2-keypoint-copy small { max-width: 720px; color: #65757a; font-size: 13px; line-height: 1.7; }
+.tech-v3-gallery-window figcaption p { margin: 0 0 8px; }
+.tech-v3-gallery-window figcaption ul { display: flex; flex-wrap: wrap; gap: 5px 12px; margin: 0; padding: 0; list-style: none; color: #536f79; font-size: 12px; font-weight: 800; }
+.tech-v4-qa-list { display: grid; gap: 10px; max-width: 920px; }
+.tech-v4-qa-list details { overflow: hidden; border: 1px solid var(--tl); border-radius: 10px; background: #fff; }
+.tech-v4-qa-list summary { position: relative; padding: 19px 54px 19px 22px; color: var(--tn); font-size: 15px; font-weight: 900; line-height: 1.55; cursor: pointer; list-style: none; }
+.tech-v4-qa-list summary::-webkit-details-marker { display: none; }
+.tech-v4-qa-list summary::after { content: '+'; position: absolute; top: 50%; right: 22px; color: var(--tt); font-size: 22px; font-weight: 500; transform: translateY(-50%); }
+.tech-v4-qa-list details[open] summary::after { content: '−'; }
+.tech-v4-qa-list details[open] summary { border-bottom: 1px solid var(--tl); }
+.tech-v4-qa-list details > p { margin: 0; padding: 18px 22px 21px; color: #526d78; font-size: 14px; line-height: 1.85; }
+@media (max-width: 760px) {
+  .tech-v4-qa-list summary { padding: 17px 48px 17px 17px; }
+  .tech-v4-qa-list summary::after { right: 17px; }
+  .tech-v4-qa-list details > p { padding: 16px 17px 19px; }
+}

@@ -11,6 +11,17 @@
     const raw = String(value || '').trim();
     return !raw || /^(javascript|data|vbscript):/i.test(raw) ? '' : raw;
   };
+  const galleryMeta = item => [
+    item.shutter ? `シャッタースピード ${item.shutter}` : '',
+    item.focalLength ? `焦点距離${item.focalLength}` : '',
+    item.aperture ? `絞り ${item.aperture}` : ''
+  ].filter(Boolean);
+  const galleryCaptionText = item => [item.caption, ...galleryMeta(item)].filter(Boolean).join('／');
+  const galleryCaption = item => {
+    const meta = galleryMeta(item);
+    if (!item.caption && !meta.length) return '';
+    return `<figcaption>${item.caption ? `<p>${esc(item.caption)}</p>` : ''}${meta.length ? `<ul>${meta.map(value => `<li>${esc(value)}</li>`).join('')}</ul>` : ''}</figcaption>`;
+  };
   const image = (src, alt = '') => src
     ? `<img src="${esc(src)}" alt="${esc(alt)}" loading="lazy" decoding="async">`
     : `<div class="tech-v2-placeholder" aria-hidden="true"><span>PHOTO</span><strong>${esc(alt || 'IMAGE')}</strong></div>`;
@@ -61,7 +72,10 @@
           ${heading(section)}
           <div class="tech-v2-keypoint">
             <span>${esc(section.recommendationTitle || '')}</span>
-            <strong>${esc(section.recommendationText || '')}</strong>
+            <div class="tech-v2-keypoint-copy">
+              <strong>${esc(section.recommendationText || '')}</strong>
+              ${section.recommendationNote ? `<small>${esc(section.recommendationNote)}</small>` : ''}
+            </div>
           </div>
           <div class="tech-v2-compare-grid">
             ${(section.comparisons || []).map(item => `
@@ -201,7 +215,7 @@
   const renderGallery = (section, number) => `
     <section class="tech-v2-section tech-v3-gallery-section" id="tech-gallery">
       <div class="container">
-        ${heading({ ...section, eyebrow: `${number} / GALLERY` })}
+        ${heading({ ...section, eyebrow: section.eyebrow || `${number} / 作例` })}
         ${(section.items || []).length ? `
           <div class="tech-v3-gallery-carousel" data-tech-gallery-carousel>
             <button type="button" data-tech-gallery-prev aria-label="前の作例">←</button>
@@ -209,7 +223,7 @@
             <button type="button" data-tech-gallery-next aria-label="次の作例">→</button>
           </div>` : `
           <div class="tech-v3-gallery-empty">
-            <span>${number} / GALLERY</span>
+            <span>${esc(section.eyebrow || `${number} / 作例`)}</span>
             <strong>作例を準備中です。</strong>
           </div>`}
         ${(section.items || []).length ? `
@@ -248,7 +262,7 @@
         return `
           <figure>
             <button type="button" class="tech-v3-gallery-image-button" data-tech-gallery-open="${itemIndex}" aria-label="${esc(item.caption || '作例')}を拡大表示">${image(item.image, item.caption || '作例')}</button>
-            ${item.caption ? `<figcaption>${esc(item.caption)}</figcaption>` : ''}
+            ${galleryCaption(item)}
           </figure>`;
       }).join('');
 
@@ -284,8 +298,8 @@
       if (!item || !modalImage) return;
       modalImage.src = item.image || '';
       modalImage.alt = item.caption || 'テクニック作例';
-      modalCaption.textContent = item.caption || '';
-      modalCaption.hidden = !item.caption;
+      modalCaption.textContent = galleryCaptionText(item);
+      modalCaption.hidden = !galleryCaptionText(item);
     };
     const openModal = selectedIndex => {
       if (!modal || !items[selectedIndex]) return;
@@ -326,6 +340,20 @@
     draw();
   };
 
+  const renderQa = section => !Array.isArray(section.items) || !section.items.length ? '' : `
+    <section class="tech-v2-section is-soft tech-v4-qa" id="tech-qa">
+      <div class="container">
+        ${heading(section)}
+        <div class="tech-v4-qa-list">
+          ${section.items.map(item => `
+            <details>
+              <summary>${esc(item.question || '')}</summary>
+              <p>${nl2br(item.answer || '')}</p>
+            </details>`).join('')}
+        </div>
+      </div>
+    </section>`;
+
   const renderNext = section => `
     <section class="tech-v2-next">
       <div class="container tech-v2-next-inner">
@@ -338,8 +366,8 @@
     const videoEnabled = data.video?.enabled !== false;
     const galleryNumber = videoEnabled ? '06' : '05';
     document.body.classList.add('technique-page', 'tech-v2-page');
-    document.title = 'ラッコの撮り方｜HAMANAKA PHOTO GUIDE';
-    root.innerHTML = `${renderHero(data, videoEnabled)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${videoEnabled ? renderVideo(data.video || {}) : ''}${renderGallery(data.gallery || {}, galleryNumber)}${renderNext(data.next || {})}`;
+    document.title = 'ラッコの撮り方・設定｜HAMANAKA PHOTO GUIDE';
+    root.innerHTML = `${renderHero(data, videoEnabled)}${renderTime(data.time || {})}${renderPlace(data.place || {})}${renderZoom(data.zoom || {})}${renderSettings(data.settings || {})}${videoEnabled ? renderVideo(data.video || {}) : ''}${renderGallery(data.gallery || {}, galleryNumber)}${renderQa(data.qa || {})}${renderNext(data.next || {})}`;
     initGallery(root, data.gallery || {});
     root.querySelectorAll('a[href^="#tech-"]').forEach(link => link.addEventListener('click', event => {
       const target = document.querySelector(link.getAttribute('href'));
