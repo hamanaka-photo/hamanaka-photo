@@ -57,19 +57,33 @@
     "name": "アゼチの岬展望台",
     "area": "霧多布エリア",
     "description": "霧多布の町並みと海を見渡せる岬の展望スポット。正面の小島や海岸線を望め、夕景の撮影場所としても知られています。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/azechi-kelp.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/azechi.jpg"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/azechi-sunset.webp"
+      }
+    ],
     "markerTypes": [
       "coast"
     ],
     "subjects": [
       {
         "id": "coast",
-        "note": "沖に浮かぶ島々が印象的です"
+        "note": "太平洋／岬／島"
       },
       {
         "id": "sunset",
-        "note": "浜中町を代表する夕日スポットです"
+        "note": "夕日"
       },
-      {}
+      {
+        "id": "coast",
+        "note": "昆布漁（夏場のみ）"
+      }
     ],
     "features": [
       "parking"
