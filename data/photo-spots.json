@@ -105,6 +105,17 @@
     "name": "琵琶瀬展望台",
     "area": "霧多布エリア",
     "description": "霧多布湿原を高台から一望できる展望台。湿原の中央を蛇行する琵琶瀬川と、太平洋まで続く広い景色を見渡せます。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasetenbodai.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasetenbodai2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/biwasetenbodai4.webp"
+      }
+    ],
     "markerTypes": [
       "observatory",
       "wetland"
