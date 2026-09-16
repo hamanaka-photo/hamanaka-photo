@@ -2596,3 +2596,84 @@ body.photo-map-modal-open {
     grid-template-columns: 1fr;
   }
 }
+
+/* =========================================
+   PHOTO MAP approved typography and layout
+========================================= */
+
+.photo-map-page .site-nav,
+.photo-map-page .field-guide-links a,
+.photo-map-view-tabs button,
+.photo-map-search-mode button,
+.photo-map-filters button { font-size: 16px; }
+
+.photo-map-hero-lead,
+.photo-map-selected-description,
+.photo-map-selected-copy li,
+.photo-map-course-summary-text,
+.photo-map-course-stop-copy p,
+.photo-map-page .site-footer .footer-col > a { font-size: 16px; }
+
+.photo-map-control-label,
+.photo-map-selected-area,
+.photo-spot-type,
+.photo-spot-list-area,
+.photo-spot-gallery-action,
+.photo-map-image-placeholder > span,
+.photo-map-selected-copy small,
+.photo-map-selected-copy strong,
+.photo-map-course-eyebrow,
+.photo-map-course-stop .photo-map-course-stop-area,
+.photo-map-course-order,
+.photo-map-pin-caption,
+.photo-map-page .field-guide-brand small,
+.photo-map-page .field-guide-sequence-card > span,
+.photo-map-page .field-guide-sequence-card > small { font-size: 14px !important; }
+.photo-spot-list-copy .photo-spot-list-area { font-size: 14px !important; }
+.photo-map-list-group-heading > span { font-size: 14px; }
+
+.photo-map-legend h2,
+.photo-map-course-copy h3,
+.photo-map-course-stop-copy h4,
+.photo-map-page .field-guide-sequence-card > b { font-size: 18px; }
+
+.photo-map-section-heading h2 { font-size: 26px; }
+.photo-map-course-copy .photo-map-course-summary-text,
+.photo-map-course-stop-copy > p:not(.photo-map-course-stop-area) { font-size: 16px !important; }
+.photo-map-course-stop-copy h4 { font-size: 18px; }
+
+.photo-map-map-view { align-items: start; }
+.photo-map-canvas {
+  align-self: start;
+  width: 100%;
+}
+
+.photo-map-legend-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+  justify-content: space-between;
+}
+.photo-map-legend-grid > div {
+  grid-template-columns: 18px minmax(0, 1fr);
+  column-gap: 6px;
+}
+.photo-map-legend-grid strong { font-size: 14px; }
+.photo-map-legend-grid small {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.photo-map-courses-note {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  font-size: 16px;
+  white-space: nowrap;
+}
+
+@media (max-width: 680px) {
+  .photo-map-section-heading h2 { font-size: 22px; }
+  .photo-map-legend-grid { grid-template-columns: 1fr; }
+  .photo-map-legend-grid small { white-space: normal; }
+  .photo-map-courses-note { white-space: normal; }
+}
