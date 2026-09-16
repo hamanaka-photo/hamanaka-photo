@@ -2745,7 +2745,7 @@ content:
           extensions: [jpg, jpeg, png, webp]
           rename: false
   - name: technique_settings
-    label: テクニック｜撮影前に予習 ラッコの撮り方
+    label: テクニック｜ラッコの撮り方・設定
     type: file
     path: data/technique.json
     format: json
@@ -2753,7 +2753,7 @@ content:
       delete: false
     fields:
     - name: hero
-      label: HERO｜撮影前に予習 ラッコの撮り方
+      label: HERO｜ラッコの撮り方・設定
       type: object
       fields:
       - name: eyebrow
@@ -2800,14 +2800,15 @@ content:
         label: 英字表示
         type: string
     - name: time
-      label: 01｜時間｜日が高い時間を狙おう
+      label: 01｜時間｜光の向きと明るさを確認しよう
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - {name: recommendationTitle, label: 目安の小見出し, type: string}
       - {name: recommendationText, label: 撮影時間の目安, type: string}
+      - {name: recommendationNote, label: 撮影時間の注意書き, type: text}
       - name: comparisons
         label: 時間帯の比較
         type: object
@@ -2838,10 +2839,10 @@ content:
         - {name: buttonLabel, label: ボタン表示, type: string}
         - {name: url, label: リンク先, type: string}
     - name: place
-      label: 02｜場所｜灯台へ向かう遊歩道の左側から
+      label: 02｜場所｜まずは海面を広く探そう
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: items
@@ -2860,10 +2861,10 @@ content:
       - {name: fallbackTitle, label: 見つからないときの見出し, type: string}
       - {name: fallbackText, label: 見つからないときの説明, type: text}
     - name: zoom
-      label: 03｜コツ｜慌てず慎重にズーム
+      label: 03｜ピントとズーム｜まず見つけて、少しずつ寄る
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: steps
@@ -2889,10 +2890,10 @@ content:
           extensions: [jpg, jpeg, png, webp]
           rename: false
     - name: settings
-      label: 04｜設定｜ブレない設定を探そう
+      label: 04｜設定｜まずはシャッタースピードから
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - {name: tipTitle, label: 重要ポイント, type: string}
@@ -2948,10 +2949,13 @@ content:
         label: 動画下の補足
         type: text
     - name: gallery
-      label: 作例ギャラリー（動画ON時06／OFF時05）
+      label: 作例（動画ON時06／OFF時05）
       type: object
       fields:
-      - {name: eyebrow, label: 英字・番号, type: string}
+      - name: enabled
+        label: 作例セクションを公開する
+        type: boolean
+      - {name: eyebrow, label: 番号・見出し, type: string}
       - {name: title, label: 見出し, type: string}
       - {name: lead, label: 説明, type: text}
       - name: items
@@ -2961,7 +2965,7 @@ content:
           max: 12
           collapsible:
             collapsed: true
-            summary: '{caption}'
+            summary: '{focalLength} {shutter}'
         fields:
         - name: image
           label: 作例画像
@@ -2973,6 +2977,26 @@ content:
             extensions: [jpg, jpeg, png, webp]
             rename: false
         - {name: caption, label: キャプション, type: string}
+        - {name: shutter, label: シャッタースピード, type: string}
+        - {name: focalLength, label: 焦点距離, type: string}
+        - {name: aperture, label: 絞り（F値）, type: string}
+    - name: qa
+      label: Q&A｜ラッコ撮影でよく迷うこと
+      type: object
+      fields:
+      - {name: eyebrow, label: 小見出し, type: string}
+      - {name: title, label: 見出し, type: string}
+      - name: items
+        label: 質問と回答
+        type: object
+        list:
+          max: 12
+          collapsible:
+            collapsed: true
+            summary: '{question}'
+        fields:
+        - {name: question, label: 質問, type: string}
+        - {name: answer, label: 回答, type: text}
     - name: next
       label: NEXT｜ルールも確認する
       type: object
