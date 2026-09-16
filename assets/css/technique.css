@@ -222,6 +222,7 @@ body.is-gallery-modal-open { overflow: hidden; }
 
 /* TECHNIQUE v4 / content review */
 .tech-v2-heading > span { white-space: pre-line; }
+.tech-v2-compare-card p { white-space: pre-line; }
 .tech-v2-keypoint { align-items: flex-start; }
 .tech-v2-keypoint > span { flex: 0 0 auto; padding-top: 4px; }
 .tech-v2-keypoint-copy { display: grid; gap: 7px; }
