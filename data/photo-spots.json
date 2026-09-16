@@ -501,14 +501,25 @@
     "order": 13,
     "name": "霧多布岬展望台",
     "area": "霧多布エリア",
-    "description": "霧多布岬と周辺の海岸線を高台から見渡せる展望台。岬全体の形や太平洋を少し離れた場所から眺められます。",
+    "description": "霧多布岬と周辺の海岸線を高台から見渡せる展望台。岬全体の形や太平洋を少し離れた場所から撮影することができます。この付近の海にラッコがいることもあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布岬展望台.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布岬展望台-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布岬展望台-3.webp"
+      }
+    ],
     "markerTypes": [
       "observatory"
     ],
     "subjects": [
       {
         "id": "coast",
-        "note": "霧多布岬の全景をみることができます"
+        "note": "岬／太平洋"
       }
     ],
     "features": [
