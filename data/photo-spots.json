@@ -463,25 +463,33 @@
     "order": 12,
     "name": "藻散布沼",
     "area": "散布エリア",
-    "description": "火散布沼の南側にある湖沼。周囲の湿地や水辺の景色が広がり、季節によって水鳥が見られることもあります。ジブリ「思い出のマーニー」の舞台にもなっています。",
+    "description": "火散布沼の南側にある湖沼。周囲の湿地や水辺の景色が広がり、季節によって水鳥が見られることもあります。ジブリ「思い出のマーニー」の舞台にもなっています。冬には白鳥がみられるなど、水鳥に出会えることがあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/mochirippu.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/mochirippu-2.webp"
+      }
+    ],
     "markerTypes": [
       "wetland"
     ],
     "subjects": [
       {
         "id": "flowers",
-        "note": "湿原／沼地／漁村／水鳥"
+        "note": "湖沼／漁村"
       },
       {
         "id": "wild-birds",
-        "note": "冬には白鳥がみられるなど、水鳥に出会えることがあります"
+        "note": "水鳥"
       }
     ],
     "bestSeason": "通年",
     "parking": "なし",
     "toilet": "なし",
     "cautions": [
-      "漁業作業の妨げにならない"
+      "藻散布のほとりへ向かう道は未舗装路のため、道路状況が悪い場合は無理をしない"
     ],
     "lat": 43.0189,
     "lng": 145.0125,
