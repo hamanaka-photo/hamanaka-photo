@@ -471,37 +471,6 @@
   font-weight: 900;
   letter-spacing: .1em;
 }
-.gear-teleconverter-formula {
-  display: grid;
-  gap: 5px;
-  justify-items: start;
-  margin-top: 14px;
-  padding: 14px 16px;
-  border-radius: 8px;
-  background: #fff;
-  color: var(--gear-navy);
-}
-.gear-teleconverter-formula strong,
-.gear-teleconverter-formula b {
-  font-size: 18px;
-  line-height: 1.4;
-}
-.gear-teleconverter-formula span { font-size: 14px; font-weight: 900; }
-.gear-teleconverter-formula i {
-  color: var(--gear-teal);
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 900;
-}
-.gear-teleconverter-result {
-  margin-top: 24px;
-  padding: 20px 22px;
-  border-radius: 8px;
-  background: var(--gear-soft);
-}
-.gear-teleconverter-result h3 {
-  font-size: 16px;
-}
 .gear-teleconverter-image {
   min-width: 0;
   margin: 0;
