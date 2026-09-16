@@ -354,6 +354,17 @@
     "name": "羨古丹駐車公園",
     "area": "酪農地帯・海沿い",
     "description": "北太平洋シーサイドライン沿いにある駐車公園。羨古丹の海岸と起伏のある海岸線、太平洋を見渡せます。天気がいい日は前方に霧多布岬を確認できます。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/seasideline-3.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/seasideline-4.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/seasideline-5.webp"
+      }
+    ],
     "markerTypes": [
       "coast"
     ],
