@@ -6,6 +6,14 @@
     "name": "霧多布岬",
     "area": "霧多布エリア",
     "description": "浜中町を代表する景勝地。高さ約40mの岬から太平洋を見渡せ、赤い灯台がシンボルです。朝日は特に印象的で、海上では野生のラッコが見られることもあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/kiritappucape03.jpg"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/kiritappucape04.webp"
+      }
+    ],
     "markerTypes": [
       "coast"
     ],
