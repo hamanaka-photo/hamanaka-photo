@@ -17,7 +17,6 @@
     0 16px 50px rgba(22, 55, 82, 0.10);
 }
 
-
 * {
   box-sizing: border-box;
 }
@@ -2753,4 +2752,31 @@ summary:focus-visible {
     text-align: left;
   }
 
+}
+
+/* =========================
+   GALLERY TYPOGRAPHY
+========================= */
+
+.gallery-page .site-nav { font-size: 16px; }
+.gallery-page .section-title { font-size: 26px; }
+.gallery-page .section-title small { font-size: 14px; }
+.gallery-page .photo-meta h3 { font-size: 18px; }
+.gallery-page .author-social-platform,
+.gallery-page .author-social-open { font-size: 14px; }
+.gallery-page .author-details summary,
+.gallery-page .author-profile p,
+.gallery-page .btn,
+.gallery-page .site-footer .footer-col > a { font-size: 16px; }
+.gallery-page .modal-copy h2 { font-size: 26px; }
+.gallery-page .past-selection-grid > .section-lead:only-child {
+  grid-column: 1 / -1;
+  max-width: none;
+}
+
+@media (max-width: 620px) {
+  .gallery-page .section-title { font-size: 22px; }
+  .gallery-page .author-info h2,
+  .gallery-page .author-info h3 { font-size: 18px; }
+  .gallery-page .modal-copy h2 { font-size: 22px; }
 }
