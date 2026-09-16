@@ -692,6 +692,17 @@
     "name": "茶内酪農展望台",
     "area": "酪農地帯・海沿い",
     "description": "浜中町らしい酪農地帯を広く見渡せる展望スポット。牧草地と広い空が広がり、夕景や星空の撮影にも向いています。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/茶内酪農展望台.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/茶内酪農展望台-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/茶内酪農展望台-3.webp"
+      }
+    ],
     "markerTypes": [
       "observatory"
     ],
