@@ -619,7 +619,19 @@
     "order": 16,
     "name": "花・すすきの群生地",
     "area": "霧多布エリア",
-    "description": "霧多布湿原で季節の花やすすきが広がる場所。時期によって湿原の色や草花の表情が大きく変わります。",
+    "description": "霧多布湿原で季節の花やすすきが広がる場所。時期によって湿原の色や草花の表情が大きく変わります。駐車帯に車を止めて撮影できます。近くに遊歩道の入り口があり、遊歩道から寄って撮影することもできます。",
+    "images": [
+      {},
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原-4.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原.jpg"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原-3.jpg"
+      }
+    ],
     "markerTypes": [
       "wetland"
     ],
@@ -634,11 +646,6 @@
     ],
     "parking": "あり",
     "toilet": "なし",
-    "cautions": [
-      "群生地に入らない",
-      "花を摘まない",
-      "決められた場所から撮影"
-    ],
     "lat": 43.071367,
     "lng": 145.087571
   },
