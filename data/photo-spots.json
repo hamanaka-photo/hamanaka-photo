@@ -288,6 +288,14 @@
     "name": "北太平洋シーサイドライン海岸",
     "area": "酪農地帯・海沿い",
     "description": "浜中町の海岸線を走る北太平洋シーサイドライン。海、岬、湿原、丘陵など、移動しながら景色が次々と変わるドライブルートです。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/seasideline.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/seasideline-2.webp"
+      }
+    ],
     "markerTypes": [
       "coast"
     ],
