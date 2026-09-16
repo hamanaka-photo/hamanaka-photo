@@ -740,6 +740,24 @@
     "name": "やちぼうず木道",
     "area": "霧多布エリア",
     "description": "霧多布湿原センター近くの木道。ヤチボウズや季節の草花、野鳥など、湿原の景色を近くで楽しめます。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/やちぼうず木道-5.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/やちぼうず木道-6.webp"
+      },
+      {},
+      {
+        "src": "assets/images/03_guide/photo-spots/やちぼうず木道.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/やちぼうず木道-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/やちぼうず木道-3.webp"
+      }
+    ],
     "markerTypes": [
       "wetland",
       "wildlife"
