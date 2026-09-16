@@ -18,7 +18,19 @@
     const c=data.contact||{};text('[data-about-contact-eyebrow]',c.eyebrow);text('[data-about-contact-title]',c.title);text('[data-about-contact-lead]',c.lead);text('[data-about-contact-organization]',c.organization);text('[data-about-contact-section]',c.section);text('[data-about-contact-phone-note]',c.phoneNote?`（${c.phoneNote}）`:'');text('[data-about-contact-note]',c.note);
     const ph=document.querySelector('[data-about-contact-phone]');if(ph&&c.phone){ph.textContent=c.phone;ph.href=`tel:${String(c.phone).replace(/[^0-9+]/g,'')}`}
     const em=document.querySelector('[data-about-contact-email]');if(em&&c.email){em.textContent=c.email;em.href=`mailto:${c.email}`}
-    const l=data.links||{};text('[data-about-links-eyebrow]',l.eyebrow);text('[data-about-links-title]',l.title);const lg=document.querySelector('[data-about-links-items]');if(lg&&Array.isArray(l.items))lg.innerHTML=l.items.map(i=>{const u=safeUrl(i.url);return u?`<a class="about-related-link" href="${esc(u)}" ${i.external?'target="_blank" rel="noopener"':''}><span>${esc(i.label||'リンク')}</span><span>${i.external?'↗':'→'}</span></a>`:''}).join('');
+    const l=data.links||{};text('[data-about-links-eyebrow]',l.eyebrow);text('[data-about-links-title]',l.title);
+    const lg=document.querySelector('[data-about-links-items]');
+    if(lg&&Array.isArray(l.items))lg.innerHTML=l.items.map(item=>{
+      const links=Array.isArray(item.links)?item.links:[];
+      return `<article class="about-related-card">
+        <h3>${esc(item.title||'')}</h3>
+        <p>${esc(item.text||'')}</p>
+        <div class="about-related-card-links">${links.map(link=>{
+          const url=safeUrl(link.url);
+          return url?`<a href="${esc(url)}" ${link.external?'target="_blank" rel="noopener"':''}>${esc(link.label||'リンク')}${link.external?'&nbsp;↗':'&nbsp;→'}</a>`:'';
+        }).join('')}</div>
+      </article>`;
+    }).join('');
     root.classList.add('is-cms-loaded');
   };
   fetch('data/about.json',{cache:'no-cache'}).then(r=>{if(!r.ok)throw new Error(`about.json: ${r.status}`);return r.json()}).then(render).catch(e=>console.error('ABOUT CMS data could not be loaded.',e));
