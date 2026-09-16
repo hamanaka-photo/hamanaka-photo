@@ -541,7 +541,18 @@
     "order": 14,
     "name": "霧多布湿原センター",
     "area": "霧多布エリア",
-    "description": "霧多布湿原の自然や見どころを紹介するネイチャーセンター。館内の展望スペースから湿原を見渡せ、撮影前の情報収集にも便利です。",
+    "description": "霧多布湿原の自然や見どころを紹介するネイチャーセンター。展望スペースや館内２Fのカフェから湿原と湿原の先に広がる海・島を撮影できます。撮影前の情報収集にも便利です。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原センター-3.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原センター-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/霧多布湿原センター.webp"
+      }
+    ],
     "markerTypes": [
       "observatory"
     ],
