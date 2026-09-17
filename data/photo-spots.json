@@ -648,6 +648,14 @@
     "name": "ポロト沼",
     "area": "酪農地帯・海沿い",
     "description": "浜中町東部にある小さな湖沼。周囲の湿地や草地とあわせて静かな水辺の景色が広がり、水鳥が見られることもあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/ポロト沼-3.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/ポロト沼-2-1.webp"
+      }
+    ],
     "markerTypes": [
       "wetland"
     ],
@@ -776,6 +784,17 @@
     "name": "MGロード",
     "area": "霧多布エリア",
     "description": "霧多布湿原を約2kmにわたって縦断する道路。道路の両側に湿原が広がり、季節の草花やエゾシカなどの野生動物に出会うこともあります。",
+    "images": [
+      {
+        "src": "assets/images/03_guide/photo-spots/MGロード.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/MGロード-2.webp"
+      },
+      {
+        "src": "assets/images/03_guide/photo-spots/MGロード-3.webp"
+      }
+    ],
     "markerTypes": [
       "wetland",
       "wildlife"
