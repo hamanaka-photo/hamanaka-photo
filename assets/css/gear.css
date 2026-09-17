@@ -812,3 +812,7 @@
     transition-duration: .01ms !important;
   }
 }
+/* Keep the requested focal-length line break on two lines. */
+.gear-v2-focal-intro {
+  max-width: none;
+}
