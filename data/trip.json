@@ -175,7 +175,7 @@
         "eyebrow": "SUMMER",
         "title": "夏の日の服装",
         "lead": "夏でも海沿いや霧の日は肌寒く感じることがあります。風や気温の変化に対応できる服装を準備しましょう。",
-        "image": "assets/images/03_guide/trip/夏の服装.webp",
+        "image": "assets/images/03_guide/trip/夏の服装 (1).webp",
         "items": [
           "帽子",
           "長袖の防寒着（風を通しにくい上着）",
@@ -187,7 +187,7 @@
         "eyebrow": "WINTER",
         "title": "冬の日の服装",
         "lead": "冬は海沿いの風で体感温度が下がりやすいため、しっかり防寒して出かけましょう。",
-        "image": "assets/images/03_guide/trip/冬の服装2.webp",
+        "image": "assets/images/03_guide/trip/冬の服装.webp",
         "items": [
           "防寒着（ダウン）",
           "耳当てや帽子、ネックウォーマーなど首から上を守るもの",
@@ -203,7 +203,6 @@
       "双眼鏡",
       "飲み物"
     ],
-    "essentialsNote": "双眼鏡は霧多布湿原センターで有料レンタルがあります。",
     "seasons": [
       {
         "label": "春・夏・秋",
