@@ -69,6 +69,16 @@ media:
   - png
   - webp
   rename: false
+- name: photo_spot_full_images
+  label: 撮影スポット拡大画像
+  input: assets/images/03_guide/photo-spots/full
+  output: assets/images/03_guide/photo-spots/full
+  extensions:
+  - jpg
+  - jpeg
+  - png
+  - webp
+  rename: false
 - name: gallery_images
   label: ギャラリー画像
   input: assets/images/02_gallery
@@ -1526,12 +1536,22 @@ content:
           collapsed: true
           summary: '{alt}'
       fields:
-      - name: src
-        label: 写真
+      - name: thumbnail
+        label: サムネイル画像
         type: image
-        required: true
         options:
           media: photo_spot_images
+          extensions:
+          - jpg
+          - jpeg
+          - png
+          - webp
+          rename: false
+      - name: src
+        label: 拡大画像
+        type: image
+        options:
+          media: photo_spot_full_images
           extensions:
           - jpg
           - jpeg
@@ -1544,6 +1564,14 @@ content:
       - name: caption
         label: キャプション
         type: string
+      - name: exif
+        label: 撮影データ（任意）
+        type: object
+        fields:
+        - {name: focalLength, label: 焦点距離, type: string}
+        - {name: shutter, label: シャッター速度, type: string}
+        - {name: aperture, label: 絞り（F値）, type: string}
+        - {name: iso, label: ISO感度, type: string}
     - name: markerTypes
       label: MAPピンの種類（複数選択可）
       type: select

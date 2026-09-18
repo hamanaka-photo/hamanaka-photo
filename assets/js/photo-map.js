@@ -122,11 +122,13 @@
       Array.isArray(spot.images)
         ? spot.images
             .map(image => ({
-              src: safeUrl(image?.src),
+              thumbnail: safeUrl(image?.thumbnail || image?.src),
+              src: safeUrl(image?.src || image?.thumbnail),
               alt: String(image?.alt || ''),
-              caption: String(image?.caption || '')
+              caption: String(image?.caption || ''),
+              exif: image?.exif || null
             }))
-            .filter(image => image.src)
+            .filter(image => image.thumbnail && image.src)
         : [];
 
     if (images.length) {
@@ -137,9 +139,11 @@
 
     return legacyImage
       ? [{
+          thumbnail: legacyImage,
           src: legacyImage,
           alt: String(spot.name || ''),
-          caption: ''
+          caption: '',
+          exif: null
         }]
       : [];
   };
@@ -285,7 +289,7 @@
 
     return image
       ? `<img
-          src="${escapeHtml(image.src)}"
+          src="${escapeHtml(image.thumbnail)}"
           alt="${escapeHtml(image.alt || spot.name || '')}"
           loading="lazy"
           decoding="async"
@@ -626,10 +630,11 @@
                         aria-label="写真${index + 1}を表示"
                         aria-pressed="${index === imageIndex}">
                         <img
-                          src="${escapeHtml(image.src)}"
+                          src="${escapeHtml(image.thumbnail)}"
                           alt=""
                           loading="lazy"
-                          decoding="async">
+                          decoding="async"
+                          fetchpriority="low">
                       </button>`).join('')}
                   </div>
                   <button
@@ -726,7 +731,7 @@
             primaryImage
               ? `<div class="photo-map-course-stop-image">
                   <img
-                    src="${escapeHtml(primaryImage.src)}"
+                    src="${escapeHtml(primaryImage.thumbnail)}"
                     alt="${escapeHtml(primaryImage.alt || spot.name || '')}"
                     loading="lazy"
                     decoding="async"
@@ -822,7 +827,7 @@
             ${
               courseImage
                 ? `<img
-                    src="${escapeHtml(courseImage.src)}"
+                    src="${escapeHtml(courseImage.thumbnail)}"
                     alt="${escapeHtml(courseImage.alt || course.title || '')}"
                     loading="lazy"
                     decoding="async"

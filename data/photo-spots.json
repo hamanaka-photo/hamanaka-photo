@@ -8,9 +8,11 @@
     "description": "浜中町を代表する景勝地。高さ約40mの岬から太平洋を見渡せ、赤い灯台がシンボルです。朝日は特に印象的で、海上では野生のラッコが見られることもあります。海上までの距離があるため、ラッコ撮影には望遠レンズを使いましょう。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/kiritappucape-2.webp",
         "src": "assets/images/03_guide/photo-spots/kiritappucape-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/kiritappucape04.webp",
         "src": "assets/images/03_guide/photo-spots/kiritappucape04.webp"
       }
     ],
@@ -60,12 +62,15 @@
     "description": "霧多布の町並みと海を見渡せる岬の展望スポット。正面の小島や海岸線を望め、夕景の撮影場所としても知られています。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/azechi-kelp.webp",
         "src": "assets/images/03_guide/photo-spots/azechi-kelp.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/azechi.webp",
         "src": "assets/images/03_guide/photo-spots/azechi.jpg"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/azechi-sunset.webp",
         "src": "assets/images/03_guide/photo-spots/azechi-sunset.webp"
       }
     ],
@@ -109,12 +114,15 @@
     "description": "霧多布湿原を高台から一望できる展望台。湿原の中央を蛇行する琵琶瀬川と、太平洋まで続く広い景色を入れて壮大な景色を撮影できます。朝夕の空が色づく時間帯もおすすめです。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/biwasetenbodai.webp",
         "src": "assets/images/03_guide/photo-spots/biwasetenbodai.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/biwasetenbodai2.webp",
         "src": "assets/images/03_guide/photo-spots/biwasetenbodai2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/biwasetenbodai4.webp",
         "src": "assets/images/03_guide/photo-spots/biwasetenbodai4.webp"
       }
     ],
@@ -159,9 +167,11 @@
     "description": "太平洋に面した断崖と海岸景観を望む岬。断崖の地形と海、波がつくる荒々しい景色が見どころです。様々な撮影の切り取り方が楽しめます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/namidamisaki.webp",
         "src": "assets/images/03_guide/photo-spots/namidamisaki.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/namidamisaki-2.webp",
         "src": "assets/images/03_guide/photo-spots/namidamisaki-2.webp"
       }
     ],
@@ -196,12 +206,15 @@
     "description": "霧多布湿原の中へ伸びる木道。湿原を歩きながら季節の草花や野鳥を撮影できます。夏は花の景色が広がります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/biwasemokudo-2.webp",
         "src": "assets/images/03_guide/photo-spots/biwasemokudo-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/biwasemokudo-3.webp",
         "src": "assets/images/03_guide/photo-spots/biwasemokudo-3.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/biwasemokudo-4.webp",
         "src": "assets/images/03_guide/photo-spots/biwasemokudo-4.webp"
       }
     ],
@@ -245,17 +258,21 @@
     "description": "霧多布湿原の奥琵琶瀬地区にある野鳥観察スポット。野鳥観察小屋も用意されているため、小屋から鳥に気づかれずに撮影することができます。秋になるとアッケシソウで湿原が赤く色づきます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-2.webp",
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-2.webp",
         "caption": "撮影時の焦点距離：234mm（35mm換算）"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-3.webp",
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-3.webp",
         "caption": "撮影時の焦点距離：600mm（35mm換算）"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/okubiwaseyachokoen.webp",
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-4.webp",
         "src": "assets/images/03_guide/photo-spots/okubiwaseyachokoen-4.webp"
       }
     ],
@@ -296,9 +313,11 @@
     "description": "浜中町の海岸線を走る北太平洋シーサイドライン。海、岬、湿原、丘陵など、移動しながら景色が次々と変わるドライブルートです。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/seasideline.webp",
         "src": "assets/images/03_guide/photo-spots/seasideline.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/seasideline-2.webp",
         "src": "assets/images/03_guide/photo-spots/seasideline-2.webp"
       }
     ],
@@ -335,12 +354,15 @@
     "description": "北太平洋シーサイドライン沿いにある駐車公園。羨古丹の海岸と起伏のある海岸線、太平洋を見渡せます。天気がいい日は前方に霧多布岬を確認できます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/seasideline-3.webp",
         "src": "assets/images/03_guide/photo-spots/seasideline-3.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/seasideline-4.webp",
         "src": "assets/images/03_guide/photo-spots/seasideline-4.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/seasideline-5.webp",
         "src": "assets/images/03_guide/photo-spots/seasideline-5.webp"
       }
     ],
@@ -375,12 +397,15 @@
     "description": "火散布の港と火散布沼を見渡せる橋。夏の昆布漁の時期には、漁を終えて港へ戻る船が見られることがあり、夕景も楽しめます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/hichirippu.webp",
         "src": "assets/images/03_guide/photo-spots/hichirippu.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/ポロト沼.webp",
         "src": "assets/images/03_guide/photo-spots/ポロト沼.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/ポロト沼-2.webp",
         "src": "assets/images/03_guide/photo-spots/ポロト沼-2.webp"
       }
     ],
@@ -417,9 +442,11 @@
     "description": "浜中町東部にある湖沼と湿地。静かな水辺と草地が広がり、季節によって野鳥の姿が見られることもあります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/esahito-2.webp",
         "src": "assets/images/03_guide/photo-spots/esahito-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/esahito.webp",
         "src": "assets/images/03_guide/photo-spots/esahito.webp"
       }
     ],
@@ -455,9 +482,11 @@
     "description": "火散布沼の南側にある湖沼。周囲の湿地や水辺の景色が広がり、季節によって水鳥が見られることもあります。ジブリ「思い出のマーニー」の舞台にもなっています。冬には白鳥がみられるなど、水鳥に出会えることがあります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/mochirippu.webp",
         "src": "assets/images/03_guide/photo-spots/mochirippu.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/mochirippu-2.webp",
         "src": "assets/images/03_guide/photo-spots/mochirippu-2.webp"
       }
     ],
@@ -493,12 +522,15 @@
     "description": "霧多布岬と周辺の海岸線を高台から見渡せる展望台。岬全体の形や太平洋を少し離れた場所から撮影することができます。この付近の海にラッコがいることもあります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布岬展望台.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布岬展望台.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布岬展望台-2.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布岬展望台-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布岬展望台-3.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布岬展望台-3.webp"
       }
     ],
@@ -533,12 +565,15 @@
     "description": "霧多布湿原の自然や見どころを紹介するネイチャーセンター。展望スペースや館内２Fのカフェから湿原と湿原の先に広がる海・島を撮影できます。撮影前の情報収集にも便利です。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/霧多布湿原センター-3.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原センター-3.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布湿原センター-2.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原センター-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布湿原センター.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原センター.webp"
       }
     ],
@@ -573,12 +608,15 @@
     "description": "涙岬の近くにある、海から立ち上がる岩が印象的な景勝地。断崖と波、立岩がつくる太平洋岸らしい景色を楽しめます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/立岩.webp",
         "src": "assets/images/03_guide/photo-spots/立岩.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/立岩-3.webp",
         "src": "assets/images/03_guide/photo-spots/立岩-3.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/立岩-2.webp",
         "src": "assets/images/03_guide/photo-spots/立岩-2.webp"
       }
     ],
@@ -613,13 +651,16 @@
     "description": "霧多布湿原で季節の花やすすきが広がる場所。時期によって湿原の色や草花の表情が大きく変わります。駐車帯に車を止めて撮影できます。近くに遊歩道の入り口があり、遊歩道から寄って撮影することもできます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/霧多布湿原-4.webp",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原-4.webp",
         "caption": "撮影時の焦点距離：500mm（35mm換算）"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布湿原.jpg",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原.jpg"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/霧多布湿原-3.jpg",
         "src": "assets/images/03_guide/photo-spots/霧多布湿原-3.jpg"
       }
     ],
@@ -650,9 +691,11 @@
     "description": "浜中町東部にある小さな湖沼。周囲の湿地や草地とあわせて静かな水辺の景色が広がり、水鳥が見られることもあります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/ポロト沼-3.webp",
         "src": "assets/images/03_guide/photo-spots/ポロト沼-3.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/ポロト沼-2-1.webp",
         "src": "assets/images/03_guide/photo-spots/ポロト沼-2-1.webp"
       }
     ],
@@ -685,12 +728,15 @@
     "description": "浜中町らしい酪農地帯を広く見渡せる展望スポット。牧草地と広い空が広がり、夕景や星空の撮影にも向いています。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/茶内酪農展望台.webp",
         "src": "assets/images/03_guide/photo-spots/茶内酪農展望台.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/茶内酪農展望台-2.webp",
         "src": "assets/images/03_guide/photo-spots/茶内酪農展望台-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/茶内酪農展望台-3.webp",
         "src": "assets/images/03_guide/photo-spots/茶内酪農展望台-3.webp"
       }
     ],
@@ -734,19 +780,24 @@
     "description": "霧多布湿原センター近くの木道。ヤチボウズや季節の草花、野鳥など、湿原の景色を近くで楽しめます。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/やちぼうず木道-5.webp",
         "src": "assets/images/03_guide/photo-spots/やちぼうず木道-5.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/やちぼうず木道-6.webp",
         "src": "assets/images/03_guide/photo-spots/やちぼうず木道-6.webp"
       },
       {},
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/やちぼうず木道.webp",
         "src": "assets/images/03_guide/photo-spots/やちぼうず木道.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/やちぼうず木道-2.webp",
         "src": "assets/images/03_guide/photo-spots/やちぼうず木道-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/thumbs/やちぼうず木道-3.webp",
         "src": "assets/images/03_guide/photo-spots/やちぼうず木道-3.webp"
       }
     ],
@@ -786,12 +837,15 @@
     "description": "霧多布湿原を約2kmにわたって縦断する道路。道路の両側に湿原が広がり、季節の草花やエゾシカなどの野生動物に出会うこともあります。",
     "images": [
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/MGロード.webp",
         "src": "assets/images/03_guide/photo-spots/MGロード.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/MGロード-2.webp",
         "src": "assets/images/03_guide/photo-spots/MGロード-2.webp"
       },
       {
+        "thumbnail": "assets/images/03_guide/photo-spots/MGロード-3.webp",
         "src": "assets/images/03_guide/photo-spots/MGロード-3.webp"
       }
     ],
