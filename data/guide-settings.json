@@ -7,9 +7,8 @@
     "eyebrow": "06 / PHOTO GUIDE BOOK",
     "title": "HAMANAKA PHOTO GUIDE",
     "cardTitle": "ガイドブックを持っていく",
-    "summary": "写真展で配布するフォトガイドブックをPDFでご覧いただけます。",
+    "summary": "フォトガイドのダイジェスト版をPDFでご覧いただけます。",
     "cover": "assets/images/gide_view.webp",
-    "pdf": "downloads/hamanaka_photo_gide.pdf",
     "buttonLabel": "PDFをダウンロード ↓"
   }
 }
