@@ -674,6 +674,13 @@
   line-height: 1.45;
 }
 
+.trip-v3-essentials-note {
+  margin: 12px 0 0;
+  color: rgba(255,255,255,.82);
+  font-size: 13px;
+  line-height: 1.6;
+}
+
 /* planner */
 .trip-v3-plan-layout {
   display: grid;

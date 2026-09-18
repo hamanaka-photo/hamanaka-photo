@@ -70,7 +70,7 @@
       <section class="tech-v2-section" id="tech-time">
         <div class="container">
           ${heading(section)}
-          <div class="tech-v2-keypoint">
+          <div class="tech-v2-keypoint tech-v2-highlight">
             <span>${esc(section.recommendationTitle || '')}</span>
             <div class="tech-v2-keypoint-copy">
               <strong>${esc(section.recommendationText || '')}</strong>
@@ -121,7 +121,7 @@
         <div class="tech-v2-step-strip">
           ${(section.steps || []).map(step => `<article><span>${esc(step.number || '')}</span><h3>${esc(step.title || '')}</h3><p>${esc(step.text || '')}</p></article>`).join('')}
         </div>
-        <div class="tech-v2-tip-block">
+        <div class="tech-v2-tip-block tech-v2-highlight">
           <div><small>POINT</small><h3>${esc(section.tipTitle || '')}</h3><p>${esc(section.tipText || '')}</p></div>
           <div class="tech-v2-tip-visual">${image(section.image, 'ズームの手順')}</div>
         </div>
@@ -132,7 +132,7 @@
     <section class="tech-v2-section is-soft" id="tech-settings">
       <div class="container">
         ${heading(section)}
-        <div class="tech-v2-yellow-tip"><span>POINT</span><div><h3>${esc(section.tipTitle || '')}</h3><p>${esc(section.tipText || '')}</p></div></div>
+        <div class="tech-v2-yellow-tip tech-v2-highlight"><span>POINT</span><div><h3>${esc(section.tipTitle || '')}</h3><p>${esc(section.tipText || '')}</p></div></div>
         <div class="tech-v2-shutter-grid">
           ${(section.comparisons || []).map(item => `
             <figure>

@@ -608,6 +608,7 @@
               .map(item => `<span>${esc(item)}</span>`)
               .join('')}
           </div>
+          ${clothing.essentialsNote ? `<p class="trip-v3-essentials-note">${esc(clothing.essentialsNote)}</p>` : ''}
         </div>
       </div>`;
   };

@@ -2038,6 +2038,9 @@ content:
         label: その他の必需品
         type: string
         list: true
+      - name: essentialsNote
+        label: 便利なもの｜注記
+        type: string
       - name: seasons
         label: 構造保護｜季節タブ
         type: object
