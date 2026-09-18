@@ -243,3 +243,64 @@ body.is-gallery-modal-open { overflow: hidden; }
   .tech-v4-qa-list summary::after { right: 17px; }
   .tech-v4-qa-list details > p { padding: 16px 17px 19px; }
 }
+
+/* Shared emphasis for the three key Technique notes. */
+.tech-v2-highlight {
+  border: 1px solid var(--tl);
+  border-left: 4px solid var(--tt);
+  border-radius: 8px 10px 10px 8px;
+  background: #eef4f4;
+  box-shadow: none;
+}
+.tech-v2-keypoint.tech-v2-highlight {
+  display: grid;
+  gap: 7px;
+  padding: 22px 24px;
+}
+.tech-v2-keypoint.tech-v2-highlight > span,
+.tech-v2-tip-block.tech-v2-highlight > div:first-child > small,
+.tech-v2-yellow-tip.tech-v2-highlight > span {
+  display: block;
+  padding: 0;
+  min-height: 0;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  color: var(--tt);
+  background: transparent;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .12em;
+  line-height: 1.5;
+}
+.tech-v2-keypoint.tech-v2-highlight strong,
+.tech-v2-tip-block.tech-v2-highlight h3,
+.tech-v2-yellow-tip.tech-v2-highlight h3 {
+  margin: 0;
+  color: var(--tn);
+  font-size: 21px;
+  font-weight: 900;
+  line-height: 1.45;
+}
+.tech-v2-tip-block.tech-v2-highlight > div:first-child { padding: 24px; }
+.tech-v2-tip-block.tech-v2-highlight h3,
+.tech-v2-yellow-tip.tech-v2-highlight h3 { margin-top: 7px; }
+.tech-v2-yellow-tip.tech-v2-highlight {
+  display: block;
+  padding: 22px 24px;
+}
+.tech-v2-highlight p,
+.tech-v2-keypoint.tech-v2-highlight .tech-v2-keypoint-copy small {
+  margin-top: 9px;
+  color: #65757a;
+  font-size: 13px;
+  line-height: 1.7;
+}
+@media (max-width: 760px) {
+  .tech-v2-keypoint.tech-v2-highlight,
+  .tech-v2-yellow-tip.tech-v2-highlight { padding: 20px; }
+  .tech-v2-tip-block.tech-v2-highlight > div:first-child { padding: 20px; }
+  .tech-v2-keypoint.tech-v2-highlight strong,
+  .tech-v2-tip-block.tech-v2-highlight h3,
+  .tech-v2-yellow-tip.tech-v2-highlight h3 { font-size: 19px; }
+}
