@@ -18,10 +18,28 @@
   const currentLink =
     document.querySelector('[data-current-link]');
 
+  const authorsSection = document.querySelector('[data-gallery-authors]');
+  const archiveSection = document.querySelector('[data-gallery-archive]');
+  const release = window.HAMANAKA_SELECTION_RELEASE;
+
   let selections = [];
   let activeSelection = null;
   let data = [];
   let currentIndex = 0;
+
+  const renderComingSoon = selection => {
+    activeSelection = null;
+    data = [];
+    if (selectionTitle) selectionTitle.textContent = selection.title || 'フォトセレクション';
+    if (selectionStatus) selectionStatus.textContent = 'COMING SOON';
+    if (selectionDescription) selectionDescription.textContent =
+      `展示作品は${release.formatDate(selection)}に公開予定です。`;
+    if (grid) grid.innerHTML = '';
+    if (preview) preview.innerHTML = '';
+    if (currentLink) currentLink.hidden = true;
+    if (authorsSection) authorsSection.hidden = true;
+    if (archiveSection) archiveSection.hidden = true;
+  };
 
 
   const escapeHtml = (value = '') =>
@@ -308,6 +326,9 @@
 
     if (!activeSelection) return;
 
+    if (authorsSection) authorsSection.hidden = false;
+    if (archiveSection) archiveSection.hidden = false;
+
 
     data =
       Array.isArray(activeSelection.works)
@@ -466,23 +487,7 @@
 
     try {
 
-      const response =
-        await fetch(
-          'data/selections.json'
-        );
-
-
-      if (!response.ok) {
-
-        throw new Error(
-          `selections.json の読み込みに失敗しました (${response.status})`
-        );
-
-      }
-
-
-      const json =
-        await response.json();
+      const json = await release.load();
 
 
       if (!Array.isArray(json)) {
@@ -494,7 +499,7 @@
       }
 
 
-      selections = json;
+      selections = json.filter(item => release.isPublished(item));
 
 
       const params =
@@ -505,6 +510,19 @@
 
       const requestedId =
         params.get('selection');
+
+      const requestedSelection = requestedId
+        ? json.find(item => item.id === requestedId)
+        : null;
+
+      const scheduledSelection = requestedSelection ||
+        json.find(item => item.status === 'current');
+
+      if (scheduledSelection && !release.isPublished(scheduledSelection)) {
+        renderComingSoon(scheduledSelection);
+        release.onRelease(scheduledSelection, loadSelections);
+        return;
+      }
 
 
       if (requestedId) {

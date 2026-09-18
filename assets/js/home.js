@@ -7,17 +7,37 @@
     '[data-home-selection-link]'
   );
 
+  const release = window.HAMANAKA_SELECTION_RELEASE;
+  const releaseNote = document.querySelector('[data-exhibition-before]');
+  const exhibitionLink = document.querySelector('[data-exhibition-after]');
+  const exhibitionNews = document.querySelector('[data-exhibition-news]');
+  const selectionStatus = document.querySelector('[data-home-selection-status]');
+
+  function renderSelection(current) {
+    const published = release.isPublished(current);
+    const displayTitle = published
+      ? current.shortTitle || current.title || '現在のフォトセレクション'
+      : `${release.formatDate(current)}公開予定`;
+    const selectionUrl = published
+      ? `gallery.html?selection=${encodeURIComponent(current.id)}`
+      : 'gallery.html';
+
+    titleElements.forEach(element => { element.textContent = displayTitle; });
+    linkElements.forEach(element => { element.href = selectionUrl; });
+    if (selectionStatus) {
+      selectionStatus.textContent = published ? 'CURRENT SELECTION' : 'COMING SOON';
+    }
+    if (releaseNote) {
+      releaseNote.textContent = `${release.formatDate(current)}公開予定`;
+      releaseNote.hidden = published;
+    }
+    if (exhibitionLink) exhibitionLink.hidden = !published;
+    if (exhibitionNews) exhibitionNews.hidden = !published;
+  }
+
   async function loadCurrentSelection() {
     try {
-      const response = await fetch('data/selections.json');
-
-      if (!response.ok) {
-        throw new Error(
-          `selections.json の読み込みに失敗しました (${response.status})`
-        );
-      }
-
-      const selections = await response.json();
+      const selections = await release.load();
 
       if (!Array.isArray(selections) || selections.length === 0) {
         throw new Error('selections.json の形式が正しくありません。');
@@ -28,21 +48,8 @@
           item => String(item.status).toLowerCase() === 'current'
         ) || selections[0];
 
-      const displayTitle =
-        current.shortTitle ||
-        current.title ||
-        '現在のフォトセレクション';
-
-      const selectionUrl =
-        `gallery.html?selection=${encodeURIComponent(current.id)}`;
-
-      titleElements.forEach(element => {
-        element.textContent = displayTitle;
-      });
-
-      linkElements.forEach(element => {
-        element.href = selectionUrl;
-      });
+      renderSelection(current);
+      release.onRelease(current, () => renderSelection(current));
 
     } catch (error) {
       console.error(error);

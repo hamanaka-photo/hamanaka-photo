@@ -923,6 +923,18 @@ button {
     none !important;
 }
 
+.gallery-page [hidden],
+.feature-banner [hidden],
+.news-row[hidden],
+.site-footer [hidden] {
+  display: none !important;
+}
+
+html:not(.gallery-exhibition-released) a[href*="selection=tokyo-camera-club-2026"],
+html:not(.gallery-exhibition-released) a[href="gallery.html#author"] {
+  display: none !important;
+}
+
 
 .past-selection-grid {
   display: grid;
