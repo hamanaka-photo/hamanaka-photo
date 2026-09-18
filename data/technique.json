@@ -43,6 +43,7 @@
     "lead": "ラッコの毛並みや表情をはっきり写したいときは、光量を確保しやすい時間帯を選ぶと撮影しやすくなります。\n\n時間だけでなく、天候や太陽の向きも確認してみましょう。",
     "recommendationTitle": "撮影時間の目安",
     "recommendationText": "日の出の約3時間後〜日没約3時間前",
+    "recommendationNote": "天候や季節、太陽の位置、ラッコがいる場所によって光の状態は変わります。あくまで撮影時間を考えるときの参考としてご覧ください。",
     "comparisons": [
       {
         "label": "EARLY / EVENING",
@@ -52,7 +53,8 @@
       {
         "label": "DAYTIME",
         "title": "日中",
-        "text": "日中は光量を確保しやすく、ラッコの毛並みやしぐさを写しやすくなります。晴れた日は、海や海藻の色も見えやすくなります。日中の光では、毛並みや海の色を確認しやすくなります。"
+        "text": "日中は光量を確保しやすく、ラッコの毛並みやしぐさを写しやすくなります。晴れた日は、海や海藻の色も見えやすくなります。日中の光では、毛並みや海の色を確認しやすくなります。",
+        "image": "assets/images/03_guide/technique/日中ラッコ.webp"
       }
     ],
     "sun": {
@@ -60,8 +62,7 @@
       "text": "同じ撮影場所でも、季節や時間帯によって光の当たり方は変わります。外部ツールも参考に、太陽とラッコの位置関係を確認してみましょう。",
       "buttonLabel": "太陽の向きを確認する",
       "url": "https://hinode.pics/"
-    },
-    "recommendationNote": "天候や季節、太陽の位置、ラッコがいる場所によって光の状態は変わります。あくまで撮影時間を考えるときの参考としてご覧ください。"
+    }
   },
   "place": {
     "eyebrow": "02 / 場所",
@@ -74,6 +75,7 @@
       "人が集まっている場所で情報を聞いてみる方法もあります。",
       "観察・撮影は遊歩道から行いましょう。"
     ],
+    "image": "assets/images/03_guide/technique/霧多布岬の遊歩道.webp",
     "imageCaption": "灯台へ向かう遊歩道。紙面では左側の海面を中心に探す位置を紹介しています。",
     "fallbackTitle": "見つからないときは",
     "fallbackText": "ここから徒歩約12分の「霧多布岬展望台」付近も確認してみましょう。"
@@ -100,7 +102,8 @@
       }
     ],
     "tipTitle": "ラッコの位置を捉えてから、少しずつズーム",
-    "tipText": "レンズを支える腕を手すりに置いたり、脇を締めたりしてカメラを安定させると、手持ち撮影でもブレを抑えやすくなります。"
+    "tipText": "レンズを支える腕を手すりに置いたり、脇を締めたりしてカメラを安定させると、手持ち撮影でもブレを抑えやすくなります。",
+    "image": "assets/images/03_guide/technique/スクリーンショット 2026-09-18 9.49.38.png"
   },
   "settings": {
     "eyebrow": "04 / 設定",
@@ -113,13 +116,13 @@
         "shutter": "1/125秒",
         "title": "動いているラッコはブレてしまう",
         "text": "シャッター速度が遅いと、ラッコの動きやカメラの揺れが写真に残りやすくなります。",
-        "image": "assets/images/20250720-1839-570 mm-1-125 秒 (f - 8.0).jpg"
+        "image": "assets/images/03_guide/technique/ブレラッコ.webp"
       },
       {
         "shutter": "1/1000秒",
         "title": "速いシャッターで毛並みまで鮮明に",
         "text": "動きを止めたいときはシャッター速度を上げ、撮影後に拡大してブレを確認します。",
-        "image": "assets/images/20250608-1536-800 mm-1-1000 秒 (f - 9.0).jpg"
+        "image": "assets/images/03_guide/technique/はっきりラッコ.webp"
       }
     ],
     "detailTitle": "さらに調整したいときの目安",
@@ -154,6 +157,7 @@
     "caption": "YouTubeの解説動画を掲載します。動画URLが未設定の間も、このフレームは表示されます。"
   },
   "gallery": {
+    "enabled": false,
     "eyebrow": "05 / 作例",
     "title": "設定の違いを写真で見る",
     "lead": "シャッタースピードや焦点距離を見ながら、設定による写り方の違いを確認してみましょう。",
@@ -181,29 +185,6 @@
         "shutter": "1/1000秒",
         "focalLength": "800mm",
         "aperture": "F9"
-      }
-    ],
-    "enabled": false
-  },
-  "next": {
-    "eyebrow": "NEXT STEP",
-    "title": "撮り方を確認したら、ルールも忘れずに。",
-    "text": "野生動物との距離を保ち、遊歩道から自然な姿をそっと見守りながら撮影しましょう。",
-    "links": [
-      {
-        "label": "撮影時のルール・マナー",
-        "sub": "RULES & MANNERS",
-        "url": "guide-article.html?article=manner"
-      },
-      {
-        "label": "撮影スポットを探す",
-        "sub": "SPOT",
-        "url": "guide-article.html?article=photo-map"
-      },
-      {
-        "label": "機材を選ぶ",
-        "sub": "GEAR",
-        "url": "guide-article.html?article=gear"
       }
     ]
   },
@@ -234,6 +215,28 @@
       {
         "question": "連写は使った方がいい？",
         "answer": "食事や毛づくろい、潜る前後など、ラッコのしぐさが変わる場面では連写が役立ちます。\n\n常に連写し続けるのではなく、動きが出そうな場面で使う方法もあります。"
+      }
+    ]
+  },
+  "next": {
+    "eyebrow": "NEXT STEP",
+    "title": "撮り方を確認したら、ルールも忘れずに。",
+    "text": "野生動物との距離を保ち、遊歩道から自然な姿をそっと見守りながら撮影しましょう。",
+    "links": [
+      {
+        "label": "撮影時のルール・マナー",
+        "sub": "RULES & MANNERS",
+        "url": "guide-article.html?article=manner"
+      },
+      {
+        "label": "撮影スポットを探す",
+        "sub": "SPOT",
+        "url": "guide-article.html?article=photo-map"
+      },
+      {
+        "label": "機材を選ぶ",
+        "sub": "GEAR",
+        "url": "guide-article.html?article=gear"
       }
     ]
   }
