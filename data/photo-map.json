@@ -2,7 +2,8 @@
   "hero": {
     "eyebrow": "PHOTO MAP",
     "title": "撮影スポットを探す",
-    "lead": "浜中町の絶景スポットを、エリアや撮りたい被写体から探せます。自分だけのとっておきの1枚を見つけに出かけましょう。"
+    "lead": "浜中町の絶景スポットを、エリアや撮りたい被写体から探せます。自分だけのとっておきの1枚を見つけに出かけましょう。",
+    "image": "assets/images/03_guide/photo-map/biwasemokudo-3.webp"
   },
   "map": {
     "image": "assets/images/03_guide/photo-map/map.webp",
