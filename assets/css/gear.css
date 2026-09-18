@@ -307,7 +307,8 @@
   font-weight: 900;
   cursor: pointer;
 }
-.gear-v2-focal-buttons button small { font-size: 12px; }
+.gear-v2-focal-buttons button .gear-v2-focal-button-number { font-size: 17px; }
+.gear-v2-focal-buttons button small { font-size: 14px; }
 .gear-v2-focal-buttons button[aria-current="true"] {
   color: #fff;
   border-color: var(--gear-teal);
@@ -786,6 +787,8 @@
     min-height: 40px;
     font-size: 13px;
   }
+  .gear-v2-focal-buttons button .gear-v2-focal-button-number { font-size: 16px; }
+  .gear-v2-focal-buttons button small { font-size: 13px; }
   .gear-v2-accessory-grid { grid-template-columns: 1fr; }
   .gear-v2-accessory-card > div { height: 200px; }
   .gear-v2-focal-point,

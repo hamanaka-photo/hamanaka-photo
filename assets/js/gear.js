@@ -134,7 +134,7 @@
                     type="button"
                     data-focal-button="${index}"
                     ${index === defaultIndex ? 'aria-current="true"' : ''}>
-                    ${escapeHtml(item.focal)}<small>mm</small>
+                    <span class="gear-v2-focal-button-number">${escapeHtml(item.focal)}</span><small>mm</small>
                   </button>`).join('')}
               </div>
             </div>
