@@ -195,6 +195,10 @@
     ],
     "lat": 42.9938884,
     "lng": 145.009307,
+    "positionOverride": {
+      "x": 25,
+      "y": 87
+    },
     "detailUrl": "https://maps.app.goo.gl/XQfgGdTCywaSFqfF7"
   },
   {
@@ -431,6 +435,10 @@
     ],
     "lat": 43.0312095,
     "lng": 145.0247668,
+    "positionOverride": {
+      "x": 28,
+      "y": 76
+    },
     "detailUrl": "https://maps.app.goo.gl/9PwbWp2yaenWHrUC8"
   },
   {
@@ -511,6 +519,10 @@
     ],
     "lat": 43.0189,
     "lng": 145.0125,
+    "positionOverride": {
+      "x": 26,
+      "y": 79
+    },
     "detailUrl": "https://maps.app.goo.gl/2vCvFeUk16zSHmhi9"
   },
   {
@@ -640,6 +652,10 @@
     ],
     "lat": 42.995763,
     "lng": 145.0126378,
+    "positionOverride": {
+      "x": 26,
+      "y": 87
+    },
     "detailUrl": "https://maps.app.goo.gl/tSa4hAcQmturuWCp8"
   },
   {
@@ -769,6 +785,10 @@
     ],
     "lat": 43.1530997,
     "lng": 145.0528315,
+    "positionOverride": {
+      "x": 37,
+      "y": 36
+    },
     "detailUrl": "https://maps.app.goo.gl/bv33HRKTe1SVybNr7"
   },
   {
