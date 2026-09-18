@@ -2,9 +2,35 @@
   "pageTitle": "撮りたい景色を探しに、浜中町へ。",
   "pageLead": "フォトガイドブックの内容をWebでも使いやすく。撮影場所を探すところから、旅行準備、機材、撮影方法、マナーまでを一つにつなぎます。",
   "indexLead": "知りたいテーマを選んで、浜中町での撮影旅行に役立つ情報をご覧ください。",
+  "menu": [
+    {
+      "articleId": "photo-map",
+      "title": "撮影スポットを探す",
+      "eyebrow": "01 / PHOTO MAP"
+    },
+    {
+      "articleId": "trip",
+      "title": "撮影旅行の準備",
+      "eyebrow": "02 / PREPARATION"
+    },
+    {
+      "title": "ラッコ撮影のヒント",
+      "eyebrow": "03 / OTTER GUIDE",
+      "summary": "ラッコを撮るための機材と撮り方を紹介します。",
+      "children": [
+        { "articleId": "gear", "title": "撮影機材を選ぶ" },
+        { "articleId": "technique", "title": "撮り方・設定" }
+      ]
+    },
+    {
+      "articleId": "manner",
+      "title": "撮影時のルール・マナー",
+      "eyebrow": "04 / MANNER"
+    }
+  ],
   "guidebook": {
     "enabled": true,
-    "eyebrow": "06 / PHOTO GUIDE BOOK",
+    "eyebrow": "PHOTO GUIDE BOOK",
     "title": "HAMANAKA PHOTO GUIDE",
     "cardTitle": "ガイドブックを持っていく",
     "summary": "フォトガイドのダイジェスト版をPDFでご覧いただけます。",

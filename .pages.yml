@@ -3365,6 +3365,44 @@ content:
     - name: indexLead
       label: 目次の説明
       type: text
+    - name: menu
+      label: PHOTO GUIDEの大項目（表示順）
+      type: object
+      list:
+        collapsible:
+          collapsed: true
+          summary: '{title}'
+      fields:
+      - name: articleId
+        label: 記事ID（単独記事の場合）
+        type: string
+        description: photo-map、trip、mannerなど。子項目を持つ場合は空欄にします。
+      - name: title
+        label: 表示タイトル
+        type: string
+        required: true
+      - name: eyebrow
+        label: 英字見出し
+        type: string
+      - name: summary
+        label: 親項目の説明（子項目を持つ場合）
+        type: text
+      - name: children
+        label: 子項目
+        type: object
+        list:
+          collapsible:
+            collapsed: true
+            summary: '{title}'
+        fields:
+        - name: articleId
+          label: 記事ID
+          type: string
+          required: true
+        - name: title
+          label: 表示タイトル
+          type: string
+          required: true
     - name: guidebook
       label: フォトガイドブック
       type: object
