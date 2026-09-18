@@ -25,11 +25,16 @@
 
       <div class="footer-col">
         <h2><a href="guide.html">PHOTO GUIDE</a></h2>
-        <a href="guide-article.html?article=photo-map">撮影スポット</a>
+        <a href="guide-article.html?article=photo-map">撮影スポットを探す</a>
         <a href="guide-article.html?article=trip">撮影旅行の準備</a>
-        <a href="guide-article.html?article=gear">カメラ・レンズ</a>
-        <a href="guide-article.html?article=technique">撮影テクニック</a>
-        <a href="guide-article.html?article=manner">撮影ルール・マナー</a>
+        <div class="footer-guide-group">
+          <span class="footer-guide-parent">ラッコ撮影のヒント</span>
+          <div class="footer-guide-children">
+            <a href="guide-article.html?article=gear">撮影機材を選ぶ</a>
+            <a href="guide-article.html?article=technique">撮り方・設定</a>
+          </div>
+        </div>
+        <a href="guide-article.html?article=manner">撮影時のルール・マナー</a>
       </div>
 
       <div class="footer-col">
@@ -101,10 +106,35 @@
       line-height: 1.55;
     }
 
+    .site-footer .footer-guide-parent {
+      display: block;
+      margin: 7px 0;
+      color: #5e7484;
+      font-size: 14px;
+      line-height: 1.55;
+    }
+
+    .site-footer .footer-guide-children {
+      padding-left: 12px;
+    }
+
+    .site-footer .footer-guide-children a {
+      color: #5e7484;
+      line-height: 1.55;
+    }
+
     .site-footer .footer-col > a:hover,
+    .site-footer .footer-guide-children a:hover,
     .site-footer .footer-col h2 a:hover,
     .site-footer .footer-brand-link:hover {
       color: var(--blue);
+    }
+
+    @media (max-width: 900px) {
+      .site-footer .footer-guide-children a {
+        margin: 0;
+        padding: 10px 0;
+      }
     }
 
     @media (max-width: 1100px) {
