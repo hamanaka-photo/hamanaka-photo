@@ -144,6 +144,29 @@
     links.appendChild(link);
   };
 
+  const organizeGuideLinks = nav => {
+    const links = nav?.querySelector(
+      '.field-guide-links, .trip-field-guide-links, .gear-v2-field-links, .tech-v1-field-links, .manner-v1-field-links'
+    );
+    if (!links || links.classList.contains('field-guide-hierarchy')) return;
+
+    const articleLink = (id, label) => `
+      <a href="guide-article.html?article=${id}"${articleId === id ? ' aria-current="page"' : ''}>${label}</a>`;
+
+    links.classList.add('field-guide-hierarchy');
+    links.innerHTML = `
+      ${articleLink('photo-map', '撮影スポットを探す')}
+      ${articleLink('trip', '撮影旅行の準備')}
+      <div class="field-guide-hint-group" aria-label="ラッコ撮影のヒント">
+        <span class="field-guide-hint-title">ラッコ撮影のヒント</span>
+        <div class="field-guide-hint-children">
+          ${articleLink('gear', '撮影機材を選ぶ')}
+          ${articleLink('technique', '撮り方・設定')}
+        </div>
+      </div>
+      ${articleLink('manner', '撮影時のルール・マナー')}`;
+  };
+
   const setGearDefaultTo300 = () => {
     if (articleId !== 'gear' || root.dataset.defaultFocalAdjusted === 'true') return;
     const buttons = [...root.querySelectorAll('[data-focal-button]')];
@@ -191,6 +214,7 @@
     if (nav) {
       nav.classList.add('field-guide-unified-nav');
       nav.querySelectorAll(spotButtonSelectors).forEach(button => button.remove());
+      organizeGuideLinks(nav);
       addGuidebookLink(nav);
       if (!hero.contains(nav)) hero.insertBefore(nav, hero.firstChild);
     }

@@ -44,38 +44,35 @@
   const guideItems = [
     {
       number: '01',
-      label: '撮影スポット',
-      sub: 'スポット',
+      label: '撮影スポットを探す',
+      sub: 'PHOTO MAP',
       url: 'guide-article.html?article=photo-map'
     },
     {
       number: '02',
-      label: '準備',
+      label: '撮影旅行の準備',
       sub: 'PREPARATION',
       url: 'guide-article.html?article=trip'
     },
     {
       number: '03',
-      label: '機材',
-      sub: 'GEAR',
-      url: 'guide-article.html?article=gear'
+      label: 'ラッコ撮影のヒント',
+      sub: 'OTTER GUIDE',
+      children: [
+        { label: '撮影機材を選ぶ', url: 'guide-article.html?article=gear' },
+        { label: '撮り方・設定', url: 'guide-article.html?article=technique' }
+      ]
     },
     {
       number: '04',
-      label: 'テクニック',
-      sub: 'TECHNIQUE',
-      url: 'guide-article.html?article=technique'
-    },
-    {
-      number: '05',
-      label: 'ルール',
-      sub: 'RULES',
+      label: '撮影時のルール・マナー',
+      sub: 'MANNER',
       url: 'guide-article.html?article=manner'
     },
     {
-      number: '06',
+      number: 'PDF',
       label: 'ガイドブック',
-      sub: 'GUIDEBOOK',
+      sub: 'PHOTO GUIDE BOOK',
       url: 'https://photo.hamanaka-life.com/guide.html#:~:text=ガイドブックを持っていく'
     }
   ];
@@ -104,13 +101,20 @@
     dropdown.className = 'site-nav-guide-dropdown';
     dropdown.setAttribute('aria-label', '撮りに行くメニュー');
 
-    dropdown.innerHTML = guideItems.map(item => `
-      <a href="${item.url}">
-        <span>${item.number}</span>
-        <div>
-          <small>${item.sub}</small>
-          <b>${item.label}</b>
+    dropdown.innerHTML = guideItems.map(item => item.children ? `
+      <div class="site-nav-guide-group" aria-label="${item.label}">
+        <div class="site-nav-guide-group-heading">
+          <span>${item.number}</span>
+          <div><small>${item.sub}</small><b>${item.label}</b></div>
         </div>
+        <div class="site-nav-guide-children">
+          ${item.children.map(child => `<a href="${child.url}">${child.label} →</a>`).join('')}
+        </div>
+      </div>
+    ` : `
+      <a href="${item.url}"${item.number === 'PDF' ? ' class="site-nav-guide-book"' : ''}>
+        <span>${item.number}</span>
+        <div><small>${item.sub}</small><b>${item.label}</b></div>
       </a>
     `).join('');
 
@@ -146,7 +150,7 @@
           left: 50%;
           z-index: 100;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           width: 390px;
           padding: 10px;
           border: 1px solid rgba(255,255,255,.12);
@@ -181,12 +185,55 @@
           opacity: 1;
         }
 
+        .site-nav-guide-group {
+          padding: 8px 10px 11px;
+          border-top: 1px solid rgba(255,255,255,.12);
+          border-bottom: 1px solid rgba(255,255,255,.12);
+        }
+
+        .site-nav-guide-group-heading {
+          display: grid;
+          grid-template-columns: 34px 1fr;
+          gap: 9px;
+          align-items: center;
+          color: #fff;
+        }
+
+        .site-nav-guide-children {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 8px;
+          margin: 9px 0 0 43px;
+        }
+
+        .site-nav-guide-children a {
+          display: flex;
+          align-items: center;
+          min-height: 42px;
+          padding: 8px 10px;
+          border-radius: 6px;
+          color: #fff;
+          background: rgba(255,255,255,.08);
+          font-size: 13px;
+          font-weight: 700;
+        }
+
+        .site-nav-guide-children a:hover,
+        .site-nav-guide-children a:focus-visible {
+          background: rgba(255,255,255,.16);
+        }
+
+        .site-nav-guide-book {
+          border-top: 1px solid rgba(255,255,255,.12);
+        }
+
         .site-nav-guide-dropdown > a:hover,
         .site-nav-guide-dropdown > a:focus-visible {
           background: rgba(255,255,255,.10);
         }
 
-        .site-nav-guide-dropdown > a > span {
+        .site-nav-guide-dropdown > a > span,
+        .site-nav-guide-group-heading > span {
           display: grid;
           place-items: center;
           width: 30px;
@@ -212,10 +259,11 @@
           font-size: 14px;
         }
 
-        @media (max-width: 820px) {
+        @media (max-width: 900px) {
           .site-nav-guide-wrap {
             display: block;
             width: 100%;
+            align-self: auto;
           }
 
           .site-nav-guide-trigger {
@@ -224,7 +272,9 @@
 
           .site-nav-guide-dropdown {
             position: static;
-            grid-template-columns: 1fr 1fr;
+            top: auto;
+            left: auto;
+            grid-template-columns: 1fr;
             width: 100%;
             margin-top: 8px;
             padding: 7px;
@@ -233,11 +283,25 @@
             opacity: 1;
             visibility: visible;
             transform: none;
+            transition: none;
             background: rgba(255,255,255,.06);
+          }
+
+          .site-nav-guide-wrap:hover .site-nav-guide-dropdown,
+          .site-nav-guide-wrap:focus-within .site-nav-guide-dropdown {
+            transform: none;
           }
 
           .site-nav-guide-dropdown > a {
             min-height: 52px;
+          }
+        }
+
+        @media (max-width: 480px) {
+          .site-nav-guide-children a {
+            padding-inline: 8px;
+            font-size: 12px;
+            white-space: nowrap;
           }
         }
       `;
