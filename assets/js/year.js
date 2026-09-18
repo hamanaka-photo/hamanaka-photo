@@ -19,8 +19,8 @@
       <div class="footer-col">
         <h2><a href="gallery.html">GALLERY</a></h2>
         <a href="gallery.html">フォトギャラリー</a>
-        <a href="gallery.html?selection=tokyo-camera-club-2026">東京カメラ部2026写真展</a>
-        <a href="gallery.html#author">撮影者紹介</a>
+        <a href="gallery.html?selection=tokyo-camera-club-2026" data-gallery-release-link hidden>東京カメラ部2026写真展</a>
+        <a href="gallery.html#author" data-gallery-release-link hidden>撮影者紹介</a>
       </div>
 
       <div class="footer-col">
@@ -167,4 +167,19 @@
   document.querySelectorAll('[data-year]').forEach(el => {
     el.textContent = currentYear;
   });
+
+  const release = window.HAMANAKA_SELECTION_RELEASE;
+  release.load().then(selections => {
+    const exhibition = selections.find(item => item.id === 'tokyo-camera-club-2026');
+    if (!exhibition) return;
+    const updateLinks = () => {
+      const published = release.isPublished(exhibition);
+      document.documentElement.classList.toggle('gallery-exhibition-released', published);
+      document.querySelectorAll('[data-gallery-release-link]').forEach(link => {
+        link.hidden = !published;
+      });
+    };
+    updateLinks();
+    release.onRelease(exhibition, updateLinks);
+  }).catch(error => console.error(error));
 })();

@@ -1,4 +1,43 @@
 (() => {
+  let selectionsRequest;
+  window.HAMANAKA_SELECTION_RELEASE = {
+    load() {
+      selectionsRequest ||= fetch('data/selections.json', { cache: 'no-store' })
+        .then(response => {
+          if (!response.ok) throw new Error('フォトセレクションを読み込めませんでした。');
+          return response.json();
+        });
+      return selectionsRequest;
+    },
+    isPublished(selection, now = Date.now()) {
+      if (!selection?.publishAt) return true;
+      const releaseAt = Date.parse(selection.publishAt);
+      return Number.isFinite(releaseAt) && now >= releaseAt;
+    },
+    formatDate(selection) {
+      const releaseAt = new Date(selection.publishAt);
+      if (Number.isNaN(releaseAt.getTime())) return '準備が整い次第';
+      const parts = Object.fromEntries(
+        new Intl.DateTimeFormat('ja-JP', {
+          timeZone: 'Asia/Tokyo',
+          year: 'numeric', month: 'numeric', day: 'numeric',
+          hour: '2-digit', minute: '2-digit', hourCycle: 'h23'
+        }).formatToParts(releaseAt).map(part => [part.type, part.value])
+      );
+      return `${parts.year}年${parts.month}月${parts.day}日${parts.hour}:${parts.minute}`;
+    },
+    onRelease(selection, callback) {
+      const releaseAt = Date.parse(selection?.publishAt);
+      if (!Number.isFinite(releaseAt) || releaseAt <= Date.now()) return;
+      const wait = () => {
+        const remaining = releaseAt - Date.now();
+        if (remaining <= 0) callback();
+        else window.setTimeout(wait, Math.min(remaining, 2147483647));
+      };
+      wait();
+    }
+  };
+
   const menuButton = document.querySelector('.menu-button');
   const nav = document.querySelector('.site-nav');
 
