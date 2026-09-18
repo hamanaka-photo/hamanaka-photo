@@ -2662,12 +2662,11 @@ body.photo-map-modal-open {
   width: 100%;
   max-width: none;
   font-size: 16px;
-  white-space: nowrap;
+  white-space: normal;
 }
 
 @media (max-width: 680px) {
   .photo-map-section-heading h2 { font-size: 22px; }
   .photo-map-legend-grid { grid-template-columns: 1fr; }
   .photo-map-legend-grid small { white-space: normal; }
-  .photo-map-courses-note { white-space: normal; }
 }
