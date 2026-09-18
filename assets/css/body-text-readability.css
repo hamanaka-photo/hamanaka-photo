@@ -1,0 +1,213 @@
+/* Reading text only. Headings, eyebrows, controls and navigation keep their page styles. */
+
+/* INTRODUCTION */
+[data-introduction-page] .intro-body p,
+[data-introduction-page] .intro-trip-point p,
+[data-introduction-page] .intro-subject-card p:last-child,
+[data-introduction-page] .intro-link-card > p:not(.eyebrow) {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.85;
+}
+[data-introduction-page] .intro-drive-head > p:last-child {
+  color: #5b7078;
+  font-size: 15px;
+  line-height: 1.8;
+}
+[data-introduction-page] .intro-living .intro-body p {
+  color: rgba(255, 255, 255, .9);
+}
+
+/* ABOUT */
+[data-about-page] .about-policy-copy p,
+[data-about-page] .about-operator-grid p,
+[data-about-page] .about-rights-alert p,
+[data-about-page] .about-policy-card p,
+[data-about-page] .about-related-card p {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+[data-about-page] .about-policy-head > p:last-child {
+  color: #5b7078;
+  font-size: 15px;
+  line-height: 1.8;
+}
+[data-about-page] .about-contact-card dt {
+  color: #5b7078;
+}
+[data-about-page] .about-contact-note {
+  color: #5b7078;
+  font-size: 14px;
+}
+
+/* PREPARATION */
+.trip-v3-ready .trip-v3-heading .trip-v4-section-lead,
+.trip-v3-ready .trip-v3-rental-main > p,
+.trip-v3-ready .trip-v3-transit p,
+.trip-v3-ready .trip-v3-stay-copy p,
+.trip-v3-ready .trip-v4-public-copy p,
+.trip-v3-ready .trip-v4-access-example p,
+.trip-v3-ready .trip-v9-wear-copy > p,
+.trip-v3-ready .trip-v3-wear-list li,
+.trip-v3-ready .trip-v8-climate-description,
+.trip-v3-ready .trip-tip span {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.trip-v3-ready .trip-v3-essential-grid span,
+.trip-v3-ready .trip-v3-check-item {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.trip-v3-ready .trip-v3-heading > span,
+.trip-v3-ready .trip-v4-subsection-heading p,
+.trip-v3-ready .trip-v4-option-title p,
+.trip-v3-ready .trip-v4-step-head p {
+  color: #5b7078;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.trip-v3-ready .trip-v3-flight-facts span,
+.trip-v3-ready .trip-v3-action-heading span {
+  color: #5b7078;
+}
+.trip-v3-ready .trip-v3-flight-facts b {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.6;
+}
+.trip-v3-ready .trip-v3-flight-note,
+.trip-v3-ready .trip-v3-airport-note,
+.trip-v3-ready .trip-v3-essentials-note {
+  font-size: 14px;
+  line-height: 1.75;
+}
+.trip-v3-ready .trip-v3-flight-note,
+.trip-v3-ready .trip-v3-airport-note {
+  color: #5b7078;
+}
+.trip-v3-ready .trip-v3-essentials-note {
+  color: rgba(255, 255, 255, .9);
+}
+
+/* GEAR */
+.gear-v2-page .gear-v2-hero-lead {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.gear-v2-page .gear-v2-focal-intro p,
+.gear-v2-page .gear-choice-points p,
+.gear-v2-page .gear-choice-example p,
+.gear-v2-page .gear-teleconverter p:not(.gear-teleconverter-label),
+.gear-v2-page .gear-teleconverter-cautions li,
+.gear-v2-page .gear-selection-card p,
+.gear-v2-page .gear-selection-tip p,
+.gear-v2-page .gear-v2-accessory-card p {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.gear-v2-page .gear-v2-heading > span,
+.gear-v2-page .gear-v2-focal-point p,
+.gear-v2-page .gear-v2-next-inner div > span {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.gear-v2-page .gear-v2-heading > span,
+.gear-v2-page .gear-v2-focal-point p {
+  color: #5b7078;
+}
+.gear-v2-page .gear-v2-note,
+.gear-v2-page .gear-v2-focal-point small,
+.gear-v2-page .gear-v2-focal-figure figcaption span,
+.gear-v2-page .gear-examples-note,
+.gear-v2-page .gear-example-card figcaption span {
+  color: #5b7078;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* TECHNIQUE */
+.tech-v2-page .tech-v2-hero-inner > span {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.tech-v2-page .tech-v2-compare-card p,
+.tech-v2-page .tech-v2-info-band span,
+.tech-v2-page .tech-v2-check-list > div p,
+.tech-v2-page .tech-v2-check-list aside p,
+.tech-v2-page .tech-v2-step-strip p,
+.tech-v2-page .tech-v2-shutter-grid p,
+.tech-v2-page .tech-v2-detail-settings article p,
+.tech-v2-page .tech-v4-qa-list details > p {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.tech-v2-page .tech-v2-heading > span,
+.tech-v2-page .tech-v2-highlight p,
+.tech-v2-page .tech-v2-next-inner > div:first-child > span {
+  font-size: 15px;
+  line-height: 1.8;
+}
+.tech-v2-page .tech-v2-heading > span,
+.tech-v2-page .tech-v2-highlight p {
+  color: #5b7078;
+}
+.tech-v2-page .tech-v2-keypoint.tech-v2-highlight .tech-v2-keypoint-copy small,
+.tech-v2-page .tech-v2-compare-card figcaption > span,
+.tech-v2-page .tech-v2-media-block figcaption,
+.tech-v2-page .tech-v2-gallery figcaption,
+.tech-v2-page .tech-v3-gallery-window figcaption,
+.tech-v2-page .tech-v3-video-caption {
+  color: #5b7078;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* MANNER */
+.manner-v2-page .manner-v2-hero-inner > span,
+.manner-v2-page .manner-v2-opening span {
+  font-size: 16px;
+  line-height: 1.8;
+}
+.manner-v2-page .manner-v2-rule-list p,
+.manner-v2-page .manner-v2-safety-grid p,
+.manner-v2-page .manner-v2-message span {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.manner-v2-page .manner-v2-heading > span {
+  color: #5b7078;
+  font-size: 15px;
+  line-height: 1.8;
+}
+.manner-v2-page .manner-v2-next-inner > div:first-child > span {
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+/* PHOTO MAP: modal copy only */
+.photo-map-page .photo-spot-modal-description,
+.photo-map-page .photo-spot-modal-copy .photo-spot-cautions li {
+  color: #415966;
+  font-size: 16px;
+  line-height: 1.8;
+}
+.photo-map-page .photo-spot-modal-figure figcaption {
+  color: rgba(255, 255, 255, .88);
+  font-size: 14px;
+  line-height: 1.7;
+}
+.photo-map-page .photo-spot-modal-meta .photo-spot-meta-item small {
+  color: #5b7078;
+  font-size: 13px;
+}
+.photo-map-page .photo-spot-modal-meta .photo-spot-meta-item strong {
+  color: #415966;
+  font-size: 14px;
+}
