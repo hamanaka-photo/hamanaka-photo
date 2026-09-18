@@ -745,7 +745,7 @@ content:
   - name: publishAt
     label: 公開開始日時
     type: string
-    description: 例 2026-09-22T22:00:00+09:00。未入力ならすぐに公開します。
+    description: 例 2026-09-22T18:30:00+09:00。未入力ならすぐに公開します。
   - name: year
     label: 年
     type: string
