@@ -317,7 +317,7 @@
     "published": true,
     "order": 7,
     "name": "北太平洋シーサイドライン海岸",
-    "area": "酪農地帯・海沿い",
+    "area": "海沿い",
     "description": "浜中町の海岸線を走る北太平洋シーサイドライン。海、岬、湿原、丘陵など、移動しながら景色が次々と変わるドライブルートです。",
     "images": [
       {
@@ -358,7 +358,7 @@
     "published": true,
     "order": 9,
     "name": "羨古丹駐車公園",
-    "area": "酪農地帯・海沿い",
+    "area": "海沿い",
     "description": "北太平洋シーサイドライン沿いにある駐車公園。羨古丹の海岸と起伏のある海岸線、太平洋を見渡せます。天気がいい日は前方に霧多布岬を確認できます。",
     "images": [
       {
@@ -454,7 +454,7 @@
     "published": true,
     "order": 11,
     "name": "恵茶人沼",
-    "area": "酪農地帯・海沿い",
+    "area": "海沿い",
     "description": "浜中町東部にある湖沼と湿地。静かな水辺と草地が広がり、季節によって野鳥の姿が見られることもあります。",
     "images": [
       {
@@ -715,7 +715,7 @@
     "published": true,
     "order": 17,
     "name": "ポロト沼",
-    "area": "酪農地帯・海沿い",
+    "area": "海沿い",
     "description": "浜中町東部にある小さな湖沼。周囲の湿地や草地とあわせて静かな水辺の景色が広がり、水鳥が見られることもあります。",
     "images": [
       {
@@ -756,7 +756,7 @@
     "published": true,
     "order": 18,
     "name": "茶内酪農展望台",
-    "area": "酪農地帯・海沿い",
+    "area": "茶内",
     "description": "浜中町らしい酪農地帯を広く見渡せる展望スポット。牧草地と広い空が広がり、夕景や星空の撮影にも向いています。",
     "images": [
       {
@@ -912,5 +912,40 @@
       "y": 60
     },
     "detailUrl": "https://maps.app.goo.gl/uiMedC43mYdSPAzx7"
+  },
+  {
+    "id": "SPOT-016",
+    "published": false,
+    "order": 22,
+    "name": "名もなき酪農の道",
+    "area": "茶内",
+    "description": "広々とした浜中町の酪農地帯を撮影できます。",
+    "images": [
+      {
+        "thumbnail": "assets/images/03_guide/photo-spots/酪農地帯.webp",
+        "src": "assets/images/03_guide/photo-spots/full/酪農地帯.webp"
+      },
+      {
+        "thumbnail": "assets/images/03_guide/photo-spots/花ラッコ-3.webp",
+        "src": "assets/images/03_guide/photo-spots/full/花ラッコ-3.webp"
+      },
+      {
+        "thumbnail": "assets/images/03_guide/photo-spots/花ラッコ-4.webp",
+        "src": "assets/images/03_guide/photo-spots/full/花ラッコ-4.webp"
+      }
+    ],
+    "markerTypes": [
+      "observatory"
+    ],
+    "bestSeason": "通年",
+    "parking": "なし",
+    "toilet": "なし",
+    "lat": 0,
+    "lng": 0,
+    "positionOverride": {
+      "x": 30,
+      "y": 36
+    },
+    "detailUrl": "https://maps.app.goo.gl/o9wAFqKHUcoxSYDy5"
   }
 ]
