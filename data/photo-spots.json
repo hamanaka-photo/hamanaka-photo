@@ -907,6 +907,10 @@
     ],
     "lat": 43.082901,
     "lng": 145.07899,
+    "positionOverride": {
+      "x": 39,
+      "y": 60
+    },
     "detailUrl": "https://maps.app.goo.gl/uiMedC43mYdSPAzx7"
   }
 ]
