@@ -745,6 +745,10 @@
     "toilet": "なし",
     "lat": 43.1466789,
     "lng": 145.144391,
+    "positionOverride": {
+      "x": 59,
+      "y": 38
+    },
     "detailUrl": "https://maps.app.goo.gl/kQdLcuPj8DES9orp6"
   },
   {
