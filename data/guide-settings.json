@@ -18,8 +18,14 @@
       "eyebrow": "03 / OTTER GUIDE",
       "summary": "ラッコを撮るための機材と撮り方を紹介します。",
       "children": [
-        { "articleId": "gear", "title": "撮影機材を選ぶ" },
-        { "articleId": "technique", "title": "撮り方・設定" }
+        {
+          "articleId": "gear",
+          "title": "撮影機材を選ぶ"
+        },
+        {
+          "articleId": "technique",
+          "title": "撮り方・設定"
+        }
       ]
     },
     {
@@ -33,8 +39,9 @@
     "eyebrow": "PHOTO GUIDE BOOK",
     "title": "HAMANAKA PHOTO GUIDE",
     "cardTitle": "ガイドブックを持っていく",
-    "summary": "フォトガイドのダイジェスト版をPDFでご覧いただけます。",
+    "summary": "撮影ガイドブックのダイジェスト版をPDFでご覧いただけます。",
     "cover": "assets/images/gide_view.webp",
+    "pdf": "downloads/hamanaka-photo-guide.pdf",
     "buttonLabel": "PDFをダウンロード ↓"
   }
 }
